@@ -7,9 +7,11 @@ const env = "dev"
 // production 生产版本 pro
 let url
 switch (env) {
-  case "dev":
-    uel == "http://im.jinzh.me"
-  case "pro":
+	case "dev":
+		url = "http://im.jinzh.me/"
+		break
+	case "pro":
+		url = "http://127.0.0.1:8000"
+		break
 }
-
 export { url }

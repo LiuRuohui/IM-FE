@@ -1,55 +1,26 @@
 import axios from "axios"
-
 import QS from "qs"
 
 import { url } from "./env"
 
-axios.defaults.baseURL = url
-//设置
-axios.defaults.timeout = 10000
-// 设置请求超时时间
-axios.defaults.headers.post["Content-Type"] =
-	"application/x-www-form-urlencoded;charset=UTF-8"
-//   设置默认的header头
-
-axios.interceptors.request.use(
-	// 请求拦截器
-	(config) => {
-		// 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
-		// 即使本地存在token，也有可能token是过期的，所以在响应拦截器中要对返回状态进行判断
-		const token = store.state.token
-		token && (config.headers.Authorization = token)
-		return config
+const instance = axios.create({
+	// `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
+	// 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
+	baseURL: url,
+	// `timeout` 指定请求超时的毫秒数。
+	// 如果请求时间超过 `timeout` 的值，则请求会被中断
+	timeout: 1000, // 默认值是 `0` (永不超时)
+	// 自定义请求头
+	headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
 	},
-	(error) => {
-		return Promise.error(error)
-	}
-)
+})
 
-axios.interceptors.response.use(
-	(response) => {
-		// 响应拦截器
-		// 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
-		// 否则的话抛出错误
-		if (response.status === 200) {
-			return Promise.resolve(response)
-		} else {
-			return Promise.reject(response)
-		}
-	},
-	(error) => {
-		return Promise.error(error)
-	}
-)
-
-/**
- * get方法，对应get请求
- * @param {String} url [请求的url地址]
- * @param {Object} params [请求时携带的参数]
- */
-export function get(url, params) {
+function get(url, params, sessionId) {
+	// url参数以对象形式传入
+	params.sessionId = sessionId
 	return new Promise((resolve, reject) => {
-		axios
+		instance
 			.get(url, {
 				params: params,
 			})
@@ -62,15 +33,16 @@ export function get(url, params) {
 	})
 }
 
-/**
- * post方法，对应post请求
- * @param {String} url [请求的url地址]
- * @param {Object} params [请求时携带的参数]
- */
-export function post(url, params) {
+function formPost(url, params, sessionId) {
+	//表单以对象形式传入
 	return new Promise((resolve, reject) => {
-		axios
-			.post(url, QS.stringify(params))
+		instance
+			.post(url, QS.stringify(params), {
+				params: { sessionId: sessionId },
+				headers: {
+					// "Content-Type": "application/x-www-form-urlencoded",
+				},
+			})
 			.then((res) => {
 				resolve(res.data)
 			})
@@ -79,3 +51,5 @@ export function post(url, params) {
 			})
 	})
 }
+
+export { get, formPost }
