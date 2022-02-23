@@ -37,6 +37,38 @@ instance.interceptors.request.use(
 		return Promise.reject(error)
 	}
 )
+
+instance.interceptors.response.use(
+	function (response) {
+		// 2xx 范围内的状态码都会触发该函数。
+		// 对响应数据做点什么
+		return response
+	},
+	function (error) {
+		// 超出 2xx 范围的状态码都会触发该函数。
+		// 对响应错误做点什么
+		switch (error.response.status) {
+			case 401:
+				console.log("未登录！")
+				break
+			case 404:
+				console.log("错误路径，资源未找到！")
+				break
+			case 403:
+				console.log("禁止访问！")
+				break
+			case 405:
+				console.log("不支持的方法")
+				break
+			// case ...
+			default:
+				console.log("其他错误")
+				break
+		}
+		return Promise.reject(error)
+	}
+)
+
 function get(url, params) {
 	// url参数以对象形式传入
 	return new Promise((resolve, reject) => {
