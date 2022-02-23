@@ -16,9 +16,29 @@ const instance = axios.create({
 	},
 })
 
-function get(url, params, sessionId) {
+function setSessionId(sessionId) {
+	//设置sessionId
+	instance.sessionId = sessionId
+	// console.log("设置：", instance.sessionId)
+}
+
+instance.interceptors.request.use(
+	//请求拦截器
+	function (config) {
+		// 在发送请求之前做些什么
+		config.params = {
+			sessionId: instance.sessionId,
+			//设置sessionId
+		}
+		return config
+	},
+	function (error) {
+		// 对请求错误做些什么
+		return Promise.reject(error)
+	}
+)
+function get(url, params) {
 	// url参数以对象形式传入
-	params.sessionId = sessionId
 	return new Promise((resolve, reject) => {
 		instance
 			.get(url, {
@@ -33,12 +53,11 @@ function get(url, params, sessionId) {
 	})
 }
 
-function post(url, params, sessionId) {
+function post(url, params) {
 	//表单以对象形式传入
 	return new Promise((resolve, reject) => {
 		instance
 			.post(url, QS.stringify(params), {
-				params: { sessionId: sessionId },
 				headers: {
 					// "Content-Type": "application/x-www-form-urlencoded",
 				},
@@ -52,4 +71,4 @@ function post(url, params, sessionId) {
 	})
 }
 
-export { get, post }
+export { get, post, setSessionId }

@@ -1,35 +1,46 @@
-import { post, get } from "./http"
+import { post, get, setSessionId } from "./http"
 
 const log = {},
 	userInfo = {},
 	group = {},
 	chum = {}
-
-const index = (sessionId) => get("/", {}, sessionId)
 //首页
-log.in = (params, sessionId = "") => post("/login", params, sessionId)
+const index = () => get("/", {})
 //登录
-log.out = (sessionId) => post("/logout", {}, sessionId)
+log.in = function (params) {
+	return new Promise((resolve, reject) => {
+		post("/login", params)
+			.then((res) => {
+				setSessionId(res)
+				resolve(res)
+			})
+			.catch((err) => {
+				reject(err)
+			})
+	})
+}
 // 登出
+log.out = () => post("/logout", {})
 
-userInfo.get = (sessionId) => get("/user/get", {}, sessionId)
 //用户信息获取
-userInfo.post = (params, sessionId) => post("/user/put", params, sessionId)
+userInfo.get = () => get("/user/get", {})
 //用户信息更改
+userInfo.post = (params) => post("/user/put", params)
 
-group.create = (groupName, sessionId) => get("/group/create/" + groupName, {}, sessionId)
 //创建群组
-group.list = (sessionId) => get("/group/list/007", {}, sessionId)
+group.create = (groupName) => get("/group/create/" + groupName, {})
 //获取所加入群组
-group.search = (groupId, sessionId) => get("/group/search/" + groupId, {}, sessionId)
+group.list = () => get("/group/list/007", {})
 //搜索群组
-group.quit = (groupId, sessionId) => get("/group/quit/" + groupId, {}, sessionId)
+group.search = (groupId) => get("/group/search/" + groupId, {})
 //退出群组
+group.quit = (groupId) => get("/group/quit/" + groupId, {})
 
-chum.list = (sessionId) => get("/chum/list/007", {}, sessionId)
 //获取好友列表
-chum.remove = (chumId, sessionId) => get("/chum/remove/" + chumId, {}, sessionId)
+chum.list = () => get("/chum/list/007", {})
 //删除好友
-chum.search = (chumId, sessionId) => get("/chum/search/" + chumId, {}, sessionId)
+chum.remove = (chumId) => get("/chum/remove/" + chumId, {})
 //搜索好友
+chum.search = (chumId) => get("/chum/search/" + chumId, {})
+
 export { index, log, userInfo, group, chum }
