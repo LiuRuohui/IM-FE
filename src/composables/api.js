@@ -1,4 +1,4 @@
-import { formPost, get } from "./http"
+import { post, get } from "./http"
 
 const log = {},
 	userInfo = {},
@@ -7,14 +7,14 @@ const log = {},
 
 const index = (sessionId) => get("/", {}, sessionId)
 //首页
-log.in = (params, sessionId = "") => formPost("/login", params, sessionId)
+log.in = (params, sessionId = "") => post("/login", params, sessionId)
 //登录
-log.out = (sessionId) => formPost("/logout", {}, sessionId)
+log.out = (sessionId) => post("/logout", {}, sessionId)
 // 登出
 
 userInfo.get = (sessionId) => get("/user/get", {}, sessionId)
 //用户信息获取
-userInfo.post = (params, sessionId) => formPost("/user/put", params, sessionId)
+userInfo.post = (params, sessionId) => post("/user/put", params, sessionId)
 //用户信息更改
 
 group.create = (groupName, sessionId) => get("/group/create/" + groupName, {}, sessionId)

@@ -33,7 +33,7 @@ function get(url, params, sessionId) {
 	})
 }
 
-function formPost(url, params, sessionId) {
+function post(url, params, sessionId) {
 	//表单以对象形式传入
 	return new Promise((resolve, reject) => {
 		instance
@@ -52,4 +52,4 @@ function formPost(url, params, sessionId) {
 	})
 }
 
-export { get, formPost }
+export { get, post }
