@@ -22,6 +22,10 @@ function setSessionId(sessionId) {
 	// console.log("设置：", instance.sessionId)
 }
 
+function getSessionId() {
+	return instance.sessionId
+}
+
 instance.interceptors.request.use(
 	//请求拦截器
 	function (config) {
@@ -103,4 +107,4 @@ function post(url, params) {
 	})
 }
 
-export { get, post, setSessionId }
+export { get, post, setSessionId, getSessionId }
