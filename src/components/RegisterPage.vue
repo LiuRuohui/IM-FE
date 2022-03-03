@@ -11,19 +11,19 @@
       <div class="rounded-md shadow-sm sm:text-xl">
         <div class="py-4 text-blue-800">
           <label for="nickname">昵称:</label>
-          <input id="nickname" name="nickname" type="nickname" autocomplete="nickname" required class="btn  rounded-t-md  sm:text-xl" placeholder="请输入昵称">
+          <input id="nickname" name="nickname" type="nickname" autocomplete="nickname" required class="inputFrame rounded-t-md  sm:text-xl" placeholder="请输入昵称">
         </div>
         <div class="py-4 text-blue-800">
           <label for="account">账号:</label>
-          <input id="account" name="account" type="account" autocomplete="current-account" required class="btn rounded-b-md sm:text-xl" placeholder="请输入账号">
+          <input id="account" name="account" type="account" autocomplete="current-account" required class="inputFrame rounded-b-md sm:text-xl" placeholder="请输入账号">
         </div>
         <div class="py-4 text-blue-800">
           <label for="passwd">密码:</label>
-          <input id="passwd" name="passwd" type="password" autocomplete="current-password" required class="btn rounded-b-md  sm:text-xl" placeholder="请输入密码">
+          <input id="passwd" name="passwd" type="password" autocomplete="current-password" required class="inputFrame rounded-b-md  sm:text-xl" placeholder="请输入密码">
         </div>
         <div class="py-4 text-blue-800">
           <label for="passwd">再次输入密码:</label>
-          <input id="passwd" name="passwd" type="password" autocomplete="current-password" required class="btn rounded-b-md sm:text-xl" placeholder="请再次输入密码">
+          <input id="passwd" name="passwd" type="password" autocomplete="current-password" required class="inputFrame rounded-b-md sm:text-xl" placeholder="请再次输入密码">
         </div>
       </div>
 
@@ -38,10 +38,10 @@
       </div>
 
       <div class="sm:text-xl sm:mt-8">
-        <button @click="reset" class="group relative flex w-full justify-center py-2 border border-transparent sm:text-xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button @click="reset" class="btn group sm:text-xl">
           重置输入
         </button> <br>
-        <button @click="submit" type="submit" class="group relative flex w-full justify-center py-2 border border-transparent sm:text-xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button @click="submit" type="submit" class="btn group sm:text-xl">
           注册
         </button>
       </div>

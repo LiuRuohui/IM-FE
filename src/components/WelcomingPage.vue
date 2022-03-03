@@ -18,11 +18,11 @@
       </div>
       <div class="sm:text-xl sm:mt-8">
           <p class="my-2 text-gray-500">如果您未拥有账户请点击注册</p>
-        <button  class="group relative flex w-full justify-center py-2 border border-transparent sm:text-xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button  class="btn group sm:text-xl">
           注册
         </button>
         <p class="my-2 text-gray-500">已经有账户?请登录</p>
-        <button  class="group relative flex w-full justify-center py-2 border border-transparent sm:text-xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <button  class="btn group sm:text-xl">
           登录
         </button>
       </div>

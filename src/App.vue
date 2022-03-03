@@ -9,6 +9,7 @@ import protobuf from 'protobufjs'
 import {userInfo} from './composables/api'
 import WelcomingPage from './components/WelcomingPage.vue'
 import RegisterPage from './components/RegisterPage.vue'
+import LoginPage from './components/LoginPage.vue'
 
 function Register(){
   axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -90,8 +91,9 @@ function login(){
 </script>
 
 <template>
-<!--<WelcomingPage class="bg-blue-50 page"></WelcomingPage> -->
-<RegisterPage class="bg-blue-50 page"></RegisterPage>
+<WelcomingPage class="bg-blue-50 page"></WelcomingPage> 
+<!--<RegisterPage class="bg-blue-50 page"></RegisterPage> -->
+<LoginPage class="bg-blue-50 page"></LoginPage>
   <!--<button class="bg-red-500 hover:bg-red-700 ..." @click="Register">Register</button><br><br>
   <button class="bg-sky-600 hover:bg-sky-700 ..." @click="login">Login</button><br><br>
   <button class="bg-sky-600 hover:bg-sky-700 ..." @click="FrontPage">Front Page</button><br><br>
