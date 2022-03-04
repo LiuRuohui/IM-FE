@@ -10,19 +10,19 @@
     <div class="mt-8 space-y-6">
       <div class="flex items-center justify-between">
         <div class="text-sm sm:text-xl">
-          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500"> 查看我们的功能</a>
+          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500" @click="seeFunctions"> 查看我们的功能</a>
         </div>
         <div class="text-sm sm:text-xl">
-          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500"> 了解隐私策略</a>
+          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500" @click="policities"> 了解隐私策略</a>
         </div>
       </div>
       <div class="sm:text-xl sm:mt-8">
-          <p class="my-2 text-gray-500">如果您未拥有账户请点击注册</p>
-        <button  class="btn group sm:text-xl">
+          <p class="my-2 text-gray-500">如果您未拥有账户,请点击注册</p>
+        <button  class="btn group sm:text-2xl" @click="register">
           注册
         </button>
         <p class="my-2 text-gray-500">已经有账户?请登录</p>
-        <button  class="btn group sm:text-xl">
+        <button  class="btn group sm:text-2xl" @click="login">
           登录
         </button>
       </div>
@@ -31,7 +31,27 @@
 </div>
 </template>
 
-<script>
+<script setup>
+function seeFunctions(){
+  alert('我们的功能是')
+}
 
+function policities(){
+  var x = confirm('123')
+  if(x == true){
+
+  }
+  else {
+
+  }
+}
+
+function register(){
+  alert('路由跳转注册界面')
+}
+
+function login(){
+  alert('路由跳转登录界面')
+}
 </script>
 

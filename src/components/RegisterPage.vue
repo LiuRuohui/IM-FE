@@ -7,7 +7,7 @@
         <div>
             <img class="h-16 w-1/2 mx-auto" src="../assets/用户.svg" alt="这里有一张图片">
         </div>
-        <form class="mt-8 space-y-4" action="#" method="POST">
+    <form class="mt-8 space-y-4" action="#" method="POST">
       <div class="rounded-md shadow-sm sm:text-xl">
         <div class="py-4 text-blue-800">
           <label for="nickname">昵称:</label>
@@ -29,21 +29,17 @@
 
       <div class="flex items-center justify-between">
         <div class="text-sm sm:text-xl">
-          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500"> 查看我们的功能 </a>
+          <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500" @click="seeFunctions"> 查看我们的功能 </a>
         </div>
         <div class="flex items-center">
           <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
           <label for="remember-me" class="ml-2 block sm:text-xl text-gray-900"> 同意隐私协议 </label>
         </div>
       </div>
-
       <div class="sm:text-xl sm:mt-8">
-        <button @click="reset" class="btn group sm:text-xl">
-          重置输入
-        </button> <br>
-        <button @click="submit" type="submit" class="btn group sm:text-xl">
-          注册
-        </button>
+        <input value="重置" type="reset" @click="reset" class="btn group sm:text-xl text-center">
+        <br>
+        <input @click="submit" type="submit" class="btn group sm:text-xl">
       </div>
     </form>
     </div>
@@ -52,12 +48,22 @@
 
 <script setup>
 
-function reset() {
+function seeFunctions(){
+  alert("See functions")
+}
 
+function reset() {
+  var confirmation = confirm('确定要重置数据吗？')
+  if(confirmation == true){
+    alert('你表单没了')
+  }
+  else{
+    alert('你表单还是没了')
+  }
 }
 
 function submit() {
-
+  alert('提交数据注册 注册成功返回警示框 注册失败返回原因')
 }
 
 </script>
