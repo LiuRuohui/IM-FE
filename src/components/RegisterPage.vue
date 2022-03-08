@@ -7,15 +7,11 @@
         <div>
             <img class="h-16 w-1/2 mx-auto" src="../assets/用户.svg" alt="这里有一张图片">
         </div>
-    <div class="mt-8 space-y-4">
+    <div>
       <div class="rounded-md shadow-sm sm:text-xl">
         <div class="py-4 text-blue-800">
-          <label for="email-address">邮箱</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="inputFrame rounded-t-md  sm:text-xl" placeholder="请输入邮箱">
-        </div>
-        <div class="py-4 text-blue-800">
-          <label for="name">昵称:</label>
-          <input id="name" name="name" type="name" autocomplete="name" required class="inputFrame rounded-t-md  sm:text-xl" placeholder="请输入昵称">
+          <label for="account">账号:</label>
+          <input id="account" name="account" type="account" autocomplete="name" required class="inputFrame rounded-t-md  sm:text-xl" placeholder="请输入账号">
         </div>
         <div class="py-4 text-blue-800">
           <label for="passwd">密码:</label>
@@ -27,7 +23,7 @@
         </div>
       </div>
 
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mt-2">
         <div class="text-sm sm:text-xl">
           <a href="#" class="font-medium text-indigo-800 hover:text-indigo-500" @click="seeFunctions"> 查看我们的功能 </a>
         </div>
@@ -47,20 +43,12 @@
 </template>
 
 <script setup>
-function isEmail(str){
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
-    return reg.test(str)
-}
-
 function submit(){
-  let email = document.getElementById("email-address")
   let name = document.getElementById("passwd").value
   let repeated_name = document.getElementById("repeated-passwd").value
-  if(!isEmail(email)){
-    alert("邮箱格式不正确！")
-  }else if(name !== repeated_name){
+  if(name !== repeated_name){
     alert('两次密码不一致！')
-  }else{
+  }else {
     alert('提交数据注册 注册成功返回警示框 注册失败返回原因')
   }
 }
