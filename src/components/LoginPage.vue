@@ -11,8 +11,8 @@
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">
         <div class="py-4 text-blue-800 sm:text-2xl">
-          <label for="email-address">邮箱</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="inputFrame rounded-t-md  sm:text-2xl" placeholder="请输入邮箱">
+          <label for="account">账号:</label>
+          <input id="account" name="account" type="account" autocomplete="name" required class="inputFrame rounded-t-md  sm:text-2xl" placeholder="请输入账号">
         </div>
         <div class="py-4 text-blue-800 sm:text-2xl">
           <label for="passwd">密码:</label>
@@ -43,17 +43,9 @@
 
 <script setup>
 function submit(){
-  var name = document.getElementById("email-address").value;
-  if(!isEmail(name)){
-    alert('邮箱格式不正确！')
-  }else{
-    alert('登录')
-  }
+  alert('登录')
 }
-function isEmail(str){
-    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
-    return reg.test(str)
-}
+
 </script>
 
 
