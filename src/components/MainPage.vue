@@ -3,7 +3,7 @@
     <div class="sm:basis-44 ">
         <div class="grid grid-rows-3 sm:gap-6 gap-3">
             <div class="row-span-2">
-                <img src="../assets/用户.svg" alt="" class="mt-2 h-8 sm:mt-4 sm:h-32 w-2/3 mx-auto">
+                <img src="../assets/用户.svg" alt="" class="mt-2 sm:mt-4 sm:h-28 w-2/3 mx-auto">
             </div>
             <div class="sm:text-3xl text-center m-auto">{{nickname}}</div>
             <div class="grid grid-rows-4 gap-16 bg-indigo-300">
@@ -27,19 +27,32 @@
         </div>
     </div>
 
-    <div class="sm:basis-56 bg-red-300">
-      列表
+    <div class="sm:basis-56 bg-red-300 overflow-auto">
+        <div v-for="friend in friends.name" class="my-4 sm:text-xl ">
+            <img src="../assets/好友.svg" alt="好友" class="h-16 my-2 ml-4 inline-block">
+            <span class="sm:text-xl p-4">好友</span>
+            <hr class="border-2"> 
+        </div>
     </div>
 
-    <div class="sm:basis-auto bg-red-400">
-      聊天框
+    <div class="sm:basis-2/3 bg-red-400">
+        <div class="">
+
+        </div>
     </div>
 </div>
 </template>
 
 <script setup>
-import {ref} from "vue"
+import {ref,reactive} from "vue"
 const nickname = ref('刘若晖')
+
+const friends = reactive({
+    name:['123','456','789','','','','','','','','','','','','','','','','',''],
+    message:[],
+})
+
+const groups = reactive({})
 
 function settings(){
     alert('你点击了设置')
@@ -54,6 +67,11 @@ function gotoGroups(){
 }
 
 function Logout(){
-    alert('退出登录!')
+    var choose = confirm('退出登录!')
+    if(choose == true){
+        alert('退出登录，返回登录界面')
+    }else{
+        alert('111')
+    }
 }
 </script>
