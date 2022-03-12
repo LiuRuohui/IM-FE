@@ -99,7 +99,7 @@ function login(){
 <LoginPage class="bg-blue-50 page"></LoginPage> 
 <MainPage class="bg-blue-50 page"></MainPage> 
 <UpdateInformation class="bg-blue-50 page"></UpdateInformation> -->
-<ShowInformation class="bg-blue-50 page"></ShowInformation>
+<ShowInformation class="page"></ShowInformation>
   <!--<button class="bg-red-500 hover:bg-red-700 ..." @click="Register">Register</button><br><br>
   <button class="bg-sky-600 hover:bg-sky-700 ..." @click="login">Login</button><br><br>
   <button class="bg-sky-600 hover:bg-sky-700 ..." @click="FrontPage">Front Page</button><br><br>
@@ -109,7 +109,8 @@ function login(){
 </template>
 
 <style>
-.page {
-  height:100vh
+.page{
+    height: 100vh;
+    background-color:hsla(190, 100%, 95%, 0.5)
 }
 </style>
