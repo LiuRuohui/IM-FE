@@ -8,7 +8,7 @@
             <img class="h-16 w-1/2 mx-auto" src="../assets/用户.svg" alt="这里有一张图片">
         </div>
       <div class="rounded-md shadow-sm sm:text-xl">
-        <div class="py-4 text-blue-800">
+        <div class="py-4 font">
           <label for="email-address sm:text-2xl">邮箱</label>
           <input id="email-address" name="email" type="email" autocomplete="email" required class="inputFrame rounded-t-md  sm:text-2xl" placeholder="请输入邮箱">
         </div>
@@ -37,3 +37,9 @@ function isEmail(str){
     return reg.test(str)
 }
 </script>
+
+<style>
+.font{
+  color:hsla(210, 100%, 60%, 0.8)
+}
+</style>

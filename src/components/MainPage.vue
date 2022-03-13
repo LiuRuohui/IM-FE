@@ -31,11 +31,15 @@
         <div v-for="friend in friends.name" class="my-4 sm:text-xl ">
             <img src="../assets/好友.svg" alt="好友" class="h-16 my-2 ml-4 inline-block">
             <span class="sm:text-xl p-4">好友</span>
-            <hr class="border-2"> 
+            <hr class="border-2">
         </div>
     </div>
 
     <div class="sm:basis-2/3 bg-red-400">
+        <div class="bg-blue-500 h-20">
+            <div class="sm:text-4xl float-left h-20 mt-4 ml-8">{{friends.name[1]}}</div>
+            <div class="inline-block float-right"><img src="../assets/关闭按钮.svg" alt="关闭按钮" class="h-12 mt-4 mr-4"></div>
+        </div>
         <div class="">
 
         </div>

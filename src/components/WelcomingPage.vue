@@ -1,8 +1,8 @@
 <template>
-<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8c">
+<div class="flex items-center justify-center py-8 px-4 sm:px-4 lg:px-6">
   <div class="sm:max-w-xl sm:object-center sm:object-cover w-full space-y-8">
     <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-purple-600">欢迎使用即时通讯</h2>
+      <h2 class="mt-4 text-center text-4xl font-extrabold text-purple-600 opacity-80">欢迎使用即时通讯</h2>
     </div>
     <div>
         <img class="w-1/2 width shadow-xl mx-auto" src="../assets/测试图片.jpg" alt="这里有一张图片">
@@ -39,10 +39,10 @@ function seeFunctions(){
 function policities(){
   var x = confirm('123')
   if(x == true){
-
+    alert('你选了确认')
   }
   else {
-
+    alert('你否认了')
   }
 }
 
