@@ -1,25 +1,25 @@
 <template>
-<div class="flex flex-row sm:mx-16 sm:my-20 sm:text-xl bg-indigo-300">
-    <div class="sm:basis-44 ">
+<div class="flex flex-row sm:mx-16 sm:my-20 sm:text-xl ">
+    <div class="sm:basis-40 bg-blue-200">
         <div class="grid grid-rows-3 sm:gap-6 gap-3">
             <div class="row-span-2">
-                <img src="../assets/用户.svg" alt="" class="mt-2 sm:mt-4 sm:h-28 w-2/3 mx-auto">
+                <img src="../assets/用户.svg" alt="" class="mt-2 sm:mt-4 h-20 w-2/3 mx-auto">
             </div>
             <div class="sm:text-3xl text-center m-auto">{{nickname}}</div>
-            <div class="grid grid-rows-4 gap-16 bg-indigo-300">
-                <div class="bg-indigo-400" @click="gotoFriends">
+            <div class="grid grid-rows-4 gap-20 mt-4 ">
+                <div class="bg-indigo-300 opacity-80" @click="gotoFriends">
                     <img src="../assets/好友.svg" alt="好友" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">好友</p>
                 </div>
-                <div class="bg-indigo-400" @click="gotoGroups">
+                <div class="bg-indigo-300 opacity-80" @click="gotoGroups">
                     <img src="../assets/群组.svg" alt="群组" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">群组</p>
                 </div>
-                <div class="bg-indigo-400" @click="settings">
+                <div class="bg-indigo-300 opacity-80" @click="settings">
                     <img src="../assets/设置.svg" alt="设置" class="h-16 m-auto"> 
                     <p class="sm:text-3xl text-xl text-center mt-2">设置</p>
                 </div>
-                <div class="bg-indigo-400" @click="Logout">
+                <div class="bg-indigo-300 opacity-80" @click="Logout">
                     <img src="../assets/退出.svg" alt="退出" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">退出登录</p>
                 </div>
@@ -27,22 +27,24 @@
         </div>
     </div>
 
-    <div class="sm:basis-56 bg-red-300 overflow-auto">
+    <div class="sm:basis-52 bg-green-100 overflow-auto">
         <div v-for="friend in friends.name" class="my-4 sm:text-xl ">
             <img src="../assets/好友.svg" alt="好友" class="h-16 my-2 ml-4 inline-block">
-            <span class="sm:text-xl p-4">好友</span>
+            <span class="sm:text-xl p-4">好友1</span>
             <hr class="border-2">
         </div>
     </div>
 
-    <div class="sm:basis-2/3 bg-red-400">
-        <div class="bg-blue-500 h-20">
-            <div class="sm:text-4xl float-left h-20 mt-4 ml-8">{{friends.name[1]}}</div>
-            <div class="inline-block float-right"><img src="../assets/关闭按钮.svg" alt="关闭按钮" class="h-12 mt-4 mr-4"></div>
-        </div>
-        <div class="">
-
-        </div>
+    <div class="sm:flex-1 bg-red-100 flex flex-col">
+            <div class="bg-yellow-200 basis-20 sm:text-4xl opacity-60">
+                <p class="text-center sm:pt-6">{{friends.name[1]}}</p>
+            </div>
+            <div class="basis-2/3">
+聊天框
+            </div>
+            <div class="flex-1">
+输入框
+            </div>
     </div>
 </div>
 </template>
@@ -79,3 +81,11 @@ function Logout(){
     }
 }
 </script>
+
+<style>
+.deisgn{
+    background-color:red;
+    font-size:12px;
+
+}
+</style>
