@@ -5,7 +5,7 @@
       <h2 class="mt-6 text-center sm:text-4xl font-extrabold text-purple-600">个人信息</h2>
     </div>
     <div class="mt-6">
-        <img class="h-16 w-1/2 mx-auto" src="../assets/用户.svg" alt="这里有一张图片">
+        <img class="h-16 w-1/2 mx-auto" src="../assets/pic/用户.svg" alt="这里有一张图片">
     </div>
     <div class="space-y-6">
       <input type="hidden" name="remember" value="true">

@@ -5,7 +5,7 @@
         <h2 class="mt-4 text-center text-4xl font-extrabold text-purple-600 opacity-80">欢迎使用即时通讯</h2>
       </div>
       <div>
-        <img class="w-1/2 width shadow-xl mx-auto" src="../assets/测试图片.jpg" alt="这里有一张图片" />
+        <img class="w-1/2 width shadow-xl mx-auto" src="../assets/pic/测试图片.jpg" alt="这里有一张图片" />
       </div>
       <div class="mt-8 space-y-6">
         <div class="flex items-center justify-between">

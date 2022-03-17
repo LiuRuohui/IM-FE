@@ -3,24 +3,24 @@
     <div class="sm:basis-40 bg-blue-200">
         <div class="grid grid-rows-3 sm:gap-6 gap-3">
             <div class="row-span-2">
-                <img src="../assets/用户.svg" alt="" class="mt-2 sm:mt-4 h-20 w-2/3 mx-auto">
+                <img src="../assets/pic/用户.svg" alt="" class="mt-2 sm:mt-4 h-20 w-2/3 mx-auto">
             </div>
             <div class="sm:text-3xl text-center m-auto">{{nickname}}</div>
             <div class="grid grid-rows-4 gap-20 mt-4 ">
                 <div class="bg-indigo-300 opacity-80" @click="gotoFriends">
-                    <img src="../assets/好友.svg" alt="好友" class="h-16 m-auto">
+                    <img src="../assets/pic/好友.svg" alt="好友" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">好友</p>
                 </div>
                 <div class="bg-indigo-300 opacity-80" @click="gotoGroups">
-                    <img src="../assets/群组.svg" alt="群组" class="h-16 m-auto">
+                    <img src="../assets/pic/群组.svg" alt="群组" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">群组</p>
                 </div>
                 <div class="bg-indigo-300 opacity-80" @click="settings">
-                    <img src="../assets/设置.svg" alt="设置" class="h-16 m-auto"> 
+                    <img src="../assets/pic/设置.svg" alt="设置" class="h-16 m-auto"> 
                     <p class="sm:text-3xl text-xl text-center mt-2">设置</p>
                 </div>
                 <div class="bg-indigo-300 opacity-80" @click="Logout">
-                    <img src="../assets/退出.svg" alt="退出" class="h-16 m-auto">
+                    <img src="../assets/pic/退出.svg" alt="退出" class="h-16 m-auto">
                     <p class="sm:text-3xl text-xl text-center mt-2">退出登录</p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
 
     <div class="sm:basis-52 bg-green-100 overflow-auto">
         <div v-for="friend in friends.name" class="my-4 sm:text-xl ">
-            <img src="../assets/好友.svg" alt="好友" class="h-16 my-2 ml-4 inline-block">
+            <img src="../assets/pic/好友.svg" alt="好友" class="h-16 my-2 ml-4 inline-block">
             <span class="sm:text-xl p-4">好友1</span>
             <hr class="border-2">
         </div>
@@ -54,7 +54,7 @@ import {ref,reactive} from "vue"
 const nickname = ref('刘若晖')
 
 const friends = reactive({
-    name:['123','456','789','','','','','','','','','','','','','','','','',''],
+    name:['123','456','789','',''],
     message:[],
 })
 

@@ -5,7 +5,7 @@
             <h2 class="mt-6 text-center sm:text-3xl font-extrabold text-purple-600">忘记密码</h2>
         </div>
         <div>
-            <img class="h-16 w-1/2 mx-auto" src="../assets/用户.svg" alt="这里有一张图片">
+            <img class="h-16 w-1/2 mx-auto" src="../assets/pic/用户.svg" alt="这里有一张图片">
         </div>
       <div class="rounded-md shadow-sm sm:text-xl">
         <div class="py-4 font">
