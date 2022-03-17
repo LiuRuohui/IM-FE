@@ -1,10 +1,15 @@
 <script setup>
-import ShowInformation from './components/ShowInformation.vue'
 
 </script>
 
 <template>
-  <ShowInformation class="page"></ShowInformation>
+  <div>
+    <router-link to="/login">home</router-link>
+    <router-link to="/information">about</router-link>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+  </div>
 </template>
 
 <style>
