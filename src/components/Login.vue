@@ -13,7 +13,7 @@
                 <div class="w-full max-w-md z-10">
                     <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">欢迎光临</div>
                     <div
-                        class="sm:text-sm xl:text-md text-gray-200 font-normal"
+                        class="sm:text-xl text-gray-200 font-normal"
                     >欢迎来到好玩俱乐部，在这里和志同道合的朋友一起分享有趣的故事，一起组织有趣的活动...</div>
                 </div>
                 <ul class="circles">
@@ -38,9 +38,9 @@
                     <div class="mt-8 space-y-6">
                         <input type="hidden" name="remember" value="true" />
                         <div class="rounded-md shadow-sm">
-                            <div class="py-2 font">
+                            <div class="py-2">
                                 <label
-                                    class="ml-3 text-sm font-bold text-gray-700 tracking-wide"
+                                    class="label"
                                     for="account"
                                 >账号:</label>
                                 <input
@@ -49,13 +49,13 @@
                                     type="account"
                                     autocomplete="name"
                                     required
-                                    class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
+                                    class="inputFrame"
                                     placeholder="请输入账号"
                                 />
                             </div>
-                            <div class="py-2 font">
+                            <div class="py-2">
                                 <label
-                                    class="ml-3 text-sm font-bold text-gray-700 tracking-wide"
+                                    class="label"
                                     for="passwd"
                                 >密码:</label>
                                 <input
@@ -64,7 +64,7 @@
                                     type="password"
                                     autocomplete="current-password"
                                     required
-                                    class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
+                                    class="inputFrame"
                                     placeholder="请输入密码"
                                 />
                             </div>
@@ -89,7 +89,7 @@
                         <div>
                             <button
                                 @click="submit"
-                                class="w-full flex justify-center bg-gradient-to-r from-indigo-500 to-blue-600 hover:bg-gradient-to-l hover:from-blue-500 hover:to-indigo-600 text-gray-100 p-4 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
+                                class="btn"
                             >登录</button>
                         </div>
                         <p
