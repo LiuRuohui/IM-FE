@@ -7,8 +7,10 @@
 </template>
 
 <style>
-.page {
+/* .wrap {
+  width: 100vw;
   height: 100vh;
-  background-color: hsla(190, 100%, 95%, 0.5);
-}
+  background: url(src/assets/img/bg.jpg) center no-repeat;
+  background-size: cover;
+} */
 </style>
