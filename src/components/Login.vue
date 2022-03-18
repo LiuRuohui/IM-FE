@@ -61,15 +61,31 @@ function page(param) {
                 class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white"
             >
                 <!-- 这里是组件 -->
-                <keep-alive>
-                    <component :is="typeComponentMap[pageParams.type]" @notice="page" class="tab"></component>
-                </keep-alive>
+                <Transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <component
+                            :is="typeComponentMap[pageParams.type]"
+                            @notice="page"
+                            class="tab"
+                        ></component>
+                    </keep-alive>
+                </Transition>
             </div>
         </div>
     </div>
 </template>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
 .circles {
     position: absolute;
     top: 0;

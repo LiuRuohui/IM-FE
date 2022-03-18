@@ -37,8 +37,8 @@ const emit = defineEmits(['notice'])
                 <div class="py-3">
                     <label class="label select-none" for="passwd">确认密码:</label>
                     <input
-                        id="passwd"
-                        name="passwd"
+                        id="repeat-passwd"
+                        name="repeat-passwd"
                         type="password"
                         autocomplete="current-password"
                         required
