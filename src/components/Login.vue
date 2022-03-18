@@ -1,3 +1,31 @@
+<script setup>import { ref, reactive } from 'vue';
+import Login from "./login/Login.vue"
+import Register from "./login/Register.vue"
+import ForgetPasswd from "./login/ForgetPasswd.vue"
+const pageParams = reactive({
+    type: 1
+})
+const typeComponentMap = {
+    1: Login,
+    2: Register,
+    3: ForgetPasswd,
+}
+
+function page(param) {
+    switch (param) {
+        case "register":
+            pageParams.type = 2
+            break
+        case "forgetPasswd":
+            pageParams.type = 3
+            break
+        default:
+            pageParams.type = 1
+            break
+    }
+}
+</script>
+
 <template>
     <div class="relative min-h-screen flex">
         <div
@@ -11,9 +39,11 @@
                     class="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"
                 ></div>
                 <div class="w-full max-w-md z-10">
-                    <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">欢迎光临</div>
                     <div
-                        class="sm:text-xl text-gray-200 font-normal"
+                        class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6 select-none"
+                    >欢迎光临</div>
+                    <div
+                        class="sm:text-xl xl:text-md text-gray-200 font-normal select-none"
                     >欢迎来到好玩俱乐部，在这里和志同道合的朋友一起分享有趣的故事，一起组织有趣的活动...</div>
                 </div>
                 <ul class="circles">
@@ -30,80 +60,10 @@
             <div
                 class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-white"
             >
-                <div class="max-w-md w-full mx-auto space-y-8">
-                    <div class="text-center">
-                        <h2 class="mt-6 text-3xl font-bold text-gray-900">欢迎回来</h2>
-                    </div>
-                    <div class="flex items-center justify-center space-x-2"></div>
-                    <div class="mt-8 space-y-6">
-                        <input type="hidden" name="remember" value="true" />
-                        <div class="rounded-md shadow-sm">
-                            <div class="py-2">
-                                <label
-                                    class="label"
-                                    for="account"
-                                >账号:</label>
-                                <input
-                                    id="account"
-                                    name="account"
-                                    type="account"
-                                    autocomplete="name"
-                                    required
-                                    class="inputFrame"
-                                    placeholder="请输入账号"
-                                />
-                            </div>
-                            <div class="py-2">
-                                <label
-                                    class="label"
-                                    for="passwd"
-                                >密码:</label>
-                                <input
-                                    id="passwd"
-                                    name="passwd"
-                                    type="password"
-                                    autocomplete="current-password"
-                                    required
-                                    class="inputFrame"
-                                    placeholder="请输入密码"
-                                />
-                            </div>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <input
-                                    id="remember_me"
-                                    name="remember_me"
-                                    type="checkbox"
-                                    class="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded"
-                                />
-                                <label
-                                    for="remember_me"
-                                    class="ml-2 block text-sm text-gray-900"
-                                >记住我</label>
-                            </div>
-                            <div class="text-sm">
-                                <a href="#" class="text-indigo-400 hover:text-blue-500">忘记密码？</a>
-                            </div>
-                        </div>
-                        <div>
-                            <button
-                                @click="submit"
-                                class="btn"
-                            >登录</button>
-                        </div>
-                        <p
-                            class="items-center justify-center mt-10 text-center text-md text-gray-500"
-                        >
-                            <span>还没有账号？</span>
-                            <a
-                                href="/"
-                                target="_blank"
-                                class="text-indigo-400 hover:text-blue-500 no-underline hover:underline cursor-pointer transition ease-in duration-300"
-                            >立即注册</a>
-                        </p>
-                    </div>
-                </div>
+                <!-- 这里是组件 -->
+                <keep-alive>
+                    <component :is="typeComponentMap[pageParams.type]" @notice="page" class="tab"></component>
+                </keep-alive>
             </div>
         </div>
     </div>

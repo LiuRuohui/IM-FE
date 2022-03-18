@@ -1,3 +1,31 @@
+
+<script setup>
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+
+function seeFunctions() {
+  alert('我们的功能是')
+}
+
+function policities() {
+  var x = confirm('123')
+  if (x == true) {
+    alert('你选了确认')
+  }
+  else {
+    alert('你否认了')
+  }
+}
+
+function register() {
+  alert('路由跳转注册界面')
+}
+
+function login() {
+  router.push({ name: "login" })
+}
+</script>
 <template>
   <div class="flex items-center justify-center py-8 px-4 sm:px-4 lg:px-6">
     <div class="sm:max-w-xl sm:object-center sm:object-cover w-full space-y-8">
@@ -35,27 +63,5 @@
   </div>
 </template>
 
-<script setup>
-function seeFunctions() {
-  alert('我们的功能是')
-}
 
-function policities() {
-  var x = confirm('123')
-  if (x == true) {
-    alert('你选了确认')
-  }
-  else {
-    alert('你否认了')
-  }
-}
-
-function register() {
-  alert('路由跳转注册界面')
-}
-
-function login() {
-  alert('路由跳转登录界面')
-}
-</script>
 
