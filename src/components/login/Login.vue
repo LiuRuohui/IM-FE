@@ -12,7 +12,7 @@ const emit = defineEmits(['notice'])
         <div class="flex items-center justify-center space-x-2"></div>
         <div class="mt-8 space-y-6">
             <input type="hidden" name="remember" value="true" />
-            <div class="rounded-md shadow-sm">
+            <div class="rounded-md">
                 <div class="py-2">
                     <label class="label select-none" for="account">账号:</label>
                     <input
