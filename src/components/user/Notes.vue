@@ -1,8 +1,8 @@
 <script setup>
 import { reactive } from 'vue';
 const notebooks = reactive({
-    id:[1,2,3,4,5,6],
-    message:[],
+    id: [1, 2, 3, 4, 5, 6],
+    message: [],
 })
 </script>
 <template>
@@ -10,29 +10,37 @@ const notebooks = reactive({
         <div class="w-full flex flex-row my-2">
             <div class="opacity-60 float-left ml-4 mt-1">
                 列表排序
-                <select name="" id="" class="border-none outline-none font-black text-center">
-                    <option value="">最新笔记优先</option>
-                    <option value="">倒序</option>
+                <select name id class="border-none outline-none font-black text-center">
+                    <option value>最新笔记优先</option>
+                    <option value>倒序</option>
                 </select>
             </div>
             <div class="ml-14 opacity-60">
                 创建会话
                 <div class="inline-block item-center">
-                    <img src="/src/assets/img/加号.svg" alt="" class="h-9 inline-block">
+                    <img src="/src/assets/img/加号.svg" alt class="h-9 inline-block" />
                 </div>
             </div>
         </div>
         <div class="w-full h-full">
             <div class="flex flex-col my-4 mx-8">
-                <div class="group w-full h-28 shadow-sm hover:shadow rounded-md hover:cursor-pointer" v-for="notes in notebooks.id">
-                    <img src="/src/assets/pic/450824.jpg" alt="" class="ml-4 my-4 h-20 w-20 inline-block float-left">
-                        <div class="float-left ml-3 mt-6 font-bold opacity-70 group-hover:text-lg">笔记标题</div>
-                        <div class="font-semibold float-right mt-6 opacity-50 mr-4 group-hover:text-lg">2020-6-22</div>
-                        <div class="inline-block ml-3 truncate opacity-70 text-sm mt-2 group-hover:opacity-100 group-hover:text-base">This is a note</div>
+                <div
+                    class="w-full h-28 shadow-sm hover:shadow rounded-md hover:cursor-pointer"
+                    v-for="notes in notebooks.id"
+                >
+                    <img
+                        src="/src/assets/pic/450824.jpg"
+                        alt
+                        class="ml-4 my-4 h-20 w-20 inline-block float-left"
+                    />
+                    <div class="float-left ml-3 mt-6 font-bold opacity-70">笔记标题</div>
+                    <div class="font-semibold float-right mt-6 opacity-50 mr-4">2020-6-22</div>
+                    <div
+                        class="inline-block ml-3 truncate opacity-70 text-sm mt-2 group-hover:opacity-100"
+                    >This is a note</div>
                 </div>
             </div>
         </div>
-
     </div>
     <div class="flex-grow h-full"></div>
 </template>
