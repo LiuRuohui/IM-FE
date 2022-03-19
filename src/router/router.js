@@ -7,14 +7,14 @@ import Main from "../components/Main.vue"
 import Public from "../components/Public.vue"
 
 import UpdateInfo from "../components/UpdateInfo.vue"
-// import Welcome from "../components/Welcome.vue"
+import Welcome from "../components/Welcome.vue"
 
 const routes = [
 	// 路由的默认路径
 	{
 		path: "/",
-		name: "public",
-		component: Public,
+		name: "welcome",
+		component: Welcome,
 	},
 	// {
 	// 	path: "/updateInfo",
@@ -33,11 +33,11 @@ const routes = [
 		name: "login",
 		component: Login,
 	},
-	// {
-	// 	path: "/info",
-	// 	name: "info",
-	// 	component: Info,
-	// },
+	{
+		path: "/setting",
+		name: "user",
+		component: Public,
+	},
 ]
 
 // 创建路由对象
