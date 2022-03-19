@@ -58,8 +58,8 @@ import Notes from "./user/Notes.vue"
         </div>
         <!-- <div class="w-96 h-full border-r"></div>
         <div class="flex-grow h-full"></div>-->
-        <User></User>
-        <!-- <Notes></Notes> -->
+        <!--<User></User> -->
+        <Notes></Notes> 
     </div>
 </template>
 <style>

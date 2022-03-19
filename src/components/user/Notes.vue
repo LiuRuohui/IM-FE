@@ -6,11 +6,11 @@ const notebooks = reactive({
 })
 </script>
 <template>
-    <div class="w-96 h-full flex flex-col overflow-hidden">
+    <div class="w-96 h-full flex flex-col overflow-hidden select-none">
         <div class="w-full flex flex-row my-2">
             <div class="opacity-60 float-left ml-4 mt-1">
                 列表排序
-                <select name="" id="" class="border-none outline-none font-black text-center bg-blue-50">
+                <select name="" id="" class="border-none outline-none font-black text-center">
                     <option value="">最新笔记优先</option>
                     <option value="">倒序</option>
                 </select>
@@ -24,11 +24,11 @@ const notebooks = reactive({
         </div>
         <div class="w-full h-full">
             <div class="flex flex-col my-4 mx-8">
-                <div class="w-full h-28 shadow-md hover:shadow-lg rounded-md overflow-auto" v-for="notes in notebooks.id">
+                <div class="group w-full h-28 shadow-sm hover:shadow rounded-md hover:cursor-pointer" v-for="notes in notebooks.id">
                     <img src="/src/assets/pic/450824.jpg" alt="" class="ml-4 my-4 h-20 w-20 inline-block float-left">
-                        <div class="float-left ml-3 mt-6 font-bold opacity-70 hover:opacity-100">笔记标题</div>
-                        <div class="hover:font-bold float-right mt-6 opacity-50 mr-4">2020-6-22</div>
-                        <p class="inline-block ml-3 truncate opacity-70 text-sm mt-2 hover:opacity-90">This is a note</p>
+                        <div class="float-left ml-3 mt-6 font-bold opacity-70 group-hover:text-lg">笔记标题</div>
+                        <div class="font-semibold float-right mt-6 opacity-50 mr-4 group-hover:text-lg">2020-6-22</div>
+                        <div class="inline-block ml-3 truncate opacity-70 text-sm mt-2 group-hover:opacity-100 group-hover:text-base">This is a note</div>
                 </div>
             </div>
         </div>
