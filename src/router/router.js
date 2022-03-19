@@ -1,42 +1,33 @@
 // history模式
 import { createRouter, createWebHashHistory } from "vue-router"
-
-import Info from "../components/Info.vue"
-import Login from "../components/Login.vue"
-import Main from "../components/Main.vue"
-import Public from "../components/Public.vue"
-
-import UpdateInfo from "../components/UpdateInfo.vue"
-import Welcome from "../components/Welcome.vue"
+import { filter } from "./function"
 
 const routes = [
 	// 路由的默认路径
 	{
 		path: "/",
 		name: "welcome",
-		component: Welcome,
+		component: () => import("../components/Welcome.vue"),
 	},
-	// {
-	// 	path: "/updateInfo",
-	// 	name: "updateInfo",
-	// 	component: UpdateInfo,
-	// },
-
-	// {
-	// 	path: "/main",
-	// 	name: "main",
-	// 	component: Main,
-	// },
-
 	{
 		path: "/login",
 		name: "login",
-		component: Login,
+		component: () => import("../components/Login.vue"),
 	},
 	{
-		path: "/setting",
+		path: "/public",
 		name: "public",
-		component: Public,
+		component: () => import("../components/Public.vue"),
+		children: [
+			{
+				path: "setting",
+				name: "setting",
+				component: () => import("../components/setting/Setting.vue"),
+				meta: {
+					title: "个人设置",
+				},
+			},
+		],
 	},
 ]
 
@@ -45,8 +36,13 @@ const router = createRouter({
 	history: createWebHashHistory(),
 	routes,
 })
-// router.beforeEach((to, from) => {
-// 	// ...
-// 	// 返回 false 以取消导航
-// })
+
+router.beforeEach((to, from) => {
+	if (filter.stop(to)) {
+		return false
+	}
+	//设置标题
+	filter.title(to)
+})
+
 export default router

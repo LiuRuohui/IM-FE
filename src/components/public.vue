@@ -1,6 +1,8 @@
 <script setup>
-import User from "./setting/User.vue"
-import Notes from "./user/Notes.vue"
+
+import { useRoute } from 'vue-router'
+const route = useRoute();
+
 </script>
 
 <template>
@@ -21,6 +23,7 @@ import Notes from "./user/Notes.vue"
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
+                            :class="route.name == 'msg' ? 'opacity-100' : 'opacity-40'"
                         >
                             <img class="drag" src="/src/assets/img/msg.svg" alt />
                         </div>
@@ -28,6 +31,7 @@ import Notes from "./user/Notes.vue"
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
+                            :class="route.name == 'group' ? 'opacity-100' : 'opacity-40'"
                         >
                             <img class="drag" src="/src/assets/img/group.svg" alt />
                         </div>
@@ -35,6 +39,7 @@ import Notes from "./user/Notes.vue"
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
+                            :class="route.name == 'file' ? 'opacity-100' : 'opacity-40'"
                         >
                             <img class="drag" src="/src/assets/img/file.svg" alt />
                         </div>
@@ -42,6 +47,7 @@ import Notes from "./user/Notes.vue"
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
+                            :class="route.name == 'note' ? 'opacity-100' : 'opacity-40'"
                         >
                             <img class="drag" src="/src/assets/img/note.svg" alt />
                         </div>
@@ -49,17 +55,17 @@ import Notes from "./user/Notes.vue"
                 </div>
             </div>
             <div class="w-full">
-                <div class="mt-8 mb-8 w-8 h-8 m-auto opacity-40 hover:opacity-100">
-                    <router-link to="/setting">
+                <div
+                    class="mt-8 mb-8 w-8 h-8 m-auto hover:opacity-100"
+                    :class="route.name == 'setting' ? 'opacity-100' : 'opacity-40'"
+                >
+                    <router-link to="/public/setting">
                         <img class="drag" src="/src/assets/img/setting.svg" alt />
                     </router-link>
                 </div>
             </div>
         </div>
-        <!-- <div class="w-96 h-full border-r"></div>
-        <div class="flex-grow h-full"></div>-->
-        <User></User>
-        <!-- <Notes></Notes> -->
+        <router-view></router-view>
     </div>
 </template>
 <style>
