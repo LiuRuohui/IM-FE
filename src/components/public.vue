@@ -1,5 +1,6 @@
 <script setup>
 import User from "./user/User.vue"
+import Notes from "./user/Notes.vue"
 </script>
 
 <template>
@@ -54,8 +55,9 @@ import User from "./user/User.vue"
             </div>
         </div>
         <!-- <div class="w-96 h-full border-r"></div>
-        <div class="flex-grow h-full"></div>-->
-        <User></User>
+        <div class="flex-grow h-full"></div>
+        <User></User>-->
+        <Notes></Notes>
     </div>
 </template>
 <style>
