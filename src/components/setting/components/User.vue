@@ -3,18 +3,7 @@ const emit = defineEmits(['go']);
 
 </script>
 <template>
-    <div class="w-96 h-screen flex flex-col border-r border-gray-200">
-        <!-- <div class="w-full h-1/3 flex flex-col"> -->
-        <!-- <div class="w-full h-2/3 overflow-hidden relative"> -->
-        <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
-            <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
-            <img
-                class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer"
-                @click="emit('go')"
-                src="/src/assets/img/editor.svg"
-                alt
-            />
-        </div>
+    <div class="flex-grow w-full flex flex-col">
         <div
             class="w-3/5 ml-auto mr-auto mt-9 text-center font-serif subpixel-antialiased underline select-none truncate"
         >Squidward Tentacles</div>
@@ -47,7 +36,7 @@ const emit = defineEmits(['go']);
         </div>
         <!-- </div> -->
 
-        <div class="w-full h-1/6 flex items-center relative">
+        <div class="w-full h-40 flex items-center relative">
             <div
                 class="w-full h-2/3 flex flex-col justify-center text-sm subpixel-antialiased font-sans"
             >

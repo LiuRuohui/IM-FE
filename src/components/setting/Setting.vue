@@ -15,11 +15,23 @@ function change() {
 }
 </script>
 <template>
-    <Transition name="fade" mode="out-in">
-        <keep-alive>
-            <component @go="change" :is="typeComponentMap[pageParams ? 1 : 2]"></component>
-        </keep-alive>
-    </Transition>
+    <div class="w-96 h-screen flex flex-col border-r border-gray-200">
+        <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
+            <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
+            <img
+                class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer"
+                @click="change"
+                :src="pageParams ? 'src/assets/img/editor.svg' : 'src/assets/img/save.svg'"
+                alt
+            />
+        </div>
+        <Transition name="fade" mode="out-in">
+            <keep-alive>
+                <component @go="change" :is="typeComponentMap[pageParams ? 1 : 2]"></component>
+            </keep-alive>
+        </Transition>
+    </div>
+
     <div class="flex-grow h-full overflow-hidden">
         <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
             <div class="mt-9 w-full">
