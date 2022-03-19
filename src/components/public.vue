@@ -1,11 +1,13 @@
-<script setup></script>
+<script setup>
+import User from "./user/User.vue"
+</script>
 
 <template>
     <div class="w-full h-screen flex">
-        <div class="w-20 h-screen bg-gray-800 flex flex-col items-center">
+        <div class="w-20 h-screen bg-gray-800 flex flex-col items-center select-none">
             <div class="w-full">
                 <div
-                    class="bg-clip-border w-12 h-12 rounded-full overflow-hidden mt-8 mb-8 m-auto relative  box-border hover:border-2  border-blue-500"
+                    class="bg-clip-border w-12 h-12 rounded-full overflow-hidden mt-8 mb-8 m-auto relative box-border hover:border-2 border-blue-500"
                 >
                     <div
                         class="absolute top-1 left-1 w-3 h-3 rounded-full bg-green-600 border-2 border-gray-800"
@@ -51,8 +53,9 @@
                 </div>
             </div>
         </div>
-        <div class="w-96 h-full border-r"></div>
-        <div class="flex-grow h-full"></div>
+        <!-- <div class="w-96 h-full border-r"></div>
+        <div class="flex-grow h-full"></div>-->
+        <User></User>
     </div>
 </template>
 <style>
