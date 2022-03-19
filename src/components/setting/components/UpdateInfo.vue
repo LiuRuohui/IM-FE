@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <div class="w-96 h-screen flex flex-col antialiased">
+    <div class="w-96 h-screen flex flex-col antialiased border-r border-gray-200">
         <div class="w-full h-1/5 flex flex-col">
             <div class="w-1/3 h-auto mt-8 rounded-full overflow-hidden ml-auto mr-auto select-none">
                 <img class="drag" src="/src/assets/avatar/squidWard.jpg" alt="头像" />

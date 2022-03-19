@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-    <div class="w-96 h-screen flex flex-col">
+    <div class="w-96 h-screen flex flex-col border-r border-gray-200">
         <div class="w-full h-1/3 flex flex-col">
             <div class="w-full h-2/3 overflow-hidden relative">
                 <div
