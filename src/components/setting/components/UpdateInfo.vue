@@ -1,9 +1,17 @@
-<script setup></script>
+<script setup>
+const emit = defineEmits(['go']);
+</script>
 <template>
     <div class="w-96 h-screen flex flex-col antialiased border-r border-gray-200">
         <div class="w-full h-1/5 flex flex-col">
-            <div class="w-1/3 h-auto mt-8 rounded-full overflow-hidden ml-auto mr-auto select-none">
-                <img class="drag" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
+            <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
+                <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
+                <img
+                    class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer"
+                    @click="emit('go')"
+                    src="/src/assets/img/save.svg"
+                    alt
+                />
             </div>
         </div>
         <div class="w-4/5 flex-grow ml-auto mr-auto">

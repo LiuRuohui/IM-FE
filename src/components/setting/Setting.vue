@@ -1,22 +1,25 @@
 <script setup>
 import Button from "../components/Button.vue"
-import { reactive } from "vue"
+import { ref, reactive } from "vue"
 import User from "./components/User.vue"
 import UpdateInfo from "./components/UpdateInfo.vue"
 
-const pageParams = reactive({
-    type: 2
-})
+const pageParams = ref(true)
 
 const typeComponentMap = {
     1: User,
     2: UpdateInfo,
 }
+function change() {
+    pageParams.value = !pageParams.value
+}
 </script>
 <template>
-    <keep-alive>
-        <component :is="typeComponentMap[pageParams.type]"></component>
-    </keep-alive>
+    <Transition name="fade" mode="out-in">
+        <keep-alive>
+            <component @go="change" :is="typeComponentMap[pageParams ? 1 : 2]"></component>
+        </keep-alive>
+    </Transition>
     <div class="flex-grow h-full overflow-hidden">
         <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
             <div class="mt-9 w-full">
@@ -56,5 +59,14 @@ const typeComponentMap = {
         </div>
     </div>
 </template>
-<style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
 </style>
