@@ -12,7 +12,7 @@ import User from "./user/User.vue"
                     <div
                         class="absolute top-1 left-1 w-3 h-3 rounded-full bg-green-600 border-2 border-gray-800"
                     ></div>
-                    <img src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
+                    <img class="drag" src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
                 </div>
             </div>
             <div class="flex-grow flex flex-col md:pt-36 lg:pb-36 w-full">
@@ -21,35 +21,35 @@ import User from "./user/User.vue"
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                         >
-                            <img src="/src/assets/img/msg.svg" alt />
+                            <img class="drag" src="/src/assets/img/msg.svg" alt />
                         </div>
                     </div>
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                         >
-                            <img src="/src/assets/img/group.svg" alt />
+                            <img class="drag" src="/src/assets/img/group.svg" alt />
                         </div>
                     </div>
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                         >
-                            <img src="/src/assets/img/file.svg" alt />
+                            <img class="drag" src="/src/assets/img/file.svg" alt />
                         </div>
                     </div>
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                         >
-                            <img src="/src/assets/img/note.svg" alt />
+                            <img class="drag" src="/src/assets/img/note.svg" alt />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-full">
                 <div class="mt-8 mb-8 w-8 h-8 m-auto opacity-40 hover:opacity-100">
-                    <img src="/src/assets/img/setting.svg" alt />
+                    <img class="drag" src="/src/assets/img/setting.svg" alt />
                 </div>
             </div>
         </div>

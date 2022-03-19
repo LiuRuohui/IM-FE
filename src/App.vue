@@ -7,10 +7,7 @@
 </template>
 
 <style>
-/* .wrap {
-  width: 100vw;
-  height: 100vh;
-  background: url(src/assets/img/bg.jpg) center no-repeat;
-  background-size: cover;
-} */
+.drag {
+  -webkit-user-drag: none;
+}
 </style>
