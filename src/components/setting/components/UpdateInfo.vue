@@ -76,7 +76,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        placeholder="请输入个人网站"
+                        placeholder="请输入github地址"
                     />
                 </div>
             </div>
@@ -88,7 +88,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        placeholder="请输入个人网站"
+                        placeholder="请输入微博地址"
                     />
                 </div>
             </div>
@@ -100,7 +100,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        placeholder="请输入个人网站"
+                        placeholder="请输入QQ号码"
                     />
                 </div>
             </div>
