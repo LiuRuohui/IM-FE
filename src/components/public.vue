@@ -50,14 +50,16 @@ import Notes from "./user/Notes.vue"
             </div>
             <div class="w-full">
                 <div class="mt-8 mb-8 w-8 h-8 m-auto opacity-40 hover:opacity-100">
-                    <img class="drag" src="/src/assets/img/setting.svg" alt />
+                    <router-link to="/setting">
+                        <img class="drag" src="/src/assets/img/setting.svg" alt />
+                    </router-link>
                 </div>
             </div>
         </div>
         <!-- <div class="w-96 h-full border-r"></div>
-        <div class="flex-grow h-full"></div>
-        <User></User>-->
-        <Notes></Notes>
+        <div class="flex-grow h-full"></div>-->
+        <User></User>
+        <!-- <Notes></Notes> -->
     </div>
 </template>
 <style>
