@@ -43,25 +43,11 @@ const props = defineProps([
     border-radius: 50%;
     transition: transform 0.3s;
 }
-/* .switch label span::after {
-    content: "OFF";
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8rem;
-    color: white;
-} */
 
 .switch input[type="checkbox"]:checked + label span::before {
     background: #d1d5db;
     transform: translateX(26px);
 }
-/* .switch input[type="checkbox"]:checked + label span::after {
-    content: "ON";
-    left: 6px;
-    right: auto;
-} */
 .switch input[type="checkbox"]:checked + label span {
     background: white;
 }

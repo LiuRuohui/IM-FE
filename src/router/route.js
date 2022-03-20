@@ -26,6 +26,14 @@ const routes = [
 					title: "个人设置",
 				},
 			},
+			{
+				path: "note",
+				name: "note",
+				component: () => import("../components/user/Notes.vue"),
+				meta: {
+					title: "笔记",
+				},
+			},
 		],
 	},
 ]

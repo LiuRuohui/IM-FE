@@ -2,7 +2,7 @@
 const emit = defineEmits(['go']);
 </script>
 <template>
-    <div class="w-4/5 flex-grow ml-auto mr-auto">
+    <div class="w-4/5 flex-grow ml-auto mr-auto select-none">
         <div class="mt-6 w-full">
             <p
                 class="w-full font-sans text-lg antialiased font-semibold tracking-wider text-gray-700"

@@ -1,5 +1,5 @@
 <script setup>
-import Button from "../components/Button.vue"
+import Switch from "../components/Switch.vue"
 import { ref, reactive } from "vue"
 import User from "./components/User.vue"
 import UpdateInfo from "./components/UpdateInfo.vue"
@@ -15,57 +15,59 @@ function change() {
 }
 </script>
 <template>
-    <div class="w-96 h-screen flex flex-col border-r border-gray-200">
-        <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
-            <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
-            <img
-                class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer"
-                @click="change"
-                :src="pageParams ? 'src/assets/img/editor.svg' : 'src/assets/img/save.svg'"
-                alt
-            />
-        </div>
-        <Transition name="fade" mode="out-in">
-            <keep-alive>
-                <component @go="change" :is="typeComponentMap[pageParams ? 1 : 2]"></component>
-            </keep-alive>
-        </Transition>
-    </div>
-
-    <div class="flex-grow h-full overflow-hidden">
-        <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
-            <div class="mt-9 w-full">
-                <div class="font-sans font-semibold antialiased text-xl select-none">
-                    <p>隐私设置</p>
-                </div>
+    <div class="flex-grow h-full flex">
+        <div class="w-96 h-screen flex flex-col border-r border-gray-200">
+            <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
+                <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
+                <img
+                    class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer hover:scale-110 active:scale-125 transition-transform duration-500 active:transition-none"
+                    @click="change"
+                    :src="pageParams ? 'src/assets/img/editor.svg' : 'src/assets/img/save.svg'"
+                    alt="go"
+                />
             </div>
-            <div class="w-full text-base mt-6">
-                <div>
-                    <div class="flex justify-between mt-3">
-                        <span class="select-none">添加好友时需要验证</span>
-                        <div class>
-                            <Button :id="1"></Button>
-                        </div>
+            <Transition name="fade" mode="out-in">
+                <keep-alive>
+                    <component @go="change" :is="typeComponentMap[pageParams ? 1 : 2]"></component>
+                </keep-alive>
+            </Transition>
+        </div>
+
+        <div class="flex-grow h-full overflow-hidden">
+            <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
+                <div class="mt-9 w-full">
+                    <div class="font-sans font-semibold antialiased text-xl select-none">
+                        <p>隐私设置</p>
                     </div>
-                    <div class="w-full h-4 border-b border-gray-200"></div>
                 </div>
-                <div>
-                    <div class="flex justify-between mt-3">
-                        <span class="select-none">新消息通知</span>
-                        <div class>
-                            <Button :id="2"></Button>
+                <div class="w-full text-base mt-6">
+                    <div>
+                        <div class="flex justify-between mt-3">
+                            <span class="select-none">添加好友时需要验证</span>
+                            <div class>
+                                <Switch :id="1"></Switch>
+                            </div>
                         </div>
+                        <div class="w-full h-4 border-b border-gray-200"></div>
                     </div>
-                    <div class="w-full h-4 border-b border-gray-200"></div>
-                </div>
-                <div>
-                    <div class="flex justify-between mt-3">
-                        <span class="select-none">显示通知详情</span>
-                        <div class>
-                            <Button :id="3"></Button>
+                    <div>
+                        <div class="flex justify-between mt-3">
+                            <span class="select-none">新消息通知</span>
+                            <div class>
+                                <Switch :id="2"></Switch>
+                            </div>
                         </div>
+                        <div class="w-full h-4 border-b border-gray-200"></div>
                     </div>
-                    <div class="w-full h-4 border-b border-gray-200"></div>
+                    <div>
+                        <div class="flex justify-between mt-3">
+                            <span class="select-none">显示通知详情</span>
+                            <div class>
+                                <Switch :id="3"></Switch>
+                            </div>
+                        </div>
+                        <div class="w-full h-4 border-b border-gray-200"></div>
+                    </div>
                 </div>
             </div>
         </div>

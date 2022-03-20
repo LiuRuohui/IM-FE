@@ -1,52 +1,88 @@
 <script setup>
 import { reactive } from 'vue';
 const notebooks = reactive({
-    id: [1,2,3,4,5,6],
+    id: [1, 2, 3, 4, 5, 6],
     message: [],
-})
+});
+
 </script>
+
 <template>
-    <div class="w-96 h-full flex flex-col overflow-hidden select-none">
-        <div class="w-full flex flex-row my-2">
-            <div class="opacity-60 ml-4 mt-1">
-                列表排序
-                <select name id class="border-none outline-none font-black text-center">
-                    <option value>最新笔记优先</option>
-                    <option value>倒序</option>
-                </select>
-            </div>
-            <div class="ml-14 opacity-60">
-                创建会话
-                <div class="inline-block item-center">
-                    <img src="/src/assets/img/加号.svg" alt class="h-9 inline-block" />
+    <div class="flex-grow h-full flex">
+        <div class="w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200">
+            <div
+                class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
+            >
+                <div class="w-5/6 relative opacity-70">
+                    <input
+                        class="box-border rounded-full h-9 pl-10 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
+                        type="text"
+                        placeholder="输入搜索的内容"
+                    />
+                    <img
+                        class="box-content w-5 h-5 absolute top-2 left-3 pr-1 border-r border-gray-300 drag"
+                        src="/src/assets/img/search.svg"
+                        alt
+                    />
                 </div>
             </div>
-        </div>
-        <div class="w-full h-full">
-            <div class="flex flex-col my-4 mx-8">
-                <div
-                    class="group flex flex-row w-full h-28 shadow-sm hover:shadow rounded-md hover:cursor-pointer"
-                    v-for="notes in notebooks.id"
-                >
-                    <img
-                        src="/src/assets/pic/450824.jpg"
-                        alt
-                        class="ml-4 my-4 h-20 w-20 inline-block"
-                    />
-                    <div class="flex flex-col">
-                        <div class="flex flex-row">
-                            <div class="ml-3 mt-6 font-bold text-base opacity-70 group-hover:opacity-90">笔记标题</div>
-                            <div class="font-semibold mt-6 opacity-50 group-hover:opacity-90 ml-12 text-sm">2020-6-22</div>
+            <div class="w-full flex-grow flex flex-col">
+                <div class="w-5/6 flex ml-auto mr-auto pb-2">
+                    <div class="opacity-60 mt-1 flex-1">
+                        列表排序:
+                        <select
+                            name
+                            id
+                            class="border-none outline-none font-bold text-center appearance-none"
+                        >
+                            <option value>最新</option>
+                            <option value>倒序</option>
+                        </select>
+                    </div>
+                    <div class="opacity-60">
+                        创建会话
+                        <div class="inline-block item-center">
+                            <img class="h-8 inline-block drag" src="/src/assets/img/加号.svg" />
                         </div>
+                    </div>
+                </div>
+                <div class="w-full flex-grow bg-gray-50">
+                    <div class="flex flex-col my-4 mx-8">
                         <div
-                            class="inline-block ml-3 truncate opacity-70 text-sm mt-2 group-hover:opacity-100"
-                        >This is a note</div>
+                            class="group flex items-center w-full h-24 shadow-sm hover:shadow rounded-lg hover:cursor-pointer mb-2 bg-white px-2"
+                            v-for="notes in notebooks.id"
+                        >
+                            <div class="h-full flex items-center">
+                                <img
+                                    src="/src/assets/pic/450824.jpg"
+                                    alt
+                                    class="h-3/5 w-auto drag mx-2 inline-block"
+                                />
+                            </div>
+                            <div class="flex flex-col flex-grow h-full justify-center pl-2 pr-3">
+                                <div class="flex h-1/2 pt-2">
+                                    <div
+                                        class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
+                                    >
+                                        <div class>笔记标题</div>
+                                    </div>
+                                    <div
+                                        class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse"
+                                    >
+                                        <div class>2020-6-22</div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="inline-block truncate opacity-70 text-sm group-hover:opacity-100 h-1/2"
+                                >This is a note</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="flex-grow h-full"></div>
     </div>
-    <div class="flex-grow h-full"></div>
 </template>
 <style>
 </style>
