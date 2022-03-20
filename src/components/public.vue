@@ -68,8 +68,26 @@ const route = useRoute();
             </div>
         </div>
 
-        <router-view></router-view>
+        <router-view v-slot="{ Component, route }">
+            <transition name="fade" mode="out-in">
+                <keep-alive>
+                    <component
+                        :is="Component"
+                        :key="route.meta.usePathKey ? route.path : undefined"
+                    />
+                </keep-alive>
+            </transition>
+        </router-view>
     </div>
 </template>
-<style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
 </style>

@@ -31,7 +31,7 @@ const routes = [
 				name: "note",
 				component: () => import("../components/user/Notes.vue"),
 				meta: {
-					title: "笔记",
+					title: "我的笔记",
 				},
 			},
 		],
