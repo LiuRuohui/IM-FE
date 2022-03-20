@@ -1,5 +1,6 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive } from 'vue'
+import Markdown from "./components/Markdown.vue"
 const notebooks = reactive({
     id: [1, 2, 3, 4, 5, 6],
     message: [],
@@ -81,7 +82,9 @@ const notebooks = reactive({
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full"></div>
+        <div class="flex-grow h-full">
+            <Markdown></Markdown>
+        </div>
     </div>
 </template>
 <style>

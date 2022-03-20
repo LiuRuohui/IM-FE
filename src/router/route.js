@@ -8,7 +8,7 @@ const routes = [
 	{
 		path: "/login",
 		name: "login",
-		component: () => import("../components/Login.vue"),
+		component: () => import("../components/login/Login.vue"),
 		meta: {
 			title: "登录注册",
 		},
@@ -29,7 +29,7 @@ const routes = [
 			{
 				path: "note",
 				name: "note",
-				component: () => import("../components/user/Notes.vue"),
+				component: () => import("../components/note/Notes.vue"),
 				meta: {
 					title: "我的笔记",
 				},
