@@ -70,19 +70,19 @@ import '@kangc/v-md-editor/lib/plugins/highlight-lines/highlight-lines.css';
 //CopyCode
 import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
 
-
-
 VMdEditor.Codemirror = Codemirror;
+//设置主题
 VMdEditor.use(githubTheme, {
     Hljs: hljs,
-}).use(createTipPlugin())
+})
+    //插件引入
+    .use(createTipPlugin())
     .use(createEmojiPlugin())
     .use(createLineNumberPlugin())
     .use(createAlignPlugin())
     .use(createTodoListPlugin())
     .use(createHighlightLinesPlugin())
     .use(createCopyCodePlugin())
-
 
 //接收props
 const props = defineProps([
@@ -92,13 +92,19 @@ const props = defineProps([
 const text = ref("");
 // 计算属性设置md编辑器的height
 const height = computed(() => {
-    console.log("高度：", props.height)
     return props.height + "px"
 });
 
 
 function handleCopyCodeSuccess(code) {
-    console.log(code);
+    navigator.clipboard
+        .writeText(code)
+        .then(function (err) {
+            console.log("写入剪切板成功！")
+        })
+        .catch(function (err) {
+            console.log("写入剪切板失败！")
+        })
 }
 
 </script>
