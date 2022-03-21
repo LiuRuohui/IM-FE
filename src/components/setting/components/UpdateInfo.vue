@@ -2,7 +2,7 @@
 const emit = defineEmits(['go']);
 </script>
 <template>
-    <div class="w-4/5 flex-grow ml-auto mr-auto select-none">
+    <div class="w-4/5 ml-auto mr-auto select-none info overflow-y-auto no-scrollbar">
         <div class="mt-6 w-full">
             <p
                 class="w-full font-sans text-lg antialiased font-semibold tracking-wider text-gray-700"
@@ -107,4 +107,8 @@ const emit = defineEmits(['go']);
         </div>
     </div>
 </template>
-<style></style>
+<style>
+.info {
+    height: calc(100% - 10rem);
+}
+</style>
