@@ -8,7 +8,7 @@ const notebooks = reactive({
     message: [],
 });
 
-const value = ref("666");
+const value = ref("");
 
 watch(() => value.value, () => {
     console.log('value发生更改', value.value);
@@ -61,7 +61,7 @@ function save(dds, ddx) {
                 <div class="w-full flex-grow bg-gray-50">
                     <div class="flex flex-col my-4 mx-8">
                         <div
-                            class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-2 bg-white px-2"
+                            class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white px-2"
                             v-for="notes in notebooks.id"
                         >
                             <div class="h-full flex items-center">
@@ -93,12 +93,21 @@ function save(dds, ddx) {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full">
-            <Markdown
-                v-model="value"
-                toolbar="undo redo clear | table link image | save"
-                @save="save"
-            ></Markdown>
+        <div class="flex-grow h-full flex flex-col">
+            <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
+                <input
+                    class="outline-none flex-grow px-6 text-2xl font-serif antialiased font-semibold select-none"
+                    type="text"
+                    placeholder="标题"
+                />
+            </div>
+            <div class="flex-grow w-full">
+                <Markdown
+                    v-model="value"
+                    toolbar="undo redo clear | table link image | save"
+                    @save="save"
+                ></Markdown>
+            </div>
         </div>
     </div>
 </template>
