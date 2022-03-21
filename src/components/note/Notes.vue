@@ -61,7 +61,7 @@ function save(dds, ddx) {
                 <div class="w-full flex-grow bg-gray-50">
                     <div class="flex flex-col my-4 mx-8">
                         <div
-                            class="group flex items-center w-full h-24 shadow-sm hover:shadow rounded-lg hover:cursor-pointer mb-2 bg-white px-2"
+                            class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-2 bg-white px-2"
                             v-for="notes in notebooks.id"
                         >
                             <div class="h-full flex items-center">
