@@ -11,7 +11,7 @@ const notebooks = reactive({
 const value = ref("666");
 
 watch(() => value.value, () => {
-    console.log('监听整个 ref ', value.value);
+    console.log('value发生更改', value.value);
 })
 
 </script>
