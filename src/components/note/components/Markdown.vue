@@ -1,9 +1,34 @@
 <script setup>
 import { ref, computed } from 'vue';
+
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
 import githubTheme from '@kangc/v-md-editor/lib/theme/github';
 import '@kangc/v-md-editor/lib/theme/style/github.css';
+
+//tips
+import createTipPlugin from '@kangc/v-md-editor/lib/plugins/tip/index';
+
+//emoji
+import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index';
+
+//katex
+// import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+
+//ToDoList
+import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
+
+//LineNumber
+import createLineNumberPlugin from '@kangc/v-md-editor/lib/plugins/line-number/index';
+
+//HighLightLine
+import createHighlightLinesPlugin from '@kangc/v-md-editor/lib/plugins/highlight-lines/index';
+
+//Copy Code
+import createCopyCodePlugin from '@kangc/v-md-editor/lib/plugins/copy-code/index';
+
+//align
+import createAlignPlugin from '@kangc/v-md-editor/lib/plugins/align';
 
 // highlightjs
 import hljs from 'highlight.js';
@@ -30,18 +55,41 @@ import 'codemirror/addon/scroll/simplescrollbars.css';
 // style
 import 'codemirror/lib/codemirror.css';
 
+//tips
+import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
+
+//emoji
+import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css';
+
+//ToDoList
+import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css';
+
+//HighLightLine
+import '@kangc/v-md-editor/lib/plugins/highlight-lines/highlight-lines.css';
+
+//CopyCode
+import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css';
+
+
+
 VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(githubTheme, {
     Hljs: hljs,
-});
+}).use(createTipPlugin())
+    .use(createEmojiPlugin())
+    .use(createLineNumberPlugin())
+    .use(createAlignPlugin())
+    .use(createTodoListPlugin())
+    .use(createHighlightLinesPlugin())
+    .use(createCopyCodePlugin())
 
 
 //接收props
 const props = defineProps([
     'height'
-])
+]);
 // 设置md编辑器的值
-const value = ref("");
+const text = ref("");
 // 计算属性设置md编辑器的height
 const height = computed(() => {
     console.log("高度：", props.height)
@@ -49,10 +97,14 @@ const height = computed(() => {
 });
 
 
+function handleCopyCodeSuccess(code) {
+    console.log(code);
+}
+
 </script>
 
 <template>
-    <v-md-editor v-model="value" :height="height"></v-md-editor>
+    <v-md-editor v-model="text" :height="height" @copy-code-success="handleCopyCodeSuccess"></v-md-editor>
 </template>
 
 <style></style>

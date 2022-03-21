@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
-import Markdown from "./components/Markdown.vue"
+
+import Markdown from "./components/Markdown.vue" //引入封装好的组件
+
 const notebooks = reactive({
     id: [1, 2, 3, 4, 5, 6],
     message: [],
@@ -93,7 +95,10 @@ onMounted(() => {
             </div>
         </div>
         <div class="flex-grow h-full overflow-y-hidden overflow-x-hidden" ref="md">
-            <Markdown :height="height"></Markdown>
+            <Markdown
+                :height="height"
+                left-toolbar="undo redo clear | table | link image code | save"
+            ></Markdown>
         </div>
     </div>
 </template>
