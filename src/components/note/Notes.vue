@@ -1,22 +1,18 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 
-import Markdown from "./components/Markdown.vue" //引入封装好的组件
+import Markdown from "./components/Markdown.vue"; //引入封装好的组件
 
 const notebooks = reactive({
     id: [1, 2, 3, 4, 5, 6],
     message: [],
 });
 
-const md = ref(null)
-// 获取dom
-const height = ref(null)
+const value = ref("666");
 
-onMounted(() => {
-    //这里使用生命周期，在dom渲染完成后设置值
-    height.value = md.value.offsetHeight
-});
-
+watch(() => value.value, () => {
+    console.log('监听整个 ref ', value.value);
+})
 
 </script>
 
@@ -94,11 +90,8 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full overflow-y-hidden overflow-x-hidden" ref="md">
-            <Markdown
-                :height="height"
-                left-toolbar="undo redo clear | table | link image code | save"
-            ></Markdown>
+        <div class="flex-grow h-full">
+            <Markdown v-model="value" toolbar="undo redo clear | table link image | save"></Markdown>
         </div>
     </div>
 </template>

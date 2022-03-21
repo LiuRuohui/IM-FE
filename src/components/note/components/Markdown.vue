@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, useAttrs, watch } from 'vue';
 
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
@@ -85,16 +85,11 @@ VMdEditor.use(githubTheme, {
     .use(createCopyCodePlugin())
 
 //接收props
-const props = defineProps([
-    'height'
-]);
-// 设置md编辑器的值
-const text = ref("");
-// 计算属性设置md编辑器的height
-const height = computed(() => {
-    return props.height + "px"
-});
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
+//获取attrs
+const attrs = useAttrs();
 
 function handleCopyCodeSuccess(code) {
     navigator.clipboard
@@ -107,10 +102,26 @@ function handleCopyCodeSuccess(code) {
         })
 }
 
+const value = computed({
+    get() {
+        return props.modelValue
+    },
+    set(value) {
+        emit('update:modelValue', value)
+    }
+})
+
 </script>
 
 <template>
-    <v-md-editor v-model="text" :height="height" @copy-code-success="handleCopyCodeSuccess"></v-md-editor>
+    <div class="h-full w-full overflow-y-hidden overflow-x-hidden">
+        <v-md-editor
+            v-model="value"
+            height="100%"
+            :left-toolbar="attrs.toolbar"
+            @copy-code-success="handleCopyCodeSuccess"
+        ></v-md-editor>
+    </div>
 </template>
 
 <style></style>
