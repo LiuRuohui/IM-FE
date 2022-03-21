@@ -92,7 +92,7 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full" ref="md">
+        <div class="flex-grow h-full overflow-y-hidden overflow-x-hidden" ref="md">
             <Markdown :height="height"></Markdown>
         </div>
     </div>
