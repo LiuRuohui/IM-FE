@@ -1,10 +1,20 @@
 <script setup>
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import Markdown from "./components/Markdown.vue"
 const notebooks = reactive({
     id: [1, 2, 3, 4, 5, 6],
     message: [],
 });
+
+const md = ref(null)
+// 获取dom
+const height = ref(null)
+
+onMounted(() => {
+    //这里使用生命周期，在dom渲染完成后设置值
+    height.value = md.value.offsetHeight
+});
+
 
 </script>
 
@@ -82,8 +92,8 @@ const notebooks = reactive({
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full">
-            <Markdown></Markdown>
+        <div class="flex-grow h-full" ref="md">
+            <Markdown :height="height"></Markdown>
         </div>
     </div>
 </template>
