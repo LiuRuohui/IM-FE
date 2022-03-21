@@ -11,7 +11,6 @@ specifiers:
   highlight.js: ^11.5.0
   naive-ui: ^2.25.1
   postcss: ^8.4.6
-  prismjs: ^1.27.0
   protobufjs: ^6.11.2
   qs: ^6.10.3
   tailwindcss: ^3.0.18
@@ -26,7 +25,6 @@ dependencies:
   codemirror: 5.65.2
   highlight.js: 11.5.0
   naive-ui: registry.npmmirror.com/naive-ui/2.25.1_vue@3.2.27
-  prismjs: 1.27.0
   protobufjs: 6.11.2
   qs: 6.10.3
   vue: 3.2.27
