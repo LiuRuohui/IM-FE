@@ -1,4 +1,11 @@
 <script setup>
+/****
+ * 接收参数
+ * 非props的attr：toolbar
+ * v-model表单绑定
+ * save事件
+
+****/
 import { ref, computed, onMounted, useAttrs, watch } from 'vue';
 
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
@@ -85,12 +92,34 @@ VMdEditor.use(githubTheme, {
     .use(createCopyCodePlugin())
 
 //接收props
-const props = defineProps(['modelValue'])
-const emit = defineEmits(['update:modelValue'])
+const props = defineProps([
+    'modelValue',
+])
+//接收emit
+const emit = defineEmits([
+    'update:modelValue',
+    'save'
+])
 
 //获取attrs
 const attrs = useAttrs();
 
+//计算属性，表单绑定
+const value = computed({
+    get() {
+        return props.modelValue
+    },
+    set(value) {
+        emit('update:modelValue', value)
+    }
+})
+
+//声明save事件处理函数
+function save(dds, ddx) {
+    emit('save', dds, ddx)
+}
+
+//声明复制函数
 function handleCopyCodeSuccess(code) {
     navigator.clipboard
         .writeText(code)
@@ -101,16 +130,6 @@ function handleCopyCodeSuccess(code) {
             console.log("写入剪切板失败！")
         })
 }
-
-const value = computed({
-    get() {
-        return props.modelValue
-    },
-    set(value) {
-        emit('update:modelValue', value)
-    }
-})
-
 </script>
 
 <template>
@@ -120,6 +139,7 @@ const value = computed({
             height="100%"
             :left-toolbar="attrs.toolbar"
             @copy-code-success="handleCopyCodeSuccess"
+            @save="save"
         ></v-md-editor>
     </div>
 </template>

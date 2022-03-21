@@ -14,6 +14,9 @@ watch(() => value.value, () => {
     console.log('value发生更改', value.value);
 })
 
+function save(dds, ddx) {
+    console.log("save", dds, ddx)
+}
 </script>
 
 <template>
@@ -91,7 +94,11 @@ watch(() => value.value, () => {
             </div>
         </div>
         <div class="flex-grow h-full">
-            <Markdown v-model="value" toolbar="undo redo clear | table link image | save"></Markdown>
+            <Markdown
+                v-model="value"
+                toolbar="undo redo clear | table link image | save"
+                @save="save"
+            ></Markdown>
         </div>
     </div>
 </template>
