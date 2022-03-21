@@ -14,6 +14,14 @@ const routes = [
 		},
 	},
 	{
+		path: "/preview",
+		name: "preview",
+		component: () => import("../components/preview/Preview.vue"),
+		meta: {
+			title: "预览",
+		},
+	},
+	{
 		path: "/public",
 		name: "public",
 		component: () => import("../components/Public.vue"),
