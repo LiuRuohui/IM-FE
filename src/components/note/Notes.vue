@@ -118,7 +118,7 @@ function save(dds, ddx) {
             <div class="MDbox w-full">
                 <Markdown
                     v-model="value"
-                    toolbar="undo redo clear | table link image | save"
+                    toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save"
                     @save="save"
                 ></Markdown>
             </div>
