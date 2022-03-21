@@ -1,10 +1,10 @@
 <script setup>
-import { reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 
 import Markdown from "./components/Markdown.vue"; //引入封装好的组件
 
 const notebooks = reactive({
-    id: [1, 2, 3, 4, 5, 6],
+    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     message: [],
 });
 
@@ -12,6 +12,13 @@ const value = ref("");
 
 watch(() => value.value, () => {
     console.log('value发生更改', value.value);
+})
+
+const height = ref("0px")
+const noteContainer = ref(null)
+
+onMounted(() => {
+    height.value = noteContainer.value.offsetHeight + "px"
 })
 
 function save(dds, ddx) {
@@ -58,42 +65,49 @@ function save(dds, ddx) {
                         </div>
                     </div>
                 </div>
-                <div class="w-full flex-grow bg-gray-50">
-                    <div class="flex flex-col my-4 mx-8">
-                        <div
-                            class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white px-2"
-                            v-for="notes in notebooks.id"
-                        >
-                            <div class="h-full flex items-center">
-                                <img
-                                    src="/src/assets/pic/450824.jpg"
-                                    alt
-                                    class="h-3/5 w-auto drag mx-2 inline-block"
-                                />
-                            </div>
-                            <div class="flex flex-col flex-grow h-full justify-center pl-2 pr-3">
-                                <div class="flex h-1/2 pt-2">
-                                    <div
-                                        class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
-                                    >
-                                        <div class>笔记标题</div>
-                                    </div>
-                                    <div
-                                        class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse"
-                                    >
-                                        <div class>2020-6-22</div>
-                                    </div>
+                <div class="w-full flex-grow bg-gray-50" ref="noteContainer">
+                    <div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
+                        <div class="flex flex-col my-4 mx-8">
+                            <div
+                                class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white px-2"
+                                v-for="notes in notebooks.id"
+                            >
+                                <div class="h-full flex items-center">
+                                    <img
+                                        src="/src/assets/pic/450824.jpg"
+                                        alt
+                                        class="h-3/5 w-auto drag mx-2 inline-block"
+                                    />
                                 </div>
                                 <div
-                                    class="inline-block truncate opacity-70 text-sm group-hover:opacity-100 h-1/2"
-                                >This is a note</div>
+                                    class="flex flex-col flex-grow h-full justify-center pl-2 pr-3"
+                                >
+                                    <div class="flex h-1/2 pt-2">
+                                        <div
+                                            class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
+                                        >
+                                            <div class>笔记标题</div>
+                                        </div>
+                                        <div
+                                            class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse"
+                                        >
+                                            <div class>2020-6-22</div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="inline-block truncate opacity-70 text-sm group-hover:opacity-100 h-1/2"
+                                    >
+                                        This
+                                        is a note
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full flex flex-col">
+        <div class="flex-grow h-full flex flex-col max-h-screen">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
                     class="outline-none flex-grow px-6 text-2xl font-serif antialiased font-semibold select-none"
@@ -101,7 +115,7 @@ function save(dds, ddx) {
                     placeholder="标题"
                 />
             </div>
-            <div class="flex-grow w-full">
+            <div class="MDbox w-full">
                 <Markdown
                     v-model="value"
                     toolbar="undo redo clear | table link image | save"
@@ -112,4 +126,7 @@ function save(dds, ddx) {
     </div>
 </template>
 <style>
+.MDbox {
+    height: calc(100% - 4.5rem);
+}
 </style>

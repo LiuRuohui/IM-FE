@@ -18,7 +18,7 @@ const route = useRoute();
                     <img class="drag" src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
                 </div>
             </div>
-            <div class="flex-grow flex flex-col md:pt-36 lg:pb-36 w-full">
+            <div class="flex-grow flex flex-col w-full">
                 <div class="m-auto w-full">
                     <div>
                         <div
