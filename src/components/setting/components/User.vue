@@ -10,7 +10,7 @@ const emit = defineEmits(['go']);
         <!-- </div> -->
         <div class="h-20 relative flex flex-col items-center justify-center select-none">
             <div
-                class="mb-7 w-2/3 truncate text-gray-400 text-sm"
+                class="hidden md:block mb-7 w-2/3 truncate text-gray-400 text-sm"
                 title="Peace comes from within. Do not seek it without!"
             >Peace comes from within. Do not seek it without!</div>
             <div class="flex justify-between w-1/3 ml-auto mr-auto mb-8">

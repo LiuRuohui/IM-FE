@@ -21,8 +21,8 @@ function change() {
 }
 </script>
 <template>
-    <div class="flex-grow h-full flex">
-        <div class="w-96 h-screen flex flex-col border-r border-gray-200">
+    <div class="flex-grow h-full flex flex-wrap overflow-y-auto">
+        <div class="sm:w-96 h-screen flex flex-col border-r border-gray-200">
             <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
                 <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
                 <img
@@ -39,7 +39,7 @@ function change() {
             </Transition>
         </div>
 
-        <div class="flex-grow h-full overflow-hidden">
+        <div class="flex-grow h-full">
             <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
                 <div class="mt-9 w-full">
                     <div class="font-sans font-semibold antialiased text-xl select-none">
