@@ -1,8 +1,14 @@
 <script setup>
+import { ref, defineAsyncComponent } from "vue"
+
 import Switch from "../components/Switch.vue"
-import { ref, reactive } from "vue"
 import User from "./components/User.vue"
-import UpdateInfo from "./components/UpdateInfo.vue"
+// import UpdateInfo from "./components/UpdateInfo.vue"
+
+//异步组件加载
+const UpdateInfo = defineAsyncComponent(() =>
+    import("./components/UpdateInfo.vue")
+)
 
 const pageParams = ref(true)
 

@@ -1,7 +1,18 @@
-<script setup>import { ref, reactive } from 'vue';
+<script setup>
+import { reactive, defineAsyncComponent } from 'vue';
 import Login from "../login/components/Login.vue"
-import Register from "../login/components/Register.vue"
-import ForgetPasswd from "../login/components/ForgetPasswd.vue"
+
+// import Register from "../login/components/Register.vue"
+// import ForgetPasswd from "../login/components/ForgetPasswd.vue"
+
+// 异步组件加载
+const Register = defineAsyncComponent(() =>
+    import("../login/components/Register.vue")
+)
+const ForgetPasswd = defineAsyncComponent(() =>
+    import("../login/components/ForgetPasswd.vue")
+)
+
 const pageParams = reactive({
     type: 1
 })

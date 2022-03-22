@@ -1,7 +1,12 @@
 <script setup>
-import { onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch, defineAsyncComponent } from 'vue'
 
-import Markdown from "./components/Markdown.vue"; //引入封装好的组件
+// import Markdown from "./components/Markdown.vue"; //引入封装好的组件
+
+//加载异步组件
+const Markdown = defineAsyncComponent(() =>
+    import("./components/Markdown.vue")
+)
 
 const notebooks = reactive({
     id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
