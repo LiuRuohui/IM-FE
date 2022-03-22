@@ -8,9 +8,9 @@ const emit = defineEmits(['go']);
             class="w-3/5 ml-auto mr-auto mt-9 text-center font-serif subpixel-antialiased underline select-none truncate"
         >Squidward Tentacles</div>
         <!-- </div> -->
-        <div class="h-20 relative flex flex-col items-center justify-center select-none">
+        <div class="h-24 relative flex flex-col items-center justify-center select-none">
             <div
-                class="hidden md:block mb-7 w-2/3 truncate text-gray-400 text-sm"
+                class="hidden md:block mb-2 w-2/3 truncate text-gray-400 text-sm"
                 title="Peace comes from within. Do not seek it without!"
             >Peace comes from within. Do not seek it without!</div>
             <div class="flex justify-between w-1/3 ml-auto mr-auto mb-8">
