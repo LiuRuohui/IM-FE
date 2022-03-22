@@ -114,7 +114,7 @@ function save(dds, ddx) {
                 </div>
             </div>
         </div>
-        <div class="w-full md:flex-grow h-full flex flex-col max-h-screen">
+        <div class="flex-grow h-full flex flex-col max-h-screen">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
                     class="outline-none w-full box-border px-6 text-2xl font-serif antialiased font-semibold select-none"
