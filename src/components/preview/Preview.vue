@@ -85,7 +85,7 @@ Vue.use(VueMarkdownEditor);
 
 <template>
     <div class="w-full h-screen overflow-auto bg-gray-100 pt-20">
-        <div class="w-3/5 ml-auto mr-auto bg-white">
+        <div class="lg:w-3/5 ml-auto mr-auto bg-white">
             <v-md-preview :text="text" @copy-code-success="handleCopyCodeSuccess"></v-md-preview>
         </div>
     </div>
