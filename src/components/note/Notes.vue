@@ -32,8 +32,10 @@ function save(dds, ddx) {
 </script>
 
 <template>
-    <div class="flex-grow h-full flex">
-        <div class="w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200">
+    <div class="flex-grow h-full flex flex-wrap overflow-y-auto">
+        <div
+            class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
+        >
             <div
                 class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
             >
@@ -112,10 +114,10 @@ function save(dds, ddx) {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full flex flex-col max-h-screen">
+        <div class="w-full md:flex-grow h-full flex flex-col max-h-screen">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
-                    class="outline-none flex-grow px-6 text-2xl font-serif antialiased font-semibold select-none"
+                    class="outline-none w-full box-border px-6 text-2xl font-serif antialiased font-semibold select-none"
                     type="text"
                     placeholder="标题"
                 />
