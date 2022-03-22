@@ -1,5 +1,7 @@
 <script setup>
-import { ref, defineAsyncComponent } from "vue"
+import { ref, defineAsyncComponent, reactive } from "vue"
+
+import mobile from "../../composables/mobile"
 
 import Switch from "../components/Switch.vue"
 import User from "./components/User.vue"
@@ -18,14 +20,28 @@ const typeComponentMap = {
     1: User,
     2: UpdateInfo,
 }
+
+//上下页
+const turn = mobile()
+
+
+//头像点击切换事件
 function change() {
     pageParams.value = !pageParams.value
 }
 </script>
 <template>
-    <div class="flex-grow h-full flex flex-wrap overflow-y-auto">
-        <div class="w-full md:w-96 h-screen flex flex-col border-r border-gray-200">
-            <div class="w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative">
+    <div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
+        <span class="absolute bottom-3 right-3 md:hidden" @click="turn.switch">
+            <img class="h-10 w-10" :src="turn.img" alt="turn" />
+        </span>
+        <div
+            class="w-full md:w-96 h-screen flex flex-col border-r border-gray-200 md:block"
+            :class="turn.value ? 'hidden' : ''"
+        >
+            <div
+                class="w-28 md:w-1/3 h-auto mt-8 rounded-full ml-auto mr-auto select-none relative"
+            >
                 <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
                 <img
                     class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer hover:scale-110 active:scale-125 transition-transform duration-500 active:transition-none"
@@ -41,7 +57,7 @@ function change() {
             </Transition>
         </div>
 
-        <div class="flex-grow h-full">
+        <div class="flex-grow h-full md:block" :class="turn.value ? '' : 'hidden'">
             <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
                 <div class="mt-9 w-full">
                     <div class="font-sans font-semibold antialiased text-xl select-none">

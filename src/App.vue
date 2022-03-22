@@ -7,6 +7,9 @@
 </template>
 
 <style>
+#app {
+  -webkit-tap-highlight-color: transparent;
+}
 .drag {
   -webkit-user-drag: none;
 }

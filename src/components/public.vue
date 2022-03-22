@@ -7,7 +7,7 @@ const route = useRoute();
 
 <template>
     <div class="w-full h-screen flex">
-        <div class="w-20 h-screen bg-gray-800 flex flex-col items-center select-none">
+        <div class="w-14 md:w-20 h-screen bg-gray-800 flex flex-col items-center select-none">
             <div class="w-full">
                 <div
                     class="bg-clip-border w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden mt-8 mb-8 m-auto relative box-border hover:border-2 border-blue-500"

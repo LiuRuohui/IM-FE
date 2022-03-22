@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, reactive, ref, watch, defineAsyncComponent } from 'vue'
 
+import mobile from "../../composables/mobile"
 // import Markdown from "./components/Markdown.vue"; //引入封装好的组件
 
 //加载异步组件
@@ -13,11 +14,8 @@ const notebooks = reactive({
     message: [],
 });
 
+//定义md编辑器值
 const value = ref("");
-
-watch(() => value.value, () => {
-    console.log('value发生更改', value.value);
-})
 
 const height = ref("0px")
 const noteContainer = ref(null)
@@ -26,15 +24,29 @@ onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
 })
 
+
+const turn = mobile()
+
+//监听函数
+// watch(() => value.value, () => {
+//     console.log('value发生更改', value.value);
+// })
+
+
+//md编辑器保存事件触发
 function save(dds, ddx) {
     console.log("save", dds, ddx)
 }
 </script>
 
 <template>
-    <div class="flex-grow h-full flex flex-wrap overflow-y-auto">
+    <div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
+        <span class="absolute bottom-3 right-3 md:hidden z-50" @click="turn.switch">
+            <img class="h-10 w-10" :src="turn.img" alt="down" />
+        </span>
         <div
             class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
+            :class="turn.value ? 'hidden' : ''"
         >
             <div
                 class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
@@ -114,10 +126,10 @@ function save(dds, ddx) {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full flex flex-col max-h-screen">
+        <div class="flex-grow h-full max-h-screen md:block" :class="turn.value ? '' : 'hidden'">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
-                    class="outline-none w-full box-border px-6 text-2xl font-serif antialiased font-semibold select-none"
+                    class="outline-none w-full box-border pl-4 pr-2 lg:px-6 text-2xl font-serif antialiased font-semibold select-none"
                     type="text"
                     placeholder="标题"
                 />
