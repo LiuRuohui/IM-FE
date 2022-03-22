@@ -13,7 +13,7 @@ const route = useRoute();
                     class="bg-clip-border w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden mt-8 mb-8 m-auto relative box-border hover:border-2 border-blue-500"
                 >
                     <div
-                        class="absolute top-1 left-1 w-1 h-1 md:w-3 md:h-3 rounded-full bg-green-600 border-2 border-gray-800"
+                        class="absolute top-1 left-1 w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-600 border-2 border-gray-800"
                     ></div>
                     <img class="drag" src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
                 </div>
