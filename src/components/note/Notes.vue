@@ -88,7 +88,7 @@ function save(dds, ddx) {
                     <div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
                         <div class="flex flex-col my-4 mx-8">
                             <div
-                                class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white px-2"
+                                class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
                                 v-for="notes in notebooks.id"
                             >
                                 <div class="h-full flex items-center">
@@ -129,7 +129,7 @@ function save(dds, ddx) {
         <div class="flex-grow h-full max-h-screen md:block" :class="turn.value ? '' : 'hidden'">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
-                    class="outline-none w-full box-border pl-4 pr-2 lg:px-6 text-2xl font-serif antialiased font-semibold select-none"
+                    class="outline-none w-full box-border px-4 lg:px-6 text-xl md:text-2xl font-serif antialiased font-semibold select-none"
                     type="text"
                     placeholder="标题"
                 />
