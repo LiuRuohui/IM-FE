@@ -12,7 +12,6 @@
     "axios": "^0.25.0",
     "codemirror": "^5.65.2",
     "highlight.js": "^11.5.0",
-    "naive-ui": "^2.25.1",
     "protobufjs": "^6.11.2",
     "qs": "^6.10.3",
     "vue": "^3.2.25",

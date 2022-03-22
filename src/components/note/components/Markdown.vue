@@ -6,7 +6,7 @@
  * save事件
 
 ****/
-import { ref, computed, onMounted, useAttrs, watch } from 'vue';
+import { ref, computed, onMounted, useAttrs } from 'vue';
 
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
 import '@kangc/v-md-editor/lib/style/codemirror-editor.css';
@@ -123,7 +123,6 @@ const value = computed({
 const resizeObserver = new ResizeObserver(
     () => {
         height.value = MDContainer.value.offsetHeight + "px"
-        console.log("改了", MDContainer.value.offsetHeight)
     }
 );
 
