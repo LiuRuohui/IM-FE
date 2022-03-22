@@ -5,6 +5,8 @@ import Switch from "../components/Switch.vue"
 import User from "./components/User.vue"
 // import UpdateInfo from "./components/UpdateInfo.vue"
 
+import editorSvg from '../../assets/img/editor.svg'
+import saveSvg from '../../assets/img/save.svg'
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -28,7 +30,7 @@ function change() {
                 <img
                     class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer hover:scale-110 active:scale-125 transition-transform duration-500 active:transition-none"
                     @click="change"
-                    :src="pageParams ? 'src/assets/img/editor.svg' : 'src/assets/img/save.svg'"
+                    :src="pageParams ? editorSvg : saveSvg"
                     alt="go"
                 />
             </div>
