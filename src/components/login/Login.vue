@@ -43,8 +43,7 @@ function page(param) {
             class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white"
         >
             <div
-                class="sm:w-1/3 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative"
-                style="background-image: url(/src/assets/img/img.jpg)"
+                class="sm:w-1/3 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-purple-900 text-white bg-no-repeat bg-cover relative login"
             >
                 <div
                     class="absolute bg-gradient-to-b from-indigo-600 to-blue-500 opacity-75 inset-0 z-0"
@@ -87,6 +86,10 @@ function page(param) {
 </template>
 
 <style>
+.login {
+    background-image: url(/src/assets/img/img.jpg);
+}
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.5s ease;
