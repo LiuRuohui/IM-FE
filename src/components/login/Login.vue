@@ -87,7 +87,7 @@ function page(param) {
 
 <style>
 .login {
-    background-image: url(/src/assets/img/img.jpg);
+    background-image: url(/src/assets/pic/img.jpg);
 }
 
 .fade-enter-active,
