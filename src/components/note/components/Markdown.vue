@@ -19,14 +19,14 @@ import createTipPlugin from '@kangc/v-md-editor/lib/plugins/tip/index';
 //emoji
 import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index';
 
-import "../../../assets/js/katex.min.js"
+import "../../../assets/js/katex.min"
 
 import "../../../assets/css/katex.min.css"
 
 //katex
 import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
 
-import "../../../assets/js/mermaid.min.js"
+import "../../../assets/js/mermaid.min"
 
 //mermaid js
 import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn';
