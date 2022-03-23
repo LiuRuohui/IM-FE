@@ -19,8 +19,17 @@ import createTipPlugin from '@kangc/v-md-editor/lib/plugins/tip/index';
 //emoji
 import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index';
 
+import "../../../assets/js/katex.min.js"
+
+import "../../../assets/css/katex.min.css"
+
 //katex
-// import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+
+import "../../../assets/js/mermaid.min.js"
+
+//mermaid js
+import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn';
 
 //ToDoList
 import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
@@ -68,6 +77,9 @@ import '@kangc/v-md-editor/lib/plugins/tip/tip.css';
 //emoji
 import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css';
 
+//mermaid 
+import '@kangc/v-md-editor/lib/plugins/mermaid/mermaid.css';
+
 //ToDoList
 import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css';
 
@@ -87,6 +99,8 @@ VMdEditor.use(githubTheme, {
     .use(createEmojiPlugin())
     .use(createLineNumberPlugin())
     .use(createAlignPlugin())
+    .use(createKatexPlugin())
+    .use(createMermaidPlugin())
     .use(createTodoListPlugin())
     .use(createHighlightLinesPlugin())
     .use(createCopyCodePlugin());
@@ -143,7 +157,7 @@ function handleCopyCodeSuccess(code) {
             console.log("写入剪切板成功！")
         })
         .catch(function (err) {
-            console.log("写入剪切板失败！")
+            console.log("写入剪切板失败！", err)
         })
 }
 </script>

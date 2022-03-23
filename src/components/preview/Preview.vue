@@ -15,6 +15,18 @@ import createTipPlugin from '@kangc/v-md-editor/lib/plugins/tip/index';
 //emoji js
 import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index';
 
+import "../../assets/js/katex.min.js"
+
+import "../../assets/css/katex.min.css"
+
+//katex
+import createKatexPlugin from '@kangc/v-md-editor/lib/plugins/katex/cdn';
+
+import "../../assets/js/mermaid.min.js"
+
+//mermaid js
+import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn';
+
 //ToDoList js
 import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
 
@@ -50,6 +62,8 @@ VMdPreview.use(githubTheme, {
 })
     .use(createTipPlugin())
     .use(createEmojiPlugin())
+    .use(createKatexPlugin())
+    .use(createMermaidPlugin())
     .use(createTodoListPlugin())
     .use(createLineNumberPlugin())
     .use(createHighlightLinesPlugin())
@@ -68,8 +82,8 @@ function handleCopyCodeSuccess(code) {
         })
 }
 
-const text = ref(
-    `\`\`\`js
+const text = ref(`
+\`\`\`js
 import Vue from 'vue';
 import VueMarkdownEditor from '@kangc/v-md-editor';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
@@ -79,6 +93,15 @@ VueMarkdownEditor.use(vuepressTheme);
 
 Vue.use(VueMarkdownEditor);
 \`\`\`
+\`\`\`mermaid
+graph LR
+A --- B
+B-->C[fa:fa-ban forbidden]
+B-->D(fa:fa-spinner);
+\`\`\`
+
+$$\sum_{i=1}^n a_i=0$$
+
 `);
 
 </script>
