@@ -38,8 +38,8 @@ onMounted(() => {
                 </div>
             </div>
         </div>
-        <div class="w-full flex-grow bg-gray-50" ref="noteContainer">
-            <div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
+        <div class="w-full h-full flex-grow bg-gray-50" ref="noteContainer">
+            <div class="w-full h-full overflow-y-auto no-scrollbar" :style="{ height: height }">
                 <div class="flex flex-col my-4 mx-8">
                     <div class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
                          v-for="notes in notebooks.id">
