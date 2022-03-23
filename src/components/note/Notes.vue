@@ -41,11 +41,11 @@ function save(dds, ddx) {
 
 <template>
     <div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
-        <span class="absolute bottom-3 right-3 md:hidden z-50" @click="turn.switch">
+        <span class="absolute bottom-3 right-3 lg:hidden z-50" @click="turn.switch">
             <img class="h-10 w-10" :src="turn.img" alt="down" />
         </span>
         <div
-            class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
+            class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
             :class="turn.value ? 'hidden' : ''"
         >
             <div
@@ -126,7 +126,7 @@ function save(dds, ddx) {
                 </div>
             </div>
         </div>
-        <div class="flex-grow h-full max-h-screen md:block" :class="turn.value ? '' : 'hidden'">
+        <div class="flex-grow h-full max-h-screen lg:block" :class="turn.value ? '' : 'hidden'">
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
                     class="outline-none w-full box-border px-4 lg:px-6 text-xl md:text-2xl font-serif antialiased font-semibold select-none"
