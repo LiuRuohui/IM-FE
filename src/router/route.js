@@ -42,7 +42,7 @@ const routes = [
                 path: "note",
                 name: "note",
                 component: () =>
-                    import ("../components/note/Notes.vue"),
+                    import ("../components/note/Note.vue"),
                 meta: {
                     title: "我的笔记",
                 },
