@@ -31,7 +31,7 @@ const route = useRoute();
                     <div>
                         <div
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
-                            :class="route.name == 'group' ? 'opacity-100' : 'opacity-40'"
+                            :class="route.name == 'chum' ? 'opacity-100' : 'opacity-40'"
                         >
                             <img class="drag" src="/src/assets/img/group.svg" alt />
                         </div>
