@@ -62,6 +62,41 @@ onMounted(() => {
             </div>
         </div>
     </div>
+    <div class="flex-grow flex-col h-full md:block">
+        <div class="h-full flex flex-col">
+            <div class="w-full basis-16 box-content overflow-hidden mx-auto flex flex-row mt-4 border-1 shadow">
+                <div class="flex mx-4 w-8 h-8 md:w-10 md:h-10 rounded-full my-2 m-auto relative box-border">
+                    <div class="absolute top-0.5 w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-600 border-2 border-slate-100"></div>
+                    <img class="rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
+                </div>
+                <div class="flex flex-col justify-center mr-4">
+                    <div class="flex h-1/2 pt-2">
+                        <div class="font-bold text-sm opacity-70 flex items-center">
+                            林凌
+                        </div>
+                    </div>
+                    <div class=" truncate opacity-40 text-xs h-1/2">
+                        在线
+                    </div>
+                </div>
+                <div class="flex-grow flex flex-row-reverse">
+                    <div class="bg-red-200">
+                        <img src="" alt="12">
+                    </div>
+                    <div class="bg-red-300">
+                        <img src="" alt="12">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1">
+
+            </div>
+            <div class="w-full bg-blue-300">
+                <input class="w-full" type="text" placeholder="请输入想和对方说的话">
+            </div>
+        </div>
+
+    </div>
 </div>
 </template>
 <style>

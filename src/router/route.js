@@ -37,15 +37,6 @@ const routes = [
                 meta: {
                     title: "我的好友",
                 },
-                children: [{
-                    path: "chat",
-                    name: "chat",
-                    component: () =>
-                        import ("../components/chat/Chatbox.vue"),
-                    meta: {
-                        title: "聊天页面",
-                    },
-                }, ]
             },
             {
                 path: "note",
