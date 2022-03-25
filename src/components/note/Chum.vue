@@ -7,13 +7,18 @@ const notebooks = reactive({
 
 const height = ref("0px")
 const noteContainer = ref(null)
+const message = ref("")
+const message_array = reactive([])
 
 onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
 })
 
 function sendMsg(){
-    alert('消息发送!')
+    console.log(message.value)
+    message_array.push(message.value)
+    message.value = ""
+
 }
 
 </script>
@@ -93,11 +98,16 @@ function sendMsg(){
                 </div>
             </div>
             <div class="flex-1">
-
+                <div class="w-full h-full bg-slate-50 flex flex-col">
+                    <div v-for="items in message_array" class="w-60 h-8 mt-3 mb-6 rounded-full pl-4 pt-1 shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+                    {{ items}}
+                    <div class="w-full h-3 mt-2 text-sm text-black opacity-40">时间</div>
+                    </div>
+                </div>
             </div>
             <div class="w-full justify-center items-center flex">
-                <div class="w-full relative h-8 flex">
-                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话">
+                <div class="w-full relative h-8 flex shadow-sm">
+                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话"  @keyup.enter="sendMsg" v-model="message">
                       <img class=" absolute w-6 h-6 md:left-7 drag bottom-1 opacity-60" src="/src/assets/img/链接.svg"/>
                       <img class="md:right-12 buttom-1 mt-1 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/微笑.svg" alt="表情">
                       <img class="md:right-4 buttom-1 mt-1 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
