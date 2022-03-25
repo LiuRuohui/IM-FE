@@ -91,8 +91,12 @@ onMounted(() => {
             <div class="flex-1">
 
             </div>
-            <div class="w-full">
-                <input class="w-full h-8" type="text" placeholder="请输入想和对方说的话">
+            <div class="w-full justify-center items-center flex">
+                <div class="w-11/12 relative h-8">
+                     <input class="w-full h-8 rounded-full box-border relative pl-14 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话">
+                      <img class=" absolute w-6 h-6 left-6 drag bottom-1" src="/src/assets/img/链接.svg"/>
+                      <img class="absolute" src="/src/assets/img/微笑.jpg" alt="">
+                </div>
             </div>
         </div>
 
