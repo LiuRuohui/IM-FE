@@ -62,7 +62,7 @@ onMounted(() => {
             </div>
         </div>
     </div>
-    <div class="flex-grow flex-col h-full md:block">
+    <div class="flex-grow flex-col h-full md:block select-none">
         <div class="h-full flex flex-col">
             <div class="w-full basis-16 box-content overflow-hidden mx-auto flex flex-row mt-4 border-1 shadow">
                 <div class="flex mx-4 w-8 h-8 md:w-10 md:h-10 rounded-full my-2 m-auto relative box-border">
@@ -79,20 +79,20 @@ onMounted(() => {
                         在线
                     </div>
                 </div>
-                <div class="flex-grow flex flex-row-reverse">
-                    <div class="bg-red-200">
-                        <img src="" alt="12">
+                <div class="flex-grow flex flex-row-reverse py-3 pr-4">
+                    <div class="hover:cursor-pointer md:w-12">
+                        <img class="h-10 opacity-60 hover:opacity-100" src="/src/assets/img/更多.svg" alt="更多">
                     </div>
-                    <div class="bg-red-300">
-                        <img src="" alt="12">
+                    <div class="hover:cursor-pointer md:w-12">
+                        <img class="h-10 opacity-60 hover:opacity-100" src="/src/assets/img/视频.svg" alt="视频">
                     </div>
                 </div>
             </div>
             <div class="flex-1">
 
             </div>
-            <div class="w-full bg-blue-300">
-                <input class="w-full" type="text" placeholder="请输入想和对方说的话">
+            <div class="w-full">
+                <input class="w-full h-8" type="text" placeholder="请输入想和对方说的话">
             </div>
         </div>
 
