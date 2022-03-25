@@ -12,6 +12,10 @@ onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
 })
 
+function sendMsg(){
+    alert('消息发送!')
+}
+
 </script>
 
 <template>
@@ -92,10 +96,11 @@ onMounted(() => {
 
             </div>
             <div class="w-full justify-center items-center flex">
-                <div class="w-11/12 relative h-8">
-                     <input class="w-full h-8 rounded-full box-border relative pl-14 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话">
-                      <img class=" absolute w-6 h-6 left-6 drag bottom-1" src="/src/assets/img/链接.svg"/>
-                      <img class="absolute" src="/src/assets/img/微笑.jpg" alt="">
+                <div class="w-full relative h-8 flex">
+                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话">
+                      <img class=" absolute w-6 h-6 md:left-7 drag bottom-1 opacity-60" src="/src/assets/img/链接.svg"/>
+                      <img class="md:right-12 buttom-1 mt-1 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/微笑.svg" alt="表情">
+                      <img class="md:right-4 buttom-1 mt-1 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
                 </div>
             </div>
         </div>
