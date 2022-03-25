@@ -9,16 +9,29 @@ const height = ref("0px")
 const noteContainer = ref(null)
 const message = ref("")
 const message_array = reactive([])
+let time = ref("")
+let t = new Date()
+time = getTime(t)
 
 onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
 })
 
+function getTime(time) {
+    let transferTime = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds()
+    console.log(transferTime)
+    return transferTime
+}
+
 function sendMsg(){
-    console.log(message.value)
+    t = new Date()
+    time = getTime(t)
+    if(message == null || message.value == ""){
+        alert("消息不能为空！")
+        return
+    }
     message_array.push(message.value)
     message.value = ""
-
 }
 
 </script>
@@ -97,11 +110,13 @@ function sendMsg(){
                     </div>
                 </div>
             </div>
-            <div class="flex-1">
+            <div class=" w-full flex-1">
                 <div class="w-full h-full bg-slate-50 flex flex-col">
-                    <div v-for="items in message_array" class="w-60 h-8 mt-3 mb-6 rounded-full pl-4 pt-1 shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
-                    {{ items}}
-                    <div class="w-full h-3 mt-2 text-sm text-black opacity-40">时间</div>
+                    <div class="w-52 flex flex-col">
+                        <div v-for="items in message_array" class="w-full h-8 mt-3 mb-6 rounded-full pl-4 pt-1 shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+                            {{ items}}
+                            <div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40 text-right">{{time}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
