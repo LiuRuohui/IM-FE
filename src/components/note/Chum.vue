@@ -6,15 +6,21 @@ const notebooks = reactive({
 });
 
 const height = ref("0px")
+const chatHeight = ref("0px")
 const noteContainer = ref(null)
+const chatContainer = ref(null)
 const message = ref("")
 const message_array = reactive([])
+const message1 = ref("")
+const message_array1 = reactive([])
+
 let time = ref("")
 let t = new Date()
 time = getTime(t)
 
 onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
+    chatHeight.value = chatContainer.value.offsetHeight + "px"
 })
 
 function getTime(time) {
@@ -32,6 +38,17 @@ function sendMsg(){
     }
     message_array.push(message.value)
     message.value = ""
+}
+
+function sendMsg1(){
+    t = new Date()
+    time = getTime(t)
+    if(message1.value == null || message1.value == ""){
+        alert("消息不能为空！")
+        return
+    }
+    message_array1.push(message1.value)
+    message1.value = ""
 }
 
 </script>
@@ -110,14 +127,20 @@ function sendMsg(){
                     </div>
                 </div>
             </div>
-            <div class=" w-full flex-1">
-                <div class="w-full h-full bg-slate-50 flex flex-col">
-                    <div class="w-52 flex flex-col">
-                        <div v-for="items in message_array" class="w-full h-8 mt-3 mb-6 rounded-full pl-4 pt-1 shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+            <div class=" w-full h-full flex-1" ref="chatContainer" >
+                <div class="w-full h-full bg-slate-50 flex flex-col overflow-y-auto" :style="{ height: height }">
+                    <div class="w-2/5 flex flex-col">
+                        <div v-for="items in message_array" class="h-8 word-wrap mt-3 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+                            {{ items}}
+                            <div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40">{{time}}</div>
+                        </div>
+                    </div>
+                    <!--<div class="w-auto h-auto flex flex-col absolute right-0">
+                        <div v-for="items in message_array1" class="h-8 mt-3 mb-6 rounded-full px-3 pt-1 text-right shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
                             {{ items}}
                             <div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40 text-right">{{time}}</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="w-full justify-center items-center flex">
@@ -128,6 +151,14 @@ function sendMsg(){
                       <img class="md:right-4 buttom-1 mt-1 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
                 </div>
             </div>
+            <!--<div class="w-full justify-center items-center flex">
+                <div class="w-full relative h-8 flex shadow-sm">
+                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话"  @keyup.enter="sendMsg" v-model="message">
+                      <img class=" absolute w-6 h-6 md:left-7 drag bottom-1 opacity-60" src="/src/assets/img/链接.svg"/>
+                      <img class="md:right-12 buttom-1 mt-1 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/微笑.svg" alt="表情">
+                      <img class="md:right-4 buttom-1 mt-1 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
+                </div>
+            </div> -->
         </div>
 
     </div>
