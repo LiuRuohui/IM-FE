@@ -183,7 +183,7 @@ function sendMsg1() {
                         </div>
                     </div>
                 </div>
-                <div class="w-full h-8 justify-center items-center flex pt-2 bg-white">
+                <div class="w-full h-8 justify-center items-center flex pt-2 bg-slate-100">
                     <div class="w-full relative flex">
                         <input
                             class="w-full h-10 rounded-full box-border pl-16 pr-4 py-3 outline-none text-sm select-none border border-gray-100 focus:border-gray-200"
