@@ -55,7 +55,7 @@ function sendMsg1(){
 
 <template>
 <div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
-    <div class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-100">
+    <div class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r">
         <div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
             <div class="w-5/6 relative">
                 <input class="box-border rounded-full h-9 pl-14 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入搜索的内容"/>
@@ -101,24 +101,24 @@ function sendMsg1(){
             </div>
         </div>
     </div>
-    <div class="flex-grow flex-col h-full md:block select-none">
-        <div class="h-full flex flex-col">
-            <div class="w-full basis-16 box-content overflow-hidden mx-auto flex flex-row mt-4 border-1 shadow">
-                <div class="flex mx-4 w-8 h-8 md:w-10 md:h-10 rounded-full my-2 m-auto relative box-border">
+    <div class="h-screen flex-grow flex-col md:block select-none">
+        <div class="flex flex-col">
+            <div class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row border-1 shadow">
+                <div class="flex mx-4 w-8 h-12 md:w-12 md:h-12 rounded-full my-3 m-auto relative box-border">
                     <div class="absolute top-0.5 w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-600 border-2 border-slate-100"></div>
                     <img class="rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="章鱼哥" />
                 </div>
                 <div class="flex flex-col justify-center mr-4">
-                    <div class="flex h-1/2 pt-2">
+                    <div class="flex h-1/2 pt-4">
                         <div class="font-bold text-sm opacity-70 flex items-center">
                             林凌
                         </div>
                     </div>
-                    <div class=" truncate opacity-40 text-xs h-1/2">
+                    <div class=" truncate opacity-40 text-xs h-1/2 pt-1">
                         在线
                     </div>
                 </div>
-                <div class="flex-grow flex flex-row-reverse py-3 pr-4">
+                <div class="flex-grow flex flex-row-reverse py-4 pr-4">
                     <div class="hover:cursor-pointer md:w-12">
                         <img class="h-10 opacity-60 hover:opacity-100" src="/src/assets/img/更多.svg" alt="更多">
                     </div>
@@ -127,28 +127,28 @@ function sendMsg1(){
                     </div>
                 </div>
             </div>
-            <div class=" w-full h-full flex-1" ref="chatContainer" >
-                <div class="w-full h-full bg-slate-50 flex flex-col overflow-y-auto" :style="{ height: height }">
+            <div class=" w-full px-2 pt-2 bg-slate-50" ref="chatContainer" >
+                <div class="w-full frame bg-slate-100 flex flex-col overflow-y-auto" :style="{ height: height }">
                     <div class="w-2/5 flex flex-col">
-                        <div v-for="items in message_array" class="h-8 word-wrap mt-3 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+                        <div v-for="items in message_array" class="ml-2 h-8 word-wrap mt-3 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white">
                             {{ items}}
                             <div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40">{{time}}</div>
                         </div>
                     </div>
                     <div class="w-auto h-auto flex flex-col absolute right-0">
-                        <div v-for="items in message_array1" class="h-8 mt-3 mb-6 rounded-full px-3 pt-1 text-right shadow-md hover:cursor-pointer opacity-90 hover:opacity-100 bg-blue-500 text-white">
+                        <div v-for="items in message_array1" class="mr-2 h-8 mt-3 mb-6 rounded-full px-3 pt-1 text-right shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white">
                             {{ items}}
                             <div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40 text-right">{{time}}</div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-            <div class="w-full justify-center items-center flex">
-                <div class="w-full relative h-8 flex shadow-sm">
-                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none bg-gray-100 text-sm select-none" type="text" placeholder="请输入想和对方说的话"  @keyup.enter="sendMsg" v-model="message">
+            <div class="w-full h-8 justify-center items-center flex px-2 bg-white">
+                <div class="w-full relative flex shadow-sm">
+                     <input class="w-full h-8 rounded-full box-border relative pl-16 pr-4 py-3 outline-none text-sm select-none" type="text" placeholder="请输入想和对方说的话"  @keyup.enter="sendMsg" v-model="message">
                       <img class=" absolute w-6 h-6 md:left-7 drag bottom-1 opacity-60" src="/src/assets/img/链接.svg"/>
-                      <img class="md:right-12 buttom-1 mt-1 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/微笑.svg" alt="表情">
-                      <img class="md:right-4 buttom-1 mt-1 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
+                      <img class="md:right-12 buttom-1 mt-1.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/微笑.svg" alt="表情">
+                      <img class="md:right-4 buttom-1 mt-1.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer" src="/src/assets/img/发送.svg" alt="发送" @click="sendMsg">
                 </div>
             </div>
             <!--<div class="w-full justify-center items-center flex">
@@ -165,4 +165,7 @@ function sendMsg1(){
 </div>
 </template>
 <style>
+.frame{
+    height:calc(100% - 5rem);
+}
 </style>
