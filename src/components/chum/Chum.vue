@@ -154,15 +154,15 @@ function sendMsg1() {
                         </div>
                     </div>
                 </div>
-                <div class="w-full px-2 pt-2 bg-slate-50" ref="chatContainer">
+                <div class="w-full bg-slate-100" ref="chatContainer">
                     <div
-                        class="w-full frame bg-slate-100 flex flex-col overflow-y-auto"
+                        class="w-full frame flex flex-col overflow-y-auto"
                         :style="{ height: height }"
                     >
                         <div class="w-2/5 flex flex-col">
                             <div
                                 v-for="items in message_array"
-                                class="ml-2 h-8 word-wrap mt-3 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"
+                                class="ml-2 h-8 word-wrap mt-4 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"
                             >
                                 {{ items }}
                                 <div
@@ -183,26 +183,26 @@ function sendMsg1() {
                         </div>
                     </div>
                 </div>
-                <div class="w-full h-8 justify-center items-center flex px-2 bg-white">
+                <div class="w-full h-8 justify-center items-center flex pt-2 bg-white">
                     <div class="w-full relative flex">
                         <input
-                            class="w-full h-8 rounded-full box-border pl-16 pr-4 py-3 outline-none text-sm select-none border border-gray-100 focus:border-gray-200"
+                            class="w-full h-10 rounded-full box-border pl-16 pr-4 py-3 outline-none text-sm select-none border border-gray-100 focus:border-gray-200"
                             type="text"
                             placeholder="请输入想和对方说的话"
                             @keyup.enter="sendMsg"
                             v-model="message"
                         />
                         <img
-                            class="absolute w-6 h-6 md:left-7 drag bottom-1 opacity-60"
+                            class="absolute w-6 h-6 md:left-7 drag bottom-1.5 opacity-60"
                             src="/src/assets/img/链接.svg"
                         />
                         <img
-                            class="md:right-12 buttom-1 mt-1.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer"
+                            class="md:right-12 buttom-1 my-2.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer"
                             src="/src/assets/img/微笑.svg"
                             alt="表情"
                         />
                         <img
-                            class="md:right-4 buttom-1 mt-1.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer"
+                            class="md:right-4 buttom-1 my-2.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer"
                             src="/src/assets/img/发送.svg"
                             alt="发送"
                             @click="sendMsg"
@@ -223,6 +223,6 @@ function sendMsg1() {
 </template>
 <style>
 .frame {
-    height: calc(100% - 5rem);
+    height: calc(100% - 5.5rem);
 }
 </style>
