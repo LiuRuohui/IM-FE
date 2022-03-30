@@ -76,7 +76,7 @@ onMounted(() => {
                                         <div class="flex flex-row">
                                             <div class="flex text-sm opacity-50 group-hover:opacity-90">1.5M</div>
                                             <div class="flex text-sm flex-grow flex-row-reverse opacity-50 group-hover:opacity-90">2022-06-12</div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
