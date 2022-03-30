@@ -4,7 +4,7 @@ import { reactive, ref, onMounted } from "vue"
 const height = ref("0px")
 const msgContainer = ref(null)
 
-const notebooks = reactive({
+const msgs = reactive({
     id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     message: [],
 });
@@ -50,7 +50,7 @@ onMounted(() => {
                     <div class="flex flex-col my-4 mx-8">
                         <div
                             class="group flex flex-col w-full h-28 shadow-sm hover:shadow hover:cursor-pointer hover:bg-slate-600 hover:text-white md:px-2 my-2 bg-white"
-                            v-for="notes in notebooks.id"
+                            v-for="message in msgs.id"
                         >
                             <div class="flex h-16">
                                 <div
