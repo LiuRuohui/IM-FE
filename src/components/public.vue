@@ -25,7 +25,9 @@ const route = useRoute();
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                             :class="route.name == 'msg' ? 'opacity-100' : 'opacity-40'"
                         >
-                            <img class="drag" src="/src/assets/img/msg.svg" alt />
+                            <router-link to="/public/msg">
+                                <img class="drag" src="/src/assets/img/msg.svg" alt />
+                            </router-link>
                         </div>
                     </div>
                     <div>
@@ -43,7 +45,9 @@ const route = useRoute();
                             class="w-8 h-8 mt-10 mb-10 ml-auto mr-auto opacity-40 hover:opacity-100"
                             :class="route.name == 'file' ? 'opacity-100' : 'opacity-40'"
                         >
-                            <img class="drag" src="/src/assets/img/file.svg" alt />
+                            <router-link to="/public/file">
+                                <img class="drag" src="/src/assets/img/file.svg" alt />
+                            </router-link>
                         </div>
                     </div>
                     <div>
