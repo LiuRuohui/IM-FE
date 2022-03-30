@@ -1,12 +1,6 @@
 const routes = [
     // 路由的默认路径
     {
-        path: "/",
-        name: "welcome",
-        component: () =>
-            import ("../components/Welcome.vue"),
-    },
-    {
         path: "/login",
         name: "login",
         component: () =>
