@@ -49,10 +49,10 @@ onMounted(() => {
                 <div class="w-full h-full overflow-y-auto no-scrollbar" :style="{ height: height }">
                     <div class="flex flex-col my-4 mx-8">
                         <div
-                            class="group flex w-full h-28 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
+                            class="group flex flex-col w-full h-28 shadow-sm hover:shadow hover:cursor-pointer hover:bg-slate-600 hover:text-white md:px-2 my-2 bg-white"
                             v-for="notes in notebooks.id"
                         >
-                            
+                            <div class="flex h-16">
                                 <div
                                     class="mx-4 w-10 h-10 md:w-12 md:h-12 rounded-full my-4 m-auto relative box-border group-hover:border-2 border-blue-500"
                                 >
@@ -76,10 +76,18 @@ onMounted(() => {
                                         </div>
                                     </div>
                                 </div>
-                            
-                            <!--<div class="">
-
-                            </div> -->
+                            </div>
+                            <div class="flex flex-grow m-2">
+                                <div class="flex flex-row w-full">
+                                     <img src="/src/assets/img/return.svg" alt="返回" class="h-8 opacity-60">
+                                     <div class="flex flex-grow flex-wrap text-sm font-medium truncate p-1.5">
+                                         Lorem ipsum dolor sit amet...
+                                     </div>
+                                     <div class="h-8 w-8 flex-row-reverse flex">
+                                         <img src="/src/assets/img/消息提示2.svg" alt="消息">
+                                     </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
