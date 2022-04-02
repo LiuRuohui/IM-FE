@@ -1,6 +1,14 @@
 <script setup>
-
+import {reactive, ref} from "vue"
 const emit = defineEmits(['notice'])
+
+const account = ref("")
+const passwd = ref("")
+
+function Login(){
+    console.log(account.value)
+    console.log(passwd.value)
+}
 
 </script>
 
@@ -19,6 +27,7 @@ const emit = defineEmits(['notice'])
                         id="account"
                         name="account"
                         type="account"
+                        v-model="account"
                         autocomplete="name"
                         required
                         class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
@@ -31,6 +40,7 @@ const emit = defineEmits(['notice'])
                         id="passwd"
                         name="passwd"
                         type="password"
+                        v-model="passwd"
                         autocomplete="current-password"
                         required
                         class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
@@ -59,7 +69,7 @@ const emit = defineEmits(['notice'])
                 </div>
             </div>
             <div>
-                <button class="btn select-none">登录</button>
+                <button class="btn select-none" @click="Login">登录</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
