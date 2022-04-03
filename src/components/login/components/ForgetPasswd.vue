@@ -1,6 +1,22 @@
 
 <script setup>
+import axios from "axios"
+import QS from "qs"
+import { ref } from "vue"
+
+const account = ref("")
 const emit = defineEmits(['notice'])
+
+//用户名要求，四到十位英文数字混合
+var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
+var emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+
+function nextStep() {
+    if(!accountRegexp.test(account.value)){
+        console.log("账号或邮箱格式不符合要求!")
+    }
+    console.log(account.value)
+}
 </script>
 
 <template>
@@ -17,6 +33,7 @@ const emit = defineEmits(['notice'])
                         id="account"
                         name="account"
                         type="account"
+                        v-model="account"
                         autocomplete="name"
                         required
                         class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
@@ -25,7 +42,7 @@ const emit = defineEmits(['notice'])
                 </div>
             </div>
             <div>
-                <button class="btn select-none">下一步</button>
+                <button class="btn select-none" @click="nextStep">下一步</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
