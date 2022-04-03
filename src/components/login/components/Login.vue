@@ -33,10 +33,22 @@ function Login(){
     }
     instance.post('/account/login',QS.stringify(data)).then(
     response => {
-      console.log('Post请求成功了',response.data)
+      console.log('登录成功',response.data)
+      localStorage.setItem('Session-Id', response.data)
     },
     error => {
-      console.log('Post请求失败了',error.message)
+      console.log('登录失败',error.message)
+    }
+  )
+}
+
+function logout(){
+    instance.post('/account/logout',localStorage.getItem('Session-Id')).then(
+    response => {
+      console.log('登出成功',response.data)
+    },
+    error => {
+      console.log('登出失败',error.message)
     }
   )
 }
@@ -101,6 +113,7 @@ function Login(){
             </div>
             <div>
                 <button class="btn select-none" @click="Login">登录</button>
+                <button class="btn select-none" @click="logout">登出</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
