@@ -54,7 +54,6 @@ function Login(){
 }
 
 function logout(){
-    console.log(localStorage.getItem('Session-Id'))
     instance.post('/account/logout').then(
     response => {
       console.log('登出成功',response.data)
@@ -66,7 +65,7 @@ function logout(){
 }
 
 function getUserInfo(){
-    instance.get('/user/Info',localStorage.getItem('Session-Id')).then(
+    instance.get('/user/Info').then(
     response => {
       console.log('获取成功',response.data)
     },
