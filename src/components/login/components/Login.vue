@@ -44,7 +44,7 @@ function Login(){
       function (config) {
 		// 在发送请求之前做些什么
 		config.params = {
-			sessionId: localStorage.getItem('Session-Id'),
+			'Session-Id': localStorage.getItem('Session-Id')
 		}
 		return config
 	},function (error) {
@@ -54,12 +54,24 @@ function Login(){
 }
 
 function logout(){
-    instance.post('/account/logout',localStorage.getItem('Session-Id')).then(
+    console.log(localStorage.getItem('Session-Id'))
+    instance.post('/account/logout').then(
     response => {
       console.log('登出成功',response.data)
     },
     error => {
       console.log('登出失败',error.message)
+    }
+  )
+}
+
+function getUserInfo(){
+    instance.get('/user/Info',localStorage.getItem('Session-Id')).then(
+    response => {
+      console.log('获取成功',response.data)
+    },
+    error => {
+      console.log('获取失败',error.message)
     }
   )
 }
@@ -125,6 +137,7 @@ function logout(){
             <div>
                 <button class="btn select-none" @click="Login">登录</button>
                 <button class="btn select-none mt-4" @click="logout">登出</button>
+                <button class="btn select-none mt-4" @click="getUserInfo">获取用户信息</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
