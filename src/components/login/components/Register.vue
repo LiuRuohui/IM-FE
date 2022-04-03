@@ -1,5 +1,32 @@
 <script setup>
+import {ref} from "vue"
+import axios from "axios"
 const emit = defineEmits(['notice'])
+
+const account = ref("")
+const passwd = ref("")
+const repeatedPasswd = ref("")
+
+//用户名要求，四到十位英文数字混合
+var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
+//密码要求，英文数字（可为纯英文和纯数字），6-20位
+var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
+
+function Register(){
+    if(!accountRegexp.test(account.value)){
+        console.log("输入用户名不符合要求")
+        return
+    }
+    if(!passwdRegexp.test(passwd.value)){
+        console.log("输入密码不符合要求")
+        return
+    }
+    if(passwd.value !== repeatedPasswd.value){
+        console.log("两次密码输入不一致,请重试！")
+        return
+    }
+    
+}
 </script>
 <template>
     <div class="max-w-md w-full mx-auto space-y-8">
@@ -16,6 +43,7 @@ const emit = defineEmits(['notice'])
                         id="account"
                         name="account"
                         type="account"
+                        v-model="account"
                         autocomplete="name"
                         required
                         class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
@@ -28,6 +56,7 @@ const emit = defineEmits(['notice'])
                         id="passwd"
                         name="passwd"
                         type="password"
+                        v-model="passwd"
                         autocomplete="current-password"
                         required
                         class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
@@ -40,6 +69,7 @@ const emit = defineEmits(['notice'])
                         id="repeat-passwd"
                         name="repeat-passwd"
                         type="password"
+                        v-model="repeatedPasswd"
                         autocomplete="current-password"
                         required
                         class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
@@ -62,7 +92,7 @@ const emit = defineEmits(['notice'])
                 </div>
             </div>
             <div>
-                <button class="btn select-none">注册</button>
+                <button class="btn select-none" @click="Register">注册</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"

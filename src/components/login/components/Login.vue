@@ -1,11 +1,23 @@
 <script setup>
 import {reactive, ref} from "vue"
+import axios from "axios"
+
 const emit = defineEmits(['notice'])
 
 const account = ref("")
 const passwd = ref("")
+//用户名要求，四到十位英文数字混合
+var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
+//密码要求，英文数字（可为纯英文和纯数字），6-20位
+var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
 
 function Login(){
+    if(!accountRegexp.test(account.value)){
+        console.log("用户名不符合要求")
+    }
+    if(!passwdRegexp.test(passwd.value)){
+        console.log("密码不符合要求")
+    }
     console.log(account.value)
     console.log(passwd.value)
 }
