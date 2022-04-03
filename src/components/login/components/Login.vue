@@ -1,5 +1,5 @@
 <script setup>
-import {reactive, ref} from "vue"
+import {ref} from "vue"
 import axios from "axios"
 import QS from "qs"
 
@@ -39,6 +39,17 @@ function Login(){
     error => {
       console.log('登录失败',error.message)
     }
+  )
+  instance.interceptors.request.use(
+      function (config) {
+		// 在发送请求之前做些什么
+		config.params = {
+			sessionId: localStorage.getItem('Session-Id'),
+		}
+		return config
+	},function (error) {
+		return Promise.reject(error)
+	}
   )
 }
 
@@ -113,7 +124,7 @@ function logout(){
             </div>
             <div>
                 <button class="btn select-none" @click="Login">登录</button>
-                <button class="btn select-none" @click="logout">登出</button>
+                <button class="btn select-none mt-4" @click="logout">登出</button>
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
