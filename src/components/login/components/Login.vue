@@ -1,6 +1,15 @@
 <script setup>
 import {reactive, ref} from "vue"
 import axios from "axios"
+import QS from "qs"
+
+const instance = axios.create({
+    baseURL : 'http://api.jinzh.me:8976',
+    timeout : 2000,
+    headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
+	},
+})
 
 const emit = defineEmits(['notice'])
 
@@ -12,14 +21,26 @@ var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
 
 function Login(){
+    console.log(account.value)
+    console.log(passwd.value)
     if(!accountRegexp.test(account.value)){
         console.log("用户名不符合要求")
     }
     if(!passwdRegexp.test(passwd.value)){
         console.log("密码不符合要求")
     }
-    console.log(account.value)
-    console.log(passwd.value)
+    let data ={
+        account : account.value,
+        passwd : passwd.value
+    }
+    instance.post('/account/login',QS.stringify(data)).then(
+    response => {
+      console.log('Post请求成功了',response.data)
+    },
+    error => {
+      console.log('Post请求失败了',error.message)
+    }
+  )
 }
 
 </script>
