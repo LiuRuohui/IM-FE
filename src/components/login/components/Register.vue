@@ -22,8 +22,6 @@ const instance = axios.create({
 })
 
 function Register(){
-    console.log(account.value)
-    console.log(passwd.value)
     if(!accountRegexp.test(account.value)){
         console.log("输入用户名不符合要求")
         return

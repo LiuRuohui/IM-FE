@@ -21,8 +21,6 @@ var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
 
 function Login(){
-    console.log(account.value)
-    console.log(passwd.value)
     if(!accountRegexp.test(account.value)){
         console.log("用户名不符合要求")
     }
