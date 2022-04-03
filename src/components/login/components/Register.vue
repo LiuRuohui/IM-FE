@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue"
 import axios from "axios"
+import QS from "qs"
 const emit = defineEmits(['notice'])
 
 const account = ref("")
@@ -12,7 +13,17 @@ var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
 
+const instance = axios.create({
+    baseURL : 'http://api.jinzh.me:8976',
+    timeout : 2000,
+    headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
+	},
+})
+
 function Register(){
+    console.log(account.value)
+    console.log(passwd.value)
     if(!accountRegexp.test(account.value)){
         console.log("输入用户名不符合要求")
         return
@@ -25,7 +36,18 @@ function Register(){
         console.log("两次密码输入不一致,请重试！")
         return
     }
-    
+    let data ={
+        account : account.value,
+        passwd : passwd.value
+    }
+    instance.post('/account/register',QS.stringify(data)).then(
+    response => {
+      console.log('Post请求成功了',response.data)
+    },
+    error => {
+      console.log('Post请求失败了',error.message)
+    }
+  )
 }
 </script>
 <template>
