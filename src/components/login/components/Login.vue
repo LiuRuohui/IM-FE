@@ -71,8 +71,8 @@ function logout() {
     )
 }
 
-function getUserInfo() {
-    instance.get('/user/Info').then(
+/*function getUserInfo() {
+    instance.get('/user/info').then(
         response => {
             console.log('获取成功', response.data)
         },
@@ -80,8 +80,8 @@ function getUserInfo() {
             console.log('获取失败', error.message)
         }
     )
-}
-
+} 
+*/
 </script>
 
 <template>
@@ -143,7 +143,7 @@ function getUserInfo() {
             <div>
                 <button class="btn select-none" @click="Login">登录</button>
                 <button class="btn select-none mt-4" @click="logout">登出</button>
-                <button class="btn select-none mt-4" @click="getUserInfo">获取用户信息</button>
+                <!--<button class="btn select-none mt-4" @click="getUserInfo">获取用户信息</button> -->
             </div>
             <p
                 class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"
