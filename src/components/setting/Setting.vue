@@ -2,6 +2,7 @@
 import { ref, defineAsyncComponent, reactive } from "vue"
 
 import mobile from "../../composables/mobile"
+import {session} from "/src/composables/session"
 
 import Switch from "../components/Switch.vue"
 import User from "./components/User.vue"
@@ -9,12 +10,33 @@ import User from "./components/User.vue"
 
 import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
+
+import axios from "axios"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
 )
 
+const instance = axios.create({
+    baseURL: 'http://api.jinzh.me:8976',
+    timeout: 2000,
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+    },
+})
+
+instance.interceptors.request.use(
+        function (config) {
+            // 在发送请求之前做些什么
+            config.headers['Session-Id'] = session.getSessionId()
+            return config
+        }, function (error) {
+            return Promise.reject(error)
+        }
+    )
+
 const pageParams = ref(true)
+const imgBox = ref(true)
 
 const typeComponentMap = {
     1: User,
@@ -28,6 +50,20 @@ const turn = mobile()
 //头像点击切换事件
 function change() {
     pageParams.value = !pageParams.value
+    imgBox.value = !imgBox.value
+    if(imgBox.value){
+        console.log(session.getSessionId())
+        instance.get('/user/info').then(
+        response => {
+            console.log('获取成功', response.data)
+        },
+        error => {
+            console.log('获取失败', error.message)
+        }
+    )
+
+    }
+
 }
 </script>
 <template>
@@ -45,9 +81,11 @@ function change() {
                 <img class="drag rounded-full" src="/src/assets/avatar/squidWard.jpg" alt="头像" />
                 <img
                     class="drag w-6 h-6 absolute bottom-0 right-0 bg-blue-300 rounded-full p-2 box-content cursor-pointer hover:scale-110 active:scale-125 transition-transform duration-500 active:transition-none"
+                    id="clickImage"
                     @click="change"
                     :src="pageParams ? editorSvg : saveSvg"
                     alt="go"
+                    ref="imgBox ? true : false"
                 />
             </div>
             <Transition name="fade" mode="out-in">

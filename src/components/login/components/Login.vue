@@ -3,6 +3,8 @@ import { ref, onMounted } from "vue"
 import axios from "axios"
 import QS from "qs"
 import {session} from "/src/composables/session"
+import router from "../../../router/router"
+
 
 const emit = defineEmits(['notice'])
 
@@ -40,6 +42,7 @@ function Login() {
         response => {
             console.log('登录成功', response.data)
             session.setSessionId(response.data)
+            router.push('/public/setting')
         },
         error => {
             console.log('登录失败', error.message)
