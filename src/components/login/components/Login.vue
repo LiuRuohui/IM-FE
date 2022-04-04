@@ -1,15 +1,7 @@
 <script setup>
-import {ref} from "vue"
+import {ref, onMounted} from "vue"
 import axios from "axios"
 import QS from "qs"
-
-const instance = axios.create({
-    baseURL : 'http://api.jinzh.me:8976',
-    timeout : 2000,
-    headers: {
-		"Content-Type": "application/x-www-form-urlencoded",
-	},
-})
 
 const emit = defineEmits(['notice'])
 
@@ -19,8 +11,23 @@ const passwd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
+var storage = ref("")
+
+onMounted(() => {
+    storage = localStorage.getItem("Session-Id");
+})
+
+const instance = axios.create({
+    baseURL : 'http://api.jinzh.me:8976',
+    timeout : 2000,
+    headers: {
+		"Content-Type": "application/x-www-form-urlencoded",
+        "Session-Id": storage
+	},
+})
 
 function Login(){
+    console.log(storage)
     if(!accountRegexp.test(account.value)){
         console.log("用户名不符合要求")
     }
@@ -44,7 +51,7 @@ function Login(){
       function (config) {
 		// 在发送请求之前做些什么
 		config.params = {
-			'Session-Id': localStorage.getItem('Session-Id')
+			'Session-Id': storage
 		}
 		return config
 	},function (error) {
