@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted} from "vue"
+import { ref, onMounted } from "vue"
 import axios from "axios"
 import QS from "qs"
 
@@ -11,74 +11,74 @@ const passwd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-var storage = ref("")
+var storage = "tldLSkTk6OlpDbblZvsC8cUSdpn2KNA0uaXaGFaw77Q="
 
 onMounted(() => {
-    storage = localStorage.getItem("Session-Id");
+    // storage = localStorage.getItem("Session-Id");
 })
 
 const instance = axios.create({
-    baseURL : 'http://api.jinzh.me:8976',
-    timeout : 2000,
+    baseURL: 'http://api.jinzh.me:8976',
+    timeout: 2000,
     headers: {
-		"Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded",
         "Session-Id": storage
-	},
+    },
 })
 
-function Login(){
-    if(!accountRegexp.test(account.value)){
+function Login() {
+    if (!accountRegexp.test(account.value)) {
         console.log("用户名不符合要求")
     }
-    if(!passwdRegexp.test(passwd.value)){
+    if (!passwdRegexp.test(passwd.value)) {
         console.log("密码不符合要求")
     }
-    let data ={
-        account : account.value,
-        passwd : passwd.value
+    let data = {
+        account: account.value,
+        passwd: passwd.value
     }
-    instance.post('/account/login',QS.stringify(data)).then(
-    response => {
-      console.log('登录成功',response.data)
-      localStorage.setItem('Session-Id', response.data)
-    },
-    error => {
-      console.log('登录失败',error.message)
-    }
-  )
-  instance.interceptors.request.use(
-      function (config) {
-		// 在发送请求之前做些什么
-		config.params = {
-			'Session-Id': storage
-		}
-		return config
-	},function (error) {
-		return Promise.reject(error)
-	}
-  )
+    instance.post('/account/login', QS.stringify(data)).then(
+        response => {
+            console.log('登录成功', response.data)
+            localStorage.setItem('Session-Id', response.data)
+        },
+        error => {
+            console.log('登录失败', error.message)
+        }
+    )
+    instance.interceptors.request.use(
+        function (config) {
+            // 在发送请求之前做些什么
+            config.params = {
+                'Session-Id': storage
+            }
+            return config
+        }, function (error) {
+            return Promise.reject(error)
+        }
+    )
 }
 
-function logout(){
+function logout() {
     instance.post('/account/logout').then(
-    response => {
-      console.log('登出成功',response.data)
-    },
-    error => {
-      console.log('登出失败',error.message)
-    }
-  )
+        response => {
+            console.log('登出成功', response.data)
+        },
+        error => {
+            console.log('登出失败', error.message)
+        }
+    )
 }
 
-function getUserInfo(){
+function getUserInfo() {
     instance.get('/user/Info').then(
-    response => {
-      console.log('获取成功',response.data)
-    },
-    error => {
-      console.log('获取失败',error.message)
-    }
-  )
+        response => {
+            console.log('获取成功', response.data)
+        },
+        error => {
+            console.log('获取失败', error.message)
+        }
+    )
 }
 
 </script>
