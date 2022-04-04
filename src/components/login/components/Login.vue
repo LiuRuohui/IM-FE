@@ -27,7 +27,6 @@ const instance = axios.create({
 })
 
 function Login(){
-    console.log(storage)
     if(!accountRegexp.test(account.value)){
         console.log("用户名不符合要求")
     }
