@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue"
 import axios from "axios"
 import QS from "qs"
+import {session} from "/src/composables/session"
 
 const emit = defineEmits(['notice'])
 
@@ -11,10 +12,9 @@ const passwd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-var storage
 
 onMounted(() => {
-    storage = localStorage.getItem("Session-Id");
+    session.getSessionId()
 })
 
 const instance = axios.create({
@@ -24,10 +24,6 @@ const instance = axios.create({
         "Content-Type": "application/x-www-form-urlencoded",
     },
 })
-
-function getSession(){
-    return localStorage.getItem('Session-Id')
-}
 
 function Login() {
     if (!accountRegexp.test(account.value)) {
@@ -44,6 +40,7 @@ function Login() {
         response => {
             console.log('登录成功', response.data)
             localStorage.setItem('Session-Id', response.data)
+            session.setSessionId(response.data)
         },
         error => {
             console.log('登录失败', error.message)
@@ -52,7 +49,7 @@ function Login() {
     instance.interceptors.request.use(
         function (config) {
             // 在发送请求之前做些什么
-            config.headers['Session-Id'] = getSession()
+            config.headers['Session-Id'] = session.getSessionId()
             return config
         }, function (error) {
             return Promise.reject(error)
