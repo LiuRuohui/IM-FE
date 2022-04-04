@@ -11,10 +11,10 @@ const passwd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-var storage = "tldLSkTk6OlpDbblZvsC8cUSdpn2KNA0uaXaGFaw77Q="
+var storage
 
 onMounted(() => {
-    // storage = localStorage.getItem("Session-Id");
+    storage = localStorage.getItem("Session-Id");
 })
 
 const instance = axios.create({
@@ -22,9 +22,12 @@ const instance = axios.create({
     timeout: 2000,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Session-Id": storage
     },
 })
+
+function getSession(){
+    return localStorage.getItem('Session-Id')
+}
 
 function Login() {
     if (!accountRegexp.test(account.value)) {
@@ -49,9 +52,7 @@ function Login() {
     instance.interceptors.request.use(
         function (config) {
             // 在发送请求之前做些什么
-            config.params = {
-                'Session-Id': storage
-            }
+            config.headers['Session-Id'] = getSession()
             return config
         }, function (error) {
             return Promise.reject(error)
