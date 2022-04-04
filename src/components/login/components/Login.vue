@@ -39,7 +39,6 @@ function Login() {
     instance.post('/account/login', QS.stringify(data)).then(
         response => {
             console.log('登录成功', response.data)
-            localStorage.setItem('Session-Id', response.data)
             session.setSessionId(response.data)
         },
         error => {
