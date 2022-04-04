@@ -1,5 +1,17 @@
 <script setup>
+import {ref} from "vue"
 const emit = defineEmits(['go']);
+const name = ref("")
+const male = ref("male")
+const female = ref("female")
+const signature = ref("")
+const phone = ref("")
+const mail = ref("")
+const site = ref("")
+const github = ref("")
+const weibo = ref("")
+const qq = ref("")
+
 </script>
 <template>
     <div class="w-4/5 ml-auto mr-auto select-none info overflow-y-auto no-scrollbar">
@@ -11,6 +23,7 @@ const emit = defineEmits(['go']);
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
+                v-model="name"
                 placeholder="请输入昵称"
             />
             <div class="flex w-full mt-3">
@@ -19,12 +32,12 @@ const emit = defineEmits(['go']);
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" id />
+                            <input type="radio" name="sex" id v-model="male"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" id />
+                            <input type="radio" name="sex" id v-model="female" />
                         </div>
                     </div>
                 </div>
@@ -37,6 +50,7 @@ const emit = defineEmits(['go']);
                 <input
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
+                    v-model="signature"
                     placeholder="请输入个性签名"
                 />
             </div>
@@ -49,18 +63,21 @@ const emit = defineEmits(['go']);
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
+                v-model="phone"
                 placeholder="请输入联系电话"
             />
             <p class="mt-3 mb-1 text-sm">电子邮箱：</p>
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
+                v-model="mail"
                 placeholder="请输入电子邮箱"
             />
             <p class="mt-3 mb-1 text-sm">个人网站：</p>
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
+                v-model="site"
                 placeholder="请输入个人网站"
             />
         </div>
@@ -76,6 +93,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
+                        v-model="github"
                         placeholder="请输入github地址"
                     />
                 </div>
@@ -88,6 +106,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
+                        v-model="weibo"
                         placeholder="请输入微博地址"
                     />
                 </div>
@@ -100,6 +119,7 @@ const emit = defineEmits(['go']);
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
+                        v-model="qq"
                         placeholder="请输入QQ号码"
                     />
                 </div>

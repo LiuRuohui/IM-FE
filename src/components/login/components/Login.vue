@@ -43,6 +43,7 @@ function Login() {
             console.log('登录成功', response.data)
             session.setSessionId(response.data)
             router.push('/public/setting')
+            getUserInfo()
         },
         error => {
             console.log('登录失败', error.message)
@@ -70,7 +71,7 @@ function logout() {
     )
 }
 
-/*function getUserInfo() {
+function getUserInfo() {
     instance.get('/user/info').then(
         response => {
             console.log('获取成功', response.data)
@@ -80,7 +81,7 @@ function logout() {
         }
     )
 } 
-*/
+
 </script>
 
 <template>
