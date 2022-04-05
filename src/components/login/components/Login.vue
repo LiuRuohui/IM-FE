@@ -1,9 +1,9 @@
 <script setup>
 import { ref, onMounted } from "vue"
-import axios from "axios"
 import QS from "qs"
 import {session} from "/src/composables/session"
 import router from "../../../router/router"
+import {instance} from "/src/composables/http"
 
 
 const emit = defineEmits(['notice'])
@@ -19,14 +19,6 @@ onMounted(() => {
     session.getSessionId()
 })
 
-const instance = axios.create({
-    baseURL: 'http://api.jinzh.me:8976',
-    timeout: 2000,
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-})
-
 function Login() {
     if (!accountRegexp.test(account.value)) {
         console.log("用户名不符合要求")
@@ -38,6 +30,18 @@ function Login() {
         account: account.value,
         passwd: passwd.value
     }
+    instance.post('/account/login',QS.stringify(data)).then(
+        response => {
+            console.log('登录成功', response.data)
+            session.setSessionId(response.data)
+            router.push('/public/setting')
+            getUserInfo()
+        },
+        error => {
+            console.log('登录失败', error.message)
+        }
+    )
+    /*
     instance.post('/account/login', QS.stringify(data)).then(
         response => {
             console.log('登录成功', response.data)
@@ -58,6 +62,7 @@ function Login() {
             return Promise.reject(error)
         }
     )
+    */
 }
 
 function logout() {
