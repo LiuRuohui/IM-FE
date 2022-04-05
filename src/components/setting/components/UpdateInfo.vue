@@ -1,16 +1,6 @@
 <script setup>
-import {ref} from "vue"
+import {name, sex, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
 const emit = defineEmits(['go']);
-const name = ref("")
-const male = ref("male")
-const female = ref("female")
-const signature = ref("")
-const phone = ref("")
-const mail = ref("")
-const site = ref("")
-const github = ref("")
-const weibo = ref("")
-const qq = ref("")
 
 </script>
 <template>
@@ -32,12 +22,12 @@ const qq = ref("")
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" id v-model="male"/>
+                            <input type="radio" name="sex" id v-model="sex" value="male"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" id v-model="female" />
+                            <input type="radio" name="sex" id v-model="sex" value="female"/>
                         </div>
                     </div>
                 </div>
