@@ -11,29 +11,11 @@ import User from "./components/User.vue"
 import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
-import axios from "axios"
+import {instance} from "/src/composables/http"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
 )
-
-const instance = axios.create({
-    baseURL: 'http://api.jinzh.me:8976',
-    timeout: 2000,
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-})
-
-instance.interceptors.request.use(
-        function (config) {
-            // 在发送请求之前做些什么
-            config.headers['Session-Id'] = session.getSessionId()
-            return config
-        }, function (error) {
-            return Promise.reject(error)
-        }
-    )
 
 const pageParams = ref(true)
 const imgBox = ref(true)
