@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from "vue"
-import axios from "axios"
+import {instance} from "/src/composables/http"
 import QS from "qs"
 const emit = defineEmits(['notice'])
 
@@ -12,14 +12,6 @@ const repeatedPasswd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-
-const instance = axios.create({
-    baseURL : 'http://api.jinzh.me:8976',
-    timeout : 2000,
-    headers: {
-		"Content-Type": "application/x-www-form-urlencoded",
-	},
-})
 
 function Register(){
     if(!accountRegexp.test(account.value)){
