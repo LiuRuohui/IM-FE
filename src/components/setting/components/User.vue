@@ -1,5 +1,5 @@
 <script setup>
-import {name, signature, phone, mail, site} from "/src/composables/Info"
+import {name, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
 const emit = defineEmits(['go']);
 
 </script>
@@ -16,17 +16,17 @@ const emit = defineEmits(['go']);
             >{{signature}}</div>
             <div class="flex justify-between w-1/3 ml-auto mr-auto mb-8">
                 <div class="w-7 h-auto">
-                    <a href>
+                    <a href={{weibo}}>
                         <img class="drag" src="/src/assets/img/weibo.svg" alt="weibo" />
                     </a>
                 </div>
                 <div class="w-7 h-auto">
-                    <a href>
+                    <a href={{github}}>
                         <img class="drag" src="/src/assets/img/github.svg" alt="github" />
                     </a>
                 </div>
                 <div class="w-7 h-auto">
-                    <a href>
+                    <a href={{qq}}>
                         <img class="drag" src="/src/assets/img/qq.svg" alt="qq" />
                     </a>
                 </div>

@@ -1,8 +1,7 @@
 <script setup>
-import { ref, defineAsyncComponent, reactive } from "vue"
+import { ref, defineAsyncComponent, watch } from "vue"
 
 import mobile from "../../composables/mobile"
-import {session} from "/src/composables/session"
 
 import Switch from "../components/Switch.vue"
 import User from "./components/User.vue"
@@ -12,6 +11,8 @@ import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
 import {instance} from "/src/composables/http"
+import {name, sex, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
+import QS from "qs"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -42,7 +43,97 @@ function change() {
             console.log('获取失败', error.message)
         }
     )
-
+    //监听所有属性是否修改，若修改则post，冗余不知如何提取
+    watch(name,(newValue) => {
+        instance.post('/user/updateName',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改名称成功', response.data)
+        },
+        error => {
+            console.log('修改名称失败', error.message)
+        }
+    )
+    })
+    watch(sex,(newValue) => {
+        instance.post('/user/updateSex',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改性别成功', response.data)
+        },
+        error => {
+            console.log('修改性别失败', error.message)
+        }
+    )
+    })
+    watch(signature,(newValue) => {
+        instance.post('/user/updateSignature',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改名称成功', response.data)
+        },
+        error => {
+            console.log('修改名称失败', error.message)
+        }
+    )
+    })
+    watch(phone,(newValue) => {
+        instance.post('/user/updatePhone',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改电话成功', response.data)
+        },
+        error => {
+            console.log('修改电话失败', error.message)
+        }
+    )
+    })
+    watch(mail,(newValue) => {
+        instance.post('/user/updateMail',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改电子邮箱成功', response.data)
+        },
+        error => {
+            console.log('修改电子邮箱失败', error.message)
+        }
+    )
+    })
+    watch(site,(newValue) => {
+        instance.post('/user/updateSite',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改个人网站成功', response.data)
+        },
+        error => {
+            console.log('修改个人网站失败', error.message)
+        }
+    )
+    })
+    watch(github,(newValue) => {
+        instance.post('/user/updateGithub',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改Github地址成功', response.data)
+        },
+        error => {
+            console.log('修改Github地址失败', error.message)
+        }
+    )
+    })
+    watch(weibo,(newValue) => {
+        instance.post('/user/updateWeibo',QS.stringify(newValue)).then(
+        response => {
+            console.log('修改微博地址成功', response.data)
+        },
+        error => {
+            console.log('修改微博地址失败', error.message)
+        }
+    )
+    })
+    watch(qq,(newValue) => {
+        instance.post('/user/updateQq',newValue).then(
+        response => {
+            console.log('修改QQ地址成功', response.data)
+        },
+        error => {
+            console.log('修改QQ地址失败', error.message)
+        }
+    )
+    })
     }
 
 }

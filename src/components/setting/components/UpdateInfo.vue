@@ -22,12 +22,12 @@ const emit = defineEmits(['go']);
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" id v-model="sex" value="male"/>
+                            <input type="radio" name="sex" id v-model="sex" value="1"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" id v-model="sex" value="female"/>
+                            <input type="radio" name="sex" id v-model="sex" value="2"/>
                         </div>
                     </div>
                 </div>
