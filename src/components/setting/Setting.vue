@@ -52,7 +52,6 @@ function change() {
     pageParams.value = !pageParams.value
     imgBox.value = !imgBox.value
     if(imgBox.value){
-        console.log(session.getSessionId())
         instance.get('/user/info').then(
         response => {
             console.log('获取成功', response.data)
