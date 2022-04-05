@@ -44,6 +44,7 @@ function change() {
         }
     )
     //监听所有属性是否修改，若修改则post，冗余不知如何提取
+    /*
     watch(name,(newValue) => {
         instance.post('/user/updateName',QS.stringify(newValue)).then(
         response => {
@@ -81,6 +82,7 @@ function change() {
         },
         error => {
             console.log('修改电话失败', error.message)
+            console.log(newValue)
         }
     )
     })
@@ -134,6 +136,7 @@ function change() {
         }
     )
     })
+    */
     }
 
 }
