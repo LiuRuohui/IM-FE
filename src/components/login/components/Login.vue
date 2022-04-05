@@ -80,6 +80,14 @@ function getUserInfo() {
     instance.get('/user/info').then(
         response => {
             console.log('获取成功', response.data)
+            localStorage.setItem('name',response.data.Name)
+            localStorage.setItem('signature',response.data.Signature)
+            localStorage.setItem('phone',response.data.Phone)
+            localStorage.setItem('mail',response.data.Mail)
+            localStorage.setItem('site',response.data.Site)
+            localStorage.setItem('weibo',response.data.Weibo)
+            localStorage.setItem('github',response.data.Github)
+            localStorage.setItem('qq',response.data.Qq)
         },
         error => {
             console.log('获取失败', error.message)

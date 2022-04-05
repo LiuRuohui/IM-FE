@@ -2,15 +2,15 @@
 保存UpdateInfo界面的数据传输到Setting.vue
 */
 import { ref } from "vue"
-const name = ref("")
-const sex = ref("")
-const signature = ref("")
-const phone = ref(null)
-const mail = ref("")
-const site = ref("")
-const github = ref("")
-const weibo = ref("")
-const qq = ref(null)
+const name = ref(`${localStorage.getItem("name")}`)
+const sex = ref("1")
+const signature = ref(localStorage.getItem("signature"))
+const phone = ref(localStorage.getItem("phone"))
+const mail = ref(localStorage.getItem("mail"))
+const site = ref(localStorage.getItem("site"))
+const github = ref(localStorage.getItem('github'))
+const weibo = ref(localStorage.getItem('weibo'))
+const qq = ref(localStorage.getItem('qq'))
 
 function debounce(fn) {
     let timeout = null; // 创建一个标记用来存放定时器的返回值

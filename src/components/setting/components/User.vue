@@ -1,5 +1,6 @@
 <script setup>
 import {name, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
+
 const emit = defineEmits(['go']);
 
 </script>
