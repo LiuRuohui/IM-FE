@@ -1,6 +1,14 @@
 <script setup>
-import {name, sex, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
+import {name, sex, signature, phone, mail, site, github, weibo, qq, debounce} from "/src/composables/Info"
+import {watch} from 'vue'
+import {instance} from "/src/composables/http"
+import QS from "qs"
 const emit = defineEmits(['go']);
+
+const postName = debounce(() => {
+    console.log("防抖成功",name.value)
+},3000)
+
 
 </script>
 <template>
@@ -14,6 +22,7 @@ const emit = defineEmits(['go']);
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="name"
+                v-on:input="postName"
                 placeholder="请输入昵称"
             />
             <div class="flex w-full mt-3">

@@ -11,8 +11,8 @@ import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
 import {instance} from "/src/composables/http"
-//import {name, sex, signature, phone, mail, site, github, weibo, qq} from "/src/composables/Info"
-//import QS from "qs"
+import {name, sex, signature, phone, mail, site, github, weibo, qq, debounce} from "/src/composables/Info"
+import QS from "qs"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -43,7 +43,6 @@ function change() {
             console.log('获取失败', error.message)
         }
     )
-
     //监听所有属性是否修改，若修改则post，冗余不知如何提取
     /*
     watch(name,(newValue) => {
