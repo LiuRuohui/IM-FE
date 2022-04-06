@@ -34,10 +34,9 @@ const turn = mobile()
 function change() {
     pageParams.value = !pageParams.value
     imgBox.value = !imgBox.value
-    /*if(imgBox.value){
+    if(imgBox.value){
         Info.getInfo();
     }
-    */
 
 }
 </script>

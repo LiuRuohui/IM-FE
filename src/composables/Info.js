@@ -30,6 +30,7 @@ const Info = reactive({
             },
             error => {
                 console.log('获取失败', error.message)
+                console.log(Info.name)
             }
         )
     }
