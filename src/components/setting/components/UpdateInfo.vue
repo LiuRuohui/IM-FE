@@ -1,12 +1,19 @@
 <script setup>
 import {Info, debounce} from "/src/composables/Info"
-import {watch} from 'vue'
 import {instance} from "/src/composables/http"
 import QS from "qs"
 const emit = defineEmits(['go']);
 
 const postName = debounce(() => {
-    console.log("防抖成功",Info.name.value)
+    instance.post('/user/updateName',QS.stringify(Info.name)).then(
+        response => {
+            console.log('修改昵称成功', response.data)
+            console.log(Info.name)
+        },
+        error => {
+            console.log('修改昵称失败', error.message)
+        }
+    )
 },3000)
 
 

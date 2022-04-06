@@ -34,12 +34,10 @@ const turn = mobile()
 function change() {
     pageParams.value = !pageParams.value
     imgBox.value = !imgBox.value
-    if(imgBox.value){
+    /*if(imgBox.value){
         Info.getInfo();
-        console.log(Info.name)
-        console.log(Info.phone)
-        console.log(Info.signature)
     }
+    */
 
 }
 </script>
