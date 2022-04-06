@@ -8,10 +8,86 @@ const postName = debounce(() => {
     instance.post('/user/updateName',QS.stringify(Info.name)).then(
         response => {
             console.log('修改昵称成功', response.data)
-            console.log(Info.name)
         },
         error => {
             console.log('修改昵称失败', error.message)
+        }
+    )
+},3000)
+
+const postSignature = debounce(() => {
+    instance.post('/user/updateSignature',QS.stringify(Info.signature)).then(
+        response => {
+            console.log('修改个人签名成功', response.data)
+        },
+        error => {
+            console.log('修改个人签名失败', error.message)
+        }
+    )
+},3000)
+
+const postPhone = debounce(() => {
+    instance.post('/user/updatePhone',QS.stringify(Info.phone)).then(
+        response => {
+            console.log('修改电话成功', response.data)
+        },
+        error => {
+            console.log('修改电话失败', error.message)
+        }
+    )
+},3000)
+
+const postMail = debounce(() => {
+    instance.post('/user/updateMail',QS.stringify(Info.mail)).then(
+        response => {
+            console.log('修改邮箱成功', response.data)
+        },
+        error => {
+            console.log('修改邮箱失败', error.message)
+        }
+    )
+},3000)
+
+const postSite = debounce(() => {
+    instance.post('/user/updateSite',QS.stringify(Info.site)).then(
+        response => {
+            console.log('修改个人网站成功', response.data)
+        },
+        error => {
+            console.log('修改个人网站失败', error.message)
+        }
+    )
+},3000)
+
+const postGithub = debounce(() => {
+    instance.post('/user/updateGithub',QS.stringify(Info.github)).then(
+        response => {
+            console.log('修改Github地址成功', response.data)
+        },
+        error => {
+            console.log('修改Github地址失败', error.message)
+        }
+    )
+},3000)
+
+const postWeibo = debounce(() => {
+    instance.post('/user/updateWeibo',QS.stringify(Info.weibo)).then(
+        response => {
+            console.log('修改微博地址成功', response.data)
+        },
+        error => {
+            console.log('修改微博地址失败', error.message)
+        }
+    )
+},3000)
+
+const postQq = debounce(() => {
+    instance.post('/user/updateQq',QS.stringify(Info.qq)).then(
+        response => {
+            console.log('修改QQ成功', response.data)
+        },
+        error => {
+            console.log('修改QQ失败', error.message)
         }
     )
 },3000)
@@ -57,6 +133,7 @@ const postName = debounce(() => {
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
                     v-model="Info.signature"
+                    v-on:input="postSignature"
                     placeholder="请输入个性签名"
                 />
             </div>
@@ -70,6 +147,7 @@ const postName = debounce(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.phone"
+                v-on:input="postPhone"
                 placeholder="请输入联系电话"
             />
             <p class="mt-3 mb-1 text-sm">电子邮箱：</p>
@@ -77,6 +155,7 @@ const postName = debounce(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.mail"
+                v-on:input="postMail"
                 placeholder="请输入电子邮箱"
             />
             <p class="mt-3 mb-1 text-sm">个人网站：</p>
@@ -84,6 +163,7 @@ const postName = debounce(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.site"
+                v-on:input="postSite"
                 placeholder="请输入个人网站"
             />
         </div>
@@ -100,6 +180,7 @@ const postName = debounce(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.github"
+                        v-on:input="postGithub"
                         placeholder="请输入github地址"
                     />
                 </div>
@@ -113,6 +194,7 @@ const postName = debounce(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.weibo"
+                        v-on:input="postWeibo"
                         placeholder="请输入微博地址"
                     />
                 </div>
@@ -126,6 +208,7 @@ const postName = debounce(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.qq"
+                        v-on:input="postQq"
                         placeholder="请输入QQ号码"
                     />
                 </div>
