@@ -4,6 +4,7 @@ import QS from "qs"
 import {session} from "/src/composables/session"
 import router from "../../../router/router"
 import {instance} from "/src/composables/http"
+import {Info} from "/src/composables/Info"
 
 
 const emit = defineEmits(['notice'])
@@ -35,34 +36,12 @@ function Login() {
             console.log('登录成功', response.data)
             session.setSessionId(response.data)
             router.push('/public/setting')
-            getUserInfo()
+            Info.getInfo()
         },
         error => {
             console.log('登录失败', error.message)
         }
     )
-    /*
-    instance.post('/account/login', QS.stringify(data)).then(
-        response => {
-            console.log('登录成功', response.data)
-            session.setSessionId(response.data)
-            router.push('/public/setting')
-            getUserInfo()
-        },
-        error => {
-            console.log('登录失败', error.message)
-        }
-    )
-    instance.interceptors.request.use(
-        function (config) {
-            // 在发送请求之前做些什么
-            config.headers['Session-Id'] = session.getSessionId()
-            return config
-        }, function (error) {
-            return Promise.reject(error)
-        }
-    )
-    */
 }
 
 function logout() {
@@ -75,25 +54,6 @@ function logout() {
         }
     )
 }
-
-function getUserInfo() {
-    instance.get('/user/info').then(
-        response => {
-            console.log('获取成功', response.data)
-            localStorage.setItem('name',response.data.Name)
-            localStorage.setItem('signature',response.data.Signature)
-            localStorage.setItem('phone',response.data.Phone)
-            localStorage.setItem('mail',response.data.Mail)
-            localStorage.setItem('site',response.data.Site)
-            localStorage.setItem('weibo',response.data.Weibo)
-            localStorage.setItem('github',response.data.Github)
-            localStorage.setItem('qq',response.data.Qq)
-        },
-        error => {
-            console.log('获取失败', error.message)
-        }
-    )
-} 
 
 </script>
 

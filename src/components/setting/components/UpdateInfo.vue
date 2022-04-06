@@ -1,12 +1,12 @@
 <script setup>
-import {name, sex, signature, phone, mail, site, github, weibo, qq, debounce} from "/src/composables/Info"
+import {Info, debounce} from "/src/composables/Info"
 import {watch} from 'vue'
 import {instance} from "/src/composables/http"
 import QS from "qs"
 const emit = defineEmits(['go']);
 
 const postName = debounce(() => {
-    console.log("防抖成功",name.value)
+    console.log("防抖成功",Info.name.value)
 },3000)
 
 
@@ -21,7 +21,7 @@ const postName = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="name"
+                v-model="Info.name"
                 v-on:input="postName"
                 placeholder="请输入昵称"
             />
@@ -31,12 +31,12 @@ const postName = debounce(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" id v-model="sex" value="1"/>
+                            <input type="radio" name="sex" id v-model="Info.sex" value="1"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" id v-model="sex" value="2"/>
+                            <input type="radio" name="sex" id v-model="Info.sex" value="2"/>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@ const postName = debounce(() => {
                 <input
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
-                    v-model="signature"
+                    v-model="Info.signature"
                     placeholder="请输入个性签名"
                 />
             </div>
@@ -62,21 +62,21 @@ const postName = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="phone"
+                v-model="Info.phone"
                 placeholder="请输入联系电话"
             />
             <p class="mt-3 mb-1 text-sm">电子邮箱：</p>
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="mail"
+                v-model="Info.mail"
                 placeholder="请输入电子邮箱"
             />
             <p class="mt-3 mb-1 text-sm">个人网站：</p>
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="site"
+                v-model="Info.site"
                 placeholder="请输入个人网站"
             />
         </div>
@@ -92,7 +92,7 @@ const postName = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="github"
+                        v-model="Info.github"
                         placeholder="请输入github地址"
                     />
                 </div>
@@ -105,7 +105,7 @@ const postName = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="weibo"
+                        v-model="Info.weibo"
                         placeholder="请输入微博地址"
                     />
                 </div>
@@ -118,7 +118,7 @@ const postName = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="qq"
+                        v-model="Info.qq"
                         placeholder="请输入QQ号码"
                     />
                 </div>
