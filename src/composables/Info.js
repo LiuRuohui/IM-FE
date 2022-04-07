@@ -8,7 +8,7 @@ import { reactive } from "vue"
 import { instance } from "/src/composables/http"
 const Info = reactive({
     name: null,
-    sex: 1,
+    sex: null,
     signature: null,
     phone: null,
     mail: null,

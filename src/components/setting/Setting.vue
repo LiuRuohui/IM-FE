@@ -27,10 +27,6 @@ const typeComponentMap = {
 //上下页
 const turn = mobile()
 
-onMounted(() => {
-    Info.getInfo()
-})
-
 //头像点击切换事件
 function change() {
     pageParams.value = !pageParams.value

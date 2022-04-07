@@ -1,5 +1,10 @@
 <script setup>
 import { Info } from "/src/composables/Info"
+import {onMounted} from "vue"
+
+onMounted(() => {
+    Info.getInfo()
+})
 
 const emit = defineEmits(['go']);
 
