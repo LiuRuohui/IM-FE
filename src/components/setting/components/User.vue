@@ -1,38 +1,35 @@
 <script setup>
-import { Info } from "/src/composables/Info"
-import {onMounted} from "vue"
+import { info } from "/src/composables/data";
+import { toRefs } from "vue";
 
-onMounted(() => {
-    Info.getInfo()
-})
+let { data } = toRefs(info);
 
-const emit = defineEmits(['go']);
 
 </script>
 <template>
     <div class="flex-grow w-full flex flex-col">
         <div
             class="w-3/5 ml-auto mr-auto mt-9 text-center font-serif subpixel-antialiased underline select-none truncate"
-        >{{ Info.name }}</div>
+        >{{ data.Name }}</div>
         <!-- </div> -->
         <div class="h-24 relative flex flex-col items-center justify-center select-none">
             <div
                 class="hidden md:block mb-2 w-2/3 truncate text-gray-400 text-sm text-center"
                 title="Peace comes from within. Do not seek it without!"
-            >{{ Info.signature }}</div>
+            >{{ data.Signature }}</div>
             <div class="flex justify-between w-1/3 ml-auto mr-auto mb-8">
                 <div class="w-7 h-auto">
-                    <a href="{{Info.weibo}}">
+                    <a href="{{data.Weibo}}">
                         <img class="drag" src="/src/assets/img/weibo.svg" alt="weibo" />
                     </a>
                 </div>
                 <div class="w-7 h-auto">
-                    <a href="{{Info.github}}">
+                    <a href="{{data.Github}}">
                         <img class="drag" src="/src/assets/img/github.svg" alt="github" />
                     </a>
                 </div>
                 <div class="w-7 h-auto">
-                    <a href="{{Info.qq}}">
+                    <a href="{{data.Qq}}">
                         <img class="drag" src="/src/assets/img/qq.svg" alt="qq" />
                     </a>
                 </div>
@@ -49,18 +46,18 @@ const emit = defineEmits(['go']);
             >
                 <p class="text-left ml-16 mt-1 mb-2">
                     <span class="text-gray-300 select-none">联系电话：</span>
-                    <span>{{ Info.phone }}</span>
+                    <span>{{ data.Phone }}</span>
                 </p>
                 <p class="text-left ml-16 mt-1 mb-2">
                     <span class="text-gray-300 select-none">电子邮件：</span>
                     <a target="_blank" href="mailto:jinzhongjia@qq.com">
-                        <span>{{ Info.mail }}</span>
+                        <span>{{ data.Mail }}</span>
                     </a>
                 </p>
                 <p class="text-left ml-16 mt-1 mb-2">
                     <span class="text-gray-300 select-none">个人网站：</span>
                     <a target="_blank" href="https://jinzh.me/">
-                        <span>{{ Info.site }}</span>
+                        <span>{{ data.Site }}</span>
                     </a>
                 </p>
             </div>
