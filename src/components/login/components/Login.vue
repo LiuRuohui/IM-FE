@@ -15,11 +15,12 @@ const passwd = ref("")
 var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-
+//在程序挂载之时就获取sessionid
 onMounted(() => {
     session.getSessionId()
 })
 
+//登录函数首先判断用户名和密码是否符合要求
 function Login() {
     if (!accountRegexp.test(account.value)) {
         console.log("用户名不符合要求")
@@ -31,6 +32,7 @@ function Login() {
         account: account.value,
         passwd: passwd.value
     }
+    //进行post成功操作之后需要设置sessionId并将路由push到主界面中并从服务器获取用户信息渲染
     instance.post('/account/login',QS.stringify(data)).then(
         response => {
             console.log('登录成功', response.data)
@@ -44,6 +46,7 @@ function Login() {
     )
 }
 
+//注销功能
 function logout() {
     instance.post('/account/logout').then(
         response => {
