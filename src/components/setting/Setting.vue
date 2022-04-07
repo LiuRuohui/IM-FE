@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineAsyncComponent, watch } from "vue"
+import { ref, defineAsyncComponent, onMounted } from "vue"
 
 import mobile from "../../composables/mobile"
 
@@ -27,6 +27,9 @@ const typeComponentMap = {
 //上下页
 const turn = mobile()
 
+onMounted(() => {
+    Info.getInfo()
+})
 
 //头像点击切换事件
 function change() {
@@ -34,7 +37,7 @@ function change() {
     imgBox.value = !imgBox.value
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
     if(imgBox.value){
-        Info.getInfo();
+        Info.getInfo()
     }
 
 }

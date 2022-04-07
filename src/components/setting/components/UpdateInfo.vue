@@ -2,7 +2,19 @@
 import {Info, debounce} from "/src/composables/Info"
 import {instance} from "/src/composables/http"
 import QS from "qs"
+import {onMounted} from "vue"
 const emit = defineEmits(['go']);
+
+onMounted(() => {
+    Info.getInfo()
+    if(Info.sex == 1){
+        document.getElementById("female").checked = true
+        document.getElementById("male").checked = false
+    }else if(Info.sex == 0){
+        document.getElementById("male").checked = true
+        document.getElementById("female").checked = false
+    }
+})
 
 //分别对每个v-model的绑定v-on:input当值发生改变除非相对应的Post函数，使用防抖函数对数据向服务器post
 const postName = debounce(() => {
@@ -12,6 +24,17 @@ const postName = debounce(() => {
         },
         error => {
             console.log('修改昵称失败', error.message)
+        }
+    )
+},3000)
+
+const postSex = debounce(() => {
+    instance.post('/user/updateSex',QS.stringify(Info)).then(
+        response => {
+            console.log('修改性别成功', response.data)
+        },
+        error => {
+            console.log('修改性别失败', error.message)
         }
     )
 },3000)
@@ -115,12 +138,12 @@ const postQq = debounce(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" id v-model="Info.sex" value="1"/>
+                            <input type="radio" name="sex" checked="false" id="male" v-model="Info.sex" v-on:input="postSex" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" id v-model="Info.sex" value="2"/>
+                            <input type="radio" name="sex" checked="false" id="female" v-model="Info.sex" v-on:input="postSex" value="1"/>
                         </div>
                     </div>
                 </div>
