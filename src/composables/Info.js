@@ -35,6 +35,16 @@ const Info = reactive({
                 console.log('获取失败', error.message)
             }
         )
+    },
+
+    checkSex() {
+        if (Info.sex == true) {
+            document.getElementById("male").checked = false
+            document.getElementById("female").checked = true
+        } else {
+            document.getElementById("male").checked = true
+            document.getElementById("female").checked = false
+        }
     }
 })
 
@@ -49,5 +59,6 @@ function debounce(fn, delay) {
         }, delay)
     }
 }
+
 
 export { Info, debounce }

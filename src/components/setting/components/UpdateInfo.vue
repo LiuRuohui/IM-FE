@@ -7,10 +7,10 @@ const emit = defineEmits(['go']);
 
 onMounted(() => {
     Info.getInfo()
-    if(Info.sex == true){
+    if(Info.sex == 1){
         document.getElementById("female").checked = true
         document.getElementById("male").checked = false
-    }else if(Info.sex == false){
+    }else if(Info.sex == 0){
         document.getElementById("male").checked = true
         document.getElementById("female").checked = false
     }
@@ -29,12 +29,9 @@ const postName = debounce(() => {
 },3000)
 
 const postSex = debounce(() => {
-    console.log(Info.sex)
     instance.post('/user/updateSex',QS.stringify(Info)).then(
         response => {
             console.log('修改性别成功', response.data)
-            console.log(Info.sex)
-            Info.getInfo()
         },
         error => {
             console.log('修改性别失败', error.message)
@@ -141,12 +138,12 @@ const postQq = debounce(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="Info.sex" v-on:input="postSex" value="false"/>
+                            <input type="radio" name="sex" checked id="male" v-model="Info.sex" v-on:input="postSex" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="Info.sex" v-on:input="postSex" value="true"/>
+                            <input type="radio" name="sex" checked id="female" v-model="Info.sex" v-on:input="postSex" value="1"/>
                         </div>
                     </div>
                 </div>

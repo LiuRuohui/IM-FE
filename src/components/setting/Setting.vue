@@ -34,6 +34,7 @@ function change() {
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
     if(imgBox.value){
         Info.getInfo()
+        Info.checkSex()
     }
 
 }
