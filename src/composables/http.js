@@ -55,7 +55,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
     //请求拦截器
     function(config) {
-        // 在发送请求之前做些什么
+        // 在发送请求之前将登录获得的Session-ID存到localStorage中
         config.headers['Session-Id'] = session.getSessionId()
         return config
     },
@@ -95,6 +95,5 @@ instance.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-
 
 export { instance }
