@@ -5,7 +5,7 @@ import QS from "qs"
 const emit = defineEmits(['go']);
 
 const postName = debounce(() => {
-    instance.post('/user/updateName',QS.stringify(Info.name)).then(
+    instance.post('/user/updateName',QS.stringify(Info)).then(
         response => {
             console.log('修改昵称成功', response.data)
         },
@@ -16,7 +16,7 @@ const postName = debounce(() => {
 },3000)
 
 const postSignature = debounce(() => {
-    instance.post('/user/updateSignature',QS.stringify(Info.signature)).then(
+    instance.post('/user/updateSignature',QS.stringify(Info)).then(
         response => {
             console.log('修改个人签名成功', response.data)
         },
@@ -27,7 +27,7 @@ const postSignature = debounce(() => {
 },3000)
 
 const postPhone = debounce(() => {
-    instance.post('/user/updatePhone',QS.stringify(Info.phone)).then(
+    instance.post('/user/updatePhone',QS.stringify(Info)).then(
         response => {
             console.log('修改电话成功', response.data)
         },
@@ -38,7 +38,7 @@ const postPhone = debounce(() => {
 },3000)
 
 const postMail = debounce(() => {
-    instance.post('/user/updateMail',QS.stringify(Info.mail)).then(
+    instance.post('/user/updateMail',QS.stringify(Info)).then(
         response => {
             console.log('修改邮箱成功', response.data)
         },
@@ -49,7 +49,7 @@ const postMail = debounce(() => {
 },3000)
 
 const postSite = debounce(() => {
-    instance.post('/user/updateSite',QS.stringify(Info.site)).then(
+    instance.post('/user/updateSite',QS.stringify(Info)).then(
         response => {
             console.log('修改个人网站成功', response.data)
         },
@@ -60,7 +60,7 @@ const postSite = debounce(() => {
 },3000)
 
 const postGithub = debounce(() => {
-    instance.post('/user/updateGithub',QS.stringify(Info.github)).then(
+    instance.post('/user/updateGithub',QS.stringify(Info)).then(
         response => {
             console.log('修改Github地址成功', response.data)
         },
@@ -71,7 +71,7 @@ const postGithub = debounce(() => {
 },3000)
 
 const postWeibo = debounce(() => {
-    instance.post('/user/updateWeibo',QS.stringify(Info.weibo)).then(
+    instance.post('/user/updateWeibo',QS.stringify(Info)).then(
         response => {
             console.log('修改微博地址成功', response.data)
         },
@@ -82,7 +82,7 @@ const postWeibo = debounce(() => {
 },3000)
 
 const postQq = debounce(() => {
-    instance.post('/user/updateQq',QS.stringify(Info.qq)).then(
+    instance.post('/user/updateQq',QS.stringify(Info)).then(
         response => {
             console.log('修改QQ成功', response.data)
         },
