@@ -1,5 +1,12 @@
 <script setup>
+import { onMounted } from 'vue';
+import {Info} from "/src/composables/Info"
+import {session} from "/src/composables/session"
 
+onMounted(() => {
+  session.getSessionId()
+  Info.getInfo()
+})
 </script>
 
 <template>
