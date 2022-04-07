@@ -13,6 +13,7 @@ var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
 //密码要求，英文数字（可为纯英文和纯数字），6-20位
 var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
 
+//注册函数，首先利用用户名要求和密码要求判断用户输入是否符合要求，若不符合则不进行post操作
 function Register(){
     if(!accountRegexp.test(account.value)){
         console.log("输入用户名不符合要求")
@@ -26,10 +27,12 @@ function Register(){
         console.log("两次密码输入不一致,请重试！")
         return
     }
+    //设置data对象，存储account和passwd的值
     let data ={
         account : account.value,
         passwd : passwd.value
     }
+    //序列化data以后向服务器进行post
     instance.post('/account/register',QS.stringify(data)).then(
     response => {
       console.log('Post请求成功了',response.data)
