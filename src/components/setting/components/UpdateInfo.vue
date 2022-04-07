@@ -4,6 +4,7 @@ import {instance} from "/src/composables/http"
 import QS from "qs"
 const emit = defineEmits(['go']);
 
+//分别对每个v-model的绑定v-on:input当值发生改变除非相对应的Post函数，使用防抖函数对数据向服务器post
 const postName = debounce(() => {
     instance.post('/user/updateName',QS.stringify(Info)).then(
         response => {
