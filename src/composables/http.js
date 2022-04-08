@@ -1,6 +1,6 @@
 import axios from "axios"
 import QS from "qs"
-
+import router from "../router/router"
 import { session } from "/src/composables/session"
 
 const instance = axios.create({
@@ -14,6 +14,8 @@ const instance = axios.create({
 		//自定义的header头部存储sessionId
 		"Session-Id": session.getSessionId(),
 	},
+	responseType: "text", //设置接收的编码
+	responseEncoding: "utf8", //设置默认解码
 })
 
 // 请求拦截器
@@ -41,14 +43,19 @@ instance.interceptors.response.use(
 		switch (error.response.status) {
 			case 401:
 				console.log("未登录！")
+				router.push({
+					name: "login",
+				})
 				break
 			case 403:
 				console.log("禁止访问！")
 				break
 			case 404:
 				console.log("错误路径，资源未找到！")
+				router.push({
+					name: "home",
+				})
 				break
-
 			case 405:
 				console.log("不支持的方法")
 				break
@@ -57,7 +64,7 @@ instance.interceptors.response.use(
 				console.log("出现错误")
 				break
 		}
-		return Promise.reject(error)
+		// return Promise.reject(error)
 	}
 )
 

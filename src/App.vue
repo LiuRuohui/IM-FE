@@ -1,10 +1,8 @@
 <script setup>
 import { onMounted } from 'vue';
-import { session } from './composables/session';
-import { info } from "/src/composables/data";
+import { Info } from './composables/api'
 onMounted(() => {
-
-  info.getInfo();
+  Info.getInfo();
 });
 </script>
 

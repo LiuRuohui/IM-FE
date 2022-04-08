@@ -2,9 +2,9 @@
 
 // 导出时需要对导出的info进行解构
 import { reactive } from "vue"
-import { http } from "./http"
+import { http } from "../http"
 // import Router from "vue-router"
-import router from "../router/router"
+import router from "../../router/router"
 
 // const route = useRoute()
 const info = reactive({
@@ -17,6 +17,10 @@ function getInfo() {
 		(data) => {
 			// console.log(data)
 			info.data = data
+			console.log("应该跳转")
+			router.push({
+				name: "setting",
+			})
 		},
 		(error) => {
 			console.log("获取信息失败了", error)

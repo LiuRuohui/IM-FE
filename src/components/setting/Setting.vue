@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineAsyncComponent, onMounted } from "vue"
+import { ref, defineAsyncComponent } from "vue"
 
 import mobile from "../../composables/mobile"
 

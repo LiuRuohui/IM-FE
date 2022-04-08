@@ -1,5 +1,5 @@
 <script setup>
-import { info } from "/src/composables/data";
+import { info } from "/src/composables/data/info";
 import { toRefs } from "vue";
 
 let { data } = toRefs(info);

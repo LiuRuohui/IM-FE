@@ -3,6 +3,7 @@ const routes = [
     {
         //暂时重定向过去
         path: "/",
+        name:"home",
         redirect: { name: "login" },
     },
     {
