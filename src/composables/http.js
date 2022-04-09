@@ -2,15 +2,14 @@ import axios from "axios"
 import QS from "qs"
 import router from "../router/router"
 import { session } from "/src/composables/session"
-//import { url } from "../composables/url"
 
 let url = axios.get('http://im-router.jinzh.me').then(
     response => {
-        console.log('登录成功', response.data)
+        console.log('获取url成功', response.data)
         return response.data
     },
     error => {
-        console.log('登录失败', error.message)
+        console.log('获取url失败', error.message)
     }
 )
 

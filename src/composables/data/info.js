@@ -8,28 +8,28 @@ import router from "../../router/router"
 
 // const route = useRoute()
 const info = reactive({
-	data: {},
-	getInfo,
+    data: {},
+    getInfo,
 })
 
 function getInfo() {
-	http.get("/user/info", {}, "").then(
-		(data) => {
-			// console.log(data)
-			info.data = data
-			console.log("应该跳转")
-			router.push({
-				name: "setting",
-			})
-		},
-		(error) => {
-			console.log("获取信息失败了", error)
-			// 出错时直接跳转会首页
-			router.push({
-				name: "login",
-			})
-		}
-	)
+    http.get("/user/info", {}, "").then(
+        (data) => {
+            // console.log(data)
+            info.data = data
+            console.log("应该跳转")
+            router.push({
+                name: "setting",
+            })
+        },
+        (error) => {
+            console.log("获取信息失败了", error)
+                // 出错时直接跳转会首页
+            router.push({
+                name: "login",
+            })
+        }
+    )
 }
 
 export { info }
