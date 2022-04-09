@@ -14,32 +14,14 @@ const info = reactive({
 })
 
 const Info = reactive({
-    Data: {},
+    data: {},
     getInfo,
 })
 
-/*function getInfo() {
-    instance.get("/user/info").then(
-        response => {
-            info.data = response.data
-            console.log("应该跳转")
-            router.push({
-                name: "setting",
-            })
-        },
-        error => {
-            console.log('获取失败', error)
-                // router.push({
-                //     name: "login",
-                // })
-        }
-    )
-}
-*/
 function getInfo() {
     http.get("/user/info", {}, "").then(
         (data) => {
-            // console.log(data)
+            console.log(data)
             info.data = data
             console.log("应该跳转")
             router.push({
