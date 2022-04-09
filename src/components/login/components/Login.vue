@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import QS from "qs"
-import {session} from "/src/composables/session"
+import { session } from "/src/composables/session"
 import router from "../../../router/router"
-import {instance} from "/src/composables/http"
-import {Info} from "/src/composables/Info"
+import { instance } from "/src/composables/http"
+import { Info } from "/src/composables/Info"
 
 
 const emit = defineEmits(['notice'])
@@ -22,6 +22,7 @@ onMounted(() => {
 
 //登录函数首先判断用户名和密码是否符合要求
 function Login() {
+    console.log(instance.baseURL)
     if (!accountRegexp.test(account.value)) {
         console.log("用户名不符合要求")
     }
@@ -33,9 +34,8 @@ function Login() {
         passwd: passwd.value
     }
     //进行post成功操作之后需要设置sessionId并将路由push到主界面中并从服务器获取用户信息渲染
-    instance.post('/account/login',QS.stringify(data)).then(
+    instance.post('/account/login', QS.stringify(data)).then(
         response => {
-            console.log('登录成功', response.data)
             session.setSessionId(response.data)
             router.push('/public/setting')
             Info.getInfo()
