@@ -1,16 +1,16 @@
 <script setup>
-import {Info, debounce} from "/src/composables/Info"
+import { info, debounce } from "/src/composables/data/info";
 import {instance} from "/src/composables/http"
 import QS from "qs"
 import {onMounted} from "vue"
 const emit = defineEmits(['go']);
 
 onMounted(() => {
-    Info.getInfo()
-    if(Info.sex == 1){
+    info.getInfo()
+    if(info.data.Sex == 1){
         document.getElementById("female").checked = true
         document.getElementById("male").checked = false
-    }else if(Info.sex == 0){
+    }else if(info.data.Sex == 0){
         document.getElementById("male").checked = true
         document.getElementById("female").checked = false
     }
@@ -18,7 +18,7 @@ onMounted(() => {
 
 //分别对每个v-model的绑定v-on:input当值发生改变除非相对应的Post函数，使用防抖函数对数据向服务器post
 const postName = debounce(() => {
-    instance.post('/user/updateName',QS.stringify(Info)).then(
+    instance.post('/user/updateName',QS.stringify(info.data)).then(
         response => {
             console.log('修改昵称成功', response.data)
         },
@@ -29,7 +29,7 @@ const postName = debounce(() => {
 },3000)
 
 const postSex = debounce(() => {
-    instance.post('/user/updateSex',QS.stringify(Info)).then(
+    instance.post('/user/updateSex',QS.stringify(info.data)).then(
         response => {
             console.log('修改性别成功', response.data)
         },
@@ -40,7 +40,7 @@ const postSex = debounce(() => {
 },3000)
 
 const postSignature = debounce(() => {
-    instance.post('/user/updateSignature',QS.stringify(Info)).then(
+    instance.post('/user/updateSignature',QS.stringify(info.data)).then(
         response => {
             console.log('修改个人签名成功', response.data)
         },
@@ -51,7 +51,7 @@ const postSignature = debounce(() => {
 },3000)
 
 const postPhone = debounce(() => {
-    instance.post('/user/updatePhone',QS.stringify(Info)).then(
+    instance.post('/user/updatePhone',QS.stringify(info.data)).then(
         response => {
             console.log('修改电话成功', response.data)
         },
@@ -62,7 +62,7 @@ const postPhone = debounce(() => {
 },3000)
 
 const postMail = debounce(() => {
-    instance.post('/user/updateMail',QS.stringify(Info)).then(
+    instance.post('/user/updateMail',QS.stringify(info.data)).then(
         response => {
             console.log('修改邮箱成功', response.data)
         },
@@ -73,7 +73,7 @@ const postMail = debounce(() => {
 },3000)
 
 const postSite = debounce(() => {
-    instance.post('/user/updateSite',QS.stringify(Info)).then(
+    instance.post('/user/updateSite',QS.stringify(info.data)).then(
         response => {
             console.log('修改个人网站成功', response.data)
         },
@@ -84,7 +84,7 @@ const postSite = debounce(() => {
 },3000)
 
 const postGithub = debounce(() => {
-    instance.post('/user/updateGithub',QS.stringify(Info)).then(
+    instance.post('/user/updateGithub',QS.stringify(info.data)).then(
         response => {
             console.log('修改Github地址成功', response.data)
         },
@@ -95,7 +95,7 @@ const postGithub = debounce(() => {
 },3000)
 
 const postWeibo = debounce(() => {
-    instance.post('/user/updateWeibo',QS.stringify(Info)).then(
+    instance.post('/user/updateWeibo',QS.stringify(info.data)).then(
         response => {
             console.log('修改微博地址成功', response.data)
         },
@@ -106,7 +106,7 @@ const postWeibo = debounce(() => {
 },3000)
 
 const postQq = debounce(() => {
-    instance.post('/user/updateQq',QS.stringify(Info)).then(
+    instance.post('/user/updateQq',QS.stringify(info.data)).then(
         response => {
             console.log('修改QQ成功', response.data)
         },
@@ -128,7 +128,7 @@ const postQq = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="Info.name"
+                v-model="info.data.Name"
                 v-on:input="postName"
                 placeholder="请输入昵称"
             />
@@ -138,12 +138,12 @@ const postQq = debounce(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="Info.sex" v-on:input="postSex" value="0"/>
+                            <input type="radio" name="sex" checked id="male" v-model="info.data.Sex" v-on:input="postSex" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="Info.sex" v-on:input="postSex" value="1"/>
+                            <input type="radio" name="sex" checked id="female" v-model="info.data.Sex" v-on:input="postSex" value="1"/>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ const postQq = debounce(() => {
                 <input
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
-                    v-model="Info.signature"
+                    v-model="info.data.Signature"
                     v-on:input="postSignature"
                     placeholder="请输入个性签名"
                 />
@@ -170,7 +170,7 @@ const postQq = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="Info.phone"
+                v-model="info.data.Phone"
                 v-on:input="postPhone"
                 placeholder="请输入联系电话"
             />
@@ -178,7 +178,7 @@ const postQq = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="Info.mail"
+                v-model="info.data.Mail"
                 v-on:input="postMail"
                 placeholder="请输入电子邮箱"
             />
@@ -186,7 +186,7 @@ const postQq = debounce(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="Info.site"
+                v-model="info.data.Site"
                 v-on:input="postSite"
                 placeholder="请输入个人网站"
             />
@@ -203,7 +203,7 @@ const postQq = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="Info.github"
+                        v-model="info.data.Github"
                         v-on:input="postGithub"
                         placeholder="请输入github地址"
                     />
@@ -217,7 +217,7 @@ const postQq = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="Info.weibo"
+                        v-model="info.data.Weibo"
                         v-on:input="postWeibo"
                         placeholder="请输入微博地址"
                     />
@@ -231,7 +231,7 @@ const postQq = debounce(() => {
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="Info.qq"
+                        v-model="info.data.Qq"
                         v-on:input="postQq"
                         placeholder="请输入QQ号码"
                     />

@@ -4,7 +4,7 @@ import QS from "qs"
 import { session } from "/src/composables/session"
 import router from "../../../router/router"
 import { instance } from "/src/composables/http"
-import { Info } from "/src/composables/Info"
+import { info } from "/src/composables/data/info";
 
 
 const emit = defineEmits(['notice'])
@@ -37,7 +37,7 @@ function Login() {
         response => {
             session.setSessionId(response.data)
             router.push('/public/setting')
-            Info.getInfo()
+            info.getInfo()
         },
         error => {
             console.log('登录失败', error.message)

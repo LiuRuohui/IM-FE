@@ -2,6 +2,7 @@
 
 // 导出时需要对导出的info进行解构
 import { reactive } from "vue"
+import { instance } from "../http"
 import { http } from "../http"
 // import Router from "vue-router"
 import router from "../../router/router"
@@ -12,6 +13,29 @@ const info = reactive({
     getInfo,
 })
 
+const Info = reactive({
+    Data: {},
+    getInfo,
+})
+
+/*function getInfo() {
+    instance.get("/user/info").then(
+        response => {
+            info.data = response.data
+            console.log("应该跳转")
+            router.push({
+                name: "setting",
+            })
+        },
+        error => {
+            console.log('获取失败', error)
+                // router.push({
+                //     name: "login",
+                // })
+        }
+    )
+}
+*/
 function getInfo() {
     http.get("/user/info", {}, "").then(
         (data) => {
@@ -32,6 +56,7 @@ function getInfo() {
     )
 }
 
+
 //防抖函数
 function debounce(fn, delay) {
     let timer
@@ -45,4 +70,4 @@ function debounce(fn, delay) {
     }
 }
 
-export { info, debounce }
+export { info, debounce, Info }
