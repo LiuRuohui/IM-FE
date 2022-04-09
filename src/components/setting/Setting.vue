@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineAsyncComponent } from "vue"
+import { ref, defineAsyncComponent, onMounted } from "vue"
 
 import mobile from "../../composables/mobile"
 
@@ -10,7 +10,6 @@ import User from "./components/User.vue"
 import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
-import { Info } from "/src/composables/Info"
 import { info } from "/src/composables/data/info";
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
@@ -27,6 +26,10 @@ const typeComponentMap = {
 
 //上下页
 const turn = mobile()
+
+onMounted(() => {
+    info.getInfo()
+})
 
 //头像点击切换事件
 function change() {

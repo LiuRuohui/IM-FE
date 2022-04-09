@@ -8,57 +8,57 @@ import { info } from "autoprefixer"
 import { reactive } from "vue"
 import { http } from "/src/composables/http"
 const Info = reactive({
-	id: "",
-	name: "",
-	sex: false,
-	signature: "",
-	phone: "",
-	mail: "",
-	site: "",
-	github: "",
-	weibo: "",
-	qq: "",
+    id: "",
+    name: "",
+    sex: false,
+    signature: "",
+    phone: "",
+    mail: "",
+    site: "",
+    github: "",
+    weibo: "",
+    qq: "",
 
-	getInfo() {
-		http.get("/user/info", {}, "").then(
-			(data) => {
-				console.log(data)
-				Info.name = data.Name
-				Info.sex = data.Sex
-				Info.signature = data.Signature
-				Info.phone = data.Phone
-				Info.mail = data.Mail
-				Info.site = data.Site
-				Info.github = data.Github
-				Info.weibo = data.Weibo
-				Info.qq = data.Qq
-			},
-			(error) => {}
-		)
-	},
+    getInfo() {
+        http.get("/user/info", {}, "").then(
+            (data) => {
+                console.log(data)
+                Info.name = data.Name
+                Info.sex = data.Sex
+                Info.signature = data.Signature
+                Info.phone = data.Phone
+                Info.mail = data.Mail
+                Info.site = data.Site
+                Info.github = data.Github
+                Info.weibo = data.Weibo
+                Info.qq = data.Qq
+            },
+            (error) => {}
+        )
+    },
 
-	checkSex() {
-		if (Info.sex == true) {
-			document.getElementById("male").checked = false
-			document.getElementById("female").checked = true
-		} else {
-			document.getElementById("male").checked = true
-			document.getElementById("female").checked = false
-		}
-	},
+    checkSex() {
+        if (Info.sex == true) {
+            document.getElementById("male").checked = false
+            document.getElementById("female").checked = true
+        } else {
+            document.getElementById("male").checked = true
+            document.getElementById("female").checked = false
+        }
+    },
 })
 
 //防抖函数
 function debounce(fn, delay) {
-	let timer
-	return function () {
-		if (timer) {
-			clearTimeout(timer)
-		}
-		timer = setTimeout(() => {
-			fn()
-		}, delay)
-	}
+    let timer
+    return function() {
+        if (timer) {
+            clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+            fn()
+        }, delay)
+    }
 }
 
 export { Info, debounce }

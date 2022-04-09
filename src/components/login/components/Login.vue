@@ -22,7 +22,6 @@ onMounted(() => {
 
 //登录函数首先判断用户名和密码是否符合要求
 function Login() {
-    console.log(instance.baseURL)
     if (!accountRegexp.test(account.value)) {
         console.log("用户名不符合要求")
     }
