@@ -19,8 +19,6 @@ const instance = axios.create({
 	// 自定义请求头
 	headers: {
 		"Content-Type": "application/x-www-form-urlencoded",
-		//自定义的header头部存储sessionId
-		// "Session-Id": session.getSessionId(),
 	},
 	responseType: "text", //设置接收的编码
 	responseEncoding: "utf8", //设置默认解码
