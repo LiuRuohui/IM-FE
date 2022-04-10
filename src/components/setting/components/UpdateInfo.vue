@@ -5,7 +5,6 @@ const emit = defineEmits(['go']);
 
 onMounted(() => {
     Info.getInfos()
-    console.log(Info.data)
 })
 
 </script>
@@ -20,7 +19,6 @@ onMounted(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.data.Name"
-                v-on:input="post"
                 placeholder="请输入昵称"
             />
             <div class="flex w-full mt-3">
@@ -29,12 +27,12 @@ onMounted(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" v-on:input="post" value="0"/>
+                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" v-on:input="post" value="1"/>
+                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" value="1"/>
                         </div>
                     </div>
                 </div>
@@ -48,7 +46,6 @@ onMounted(() => {
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
                     v-model="Info.data.Signature"
-                    v-on:input="post"
                     placeholder="请输入个性签名"
                 />
             </div>
@@ -61,8 +58,7 @@ onMounted(() => {
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="Info.data.phone"
-                v-on:input="post"
+                v-model="Info.data.Phone"
                 placeholder="请输入联系电话"
             />
             <p class="mt-3 mb-1 text-sm">电子邮箱：</p>
@@ -70,7 +66,6 @@ onMounted(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.data.Mail"
-                v-on:input="post"
                 placeholder="请输入电子邮箱"
             />
             <p class="mt-3 mb-1 text-sm">个人网站：</p>
@@ -78,7 +73,6 @@ onMounted(() => {
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
                 v-model="Info.data.Site"
-                v-on:input="post"
                 placeholder="请输入个人网站"
             />
         </div>
@@ -95,7 +89,6 @@ onMounted(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.data.Github"
-                        v-on:input="post"
                         placeholder="请输入github地址"
                     />
                 </div>
@@ -109,7 +102,6 @@ onMounted(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.data.Weibo"
-                        v-on:input="post"
                         placeholder="请输入微博地址"
                     />
                 </div>
@@ -123,7 +115,6 @@ onMounted(() => {
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
                         v-model="Info.data.Qq"
-                        v-on:input="post"
                         placeholder="请输入QQ号码"
                     />
                 </div>
