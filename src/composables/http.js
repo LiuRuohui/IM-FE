@@ -104,7 +104,7 @@ http.post = function(url, params, sessionId) {
         instance
             .post(url, QS.stringify(params), {
                 //这里使用qs来对project进行转码，使之成为表单内容
-                params: { sessionId: sessionId },
+                //params: { sessionId: sessionId },
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
                 },
