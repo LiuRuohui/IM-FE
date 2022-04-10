@@ -44,7 +44,7 @@ function change() {
          if(info.data.Name != Info.data.Name){
              console.log(info.data.Name)
              console.log(Info.data.Name)
-             http.post("/user/updateName", {Info}, "").then(
+             http.post("/user/updateName", Info.data, "").then(
                 (data) => {
                     console.log("应该跳转1", data)
                 },
