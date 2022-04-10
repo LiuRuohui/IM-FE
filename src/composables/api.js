@@ -9,4 +9,8 @@ const Info = {}
 //处理用户信息相关
 Info.getInfo = info.getInfo
 
+Log.in = function (account,passwd) {
+    
+}
+
 export { Log, Info }

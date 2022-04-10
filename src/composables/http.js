@@ -72,7 +72,7 @@ instance.interceptors.response.use(
 const http = {}
 
 // 封装好的get方法
-http.get = function (url, params, sessionId) {
+http.get = function (url, params) {
 	//这里的sessionId可以用来添加token
 	return new Promise((resolve, reject) => {
 		instance
@@ -89,12 +89,11 @@ http.get = function (url, params, sessionId) {
 }
 
 // 封装好的post方法
-http.post = function (url, params, sessionId) {
+http.post = function (url, params) {
 	return new Promise((resolve, reject) => {
 		instance
 			.post(url, QS.stringify(params), {
 				//这里使用qs来对project进行转码，使之成为表单内容
-				params: { sessionId: sessionId },
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
