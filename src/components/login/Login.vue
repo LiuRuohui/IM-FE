@@ -2,9 +2,6 @@
 import { reactive, defineAsyncComponent } from 'vue';
 import Login from "../login/components/Login.vue"
 
-// import Register from "../login/components/Register.vue"
-// import ForgetPasswd from "../login/components/ForgetPasswd.vue"
-
 // 异步组件加载
 const Register = defineAsyncComponent(() =>
     import("../login/components/Register.vue")

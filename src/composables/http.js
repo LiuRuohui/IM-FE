@@ -2,16 +2,7 @@ import axios from "axios"
 import QS from "qs"
 import router from "../router/router"
 import { session } from "/src/composables/session"
-let url
-axios.get("http://im-router.jinzh.me").then(
-	(response) => {
-		url = response.data
-		return response.data
-	},
-	(error) => {
-		console.log("获取url失败", error.message)
-	}
-)
+import { url } from "./gateway"
 
 const instance = axios.create({
 	// `timeout` 指定请求超时的毫秒数。
