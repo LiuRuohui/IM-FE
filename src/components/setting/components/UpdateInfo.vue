@@ -1,16 +1,12 @@
 <script setup>
 import { info, Info } from "/src/composables/data/info";
-import {onMounted} from "vue"
+import {onMounted, reactive } from "vue"
 const emit = defineEmits(['go']);
 
 onMounted(() => {
-    info.getInfo()
-    Info.getInfo()
+    Info.getInfos()
+    console.log(Info.data)
 })
-
-function post(){
-    Info.data = info.data
-}
 
 </script>
 <template>
@@ -23,7 +19,7 @@ function post(){
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="info.data.Name"
+                v-model="Info.data.Name"
                 v-on:input="post"
                 placeholder="请输入昵称"
             />
@@ -33,12 +29,12 @@ function post(){
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="info.data.Sex" v-on:input="post" value="0"/>
+                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" v-on:input="post" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="info.data.Sex" v-on:input="post" value="1"/>
+                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" v-on:input="post" value="1"/>
                         </div>
                     </div>
                 </div>
@@ -51,7 +47,7 @@ function post(){
                 <input
                     class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                     type="text"
-                    v-model="info.data.Signature"
+                    v-model="Info.data.Signature"
                     v-on:input="post"
                     placeholder="请输入个性签名"
                 />
@@ -65,7 +61,7 @@ function post(){
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="info.data.Phone"
+                v-model="Info.data.phone"
                 v-on:input="post"
                 placeholder="请输入联系电话"
             />
@@ -73,7 +69,7 @@ function post(){
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="info.data.Mail"
+                v-model="Info.data.Mail"
                 v-on:input="post"
                 placeholder="请输入电子邮箱"
             />
@@ -81,7 +77,7 @@ function post(){
             <input
                 class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                 type="text"
-                v-model="info.data.Site"
+                v-model="Info.data.Site"
                 v-on:input="post"
                 placeholder="请输入个人网站"
             />
@@ -98,7 +94,7 @@ function post(){
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="info.data.Github"
+                        v-model="Info.data.Github"
                         v-on:input="post"
                         placeholder="请输入github地址"
                     />
@@ -112,7 +108,7 @@ function post(){
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="info.data.Weibo"
+                        v-model="Info.data.Weibo"
                         v-on:input="post"
                         placeholder="请输入微博地址"
                     />
@@ -126,7 +122,7 @@ function post(){
                     <input
                         class="w-full bg-inherit border-b border-gray-100 outline-none text-sm placeholder-gray-300"
                         type="text"
-                        v-model="info.data.Qq"
+                        v-model="Info.data.Qq"
                         v-on:input="post"
                         placeholder="请输入QQ号码"
                     />
