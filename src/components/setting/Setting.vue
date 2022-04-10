@@ -42,9 +42,7 @@ function change() {
     if (imgBox.value) {
         info.getInfo()
         if (info.data.Name != Info.data.Name) {
-            console.log(info.data.Name)
-            console.log(Info.data.Name)
-            http.post("/user/updateName", Info.data, "").then(
+            http.post("/user/updateName", {name:Info.data.Name}, "").then(
                 (data) => {
                     console.log("应该跳转1", data)
                 },
