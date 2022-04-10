@@ -1,28 +1,21 @@
 <script setup>
 import { ref, onMounted } from "vue"
+
 import { session } from "/src/composables/session"
-import { instance } from "/src/composables/http"
 import { Log } from "../../../composables/api"
+import { accountTest, passwdTest } from "../../../composables/tool";
 
 const emit = defineEmits(['notice'])
 
 const account = ref("")
 const passwd = ref("")
-//用户名要求，四到十位英文数字混合
-var accountRegexp = /^[a-zA-Z0-9_]{4,10}$/
-//密码要求，英文数字（可为纯英文和纯数字），6-20位
-var passwdRegexp = /^[0-9A-Za-z]{6,20}$/
-//在程序挂载之时就获取sessionid
-onMounted(() => {
-    session.getSessionId()
-})
 
 //登录函数首先判断用户名和密码是否符合要求
 function Login() {
-    if (!accountRegexp.test(account.value)) {
+    if (!accountTest(account.value)) {
         console.log("用户名不符合要求")
     }
-    if (!passwdRegexp.test(passwd.value)) {
+    if (!passwdTest(passwd.value)) {
         console.log("密码不符合要求")
     }
     let data = {
@@ -30,7 +23,10 @@ function Login() {
         passwd: passwd.value
     }
     Log.in(data.account, data.passwd)
+}
 
+function logout() {
+    Log.out()
 }
 </script>
 

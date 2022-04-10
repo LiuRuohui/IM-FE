@@ -15,11 +15,15 @@ const Info = {}
     登陆函数声明
 
 ***/
+
 //登录函数，传入账号和密码
 Log.in = logIn
 
 //登出函数
 Log.out = logout
+
+//注册函数，传入账号和密码
+Log.register = register
 
 /***
 
@@ -71,6 +75,29 @@ function logout() {
 		},
 		(error) => {
 			console.log("登出失败", error)
+		}
+	)
+}
+
+//注册函数
+function register(account, passwd) {
+	http.post(
+		"/account/register",
+		{
+			account,
+			passwd,
+		},
+		""
+	).then(
+		(data) => {
+			console.log("注册成功", data)
+			//登录成功后跳转到首页
+			router.push({
+				name: "login",
+			})
+		},
+		(error) => {
+			console.log("注册失败", error)
 		}
 	)
 }

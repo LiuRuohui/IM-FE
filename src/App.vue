@@ -1,8 +1,10 @@
 <script setup>
-import { onMounted } from 'vue';
-import { Info } from './composables/api'
+import { onMounted } from 'vue'
+
+import global from './composables/global';
+
 onMounted(() => {
-  Info.getInfo();
+  global()
 });
 </script>
 
