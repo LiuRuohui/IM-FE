@@ -1,15 +1,18 @@
 import { http } from "./http"
+import { session } from "./session"
 
 //引入自定义路由
 import router from "../router/router"
 
 //引入用户信息
 import { info } from "/src/composables/data/info"
-
-const Log = {}
+import { note } from "./data/note"
 //处理登录相关
+const Log = {}
+// 处理用户信息
 const Info = {}
-
+// 处理笔记相关
+const Note = {}
 /***
 
     登陆函数声明
@@ -34,6 +37,14 @@ Log.register = register
 //重新获取用户信息
 Info.getInfo = info.getInfo
 
+/***
+
+    用户信息函数声明
+
+***/
+
+Note.getIndex = note.getIndex
+
 /*** 
 
     登录函数定义
@@ -51,6 +62,7 @@ function logIn(account, passwd) {
 		""
 	).then(
 		(data) => {
+			session.setSessionId(data)
 			console.log("登录成功", data)
 			//登录成功后跳转到首页
 			router.push({
@@ -102,4 +114,4 @@ function register(account, passwd) {
 	)
 }
 
-export { Log, Info }
+export { Log, Info, Note }

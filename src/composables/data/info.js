@@ -2,7 +2,6 @@
 
 // 导出时需要对导出的info进行解构
 import { reactive } from "vue"
-import { instance } from "../http"
 import { http } from "../http"
 // import Router from "vue-router"
 import router from "../../router/router"
@@ -51,7 +50,5 @@ function getInfos() {
 		}
 	)
 }
-
-
 
 export { info, Info }

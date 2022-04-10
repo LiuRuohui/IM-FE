@@ -1,3 +1,7 @@
+/*
+	定义封装好的http请求方法
+*/
+
 import axios from "axios"
 import QS from "qs"
 import router from "../router/router"

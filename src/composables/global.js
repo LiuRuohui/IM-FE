@@ -3,13 +3,15 @@
 */
 
 import { session } from "./session"
-import { Info } from "./api"
+import { Info, Note } from "./api"
 
 function global() {
 	// 初始化session
 	session.getSessionId()
 	// 初始化info
 	Info.getInfo()
+
+	Note.getIndex()
 }
 
 export default global
