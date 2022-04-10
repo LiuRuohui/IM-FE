@@ -42,12 +42,14 @@ function change() {
      if (imgBox.value) {
          info.getInfo()
          if(info.data.Name != Info.data.Name){
-             instance.post('/user/updateName',QS.stringify(Info.data)).then(
-                (res) => {
-                     console.log('更新成功', res.data)
+             console.log(info.data.Name)
+             console.log(Info.data.Name)
+             http.post("/user/updateName", {Info}, "").then(
+                (data) => {
+                    console.log("应该跳转1", data)
                 },
                 (error) => {
-                    console.log('登录失败', error.message)
+                    console.log("修改昵称失败了", error)
                 }
             )
          }
