@@ -1,11 +1,8 @@
 <script setup>
 import { ref, onMounted } from "vue"
-import QS from "qs"
 import { session } from "/src/composables/session"
-import router from "../../../router/router"
 import { instance } from "/src/composables/http"
-import { info } from "/src/composables/data/info";
-
+import { Log } from "../../../composables/api"
 
 const emit = defineEmits(['notice'])
 
@@ -32,31 +29,9 @@ function Login() {
         account: account.value,
         passwd: passwd.value
     }
-    //进行post成功操作之后需要设置sessionId并将路由push到主界面中并从服务器获取用户信息渲染
-    instance.post('/account/login', QS.stringify(data)).then(
-        response => {
-            session.setSessionId(response.data)
-            router.push('/public/setting')
-            info.getInfo()
-        },
-        error => {
-            console.log('登录失败', error.message)
-        }
-    )
-}
+    Log.in(data.account, data.passwd)
 
-//注销功能
-function logout() {
-    instance.post('/account/logout').then(
-        response => {
-            console.log('登出成功', response.data)
-        },
-        error => {
-            console.log('登出失败', error.message)
-        }
-    )
 }
-
 </script>
 
 <template>
