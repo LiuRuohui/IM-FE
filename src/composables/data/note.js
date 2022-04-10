@@ -7,6 +7,7 @@ const note = reactive({
 	getContent,
 	updateContent,
 	updateTitle,
+	create,
 })
 
 /*** 
@@ -44,32 +45,50 @@ async function getContent(id) {
 	return text
 }
 
-function updateContent(id, content) {
-	http.post("/note/updateContent", {
-		noteId: id,
-		noteContent: content,
-	}).then(
-		(data) => {
-			console.log("更新笔记内容成功", data)
-		},
-		(error) => {
-			console.log("获取笔记内容失败", error)
-		}
-	)
+async function updateContent(id, content) {
+	await http
+		.post("/note/updateContent", {
+			noteId: id,
+			noteContent: content,
+		})
+		.then(
+			(data) => {
+				console.log("更新笔记内容成功", data)
+			},
+			(error) => {
+				console.log("获取笔记内容失败", error)
+			}
+		)
+	getIndex()
 }
 
-function updateTitle(id, title) {
-	http.post("/note/updateTitle", {
-		noteId: id,
-		noteTitle: title,
-	}).then(
+async function updateTitle(id, title) {
+	await http
+		.post("/note/updateTitle", {
+			noteId: id,
+			noteTitle: title,
+		})
+		.then(
+			(data) => {
+				console.log("更新笔记内容成功", data)
+			},
+			(error) => {
+				console.log("获取笔记内容失败", error)
+			}
+		)
+	getIndex()
+}
+
+async function create() {
+	await http.post("/note/create").then(
 		(data) => {
-			console.log("更新笔记内容成功", data)
+			console.log("创建笔记内容成功", data)
 		},
 		(error) => {
-			console.log("获取笔记内容失败", error)
+			console.log("创建笔记内容失败", error)
 		}
 	)
+	getIndex()
 }
 
 export { note }

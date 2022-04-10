@@ -26,6 +26,7 @@ onMounted(() => {
     height.value = noteContainer.value.offsetHeight + "px"
 });
 
+//获取article内容并触发右侧更新
 function getMd(id, title) {
     note.getContent(id).then(res => article.value = res.Content)
     article.title = title
@@ -39,9 +40,11 @@ const turn = mobile();
 function save(md, h5) {
     note.updateContent(article.id, md)
     note.updateTitle(article.id, article.title)
-    note.getIndex()
 }
 
+function create() {
+    note.create()
+}
 
 </script>
 
@@ -73,7 +76,8 @@ function save(md, h5) {
                     <div class="opacity-60">
                         创建会话
                         <div class="inline-block item-center">
-                            <img class="h-8 inline-block drag" src="/src/assets/img/加号.svg" />
+                            <img class="h-8 inline-block drag rounded-full" src="/src/assets/img/加号.svg"
+                                @click="create" />
                         </div>
                     </div>
                 </div>
