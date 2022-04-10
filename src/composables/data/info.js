@@ -21,7 +21,6 @@ const Info = reactive({
 function getInfo() {
     http.get("/user/info", {}, "").then(
         (data) => {
-            console.log(data)
             info.data = data
             console.log("应该跳转")
             router.push({
@@ -41,7 +40,6 @@ function getInfo() {
 function getInfos() {
     http.get("/user/info", {}, "").then(
         (data) => {
-            console.log(data)
             Info.data = data
             console.log("应该跳转")
             router.push({

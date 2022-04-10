@@ -1,10 +1,17 @@
 <script setup>
-import { info, Info } from "/src/composables/data/info";
-import {onMounted, reactive } from "vue"
+import { Info } from "/src/composables/data/info";
+import {onMounted} from "vue"
 const emit = defineEmits(['go']);
 
 onMounted(() => {
     Info.getInfos()
+    if(Info.data.Sex == false){
+        document.getElementById("male").checked = true
+        document.getElementById("female").checked = false
+    }else {
+        document.getElementById("male").checked = false
+        document.getElementById("female").checked = true
+    }
 })
 
 </script>
@@ -27,12 +34,12 @@ onMounted(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" value="0"/>
+                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" value="false"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" value="1"/>
+                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" value="true"/>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,9 @@ import User from "./components/User.vue"
 import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
+import { instance, http } from "/src/composables/http"
+import QS from "qs"
+
 import { info, debounce, Info } from "/src/composables/data/info";
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
@@ -38,9 +41,15 @@ function change() {
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
      if (imgBox.value) {
          info.getInfo()
-         if(1){
-             console.log(info.data.Name)
-             console.log(Info.data.Name)
+         if(info.data.Name != Info.data.Name){
+             instance.post('/user/updateName',QS.stringify(Info.data)).then(
+                (res) => {
+                     console.log('更新成功', res.data)
+                },
+                (error) => {
+                    console.log('登录失败', error.message)
+                }
+            )
          }
      }
 
