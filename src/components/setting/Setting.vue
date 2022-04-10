@@ -13,7 +13,7 @@ import saveSvg from '../../assets/img/save.svg'
 import { instance, http } from "/src/composables/http"
 import QS from "qs"
 
-import { info, debounce, Info } from "/src/composables/data/info";
+import { info, Info } from "/src/composables/data/info";
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -39,12 +39,12 @@ function change() {
     pageParams.value = !pageParams.value
     imgBox.value = !imgBox.value
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
-     if (imgBox.value) {
-         info.getInfo()
-         if(info.data.Name != Info.data.Name){
-             console.log(info.data.Name)
-             console.log(Info.data.Name)
-             http.post("/user/updateName", Info.data, "").then(
+    if (imgBox.value) {
+        info.getInfo()
+        if (info.data.Name != Info.data.Name) {
+            console.log(info.data.Name)
+            console.log(Info.data.Name)
+            http.post("/user/updateName", Info.data, "").then(
                 (data) => {
                     console.log("应该跳转1", data)
                 },
@@ -52,8 +52,8 @@ function change() {
                     console.log("修改昵称失败了", error)
                 }
             )
-         }
-     }
+        }
+    }
 
 }
 </script>
