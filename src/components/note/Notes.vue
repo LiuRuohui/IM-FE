@@ -37,13 +37,33 @@ function getMd(id, title) {
 const turn = mobile();
 
 //md编辑器保存事件触发
-function save(md, h5) {
-    note.updateContent(article.id, md)
-    note.updateTitle(article.id, article.title)
+async function save(md, h5) {
+    if (!article.id) {
+        return
+    }
+    await note.updateContent(article.id, md)
+    await note.updateTitle(article.id, article.title)
+    console.log(delHtmlTag(h5))
+    note.getIndex()
+}
+
+// 更新标题用
+async function updateTitle() {
+    if (!article.id) {
+        return
+    }
+    await note.updateTitle(article.id, article.title)
+    note.getIndex()
 }
 
 function create() {
     note.create()
+}
+
+
+//去掉所有的html标记
+function delHtmlTag(str) {
+    return str.replace(/<[^>]+>/g, "").replace(/^\s+|\s+$/g, '');
 }
 
 </script>
@@ -115,7 +135,7 @@ function create() {
             <div class="w-full h-16 mt-2 flex border-b border-t-gray-200">
                 <input
                     class="outline-none w-full box-border px-4 lg:px-6 text-xl md:text-2xl font-serif antialiased font-semibold select-none"
-                    type="text" placeholder="标题" v-model="article.title" />
+                    type="text" placeholder="标题" v-model="article.title" @keydown.enter="updateTitle" />
             </div>
             <div class="MDbox w-full">
                 <Markdown v-model="article.value"

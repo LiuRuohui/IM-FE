@@ -59,7 +59,6 @@ async function updateContent(id, content) {
 				console.log("获取笔记内容失败", error)
 			}
 		)
-	getIndex()
 }
 
 async function updateTitle(id, title) {
@@ -70,13 +69,12 @@ async function updateTitle(id, title) {
 		})
 		.then(
 			(data) => {
-				console.log("更新笔记内容成功", data)
+				console.log("更新笔记标题成功", data)
 			},
 			(error) => {
-				console.log("获取笔记内容失败", error)
+				console.log("获取笔记标题失败", error)
 			}
 		)
-	getIndex()
 }
 
 async function create() {
