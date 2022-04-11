@@ -42,7 +42,31 @@ function change() {
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
     if (imgBox.value) {
         if (info.data.Name != Info.data.Name) {
-            Infos.post("/user/updateName",Info.data.Name)
+            Infos.postName("/user/updateName",Info.data.Name)
+        }
+        if (info.data.Sex != Info.data.Sex) {
+            Infos.postSex("/user/updateSex",Info.data.Sex)
+        }
+        if (info.data.Signature != Info.data.Signature) {
+            Infos.postSignature("/user/updateSignature",Info.data.Signature)
+        }
+        if (info.data.Phone != Info.data.Phone) {
+            Infos.postPhone("/user/updatePhone",Info.data.Phone)
+        }
+        if (info.data.Mail != Info.data.Mail) {
+            Infos.postMail("/user/updateMail",Info.data.Mail)
+        }
+        if (info.data.Site != Info.data.Site) {
+            Infos.postSite("/user/updateSite",Info.data.Site)
+        }
+        if (info.data.Github != Info.data.Github) {
+            Infos.postGithub("/user/updateGithub",Info.data.Github)
+        }
+        if (info.data.Weibo != Info.data.Weibo) {
+            Infos.postWeibo("/user/updateWeibo",Info.data.Weibo)
+        }
+        if (info.data.Qq != Info.data.Qq) {
+            Infos.postQq("/user/updateQq",Info.data.Qq)
         }
     }
 

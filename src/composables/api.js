@@ -36,7 +36,15 @@ Log.register = register
 
 //重新获取用户信息
 Infos.getInfo = info.getInfo
-Infos.post = post
+Infos.postName = postName
+Infos.postSex = postSex
+Infos.postSignature = postSignature
+Infos.postPhone = postPhone
+Infos.postMail = postMail
+Infos.postSite = postSite
+Infos.postGithub = postGithub
+Infos.postWeibo = postWeibo
+Infos.postQq = postQq
     /***
 
         用户信息函数声明
@@ -115,14 +123,110 @@ function register(account, passwd) {
     )
 }
 
-function post(url, values) {
+function postName(url, values) {
     http.post(url, { name: values }, "").then(
         (data) => {
-            console.log("提交成功", data)
+            console.log("提交昵称成功", data)
             Infos.getInfo()
         },
         (error) => {
-            console.log("提交失败", error)
+            console.log("提交昵称失败", error)
+        }
+    )
+}
+
+function postSex(url, values) {
+    http.post(url, { sex: values }, "").then(
+        (data) => {
+            console.log("提交性别成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交性别失败", error)
+        }
+    )
+}
+
+function postSignature(url, values) {
+    http.post(url, { signature: values }, "").then(
+        (data) => {
+            console.log("提交签名成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交签名失败", error)
+        }
+    )
+}
+
+function postPhone(url, values) {
+    http.post(url, { phone: values }, "").then(
+        (data) => {
+            console.log("提交电话成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交电话失败", error)
+        }
+    )
+}
+
+function postMail(url, values) {
+    http.post(url, { mail: values }, "").then(
+        (data) => {
+            console.log("提交邮箱成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交邮箱失败", error)
+        }
+    )
+}
+
+function postSite(url, values) {
+    http.post(url, { site: values }, "").then(
+        (data) => {
+            console.log("提交网站成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交网站失败", error)
+        }
+    )
+}
+
+function postGithub(url, values) {
+    http.post(url, { github: values }, "").then(
+        (data) => {
+            console.log("提交Github成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交Github失败", error)
+        }
+    )
+}
+
+function postWeibo(url, values) {
+    http.post(url, { weibo: values }, "").then(
+        (data) => {
+            console.log("提交Weibo成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交Weibo失败", error)
+        }
+    )
+}
+
+function postQq(url, values) {
+    http.post(url, { qq: values }, "").then(
+        (data) => {
+            console.log("提交qq成功", data)
+            Infos.getInfo()
+        },
+        (error) => {
+            console.log("提交qq失败", error)
         }
     )
 }

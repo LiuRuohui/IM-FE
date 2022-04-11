@@ -34,12 +34,12 @@ onMounted(() => {
                     <div class="w-full flex mt-1">
                         <div class="w-1/2 text-sm">
                             男
-                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" value="false"/>
+                            <input type="radio" name="sex" checked id="male" v-model="Info.data.Sex" value="0"/>
                         </div>
 
                         <div class="w-1/2 text-sm">
                             女
-                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" value="true"/>
+                            <input type="radio" name="sex" checked id="female" v-model="Info.data.Sex" value="1"/>
                         </div>
                     </div>
                 </div>
