@@ -1,6 +1,6 @@
 import { http } from "./http"
 import { session } from "./session"
-
+import onlogined from "./onlogined"
 //引入自定义路由
 import router from "../router/router"
 
@@ -52,27 +52,30 @@ Note.getIndex = note.getIndex
 ***/
 
 //登录函数，传入账号和密码
-function logIn(account, passwd) {
-	http.post(
-		"/account/login",
-		{
-			account,
-			passwd,
-		},
-		""
-	).then(
-		(data) => {
-			session.setSessionId(data)
-			console.log("登录成功", data)
-			//登录成功后跳转到首页
-			router.push({
-				name: "setting",
-			})
-		},
-		(error) => {
-			console.log("登录失败", error)
-		}
-	)
+async function logIn(account, passwd) {
+	await http
+		.post(
+			"/account/login",
+			{
+				account,
+				passwd,
+			},
+			""
+		)
+		.then(
+			(data) => {
+				session.setSessionId(data)
+				console.log("登录成功", data)
+				//登录成功后跳转到首页
+				router.push({
+					name: "setting",
+				})
+			},
+			(error) => {
+				console.log("登录失败", error)
+			}
+		)
+	onlogined()
 }
 
 //登出函数
