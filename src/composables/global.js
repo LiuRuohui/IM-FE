@@ -5,15 +5,15 @@
 //需要增加判断是否登录的逻辑判断来执行相关函数
 
 import { session } from "./session"
-import { Info, Note } from "./api"
+import { Infos, Note } from "./api"
 
 function global() {
-	// 初始化session
-	session.getSessionId()
-	// 初始化info
-	Info.getInfo()
+    // 初始化session
+    session.getSessionId()
+        // 初始化info
+    Infos.getInfo()
 
-	Note.getIndex()
+    Note.getIndex()
 }
 
 export default global

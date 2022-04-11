@@ -14,6 +14,7 @@ import { instance, http } from "/src/composables/http"
 import QS from "qs"
 
 import { info, Info } from "/src/composables/data/info";
+import {Infos} from "/src/composables/api"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -40,16 +41,8 @@ function change() {
     imgBox.value = !imgBox.value
     //当imgBox从更改切换到展示的时候需要从服务器get信息渲染
     if (imgBox.value) {
-        info.getInfo()
         if (info.data.Name != Info.data.Name) {
-            http.post("/user/updateName", {name:Info.data.Name}, "").then(
-                (data) => {
-                    console.log("应该跳转1", data)
-                },
-                (error) => {
-                    console.log("修改昵称失败了", error)
-                }
-            )
+            Infos.post("/user/updateName",Info.data.Name)
         }
     }
 
