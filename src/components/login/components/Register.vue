@@ -49,7 +49,7 @@ function Register() {
                         v-model="account"
                         autocomplete="name"
                         required
-                        class="w-full text-base px-4 py-2 border-b border-gray-300 focus:outline-none rounded-2xl focus:border-indigo-500"
+                        class="inputFrame"
                         placeholder="请输入账号"
                     />
                 </div>
@@ -62,7 +62,7 @@ function Register() {
                         v-model="passwd"
                         autocomplete="current-password"
                         required
-                        class="w-full content-center text-base px-4 py-2 border-b rounded-2xl border-gray-300 focus:outline-none focus:border-indigo-500"
+                        class="inputFrame"
                         placeholder="请输入密码"
                     />
                 </div>
