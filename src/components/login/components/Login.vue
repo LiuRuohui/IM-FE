@@ -1,7 +1,6 @@
 <script setup>
-import { ref, onMounted } from "vue"
+import { ref } from "vue"
 
-import { session } from "/src/composables/session"
 import { Log } from "../../../composables/api"
 import { accountTest, passwdTest } from "../../../composables/tool";
 
