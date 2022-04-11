@@ -12,6 +12,9 @@ import saveSvg from '../../assets/img/save.svg'
 
 import { info, Info } from "/src/composables/data/info";
 import {Infos} from "/src/composables/api"
+
+import {accountTest, passwdTest} from "/src/composables/tool"
+import { http } from "../../composables/http"
 //异步组件加载
 const UpdateInfo = defineAsyncComponent(() =>
     import("./components/UpdateInfo.vue")
@@ -28,12 +31,40 @@ const typeComponentMap = {
 //上下页
 const turn = mobile()
 
+//获取要修改的账号密码
+const account = ref("")
+const passwd = ref("")
+
 onMounted(() => {
     info.getInfo()
 })
 
 function update(){
-    
+    if(!accountTest(account.value)){
+        console.log('账号格式不正确！',account.value)
+        return
+    }
+    if(!passwdTest(passwd.value)){
+        alert("密码格式错误",passwd.value)
+        return
+    }
+    http.post('/user/updateAccount',{account : account.value},"").then(
+        (data) => {
+            console.log("更改账号成功", data)
+        },
+        (error) => {
+            console.log("更改账号失败", error)
+        }
+    )
+    http.post('/user/updatePasswd',{passwd : passwd.value},"").then(
+        (data) => {
+            console.log("修改密码成功", data)
+        },
+        (error) => {
+            console.log("修改密码失败", error)
+        }
+    )
+
 }
 
 //头像点击切换事件
@@ -114,6 +145,20 @@ function change() {
                         </div>
                     </div>
                 </div>
+                <!--1 想法是把这部分以下拆开 当点击隐私设置出现page2当点击修改账号密码出现page1-->
+                <div class="w-full text-base mt-6">
+                    <div class="flex flex-col mt-3">
+                        <div class="rounded-md my-4">
+                            <label class="label select-none" for="account">账号:</label>
+                            <input type="account" id="account" name="account" class="inputFrame" v-model="account">
+                        </div>
+                        <div class="rounded-md my-4">
+                            <label class="label select-none" for="passwd">密码:</label>
+                            <input type="password" id="password" name="password" class="inputFrame" v-model="passwd">
+                        </div>
+                    </div>
+                </div>
+                <!--2-->
                 <div class="w-full text-base mt-6">
                     <div>
                         <div class="flex justify-between mt-3">
