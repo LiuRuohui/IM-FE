@@ -10,9 +10,6 @@ import User from "./components/User.vue"
 import editorSvg from '../../assets/img/editor.svg'
 import saveSvg from '../../assets/img/save.svg'
 
-import { instance, http } from "/src/composables/http"
-import QS from "qs"
-
 import { info, Info } from "/src/composables/data/info";
 import {Infos} from "/src/composables/api"
 //异步组件加载
@@ -34,6 +31,10 @@ const turn = mobile()
 onMounted(() => {
     info.getInfo()
 })
+
+function update(){
+    
+}
 
 //头像点击切换事件
 function change() {
@@ -104,8 +105,13 @@ function change() {
         <div class="flex-grow h-full md:block" :class="turn.value ? '' : 'hidden'">
             <div class="w-10/12 h-full box-content overflow-hidden ml-auto mr-auto">
                 <div class="mt-9 w-full">
-                    <div class="font-sans font-semibold antialiased text-xl select-none">
+                    <div class="font-sans font-semibold antialiased text-xl select-none flex flex-row">
                         <p>隐私设置</p>
+                        <div class="flex flex-grow flex-row-reverse">
+                            <button class="font-sans font-semibold hover:cursor-pointer" @click="update">
+                            修改账号密码
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="w-full text-base mt-6">
