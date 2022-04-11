@@ -123,6 +123,7 @@ function register(account, passwd) {
     )
 }
 
+//post函数 由于info和Info易混 且url不同 params无法设置 故抽象一层
 function postName(url, values) {
     http.post(url, { name: values }, "").then(
         (data) => {
