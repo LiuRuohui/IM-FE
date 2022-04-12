@@ -13,61 +13,35 @@
 	import { info, Info } from "/src/composables/data/info";
 	import { Infos } from "/src/composables/api";
 
-	import { accountTest, passwdTest } from "/src/composables/tool";
-	import { http } from "../../composables/http";
+    import Update from "./components/Update.vue";
+	import Privacy from "./components/Privacy.vue";
 	//异步组件加载
 	const UpdateInfo = defineAsyncComponent(() => import("./components/UpdateInfo.vue"));
 
 	const pageParams = ref(true);
 	const imgBox = ref(true);
 
+	let isShow = ref(true)
+
 	const typeComponentMap = {
 		1: User,
 		2: UpdateInfo,
 	};
 
+	const ComponentMap = {
+		1: Privacy,
+		2: Update,
+	};
+
 	//上下页
 	const turn = mobile();
-
-	//获取要修改的账号密码
-	const account = ref("");
-	const passwd = ref("");
 
 	onMounted(() => {
 		info.getInfo();
 	});
 
-    function setting(){
-
-    }
-
 	function update() {
-
-		/*if (!accountTest(account.value)) {
-			console.log("账号格式不正确！", account.value);
-			return;
-		}
-		if (!passwdTest(passwd.value)) {
-			alert("密码格式错误", passwd.value);
-			return;
-		}
-		http.post("/user/updateAccount", { account: account.value }, "").then(
-			(data) => {
-				console.log("更改账号成功", data);
-			},
-			(error) => {
-				console.log("更改账号失败", error);
-			}
-		);
-		http.post("/user/updatePasswd", { passwd: passwd.value }, "").then(
-			(data) => {
-				console.log("修改密码成功", data);
-			},
-			(error) => {
-				console.log("修改密码失败", error);
-			}
-		);
-        */
+		isShow.value = !isShow.value
 	}
 
 	//头像点击切换事件
@@ -141,7 +115,7 @@
 					<div
 						class="font-sans font-semibold antialiased text-xl select-none flex flex-row"
 					>
-						<p @click="setting">隐私设置</p>
+						<p>隐私设置</p>
 						<div class="flex flex-grow flex-row-reverse">
 							<button
 								class="font-sans font-semibold hover:cursor-pointer"
@@ -152,63 +126,11 @@
 						</div>
 					</div>
 				</div>
-				<!--1 想法是把这部分以下拆开 当点击隐私设置出现page2当点击修改账号密码出现page1-->
-				<div class="w-full text-base mt-6">
-					<div class="flex flex-col mt-3">
-						<div class="rounded-md my-4">
-							<label class="label select-none" for="account">账号:</label>
-							<input
-								type="account"
-								id="account"
-								name="account"
-								class="inputFrame"
-								v-model="account"
-							/>
-						</div>
-						<div class="rounded-md my-4">
-							<label class="label select-none" for="passwd">密码:</label>
-							<input
-								type="password"
-								id="password"
-								name="password"
-								class="inputFrame"
-								v-model="passwd"
-							/>
-						</div>
-						<div class="rounded-md my-4">
-							<button class="btn">确认修改</button>
-						</div>
-					</div>
-				</div>
-				<div class="w-full text-base mt-6">
-					<div>
-						<div class="flex justify-between mt-3">
-							<span class="select-none">添加好友时需要验证</span>
-							<div class>
-								<Switch :id="1"></Switch>
-							</div>
-						</div>
-						<div class="w-full h-4 border-b border-gray-200"></div>
-					</div>
-					<div>
-						<div class="flex justify-between mt-3">
-							<span class="select-none">新消息通知</span>
-							<div class>
-								<Switch :id="2"></Switch>
-							</div>
-						</div>
-						<div class="w-full h-4 border-b border-gray-200"></div>
-					</div>
-					<div>
-						<div class="flex justify-between mt-3">
-							<span class="select-none">显示通知详情</span>
-							<div class>
-								<Switch :id="3"></Switch>
-							</div>
-						</div>
-						<div class="w-full h-4 border-b border-gray-200"></div>
-					</div>
-				</div>
+			<Transition name="fade" mode="out-in">
+				<keep-alive>
+					<component @go="update" :is="ComponentMap[isShow ? 1 : 2]"></component>
+				</keep-alive>
+			</Transition>
 			</div>
 		</div>
 	</div>

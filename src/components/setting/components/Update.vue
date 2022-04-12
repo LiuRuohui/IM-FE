@@ -1,19 +1,21 @@
 <script setup>
   import {ref} from "vue"
 	import { accountTest, passwdTest } from "/src/composables/tool";
-	import { http } from "../../composables/http";
+	import { http } from "/src/composables/http";
 
+ let isShow = ref(false)
 	//获取要修改的账号密码
 	const account = ref("");
 	const passwd = ref("");
 
   function confirm(){
+    isShow.value = !isShow.value
     if (!accountTest(account.value)) {
 			console.log("账号格式不正确！", account.value);
 			return;
 		}
 		if (!passwdTest(passwd.value)) {
-			alert("密码格式错误", passwd.value);
+			console.log("密码格式错误", passwd.value);
 			return;
 		}
 		http.post("/user/updateAccount", { account: account.value }, "").then(
