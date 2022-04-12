@@ -4,6 +4,9 @@ import { onMounted, reactive, ref, defineAsyncComponent } from 'vue';
 import { note } from '../../composables/data/note';
 
 import mobile from "../../composables/mobile";
+
+import { dateFormat } from '../../composables/tool';
+
 //加载异步组件
 const Markdown = defineAsyncComponent(() =>
     import("./components/Markdown.vue")
@@ -118,7 +121,7 @@ function delHtmlTag(str) {
                                         </div>
                                         <div
                                             class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse">
-                                            <div class>2020-6-22</div>
+                                            <div class>{{ dateFormat(notes.CreateTime) }}</div>
                                         </div>
                                     </div>
                                     <div class="inline-block truncate opacity-70 text-sm group-hover:opacity-100 h-1/2">
@@ -142,7 +145,8 @@ function delHtmlTag(str) {
                     toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link image code | save"
                     @save="save"></Markdown>
             </div>
-        </div>  </div>
+        </div>
+    </div>
 </template>
 <style>
 .MDbox {
