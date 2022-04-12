@@ -1,17 +1,17 @@
-const filter = {}
+const filter = {};
 
-filter.map = ["public"]
+filter.map = ["public"];
 
 filter.title = function (to) {
-	document.title = to.meta.title || "默认title"
-}
+	document.title = to.meta.title || "默认title";
+};
 
 filter.stop = function (to) {
 	if (filter.map.indexOf(to.name)) {
-		return false
+		return false;
 	} else {
-		return true
+		return true;
 	}
-}
+};
 
-export { filter }
+export { filter };

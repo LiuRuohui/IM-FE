@@ -1,5 +1,5 @@
-import { reactive } from "vue"
-import { http } from "../http"
+import { reactive } from "vue";
+import { http } from "../http";
 
 const note = reactive({
 	data: [],
@@ -8,7 +8,7 @@ const note = reactive({
 	updateContent,
 	updateTitle,
 	create,
-})
+});
 
 /*** 
 
@@ -19,30 +19,30 @@ const note = reactive({
 function getIndex() {
 	http.get("/note/index", "").then(
 		(data) => {
-			console.log("获取笔记列表成功", data)
-			note.data = data
+			console.log("获取笔记列表成功", data);
+			note.data = data;
 		},
 		(error) => {
-			console.log("获取笔记列表失败", error)
+			console.log("获取笔记列表失败", error);
 		}
-	)
+	);
 }
 
 async function getContent(id) {
-	let text = "666"
+	let text = "666";
 	await http
 		.post("/note/content", {
 			noteId: id,
 		})
 		.then(
 			(data) => {
-				text = data
+				text = data;
 			},
 			(error) => {
-				console.log("获取笔记内容失败", error)
+				console.log("获取笔记内容失败", error);
 			}
-		)
-	return text
+		);
+	return text;
 }
 
 async function updateContent(id, content) {
@@ -53,12 +53,12 @@ async function updateContent(id, content) {
 		})
 		.then(
 			(data) => {
-				console.log("更新笔记内容成功", data)
+				console.log("更新笔记内容成功", data);
 			},
 			(error) => {
-				console.log("获取笔记内容失败", error)
+				console.log("获取笔记内容失败", error);
 			}
-		)
+		);
 }
 
 async function updateTitle(id, title) {
@@ -69,24 +69,24 @@ async function updateTitle(id, title) {
 		})
 		.then(
 			(data) => {
-				console.log("更新笔记标题成功", data)
+				console.log("更新笔记标题成功", data);
 			},
 			(error) => {
-				console.log("获取笔记标题失败", error)
+				console.log("获取笔记标题失败", error);
 			}
-		)
+		);
 }
 
 async function create() {
 	await http.post("/note/create").then(
 		(data) => {
-			console.log("创建笔记内容成功", data)
+			console.log("创建笔记内容成功", data);
 		},
 		(error) => {
-			console.log("创建笔记内容失败", error)
+			console.log("创建笔记内容失败", error);
 		}
-	)
-	getIndex()
+	);
+	getIndex();
 }
 
-export { note }
+export { note };

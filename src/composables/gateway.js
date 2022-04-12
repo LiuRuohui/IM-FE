@@ -2,12 +2,12 @@
 获取网关地址
 */
 
-import axios from "axios"
+import axios from "axios";
 
 //获取当前时间戳
-const timestamp = new Date().getTime()
+const timestamp = new Date().getTime();
 
-let url = "http://api.jinzh.me"
+let url = "http://api.jinzh.me";
 // axios.get("http://im-router.jinzh.me").then(
 // 	(response) => {
 // 		url = response.data
@@ -18,4 +18,4 @@ let url = "http://api.jinzh.me"
 // 	}
 // )
 
-export { url }
+export { url };

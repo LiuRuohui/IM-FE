@@ -3,20 +3,20 @@
  */
 
 // 创建session，通过localstroage获取
-var sessionId = localStorage.getItem("Session-Id")
+var sessionId = localStorage.getItem("Session-Id");
 
-var session = {}
+var session = {};
 
 //方法设置sessionId
 session.setSessionId = function (tmp) {
 	//设置sessionId
-	sessionId = tmp
-	localStorage.setItem("Session-Id", tmp)
-}
+	sessionId = tmp;
+	localStorage.setItem("Session-Id", tmp);
+};
 
 // 方法获取sessionId
 session.getSessionId = function () {
-	return sessionId
-}
+	return sessionId;
+};
 
-export { session }
+export { session };

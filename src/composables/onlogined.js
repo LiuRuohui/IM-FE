@@ -1,6 +1,6 @@
-import { Note } from "./api"
+import { Note } from "./api";
 
 function onlogined() {
-	Note.getIndex()
+	Note.getIndex();
 }
-export default onlogined
+export default onlogined;
