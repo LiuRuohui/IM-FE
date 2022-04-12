@@ -52,6 +52,10 @@ Infos.postQq = postQq;
     ***/
 
 Note.getIndex = note.getIndex;
+Note.getContent = note.getContent;
+Note.updateContent = note.updateContent;
+Note.updateTitle = note.updateTitle;
+Note.create = note.create;
 
 /*** 
 

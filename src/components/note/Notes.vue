@@ -3,6 +3,7 @@
 
 	import { note } from "../../composables/data/note";
 
+	import { Note } from "../../composables/api";
 	import mobile from "../../composables/mobile";
 
 	import { dateFormat } from "../../composables/tool";
@@ -29,7 +30,7 @@
 
 	//获取article内容并触发右侧更新
 	function getMd(id, title) {
-		note.getContent(id).then((res) => (article.value = res.Content));
+		Note.getContent(id).then((res) => (article.value = res.Content));
 		article.title = title;
 		article.id = id;
 	}
@@ -42,10 +43,10 @@
 		if (!article.id) {
 			return;
 		}
-		await note.updateContent(article.id, md);
-		await note.updateTitle(article.id, article.title);
+		await Note.updateContent(article.id, md);
+		await Note.updateTitle(article.id, article.title);
 		console.log(delHtmlTag(h5));
-		note.getIndex();
+		Note.getIndex();
 	}
 
 	// 更新标题用
@@ -53,12 +54,12 @@
 		if (!article.id) {
 			return;
 		}
-		await note.updateTitle(article.id, article.title);
-		note.getIndex();
+		await Note.updateTitle(article.id, article.title);
+		Note.getIndex();
 	}
 
 	function create() {
-		note.create();
+		Note.create();
 	}
 
 	//去掉所有的html标记
