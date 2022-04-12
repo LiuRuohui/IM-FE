@@ -64,7 +64,7 @@
 											<div class="font-bold text-base">Sourcecode.zip</div>
 										</div>
 										<div
-											class="flex flex-row-reverse opacity-30 group-hover:opacity-60"
+											class="flex flex-grow flex-row-reverse opacity-30 group-hover:opacity-60"
 										>
 											<img src="/src/assets/img/更多.svg" alt="更多" />
 										</div>
