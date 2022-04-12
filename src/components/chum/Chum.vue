@@ -1,9 +1,12 @@
 <script setup>
+	import mobile from "../../composables/mobile";
 	import { reactive, ref, onMounted } from "vue";
+
 	const notebooks = reactive({
 		id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 		message: [],
 	});
+	const turn = mobile();
 
 	const height = ref("0px");
 	const chatHeight = ref("0px");
@@ -54,7 +57,17 @@
 
 <template>
 	<div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
-		<div class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r">
+		<span
+			class="absolute right-3 md:hidden"
+			@click="turn.switch"
+			:class="turn.value ? 'bottom-12' : 'bottom-3'"
+		>
+			<img class="h-10 w-10" :src="turn.img" alt="turn" />
+		</span>
+		<div
+			class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r"
+			:class="turn.value ? 'hidden' : ''"
+		>
 			<div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
 				<div class="w-5/6 relative">
 					<input
@@ -121,7 +134,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="h-screen flex-grow flex-col md:block select-none">
+		<div
+			class="h-screen flex-grow flex-col md:block select-none"
+			:class="turn.value ? '' : 'hidden'"
+		>
 			<div class="flex flex-col">
 				<div
 					class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"

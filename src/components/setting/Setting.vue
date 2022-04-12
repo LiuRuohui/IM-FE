@@ -3,7 +3,6 @@
 
 	import mobile from "../../composables/mobile";
 
-	import Switch from "../components/Switch.vue";
 	import User from "./components/User.vue";
 
 	//两个svg，setting页面的切换
