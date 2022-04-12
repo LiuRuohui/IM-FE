@@ -3,13 +3,11 @@
 	import { accountTest, passwdTest } from "/src/composables/tool";
 	import { http } from "/src/composables/http";
 
- let isShow = ref(false)
 	//获取要修改的账号密码
 	const account = ref("");
 	const passwd = ref("");
 
   function confirm(){
-    isShow.value = !isShow.value
     if (!accountTest(account.value)) {
 			console.log("账号格式不正确！", account.value);
 			return;
