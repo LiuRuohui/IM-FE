@@ -37,8 +37,13 @@
 		info.getInfo();
 	});
 
+    function setting(){
+
+    }
+
 	function update() {
-		if (!accountTest(account.value)) {
+
+		/*if (!accountTest(account.value)) {
 			console.log("账号格式不正确！", account.value);
 			return;
 		}
@@ -62,6 +67,7 @@
 				console.log("修改密码失败", error);
 			}
 		);
+        */
 	}
 
 	//头像点击切换事件
@@ -135,7 +141,7 @@
 					<div
 						class="font-sans font-semibold antialiased text-xl select-none flex flex-row"
 					>
-						<p>隐私设置</p>
+						<p @click="setting">隐私设置</p>
 						<div class="flex flex-grow flex-row-reverse">
 							<button
 								class="font-sans font-semibold hover:cursor-pointer"
@@ -169,9 +175,11 @@
 								v-model="passwd"
 							/>
 						</div>
+						<div class="rounded-md my-4">
+							<button class="btn">确认修改</button>
+						</div>
 					</div>
 				</div>
-				<!--2-->
 				<div class="w-full text-base mt-6">
 					<div>
 						<div class="flex justify-between mt-3">
