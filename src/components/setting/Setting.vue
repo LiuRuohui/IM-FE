@@ -22,6 +22,7 @@
 	const imgBox = ref(true);
 
 	let isShow = ref(true)
+	let font = ref("更改账号密码")
 
 	const typeComponentMap = {
 		1: User,
@@ -42,6 +43,11 @@
 
 	function update() {
 		isShow.value = !isShow.value
+		if(font.value == "更改账号密码"){
+			font.value = "返回"
+		}else{
+			font.value = "更改账号密码"
+		}
 	}
 
 	//头像点击切换事件
@@ -121,7 +127,7 @@
 								class="font-sans font-semibold hover:cursor-pointer"
 								@click="update"
 							>
-								修改账号密码
+								{{font}}
 							</button>
 						</div>
 					</div>
