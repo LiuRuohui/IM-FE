@@ -65,7 +65,7 @@
 			<img class="h-10 w-10" :src="turn.img" alt="turn" />
 		</span>
 		<div
-			class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r"
+			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r"
 			:class="turn.value ? 'hidden' : ''"
 		>
 			<div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
@@ -168,7 +168,7 @@
 								alt="更多"
 							/>
 						</div>
-						<div class="hover:cursor-pointer sm:w-12">
+						<div class="hover:cursor-pointer md:w-12">
 							<img
 								class="h-10 opacity-60 hover:opacity-100"
 								src="/src/assets/img/视频.svg"

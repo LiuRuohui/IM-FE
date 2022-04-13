@@ -21,7 +21,7 @@
 			<img class="h-10 w-10" :src="turn.img" alt="down" />
 		</span>
 		<div
-			class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r"
+			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r"
 			:class="turn.value ? 'hidden' : ''"
 		>
 			<div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 		</div>
-				<div
+		<div
 			class="flex-grow h-full max-h-screen lg:block"
 			:class="turn.value ? '' : 'hidden'"
 		>
