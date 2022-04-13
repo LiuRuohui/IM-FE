@@ -1,6 +1,6 @@
 <script setup>
 	import { reactive, ref, onMounted } from "vue";
-
+	import mobile from "../../composables/mobile";
 	const height = ref("0px");
 	const fileContainer = ref(null);
 
@@ -8,6 +8,7 @@
 		id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 		message: [],
 	});
+	const turn = mobile();
 
 	onMounted(() => {
 		height.value = fileContainer.value.offsetHeight + "px";
@@ -16,7 +17,13 @@
 
 <template>
 	<div class="flex-grow h-full flex flex-wrap overflow-y-auto relative">
-		<div class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r">
+		<span class="absolute bottom-3 right-3 lg:hidden z-50" @click="turn.switch">
+			<img class="h-10 w-10" :src="turn.img" alt="down" />
+		</span>
+		<div
+			class="w-full md:w-96 h-full flex flex-col overflow-hidden select-none border-r"
+			:class="turn.value ? 'hidden' : ''"
+		>
 			<div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
 				<div class="w-5/6 relative">
 					<input
@@ -88,6 +95,10 @@
 				</div>
 			</div>
 		</div>
+		<div
+			class="flex-grow h-full max-h-screen lg:block"
+			:class="turn.value ? '' : 'hidden'"
+		></div>
 	</div>
 </template>
 
