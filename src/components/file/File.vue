@@ -95,10 +95,45 @@
 				</div>
 			</div>
 		</div>
-		<div
+				<div
 			class="flex-grow h-full max-h-screen lg:block"
 			:class="turn.value ? '' : 'hidden'"
-		></div>
+		>
+			<div class="flex flex-col">
+				<div
+					class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"
+				>
+					<div
+						class="flex mx-4 sm:w-12 sm:h-12 rounded-full my-3 m-auto relative box-border"
+					>
+						<div
+							class="absolute top-0.5 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-600 border-2 border-slate-100"
+						></div>
+						<img
+							class="rounded-full sm:h-10 sm:w-10"
+							src="/src/assets/avatar/squidWard.jpg"
+							alt="章鱼哥"
+						/>
+					</div>
+					<div class="flex flex-col justify-center mr-4">
+						<div class="flex h-1/2 pt-4">
+							<div class="font-bold text-sm opacity-70 flex items-center">林凌</div>
+						</div>
+						<div class="truncate opacity-40 text-xs h-1/2 pt-1">在线</div>
+					</div>
+					<div class="flex-grow flex flex-row-reverse py-4 pr-4">
+						<div class="hover:cursor-pointer sm:w-12">
+							<img
+								class="h-10 opacity-60 hover:opacity-100"
+								src="/src/assets/img/更多.svg"
+								alt="更多"
+							/>
+						</div>
+					</div>
+				</div>
+				<!--123-->
+			</div>
+		</div>
 	</div>
 </template>
 
