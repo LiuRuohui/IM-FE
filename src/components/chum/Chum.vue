@@ -135,7 +135,7 @@
 			</div>
 		</div>
 		<div
-			class="h-screen flex-grow flex-col md:block select-none"
+			class="flex-grow h-full max-h-screen lg:block"
 			:class="turn.value ? '' : 'hidden'"
 		>
 			<div class="flex flex-col">
@@ -143,13 +143,13 @@
 					class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"
 				>
 					<div
-						class="flex mx-4 w-8 h-12 md:w-12 md:h-12 rounded-full my-3 m-auto relative box-border"
+						class="flex mx-4 md:w-12 md:h-12 rounded-full my-3 m-auto relative box-border"
 					>
 						<div
 							class="absolute top-0.5 w-2 h-2 md:w-3 md:h-3 rounded-full bg-green-600 border-2 border-slate-100"
 						></div>
 						<img
-							class="rounded-full"
+							class="rounded-full md:h-10 md:w-10"
 							src="/src/assets/avatar/squidWard.jpg"
 							alt="章鱼哥"
 						/>
@@ -210,8 +210,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-full h-8 justify-center items-center flex pt-2 bg-slate-100">
-					<div class="w-full relative flex">
+				<div class="w-full h-8 justify-center items-center flex flex-grow pt-2 bg-slate-100">
+					<div class="w-full relative flex flex-row">
 						<input
 							class="w-full h-10 rounded-full box-border pl-16 pr-4 py-3 outline-none text-sm select-none border border-gray-100 focus:border-gray-200"
 							type="text"
@@ -220,16 +220,16 @@
 							v-model="message"
 						/>
 						<img
-							class="absolute w-6 h-6 md:left-7 drag bottom-1.5 opacity-60"
+							class="absolute w-6 h-6 sm:left-7 drag bottom-1.5 opacity-60"
 							src="/src/assets/img/链接.svg"
 						/>
 						<img
-							class="md:right-12 buttom-1 my-2.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer"
+							class="sm:right-12 buttom-1 my-2.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer"
 							src="/src/assets/img/微笑.svg"
 							alt="表情"
 						/>
 						<img
-							class="md:right-4 buttom-1 my-2.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer"
+							class="sm:right-4 buttom-1 my-2.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer"
 							src="/src/assets/img/发送.svg"
 							alt="发送"
 							@click="sendMsg"
