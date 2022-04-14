@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <div class="w-full flex h-40 bg-slate-50 select-none items-center">
-    <div class="flex flex-row pl-8">
+  <div class="w-full flex h-40 bg-slate-50 select-none items-center justify-center">
+    <div class="flex flex-row">
       <div class="flex flex-col px-8">
         <div class="font-light opacity-70">请选择上传的类型</div>
         <select name="" id="" class="display-none">
