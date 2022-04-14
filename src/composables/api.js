@@ -58,6 +58,7 @@ Note.getContent = note.getContent;
 Note.updateContent = note.updateContent;
 Note.updateTitle = note.updateTitle;
 Note.create = note.create;
+Note.del = note.del;
 
 /*** 
 

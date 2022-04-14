@@ -8,6 +8,8 @@
 
 	import { dateFormat } from "../../composables/tool";
 
+	import more from "../../assets/img/删除.svg";
+
 	//加载异步组件
 	const Markdown = defineAsyncComponent(() => import("./components/Markdown.vue"));
 
@@ -45,7 +47,6 @@
 		}
 		await Note.updateContent(article.id, md);
 		await Note.updateTitle(article.id, article.title);
-		console.log(delHtmlTag(h5));
 		Note.getIndex();
 	}
 
@@ -62,9 +63,12 @@
 		Note.create();
 	}
 
-	//去掉所有的html标记
-	function delHtmlTag(str) {
-		return str.replace(/<[^>]+>/g, "").replace(/^\s+|\s+$/g, "");
+	async function del(noteId) {
+		await Note.del(noteId);
+		article.id = "";
+		article.title = "";
+		article.value = "";
+		console.log("删除");
 	}
 </script>
 
@@ -110,7 +114,7 @@
 						创建会话
 						<div class="inline-block item-center">
 							<img
-								class="h-8 inline-block drag rounded-full"
+								class="h-8 inline-block drag rounded-full opacity-60 hover:opacity-100 cursor-pointer"
 								src="/src/assets/img/加号.svg"
 								@click="create"
 							/>
@@ -121,11 +125,17 @@
 					<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
 						<div class="flex flex-col my-4 mx-8">
 							<div
-								class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
+								class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2 relative"
 								v-for="notes in note.data"
 								:key="notes.ID"
 								@click="getMd(notes.ID, notes.Title)"
 							>
+								<span
+									class="absolute bottom-3 right-3 opacity-70 hover:opacity-100"
+									@click.stop="del(notes.ID)"
+								>
+									<img class="h-7 w-7" :src="more" alt="" />
+								</span>
 								<div class="h-full flex items-center">
 									<img
 										src="/src/assets/pic/450824.jpg"

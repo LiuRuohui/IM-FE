@@ -42,4 +42,9 @@ function dateFormat(timestamp) {
 	return Y + M + D;
 }
 
-export { debounce, accountTest, passwdTest, dateFormat };
+//去掉所有的html标记
+function delHtmlTag(str) {
+	return str.replace(/<[^>]+>/g, "").replace(/^\s+|\s+$/g, "");
+}
+
+export { debounce, accountTest, passwdTest, dateFormat, delHtmlTag };

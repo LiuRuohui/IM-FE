@@ -1,3 +1,4 @@
+import { async } from "@kangc/v-md-editor";
 import { reactive } from "vue";
 import { http } from "../http";
 
@@ -8,6 +9,7 @@ const note = reactive({
 	updateContent,
 	updateTitle,
 	create,
+	del,
 });
 
 /*** 
@@ -86,6 +88,22 @@ async function create() {
 			console.log("创建笔记内容失败", error);
 		}
 	);
+	getIndex();
+}
+
+async function del(noteId) {
+	await http
+		.post("/note/del", {
+			noteId: noteId,
+		})
+		.then(
+			(data) => {
+				console.log("创建笔记内容成功", data);
+			},
+			(error) => {
+				console.log("创建笔记内容失败", error);
+			}
+		);
 	getIndex();
 }
 
