@@ -1,6 +1,7 @@
 <script setup>
 	import { reactive, ref, onMounted } from "vue";
 	import mobile from "../../composables/mobile";
+import Upload from "./components/upload.vue";
 	const height = ref("0px");
 	const fileContainer = ref(null);
 
@@ -96,10 +97,10 @@
 			</div>
 		</div>
 		<div
-			class="flex-grow h-full max-h-screen lg:block"
+			class="flex-grow h-full max-h-screen lg:block select-none"
 			:class="turn.value ? '' : 'hidden'"
 		>
-			<div class="flex flex-col">
+			<div class="flex flex-col h-full">
 				<div
 					class="w-full h-24 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"
 				>
@@ -124,7 +125,11 @@
 						</div>
 					</div>
 				</div>
-				<!--123-->
+				<div class="w-full flex flex-grow">
+					<div>123</div>
+				</div>
+				<!--upload组件部分-->
+				<Upload></Upload>
 			</div>
 		</div>
 	</div>
