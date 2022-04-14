@@ -126,7 +126,7 @@ import Upload from "./components/upload.vue";
 					</div>
 				</div>
 				<div class="w-full flex flex-grow">
-					<div>123</div>
+					<div></div>
 				</div>
 				<!--upload组件部分-->
 				<Upload></Upload>
