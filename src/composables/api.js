@@ -45,6 +45,8 @@ Infos.postSite = postSite;
 Infos.postGithub = postGithub;
 Infos.postWeibo = postWeibo;
 Infos.postQq = postQq;
+Infos.updateAccount = updateAccount;
+Infos.updatePasswd = updatePasswd;
 /***
 
         用户信息函数声明
@@ -234,6 +236,28 @@ function postQq(url, values) {
 		},
 		(error) => {
 			console.log("提交qq失败", error);
+		}
+	);
+}
+
+function updateAccount(account) {
+	http.post("/user/updateAccount", { account: account }, "").then(
+		(data) => {
+			console.log("更改账号成功", data);
+		},
+		(error) => {
+			console.log("更改账号失败", error);
+		}
+	);
+}
+
+function updatePasswd(passwd) {
+	http.post("/user/updatePasswd", { passwd: passwd }, "").then(
+		(data) => {
+			console.log("修改密码成功", data);
+		},
+		(error) => {
+			console.log("修改密码失败", error);
 		}
 	);
 }
