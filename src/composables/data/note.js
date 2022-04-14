@@ -31,7 +31,7 @@ function getIndex() {
 }
 
 async function getContent(id) {
-	let text = "666";
+	let text;
 	await http
 		.post("/note/content", {
 			noteId: id,
