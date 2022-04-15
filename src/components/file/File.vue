@@ -119,7 +119,7 @@ function upload(){
       :class="turn.value ? '' : 'hidden'"
     >
       <div class="flex flex-col h-full">
-		<Preview></Preview>
+		<!--<Preview></Preview> -->
         <!--upload组件部分-->
         <Upload></Upload>
       </div>
