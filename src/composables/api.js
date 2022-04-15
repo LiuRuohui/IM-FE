@@ -47,6 +47,9 @@ Infos.postWeibo = postWeibo;
 Infos.postQq = postQq;
 Infos.updateAccount = updateAccount;
 Infos.updatePasswd = updatePasswd;
+Infos.data = function () {
+	return info.data;
+};
 /***
 
         用户信息函数声明
@@ -59,6 +62,9 @@ Note.updateContent = note.updateContent;
 Note.updateTitle = note.updateTitle;
 Note.create = note.create;
 Note.del = note.del;
+Note.data = function () {
+	return note.data;
+};
 
 /*** 
 
