@@ -150,12 +150,12 @@
 										<div
 											class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
 										>
-											<div class>
+											<div class="w-20 md:w-28 truncate">
 												{{ notes.Title == "" ? "空标题" : notes.Title }}
 											</div>
 										</div>
 										<div
-											class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse"
+											class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse w-16"
 										>
 											<div class>{{ dateFormat(notes.CreateTime) }}</div>
 										</div>
