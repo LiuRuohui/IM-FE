@@ -69,29 +69,44 @@
 		article.value = "";
 		console.log("删除");
 	}
-
+	//排序事件触发
+	const sort = ref("up");
 	//绑定搜索框值
 	const search = ref("");
 	// 绑定搜索结果，用于实时搜索
 	const notes = computed(() => {
+		let result = [];
 		let arr = search.value.trim();
 		if (arr.length === 0) {
-			return Note.data();
-		}
-		arr = arr.split(" ");
-		let result = [];
-		for (const keyword of arr) {
-			for (const element of Note.data()) {
-				if (element.Title.includes(keyword)) {
-					result.push(element);
-					continue;
-				}
-				if (element.Abstract.includes(keyword)) {
-					result.push(element);
-					continue;
+			result = Note.data();
+		} else {
+			//按空格分割
+			arr = arr.split(" ");
+			//对keyword遍历搜索
+			for (const keyword of arr) {
+				// 对元素本身进行遍历搜索
+				for (const element of Note.data()) {
+					if (element.Title.toUpperCase().includes(keyword.toUpperCase())) {
+						result.push(element);
+						continue;
+					}
+					if (element.Abstract.toUpperCase().includes(keyword.toUpperCase())) {
+						result.push(element);
+						continue;
+					}
 				}
 			}
 		}
+		if (sort.value === "up") {
+			result = result.sort(function (a, b) {
+				return Number(b.CreateTime) - Number(a.CreateTime);
+			});
+		} else if (sort.value === "down") {
+			result = result.sort(function (a, b) {
+				return Number(a.CreateTime) - Number(b.CreateTime);
+			});
+		}
+
 		return result;
 	});
 </script>
@@ -127,12 +142,11 @@
 					<div class="opacity-60 mt-1 flex-1">
 						列表排序:
 						<select
-							name
-							id
 							class="border-none outline-none font-bold text-center appearance-none"
+							v-model="sort"
 						>
-							<option value>最新</option>
-							<option value>倒序</option>
+							<option :value="'up'">最新</option>
+							<option :value="'down'">倒序</option>
 						</select>
 					</div>
 					<div class="opacity-60">
