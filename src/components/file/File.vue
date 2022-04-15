@@ -6,6 +6,9 @@ import Preview from "./components/preview.vue";
 const height = ref("0px");
 const fileContainer = ref(null);
 
+const isShow = ref("true");
+const msg = ref("上传文件")
+
 const files = reactive({
   id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
   message: [],
@@ -17,7 +20,12 @@ onMounted(() => {
 });
 
 function upload(){
-	console.log("upload");
+	isShow.value = !isShow.value;
+	if(msg.value == "上传文件"){
+		msg.value = "预览文件"
+	}else {
+		msg.value = "上传文件"
+	}
 }
 </script>
 
@@ -53,11 +61,8 @@ function upload(){
             <option value>最后文件优先</option>
           </select>
         </div>
-        <button class="opacity-60" @click="upload">
-          上传文件
-          <div class="inline-block item-center">
-            <img class="h-9 inline-block" src="/src/assets/img/加号.svg" />
-          </div>
+        <button class="opacity-60 pr-2" @click="upload">
+          {{msg}}
         </button>
       </div>
       <div class="w-full flex-grow bg-gray-50" ref="fileContainer">
@@ -119,9 +124,9 @@ function upload(){
       :class="turn.value ? '' : 'hidden'"
     >
       <div class="flex flex-col h-full">
-		<!--<Preview></Preview> -->
         <!--upload组件部分-->
-        <Upload></Upload>
+		<Preview v-if="isShow"></Preview>
+        <Upload v-else="!isShow"></Upload>
       </div>
     </div>
   </div>
