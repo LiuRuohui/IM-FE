@@ -2,11 +2,13 @@
 import {File} from "/src/composables/api"
 function upload(){
   let s = document.getElementById("file")
+  let formData = new FormData();
+  formData.append("file",s.files[0]);
+  console.log(formData)
   if(s.files[0] == undefined){
     return
   }
-  console.log(s.files[0].name)
-  //File.upload()
+  File.upload(formData)
 }
 </script>
 

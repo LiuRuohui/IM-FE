@@ -18,9 +18,7 @@ const file = reactive({
 ***/
 
 async function upload(file) {
-    await http.post("/file/upload", {
-        file: file
-    }).then(
+    await http.post1("/file/upload", file).then(
         (data) => {
             console.log("上传文件成功", data);
         },

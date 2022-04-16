@@ -3,7 +3,8 @@ import Office from './office.vue';
 import Audio from './audio.vue';
 import Default from './default.vue';
 import Picture from './picture.vue';
-import Video from './video.vue';</script>
+import Video from './video.vue';
+</script>
 
 <template>
   <div class="flex flex-col h-full">
