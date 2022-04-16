@@ -1,7 +1,5 @@
 <script setup>
-	import { onMounted, reactive, ref, defineAsyncComponent } from "vue";
-
-	import { note } from "../../composables/data/note";
+	import { onMounted, reactive, ref, defineAsyncComponent, computed } from "vue";
 
 	import { Note } from "../../composables/api";
 	import mobile from "../../composables/mobile";
@@ -50,7 +48,7 @@
 		Note.getIndex();
 	}
 
-	// 更新标题用
+	// 更新标题事件触发
 	async function updateTitle() {
 		if (!article.id) {
 			return;
@@ -59,10 +57,11 @@
 		Note.getIndex();
 	}
 
+	// 创建事件触发
 	function create() {
 		Note.create();
 	}
-
+	// 删除事件触发
 	async function del(noteId) {
 		await Note.del(noteId);
 		article.id = "";
@@ -70,6 +69,46 @@
 		article.value = "";
 		console.log("删除");
 	}
+	//排序事件触发
+	const sort = ref("up");
+	//绑定搜索框值
+	const search = ref("");
+	// 绑定搜索结果，用于实时搜索
+	const notes = computed(() => {
+		let result = [];
+		let arr = search.value.trim();
+		if (arr.length === 0) {
+			result = Note.data();
+		} else {
+			//按空格分割
+			arr = arr.split(" ");
+			//对keyword遍历搜索
+			for (const keyword of arr) {
+				// 对元素本身进行遍历搜索
+				for (const element of Note.data()) {
+					if (element.Title.toUpperCase().includes(keyword.toUpperCase())) {
+						result.push(element);
+						continue;
+					}
+					if (element.Abstract.toUpperCase().includes(keyword.toUpperCase())) {
+						result.push(element);
+						continue;
+					}
+				}
+			}
+		}
+		if (sort.value === "up") {
+			result = result.sort(function (a, b) {
+				return Number(b.CreateTime) - Number(a.CreateTime);
+			});
+		} else if (sort.value === "down") {
+			result = result.sort(function (a, b) {
+				return Number(a.CreateTime) - Number(b.CreateTime);
+			});
+		}
+
+		return result;
+	});
 </script>
 
 <template>
@@ -89,6 +128,7 @@
 						class="box-border rounded-full h-9 pl-10 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
 						type="text"
 						placeholder="输入搜索的内容"
+						v-model="search"
 					/>
 					<img
 						class="box-content w-5 h-5 absolute top-2 left-3 pr-1 border-r border-gray-300 drag"
@@ -102,12 +142,11 @@
 					<div class="opacity-60 mt-1 flex-1">
 						列表排序:
 						<select
-							name
-							id
 							class="border-none outline-none font-bold text-center appearance-none"
+							v-model="sort"
 						>
-							<option value>最新</option>
-							<option value>倒序</option>
+							<option :value="'up'">最新</option>
+							<option :value="'down'">倒序</option>
 						</select>
 					</div>
 					<div class="opacity-60">
@@ -126,13 +165,13 @@
 						<div class="flex flex-col my-4 mx-8">
 							<div
 								class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2 relative"
-								v-for="notes in note.data"
-								:key="notes.ID"
-								@click="getMd(notes.ID, notes.Title)"
+								v-for="note in notes"
+								:key="note.ID"
+								@click="getMd(note.ID, note.Title)"
 							>
 								<span
 									class="absolute bottom-3 right-3 opacity-70 hover:opacity-100"
-									@click.stop="del(notes.ID)"
+									@click.stop="del(note.ID)"
 								>
 									<img class="h-7 w-7" :src="more" alt="" />
 								</span>
@@ -150,20 +189,20 @@
 										<div
 											class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
 										>
-											<div class>
-												{{ notes.Title == "" ? "空标题" : notes.Title }}
+											<div class="w-20 md:w-28 truncate">
+												{{ note.Title == "" ? "空标题" : note.Title }}
 											</div>
 										</div>
 										<div
-											class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse"
+											class="font-semibold opacity-50 group-hover:opacity-90 text-sm flex items-center flex-grow flex-row-reverse w-16"
 										>
-											<div class>{{ dateFormat(notes.CreateTime) }}</div>
+											<div class>{{ dateFormat(note.CreateTime) }}</div>
 										</div>
 									</div>
 									<div
 										class="inline-block truncate opacity-70 text-sm group-hover:opacity-100 h-1/2"
 									>
-										{{ notes.Abstract == "" ? "摘要为空！" : notes.Abstract }}
+										{{ note.Abstract == "" ? "摘要为空！" : note.Abstract }}
 									</div>
 								</div>
 							</div>
