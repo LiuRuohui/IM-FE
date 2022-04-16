@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup>
+import {File} from "/src/composables/api"
+function upload(){
+  let s = document.getElementById("file")
+  if(s.files[0] == undefined){
+    return
+  }
+  console.log(s.files[0])
+  //File.upload()
+}
+</script>
 
 <template>
   <div class="w-full flex h-full bg-white select-none items-center justify-center border-8 rounded-r-xl rounded-l-xl shadow-lg">
@@ -7,8 +17,13 @@
       <div>
         <input
           type="file"
+          id = "file"
+          name = "file"
           class="block w-full text-sm text-slate-500 file:mr-8 file:py-2 file:px-10 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 hover:cursor-pointer"
         />
+      </div>
+      <div>
+        <button class="btn mt-4" @click="upload">确认上传</button>
       </div>
     </div>
   </div>

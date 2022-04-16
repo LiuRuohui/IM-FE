@@ -35,7 +35,7 @@ function getIndex() {
     http.get("/file/index", "").then(
         (data) => {
             console.log("获取文件列表成功", data);
-            note.data = data;
+            file.data = data;
         },
         (error) => {
             console.log("获取文件列表失败", error);
