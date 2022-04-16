@@ -1,5 +1,6 @@
 import { reactive } from "vue";
 import { http } from "../http";
+import { async } from "@kangc/v-md-editor";
 
 const file = reactive({
     data: [],
@@ -16,24 +17,79 @@ const file = reactive({
 
 ***/
 
-function upload() {
-
+async function upload(file) {
+    await http.post("/file/upload", {
+        file: file
+    }).then(
+        (data) => {
+            console.log("上传文件成功", data);
+        },
+        (error) => {
+            console.log("上传文件失败", error);
+        }
+    );
 }
+
 
 function getIndex() {
-
+    http.get("/file/index", "").then(
+        (data) => {
+            console.log("获取文件列表成功", data);
+            note.data = data;
+        },
+        (error) => {
+            console.log("获取文件列表失败", error);
+        }
+    );
 }
 
-function getContent() {
-
+async function getContent(fileId) {
+    let text
+    await http
+        .post("/file/content", {
+            fileId: fileId,
+        })
+        .then(
+            (data) => {
+                text = data;
+            },
+            (error) => {
+                console.log("获取文件内容失败", error);
+            }
+        );
+    return text
 }
 
-function updateName() {
-
+async function updateName(fileId, name) {
+    await http
+        .post("/file/updateName", {
+            fileId: fileId,
+            fileName: name,
+        })
+        .then(
+            (data) => {
+                console.log("更新文件标题成功", data);
+            },
+            (error) => {
+                console.log("获取文件标题失败", error);
+            }
+        );
 }
 
-function del() {
-
+async function del(fileId) {
+    await http
+        .post("/file/del", {
+            fileId: fileId,
+        })
+        .then(
+            (data) => {
+                console.log("删除文件成功", data);
+            },
+            (error) => {
+                console.log("删除文件失败", error);
+            }
+        );
+    getIndex();
 }
 
 export { file }

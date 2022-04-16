@@ -278,4 +278,4 @@ function updatePasswd(passwd) {
     );
 }
 
-export { Log, Infos, Note };
+export { Log, Infos, Note, File };
