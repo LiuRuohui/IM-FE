@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import Office from './office.vue';
+import Audio from './audio.vue';
+import Default from './default.vue';
+import Picture from './picture.vue';
+import Video from './video.vue';</script>
 
 <template>
   <div class="flex flex-col h-full">
@@ -31,10 +36,12 @@
       </div>
     </div>
     <div class="w-full flex flex-grow">
-      <div class="w-full m-8 border-2 border-red-100">
-        <!--文件浏览部分 分不同组件实现不同功能-->
-        <iframe src="https://pan.baidu.com/s/1sX8oVZ9uEWEJNxNsSZ8g8Q" frameborder="0" class="w-full h-full"></iframe>
-      </div>
+      <!--文件浏览部分 分不同组件实现不同功能-->
+      <Office></Office>
+      <!--<Audio></Audio>
+      <Default></Default>
+      <Picture></Picture>
+      <Video></Video> -->
     </div>
   </div>
 </template>
