@@ -31,7 +31,10 @@
       </div>
     </div>
     <div class="w-full flex flex-grow">
-      <div></div>
+      <div class="w-full m-8 border-2 border-red-100">
+        <!--文件浏览部分 分不同组件实现不同功能-->
+        <iframe src="https://pan.baidu.com/s/1sX8oVZ9uEWEJNxNsSZ8g8Q" frameborder="0" class="w-full h-full"></iframe>
+      </div>
     </div>
   </div>
 </template>

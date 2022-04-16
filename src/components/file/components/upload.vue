@@ -5,7 +5,7 @@ function upload(){
   if(s.files[0] == undefined){
     return
   }
-  console.log(s.files[0])
+  console.log(s.files[0].name)
   //File.upload()
 }
 </script>

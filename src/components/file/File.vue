@@ -3,6 +3,10 @@ import { reactive, ref, onMounted } from "vue";
 import mobile from "../../composables/mobile";
 import Upload from "./components/upload.vue";
 import Preview from "./components/preview.vue";
+
+import { File } from "/src/composables/api"
+import { dateFormat } from "../../composables/tool";
+
 const height = ref("0px");
 const fileContainer = ref(null);
 
@@ -10,9 +14,10 @@ const isShow = ref("true");
 const msg = ref("上传文件")
 
 const files = reactive({
-  id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-  message: [],
+  id : "",
+  Name : "",
 });
+
 const turn = mobile();
 
 onMounted(() => {
@@ -73,7 +78,8 @@ function upload(){
           <div class="flex flex-col my-4 mx-8">
             <div
               class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
-              v-for="notes in files.id"
+              v-for="file in files.id"
+              :key="file.ID"
             >
               <div class="h-full flex items-center">
                 <div class="h-16 w-16 bg-blue-300">
