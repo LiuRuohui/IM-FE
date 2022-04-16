@@ -50,8 +50,8 @@ Infos.postWeibo = postWeibo;
 Infos.postQq = postQq;
 Infos.updateAccount = updateAccount;
 Infos.updatePasswd = updatePasswd;
-Infos.data = function () {
-	return info.data;
+Infos.data = function() {
+    return info.data;
 };
 /***
 
@@ -65,15 +65,23 @@ Note.updateContent = note.updateContent;
 Note.updateTitle = note.updateTitle;
 Note.create = note.create;
 Note.del = note.del;
-Note.data = function () {
-	return note.data;
+Note.data = function() {
+    return note.data;
 };
 
-/*** 
+File.upload = file.upload;
+File.getIndex = file.getIndex;
+File.getContent = file.getContent;
+File.updateName = file.updateName;
+File.del = file.del;
+File.data = function() {
+        return file.data;
+    }
+    /*** 
 
-    登录函数定义
+        登录函数定义
 
-***/
+    ***/
 
 //登录函数，传入账号和密码
 async function logIn(account, passwd) {

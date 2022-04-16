@@ -7,8 +7,33 @@ const file = reactive({
     getIndex,
     getContent,
     updateName,
-    updateTitle,
     del,
 });
+
+/*** 
+
+    文件函数定义
+
+***/
+
+function upload() {
+
+}
+
+function getIndex() {
+
+}
+
+function getContent() {
+
+}
+
+function updateName() {
+
+}
+
+function del() {
+
+}
 
 export { file }
