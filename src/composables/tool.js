@@ -58,4 +58,9 @@ function fileSize(size) {
     return size.toFixed(2) + unit[index];
 }
 
-export { debounce, accountTest, passwdTest, dateFormat, delHtmlTag, fileSize };
+//文件图像函数
+function determineImg(fileType) {
+
+}
+
+export { debounce, accountTest, passwdTest, dateFormat, delHtmlTag, fileSize, determineImg };

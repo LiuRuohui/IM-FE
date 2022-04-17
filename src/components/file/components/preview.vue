@@ -14,7 +14,7 @@ import Video from './video.vue';
       <div
         class="flex mx-8 sm:w-20 sm:h-20 rounded-full my-4 m-auto relative box-border"
       >
-        <div><img src="/src/assets/img/pdf.svg" alt="" class="h-16" /></div>
+        <div><img src="/src/assets/filesvg/pdf.svg" alt="" class="h-16" /></div>
       </div>
       <div class="flex justify-center">
         <input
