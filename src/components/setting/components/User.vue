@@ -1,7 +1,7 @@
 <script setup>
-	import { Infos } from "../../../composables/api";
-
-	let data = Infos.data();
+	import { toRefs } from "vue";
+	import { info } from "../../../composables/data/info";
+	let { data } = toRefs(info);
 </script>
 <template>
 	<div class="flex-grow w-full flex flex-col">
@@ -20,17 +20,17 @@
 			</div>
 			<div class="flex justify-between w-1/3 ml-auto mr-auto mb-8">
 				<div class="w-7 h-auto">
-					<a href="{{data.Weibo}}">
+					<a :href="data.Weibo">
 						<img class="drag" src="/src/assets/img/weibo.svg" alt="weibo" />
 					</a>
 				</div>
 				<div class="w-7 h-auto">
-					<a href="{{data.Github}}">
+					<a :href="data.Github">
 						<img class="drag" src="/src/assets/img/github.svg" alt="github" />
 					</a>
 				</div>
 				<div class="w-7 h-auto">
-					<a href="{{data.Qq}}">
+					<a :href="data.Qq">
 						<img class="drag" src="/src/assets/img/qq.svg" alt="qq" />
 					</a>
 				</div>

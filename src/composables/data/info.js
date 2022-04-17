@@ -1,17 +1,16 @@
 // 使用封装好的http
 
-// 导出时需要对导出的info进行解构
 import { reactive } from "vue";
 import { http } from "../http";
-// import Router from "vue-router"
 import router from "../../router/router";
 
-// const route = useRoute()
+// 原始的info
 const info = reactive({
 	data: {},
 	getInfo,
 });
 
+//拷贝
 const Info = reactive({
 	data: {},
 	getInfos,
@@ -21,7 +20,7 @@ function getInfo() {
 	http.get("/user/info", {}, "").then(
 		(data) => {
 			info.data = data;
-			console.log("获取信息成功了");
+			console.log("获取信息成功了", data);
 		},
 		(error) => {
 			console.log("获取信息失败了", error);
