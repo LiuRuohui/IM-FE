@@ -4,7 +4,6 @@ function upload() {
   let s = document.getElementById("file");
   let formData = new FormData();
   formData.append("file",s.files[0]);
-  console.log(formData.get("file"))
   if (s.files[0] == undefined) {
     return;
   }
@@ -16,7 +15,7 @@ function upload() {
     var fileString = evt.target.result; // 读取文件内容
     console.log(fileString);
   };
-  File.upload(formData.get("file"))
+  File.upload(formData)
 }
 </script>
 
