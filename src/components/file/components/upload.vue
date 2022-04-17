@@ -20,8 +20,6 @@ function upload() {
   */
  //提交文件
   File.upload(formData)
-  File.getIndex()
-  File.data()
 }
 </script>
 

@@ -21,6 +21,7 @@ async function upload(file) {
     await http.post1("/file/upload", file).then(
         (data) => {
             console.log("上传文件成功", data);
+            getIndex();
         },
         (error) => {
             console.log("上传文件失败", error);
