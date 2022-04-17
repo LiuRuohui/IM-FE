@@ -18,16 +18,6 @@
 		value: "",
 	});
 
-	// 初始化定义容器高度
-	const height = ref("0px");
-	//获取md容器
-	const noteContainer = ref(null);
-
-	onMounted(() => {
-		//初始化挂载保证窗口问题，勿动
-		height.value = noteContainer.value.offsetHeight + "px";
-	});
-
 	//获取article内容并触发右侧更新
 	function getMd(id, title) {
 		Note.getContent(id).then((res) => (article.value = res.Content));
@@ -138,7 +128,7 @@
 				</div>
 			</div>
 			<div class="w-full flex-grow flex flex-col">
-				<div class="w-5/6 flex ml-auto mr-auto pb-2">
+				<div class="w-5/6 flex ml-auto mr-auto pb-2 h-10">
 					<div class="opacity-60 mt-1 flex-1">
 						列表排序:
 						<select
@@ -160,8 +150,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-full flex-grow bg-gray-50" ref="noteContainer">
-					<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
+				<div class="w-full flex-grow bg-gray-50 noteContainer">
+					<div class="w-full overflow-y-auto no-scrollbar">
 						<div class="flex flex-col my-4 mx-8">
 							<div
 								class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2 relative"
@@ -231,7 +221,10 @@
 		</div>
 	</div>
 </template>
-<style>
+<style scoped>
+	.noteContainer {
+		height: calc(100% - 6.5rem);
+	}
 	.MDbox {
 		height: calc(100% - 4.5rem);
 	}
