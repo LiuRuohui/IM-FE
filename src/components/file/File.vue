@@ -13,19 +13,18 @@ const fileContainer = ref(null);
 const isShow = ref("true");
 const msg = ref("上传文件")
 
-const files = reactive({
-  id : "",
-  Name : "",
-});
-
 const turn = mobile();
+
+let files = File.data()
 
 onMounted(() => {
   height.value = fileContainer.value.offsetHeight + "px";
+  File.getIndex()
 });
 
 function upload(){
 	isShow.value = !isShow.value;
+  console.log(files)
 	if(msg.value == "上传文件"){
 		msg.value = "预览文件"
 	}else {
@@ -78,7 +77,7 @@ function upload(){
           <div class="flex flex-col my-4 mx-8">
             <div
               class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
-              v-for="file in files.id"
+              v-for="file in files"
               :key="file.ID"
             >
               <div class="h-full flex items-center">
@@ -131,7 +130,7 @@ function upload(){
     >
       <div class="flex flex-col h-full">
         <!--upload组件部分-->
-		<Preview v-if="isShow"></Preview>
+		    <Preview v-if="isShow"></Preview>
         <Upload v-else="!isShow"></Upload>
       </div>
     </div>

@@ -11,7 +11,7 @@ const file = reactive({
     del,
 });
 
-/*** 
+/***
 
     文件函数定义
 
@@ -29,8 +29,8 @@ async function upload(file) {
 }
 
 
-function getIndex() {
-    http.get("/file/index", "").then(
+async function getIndex() {
+    await http.get("/file/index", "").then(
         (data) => {
             console.log("获取文件列表成功", data);
             file.data = data;
