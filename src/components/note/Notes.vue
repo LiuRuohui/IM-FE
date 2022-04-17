@@ -1,5 +1,5 @@
 <script setup>
-	import { onMounted, reactive, ref, defineAsyncComponent, computed } from "vue";
+	import { reactive, ref, defineAsyncComponent, computed } from "vue";
 
 	import { Note } from "../../composables/api";
 	import mobile from "../../composables/mobile";
