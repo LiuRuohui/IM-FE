@@ -37,7 +37,6 @@ function getInfos() {
 	http.get("/user/info", {}, "").then(
 		(data) => {
 			Info.data = data;
-			console.log("应该跳转");
 			router.push({
 				name: "setting",
 			});
