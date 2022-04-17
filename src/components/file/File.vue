@@ -128,9 +128,8 @@ function upload() {
       class="flex-grow h-full max-h-screen lg:block select-none"
       :class="turn.value ? '' : 'hidden'"
     >
-      <!-- 这部分需要进行更改 -->
       <div class="flex flex-col h-full">
-        <!--upload组件部分-->
+        <!--切换组件部分更流畅-->
         <Transition name="fade" mode="out-in">
           <keep-alive>
             <component

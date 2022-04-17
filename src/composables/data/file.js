@@ -16,6 +16,7 @@ const file = reactive({
 
 ***/
 
+//该函数post1，Content Type使用multipart/form-data 不需要QS序列化参数
 async function upload(file) {
     await http.post1("/file/upload", file).then(
         (data) => {

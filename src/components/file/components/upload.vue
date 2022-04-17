@@ -4,10 +4,11 @@ function upload() {
   let s = document.getElementById("file");
   let formData = new FormData();
   formData.append("file",s.files[0]);
+  //判断 若文件为空则判定为误触直接返回
   if (s.files[0] == undefined) {
+    console.log("上传的文件为空，请重试！")
     return;
   }
-  console.log(s.files[0]);
   /*
   var reader = new FileReader(); //新建一个FileReader
   reader.readAsText(s.files[0], "UTF-8"); //读取文件
@@ -17,6 +18,7 @@ function upload() {
     console.log(fileString);
   };
   */
+ //提交文件
   File.upload(formData)
   File.getIndex()
   File.data()
