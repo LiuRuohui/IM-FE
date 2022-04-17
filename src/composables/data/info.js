@@ -21,6 +21,7 @@ function getInfo() {
 	http.get("/user/info", {}, "").then(
 		(data) => {
 			info.data = data;
+			console.log("获取信息成功了");
 		},
 		(error) => {
 			console.log("获取信息失败了", error);
