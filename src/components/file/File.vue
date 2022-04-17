@@ -7,20 +7,12 @@
 	import { File } from "/src/composables/api";
 	import { dateFormat } from "../../composables/tool";
 
-	const height = ref("0px");
-	const fileContainer = ref(null);
-
 	const isShow = ref("true");
 	const msg = ref("上传文件");
 
 	const turn = mobile();
 
 	let files = File.data();
-
-	onMounted(() => {
-		height.value = fileContainer.value.offsetHeight + "px";
-		File.getIndex();
-	});
 
 	function upload() {
 		isShow.value = !isShow.value;
@@ -70,8 +62,8 @@
 						{{ msg }}
 					</button>
 				</div>
-				<div class="w-full flex-grow bg-gray-50" ref="fileContainer">
-					<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
+				<div class="w-full flex-grow bg-gray-50 file-list">
+					<div class="w-full overflow-y-auto no-scrollbar h-full">
 						<div class="flex flex-col my-4 mx-8">
 							<div
 								class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
@@ -131,6 +123,7 @@
 			class="flex-grow h-full max-h-screen lg:block select-none"
 			:class="turn.value ? '' : 'hidden'"
 		>
+    <!-- 这部分需要进行更改 -->
 			<div class="flex flex-col h-full">
 				<!--upload组件部分-->
 				<Preview v-if="isShow"></Preview>
@@ -140,4 +133,8 @@
 	</div>
 </template>
 
-<style></style>
+<style scoped>
+	.file-list {
+		height: calc(100vh - 6.5rem);
+	}
+</style>
