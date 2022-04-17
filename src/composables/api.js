@@ -5,7 +5,7 @@ import onlogined from "./onlogined";
 import router from "../router/router";
 
 //引入用户信息
-import { info } from "/src/composables/data/info";
+import { info } from "./data/info";
 import { note } from "./data/note";
 import { file } from "./data/file";
 //处理登录相关
