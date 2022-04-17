@@ -1,3 +1,8 @@
+import Officesvg from "../assets/filesvg/Office.svg"
+import Musicsvg from "../assets/filesvg/music.svg"
+import Pdfsvg from "../assets/filesvg/pdf.svg"
+import Jpgsvg from "../assets/filesvg/jpg.svg"
+import Videosvg from "../assets/filesvg/video.svg"
 //用户名要求，四到十位英文数字混合
 const accountRegexp = /^[a-zA-Z0-9_]{4,10}$/;
 
@@ -58,7 +63,7 @@ function fileSize(size) {
     return size.toFixed(2) + unit[index];
 }
 
-//文件图像函数
+//文件图像函数 判断传入参数 若符合相应的svg则返回对应的svg图像渲染
 function determineImg(fileType) {
 
 }
