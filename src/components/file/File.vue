@@ -31,27 +31,30 @@
 			<img class="h-10 w-10" :src="turn.img" alt="down" />
 		</span>
 		<div
-			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r"
+			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
 			:class="turn.value ? 'hidden' : ''"
 		>
 			<!-- 搜索框 -->
-			<div class="w-full h-16 flex justify-center items-center my-2 border-b border-gray-50">
-				<div class="w-5/6 relative">
+			<div
+				class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
+			>
+				<div class="w-5/6 relative opacity-70">
 					<input
-						class="box-border rounded-full h-9 pl-14 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
+						class="box-border rounded-full h-9 pl-10 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
 						type="text"
-						placeholder="请输入搜索的内容"
+						placeholder="输入搜索的内容"
 					/>
 					<img
-						class="box-content w-5 h-5 absolute top-2 left-6 border-gray-300 drag"
+						class="box-content w-5 h-5 absolute top-2 left-3 pr-1 border-r border-gray-300 drag"
 						src="/src/assets/img/search.svg"
+						alt
 					/>
 				</div>
 			</div>
 			<div class="flex-grow">
 				<!-- 排序效果 -->
-				<div class="w-5/6 flex mx-auto h-10">
-					<div class="opacity-60 my-1.5 flex-1 text-sm">
+				<div class="w-5/6 flex mx-auto h-10 pb-2">
+					<div class="opacity-60 my-1.5 flex-1">
 						列表排序:
 						<select class="outline-none border-none font-bold text-center">
 							<option value>最新文件优先</option>
@@ -135,6 +138,6 @@
 
 <style scoped>
 	.file-list {
-		height: calc(100vh - 6.5rem);
+		height: calc(100% - 6.5rem);
 	}
 </style>

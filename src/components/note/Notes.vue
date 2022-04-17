@@ -110,6 +110,7 @@
 			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
 			:class="turn.value ? 'hidden' : ''"
 		>
+			<!-- 搜索框 -->
 			<div
 				class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
 			>
