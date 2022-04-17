@@ -8,6 +8,7 @@ function upload() {
     return;
   }
   console.log(s.files[0]);
+  /*
   var reader = new FileReader(); //新建一个FileReader
   reader.readAsText(s.files[0], "UTF-8"); //读取文件
   reader.onload = function (evt) {
@@ -15,7 +16,10 @@ function upload() {
     var fileString = evt.target.result; // 读取文件内容
     console.log(fileString);
   };
+  */
   File.upload(formData)
+  File.getIndex()
+  File.data()
 }
 </script>
 
