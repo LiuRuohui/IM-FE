@@ -1,6 +1,5 @@
 import { reactive } from "vue";
 import { http } from "../http";
-import { async } from "@kangc/v-md-editor";
 
 const file = reactive({
     data: [],
