@@ -12,7 +12,7 @@
 	import { info, Info } from "/src/composables/data/info";
 	import { Infos } from "/src/composables/api";
 
-    import Update from "./components/Update.vue";
+	import Update from "./components/Update.vue";
 	import Privacy from "./components/Privacy.vue";
 	//异步组件加载
 	const UpdateInfo = defineAsyncComponent(() => import("./components/UpdateInfo.vue"));
@@ -20,8 +20,8 @@
 	const pageParams = ref(true);
 	const imgBox = ref(true);
 
-	let isShow = ref(true)
-	let font = ref("更改账号密码")
+	let isShow = ref(true);
+	let font = ref("更改账号密码");
 
 	const typeComponentMap = {
 		1: User,
@@ -36,16 +36,12 @@
 	//上下页
 	const turn = mobile();
 
-	onMounted(() => {
-		info.getInfo();
-	});
-
 	function update() {
-		isShow.value = !isShow.value
-		if(font.value == "更改账号密码"){
-			font.value = "返回"
-		}else{
-			font.value = "更改账号密码"
+		isShow.value = !isShow.value;
+		if (font.value == "更改账号密码") {
+			font.value = "返回";
+		} else {
+			font.value = "更改账号密码";
 		}
 	}
 
@@ -126,16 +122,16 @@
 								class="font-sans font-semibold hover:cursor-pointer"
 								@click="update"
 							>
-								{{font}}
+								{{ font }}
 							</button>
 						</div>
 					</div>
 				</div>
-			<Transition name="fade" mode="out-in">
-				<keep-alive>
-					<component @go="update" :is="ComponentMap[isShow ? 1 : 2]"></component>
-				</keep-alive>
-			</Transition>
+				<Transition name="fade" mode="out-in">
+					<keep-alive>
+						<component @go="update" :is="ComponentMap[isShow ? 1 : 2]"></component>
+					</keep-alive>
+				</Transition>
 			</div>
 		</div>
 	</div>
