@@ -1,7 +1,6 @@
 <script setup>
 	import { Info } from "/src/composables/data/info";
 	import { onMounted } from "vue";
-	const emit = defineEmits(["go"]);
 
 	onMounted(() => {
 		Info.getInfos();
