@@ -5,7 +5,7 @@ import Upload from "./components/upload.vue";
 import Preview from "./components/preview.vue";
 
 import { File } from "/src/composables/api";
-import { dateFormat } from "../../composables/tool";
+import { dateFormat, fileSize } from "../../composables/tool";
 
 const isShow = ref("true");
 const msg = ref("浏览文件");
@@ -108,7 +108,7 @@ function upload() {
                       <div
                         class="flex text-sm opacity-50 group-hover:opacity-90"
                       >
-                        {{ file.Size }}
+                        {{ fileSize(file.Size) }}
                       </div>
                       <div
                         class="flex text-sm flex-grow flex-row-reverse opacity-50 group-hover:opacity-90"
