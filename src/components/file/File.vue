@@ -17,6 +17,14 @@
 		2: Preview,
 	};
 
+  let filePreview = reactive({
+    id : "",
+    Name: "",
+    Time : "",
+    Url : "",
+    imgSrc : ""
+  })
+
 	// 初始化定义容器高度
 	const height = ref("0px");
 	//获取md容器
@@ -39,6 +47,18 @@
   function deleteFile(fileId) {
     console.log(fileId)
     File.del(fileId)
+  }
+
+  function preview(file){
+    filePreview.id = file.ID
+    filePreview.Name = file.Name
+    filePreview.Time = dateFormat(file.CreateTime)
+    filePreview.imgSrc = determineImg(file.Type, file.Name)
+    File.getContent(file.ID).then((res) => {
+      filePreview.Url = res.URL
+      console.log(filePreview)
+    })
+
   }
 
 </script>
@@ -79,7 +99,7 @@
 							<option value>最后文件优先</option>
 						</select>
 					</div>
-					<button class="opacity-60 pr-2" @click="upload">
+					<button class="opacity-60 pr-2 pt-2" @click="upload">
 						{{ msg }}
 					</button>
 				</div>
@@ -90,6 +110,7 @@
 								class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
 								v-for="file in File.data()"
 								:key="file.ID"
+                @click="preview(file)"
 							>
 								<div class="h-full flex items-center">
 									<div class="h-16 w-16">
