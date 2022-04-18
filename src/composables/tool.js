@@ -3,6 +3,9 @@ import Musicsvg from "../assets/filesvg/music.svg"
 import Pdfsvg from "../assets/filesvg/pdf.svg"
 import Jpgsvg from "../assets/filesvg/jpg.svg"
 import Videosvg from "../assets/filesvg/video.svg"
+import Textsvg from "../assets/filesvg/text.svg"
+import Zipsvg from "../assets/filesvg/zip.svg"
+import Defaultsvg from "../assets/filesvg/default.svg"
 //用户名要求，四到十位英文数字混合
 const accountRegexp = /^[a-zA-Z0-9_]{4,10}$/;
 
@@ -65,7 +68,17 @@ function fileSize(size) {
 
 //文件图像函数 判断传入参数 若符合相应的svg则返回对应的svg图像渲染
 function determineImg(fileType) {
-
+    if (fileType == 'application/octet-stream') {
+        return Textsvg
+    } else if (fileType == 'application/zip') {
+        return Zipsvg
+    } else if (fileType == 'application/pdf') {
+        return Pdfsvg
+    } else if (fileType == 'image/jpeg') {
+        return Jpgsvg
+    } else {
+        return Defaultsvg
+    }
 }
 
 export { debounce, accountTest, passwdTest, dateFormat, delHtmlTag, fileSize, determineImg };

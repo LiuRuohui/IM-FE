@@ -5,7 +5,7 @@
 	import Preview from "./components/preview.vue";
 
 	import { File } from "/src/composables/api";
-	import { dateFormat, fileSize } from "../../composables/tool";
+	import { dateFormat, fileSize, determineImg } from "../../composables/tool";
 
 	const isShow = ref("true");
 	const msg = ref("浏览文件");
@@ -94,7 +94,7 @@
 								<div class="h-full flex items-center">
 									<div class="h-16 w-16 bg-blue-300">
 										<img
-											src="/src/assets/img/压缩文件.svg"
+											:src="determineImg(file.Type)"
 											alt
 											class="py-2 h-full w-auto drag mx-2 inline-block"
 										/>
