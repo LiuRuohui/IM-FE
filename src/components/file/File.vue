@@ -92,7 +92,7 @@
 								:key="file.ID"
 							>
 								<div class="h-full flex items-center">
-									<div class="h-16 w-16 bg-blue-300">
+									<div class="h-16 w-16">
 										<img
 											:src="determineImg(file.Type)"
 											alt

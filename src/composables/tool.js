@@ -71,7 +71,7 @@ function determineImg(fileType) {
     if (fileType == 'application/octet-stream') {
         return Textsvg
     } else if (fileType == 'application/zip') {
-        return Zipsvg
+        return Officesvg
     } else if (fileType == 'application/pdf') {
         return Pdfsvg
     } else if (fileType == 'image/jpeg') {
