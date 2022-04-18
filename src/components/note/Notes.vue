@@ -1,5 +1,5 @@
 <script setup>
-	import { reactive, ref, defineAsyncComponent, computed } from "vue";
+	import { onMounted, reactive, ref, defineAsyncComponent, computed } from "vue";
 
 	import { Note } from "../../composables/api";
 	import mobile from "../../composables/mobile";
@@ -16,6 +16,16 @@
 		id: "",
 		title: "",
 		value: "",
+	});
+
+	// 初始化定义容器高度
+	const height = ref("0px");
+	//获取md容器
+	const noteContainer = ref(null);
+
+	onMounted(() => {
+		//初始化挂载保证窗口问题，勿动
+		height.value = noteContainer.value.offsetHeight + "px";
 	});
 
 	//获取article内容并触发右侧更新
@@ -110,7 +120,6 @@
 			class="w-full lg:w-96 h-full flex flex-col overflow-hidden select-none border-r border-gray-200"
 			:class="turn.value ? 'hidden' : ''"
 		>
-			<!-- 搜索框 -->
 			<div
 				class="w-full h-16 flex justify-center items-center mt-2 mb-2 border-b border-gray-100"
 			>
@@ -129,7 +138,7 @@
 				</div>
 			</div>
 			<div class="w-full flex-grow flex flex-col">
-				<div class="w-5/6 flex ml-auto mr-auto pb-2 h-10">
+				<div class="w-5/6 flex ml-auto mr-auto pb-2">
 					<div class="opacity-60 mt-1 flex-1">
 						列表排序:
 						<select
@@ -151,8 +160,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="w-full flex-grow bg-gray-50 noteContainer">
-					<div class="w-full overflow-y-auto no-scrollbar">
+				<div class="w-full flex-grow bg-gray-50" ref="noteContainer">
+					<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
 						<div class="flex flex-col my-4 mx-8">
 							<div
 								class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2 relative"
@@ -222,10 +231,7 @@
 		</div>
 	</div>
 </template>
-<style scoped>
-	.noteContainer {
-		height: calc(100% - 6.5rem);
-	}
+<style>
 	.MDbox {
 		height: calc(100% - 4.5rem);
 	}
