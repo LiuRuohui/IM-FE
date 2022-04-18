@@ -35,6 +35,12 @@
 			msg.value = "浏览文件";
 		}
 	}
+
+  function deleteFile(fileId) {
+    console.log(fileId)
+    File.del(fileId)
+  }
+
 </script>
 
 <template>
@@ -108,8 +114,9 @@
 											</div>
 											<div
 												class="flex flex-grow flex-row-reverse opacity-30 group-hover:opacity-60"
+                        @click="deleteFile(file.ID)"
 											>
-												<img src="/src/assets/img/更多.svg" alt="更多" />
+												<img src="/src/assets/img/delete.svg" alt="删除" class="h-8 mt-2"/>
 											</div>
 										</div>
 									</div>

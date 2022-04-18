@@ -83,6 +83,7 @@ async function del(fileId) {
         .then(
             (data) => {
                 console.log("删除文件成功", data);
+                file.getIndex();
             },
             (error) => {
                 console.log("删除文件失败", error);
