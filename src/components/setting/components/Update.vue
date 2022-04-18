@@ -1,6 +1,6 @@
 <script setup>
 	import { ref } from "vue";
-	import { accountTest, passwdTest } from "/src/composables/tool";
+	import { accountTest, passwdTest } from "../../../composables/tool";
 	import { Infos } from "../../../composables/api";
 
 	//获取要修改的账号密码

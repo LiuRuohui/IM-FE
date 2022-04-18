@@ -4,7 +4,7 @@
 	import Upload from "./components/upload.vue";
 	import Preview from "./components/preview.vue";
 
-	import { File } from "/src/composables/api";
+	import { File } from "../../composables/api";
 	import { dateFormat, fileSize, determineImg } from "../../composables/tool";
 
 	const isShow = ref("true");
