@@ -50,6 +50,7 @@
     File.getContent(file.ID).then((res) => {
 		filePreview.Url = res.URL
     })
+	console.log(filePreview)
   }
 
 </script>
