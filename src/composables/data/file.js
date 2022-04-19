@@ -10,6 +10,15 @@ const file = reactive({
     del,
 });
 
+//暂存点击文件信息
+let filePreview = reactive({
+    id: "",
+    Name: "",
+    Time: "",
+    Url: "",
+    imgSrc: ""
+})
+
 /***
 
     文件函数定义
@@ -92,4 +101,4 @@ async function del(fileId) {
     getIndex();
 }
 
-export { file }
+export { file, filePreview }

@@ -5,6 +5,7 @@
 	import Preview from "./components/preview.vue";
 
 	import { File } from "../../composables/api";
+	import {filePreview} from "../../composables/data/file"
 	import { dateFormat, fileSize, determineImg } from "../../composables/tool";
 
 	const isShow = ref("true");
@@ -16,14 +17,6 @@
 		1: Upload,
 		2: Preview,
 	};
-
-  let filePreview = reactive({
-    id : "",
-    Name: "",
-    Time : "",
-    Url : "",
-    imgSrc : ""
-  })
 
 	// 初始化定义容器高度
 	const height = ref("0px");
@@ -55,9 +48,9 @@
     filePreview.Time = dateFormat(file.CreateTime)
     filePreview.imgSrc = determineImg(file.Type, file.Name)
     File.getContent(file.ID).then((res) => {
-      filePreview.Url = res.URL
-      console.log(filePreview)
+		filePreview.Url = res.URL
     })
+	console.log(filePreview)
 
   }
 
