@@ -2,6 +2,7 @@
 import Office from './office.vue';
 import Audio from './audio.vue';
 import Default from './default.vue';
+import Txt from './txt.vue';
 import Picture from './picture.vue';
 import Video from './video.vue';
 
@@ -40,8 +41,9 @@ import { filePreview } from '../../../composables/data/file';
     </div>
     <div class="w-full flex flex-grow">
       <!--文件浏览部分 分不同组件实现不同功能-->
-      <Office></Office>
-      <!--<Audio></Audio>
+      <Txt></Txt>
+      <!--<Office></Office>
+      <Audio></Audio>
       <Default></Default>
       <Picture></Picture>
       <Video></Video> -->

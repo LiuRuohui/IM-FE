@@ -4,6 +4,6 @@ import {filePreview} from "../../../composables/data/file"
 
 <template>
   <div class="w-full m-8 border-2 border-red-100">
-    <iframe :src="'https://view.officeapps.live.com/op/view.aspx?src=' + filePreview.Url" frameborder="0" class="w-full h-full select-none"></iframe>
+    <iframe :src="filePreview.Url" frameborder="0" class="w-full h-full select-none"></iframe>
   </div>
 </template>
