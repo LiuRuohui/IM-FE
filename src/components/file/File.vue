@@ -4,8 +4,9 @@
 	import Upload from "./components/upload.vue";
 	import Preview from "./components/preview.vue";
 
-	import { File } from "/src/composables/api";
-	import { dateFormat, fileSize } from "../../composables/tool";
+	import { File } from "../../composables/api";
+	import {filePreview} from "../../composables/data/file"
+	import { dateFormat, fileSize, determineImg } from "../../composables/tool";
 
 	const isShow = ref("true");
 	const msg = ref("浏览文件");
@@ -35,6 +36,24 @@
 			msg.value = "浏览文件";
 		}
 	}
+
+  function deleteFile(fileId) {
+    console.log(fileId)
+    File.del(fileId)
+  }
+
+  function preview(file){
+    filePreview.id = file.ID
+    filePreview.Name = file.Name
+    filePreview.Time = dateFormat(file.CreateTime)
+    filePreview.imgSrc = determineImg(file.Type, file.Name)
+    File.getContent(file.ID).then((res) => {
+		filePreview.Url = res.URL
+    })
+	console.log(filePreview)
+
+  }
+
 </script>
 
 <template>
@@ -73,7 +92,7 @@
 							<option value>最后文件优先</option>
 						</select>
 					</div>
-					<button class="opacity-60 pr-2" @click="upload">
+					<button class="opacity-60 pr-2 pt-2" @click="upload">
 						{{ msg }}
 					</button>
 				</div>
@@ -84,11 +103,12 @@
 								class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer mb-3 bg-white md:px-2"
 								v-for="file in File.data()"
 								:key="file.ID"
+                @click="preview(file)"
 							>
 								<div class="h-full flex items-center">
-									<div class="h-16 w-16 bg-blue-300">
+									<div class="h-16 w-16">
 										<img
-											src="/src/assets/img/压缩文件.svg"
+											:src="determineImg(file.Type, file.Name)"
 											alt
 											class="py-2 h-full w-auto drag mx-2 inline-block"
 										/>
@@ -108,8 +128,9 @@
 											</div>
 											<div
 												class="flex flex-grow flex-row-reverse opacity-30 group-hover:opacity-60"
+                        @click="deleteFile(file.ID)"
 											>
-												<img src="/src/assets/img/更多.svg" alt="更多" />
+												<img src="/src/assets/img/delete.svg" alt="删除" class="h-8 mt-2"/>
 											</div>
 										</div>
 									</div>

@@ -9,8 +9,8 @@
 	import editorSvg from "../../assets/img/editor.svg";
 	import saveSvg from "../../assets/img/save.svg";
 
-	import { info, Info } from "/src/composables/data/info";
-	import { Infos } from "/src/composables/api";
+	import { info, Info } from "../../composables/data/info";
+	import { Infos } from "../../composables/api";
 
 	import Update from "./components/Update.vue";
 	import Privacy from "./components/Privacy.vue";

@@ -1,6 +1,4 @@
 <script setup>
-	import axios from "axios";
-	import QS from "qs";
 	import { ref } from "vue";
 
 	const account = ref("");

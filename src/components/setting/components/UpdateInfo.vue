@@ -1,5 +1,5 @@
 <script setup>
-	import { Info } from "/src/composables/data/info";
+	import { Info } from "../../../composables/data/info";
 	import { onMounted } from "vue";
 
 	onMounted(() => {

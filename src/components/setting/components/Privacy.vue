@@ -1,5 +1,5 @@
 <script setup>
-	import Switch from "/src/components/components/Switch.vue";
+	import Switch from "../../components/Switch.vue";
 </script>
 
 <template>

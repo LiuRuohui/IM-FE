@@ -1,5 +1,5 @@
 <script setup>
-import { File } from "/src/composables/api";
+import { File } from "../../../composables/api";
 function upload() {
   let s = document.getElementById("file");
   let formData = new FormData();

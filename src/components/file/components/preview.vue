@@ -4,6 +4,8 @@ import Audio from './audio.vue';
 import Default from './default.vue';
 import Picture from './picture.vue';
 import Video from './video.vue';
+
+import { filePreview } from '../../../composables/data/file';
 </script>
 
 <template>
@@ -14,12 +16,12 @@ import Video from './video.vue';
       <div
         class="flex mx-8 sm:w-20 sm:h-20 rounded-full my-4 m-auto relative box-border"
       >
-        <div><img src="/src/assets/filesvg/pdf.svg" alt="" class="h-16" /></div>
+        <div><img :src="filePreview.imgSrc" alt="" class="h-16" /></div>
       </div>
       <div class="flex justify-center">
         <input
           type="text"
-          placeholder="SourceCode.zip"
+          v-model="filePreview.Name"
           class="appearance-none outline-none hover:cursor-pointer"
         />
       </div>
@@ -32,7 +34,7 @@ import Video from './video.vue';
           />
         </div>
         <div class="pr-8">
-          <div class="pt-3 opacity-60">2022-06-12</div>
+          <div class="pt-3 opacity-60">{{filePreview.Time}}</div>
         </div>
       </div>
     </div>
