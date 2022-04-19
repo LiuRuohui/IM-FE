@@ -4,18 +4,15 @@
 
 //需要增加判断是否登录的逻辑判断来执行相关函数
 
-import { session } from "./session";
 import { Infos, Note, File } from "./api";
 
 function global() {
-    // 初始化session
-    session.getSessionId();
-    // 初始化info
-    Infos.getInfo();
+	// 初始化info
+	Infos.getInfo();
 
-    Note.getIndex();
+	Note.getIndex();
 
-    File.getIndex();
+	File.getIndex();
 }
 
 export default global;
