@@ -7,6 +7,7 @@ specifiers:
   '@vue/compiler-sfc': ^3.2.31
   autoprefixer: ^10.4.2
   axios: ^0.25.0
+  baguettebox.js: ^1.11.1
   codemirror: ^5.65.2
   highlight.js: ^11.5.0
   postcss: ^8.4.6
@@ -24,6 +25,7 @@ dependencies:
   '@kangc/v-md-editor': 2.3.14_ae67e70b414a4445f2b593d12629edae
   '@vue/compiler-sfc': 3.2.31
   axios: 0.25.0
+  baguettebox.js: registry.npmmirror.com/baguettebox.js/1.11.1
   codemirror: 5.65.2
   highlight.js: 11.5.0
   protobufjs: 6.11.2
@@ -2916,6 +2918,12 @@ packages:
       y18n: 5.0.8
       yargs-parser: 21.0.1
     dev: true
+
+  registry.npmmirror.com/baguettebox.js/1.11.1:
+    resolution: {integrity: sha512-0HnUVs+xaqwQOVbfi0kwZnZ1fJNWE5vJLCoCAtgQBtPmOJa1fhN8gubaBFOBGDkQy/vz6PWSr7B3WilhQKjyeQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/baguettebox.js/-/baguettebox.js-1.11.1.tgz}
+    name: baguettebox.js
+    version: 1.11.1
+    dev: false
 
   registry.npmmirror.com/esbuild-android-arm64/0.13.15:
     resolution: {integrity: sha512-m602nft/XXeO8YQPUDVoHfjyRVPdPgjyyXOxZ44MK/agewFFkPa8tUo6lAzSWh5Ui5PB4KR9UIFTSBKh/RrCmg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/esbuild-android-arm64/-/esbuild-android-arm64-0.13.15.tgz}
