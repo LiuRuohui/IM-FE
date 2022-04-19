@@ -18,6 +18,11 @@ const Infos = {};
 const Note = {};
 //处理文件相关
 const File = {};
+//认证接口
+const Auth = {
+	status: true,
+};
+
 /***
 
         登陆函数声明
@@ -282,4 +287,11 @@ function updatePasswd(passwd) {
 	);
 }
 
-export { Log, Infos, Note, File };
+function auth() {
+	http.get("/account/auth", {}).then(
+		() => (Auth.status = true),
+		() => (Auth.status = false)
+	);
+}
+
+export { Log, Infos, Note, File, Auth };
