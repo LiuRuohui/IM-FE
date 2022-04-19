@@ -77,6 +77,7 @@ async function updateName(fileId, name) {
         .then(
             (data) => {
                 console.log("更新文件标题成功", data);
+                file.getIndex()
             },
             (error) => {
                 console.log("获取文件标题失败", error);

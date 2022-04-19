@@ -7,6 +7,13 @@ import Picture from './picture.vue';
 import Video from './video.vue';
 
 import { filePreview } from '../../../composables/data/file';
+
+import {debounce} from '../../../composables/tool'
+import {File} from '../../../composables/api'
+
+const reminder = debounce(() => {
+    File.updateName(filePreview.id, filePreview.Name)
+},3000)
 </script>
 
 <template>
@@ -23,6 +30,7 @@ import { filePreview } from '../../../composables/data/file';
         <input
           type="text"
           v-model="filePreview.Name"
+          v-on:input="reminder"
           class="appearance-none outline-none hover:cursor-pointer"
         />
       </div>
@@ -41,8 +49,9 @@ import { filePreview } from '../../../composables/data/file';
     </div>
     <div class="w-full flex flex-grow">
       <!--文件浏览部分 分不同组件实现不同功能-->
-      <Txt></Txt>
-      <!--<Office></Office>
+      <Picture></Picture>
+      <!--<Txt></Txt>
+      <Office></Office>
       <Audio></Audio>
       <Default></Default>
       <Picture></Picture>
