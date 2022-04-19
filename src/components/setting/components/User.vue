@@ -1,7 +1,11 @@
 <script setup>
-	import { toRefs } from "vue";
-	import { info } from "../../../composables/data/info";
-	let { data } = toRefs(info);
+	// import { toRef, toRefs } from "vue";
+	// import { info } from "../../../composables/data/info";
+
+	import { Infos } from "../../../composables/api";
+
+	// let data = toRef(info, "data");
+	let data = Infos.data();
 </script>
 <template>
 	<div class="flex-grow w-full flex flex-col">

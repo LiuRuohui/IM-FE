@@ -1,3 +1,5 @@
+import { toRef } from "vue";
+
 import { http } from "./http";
 import { session } from "./session";
 import onlogined from "./onlogined";
@@ -51,7 +53,7 @@ Infos.postQq = postQq;
 Infos.updateAccount = updateAccount;
 Infos.updatePasswd = updatePasswd;
 Infos.data = function () {
-	return info.data;
+	return toRef(info, "data");
 };
 /***
 
@@ -67,6 +69,7 @@ Note.create = note.create;
 Note.del = note.del;
 Note.data = function () {
 	return note.data;
+	// return toRef(note, "data");
 };
 
 File.upload = file.upload;
