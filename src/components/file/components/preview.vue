@@ -1,19 +1,44 @@
 <script setup>
-import Office from './office.vue';
-import Audio from './audio.vue';
-import Default from './default.vue';
-import Txt from './txt.vue';
-import Picture from './picture.vue';
-import Video from './video.vue';
+import Office from "./office.vue";
+import Audio from "./audio.vue";
+import Default from "./default.vue";
+import Txt from "./txt.vue";
+import Picture from "./picture.vue";
+import Video from "./video.vue";
 
-import { filePreview } from '../../../composables/data/file';
+import { filePreview } from "../../../composables/data/file";
 
-import {debounce} from '../../../composables/tool'
-import {File} from '../../../composables/api'
+import { debounce } from "../../../composables/tool";
+import { File } from "../../../composables/api";
+
+const fileTypeMap = {
+  1: Office,
+  2: Txt,
+  3: Audio,
+  4: Default,
+  5: Picture,
+  6: Video,
+};
 
 const reminder = debounce(() => {
-    File.updateName(filePreview.id, filePreview.Name)
-},2000)
+  File.updateName(filePreview.id, filePreview.Name);
+}, 2000);
+
+function check(fileType, fileName) {
+  if(fileType == "application/octet-stream"){
+    return 2
+  }else if(fileType == "application/pdf"){
+    return
+  }else if(fileType == "image/jpeg"){
+    return 5
+  }else if(fileType == "application/zip"){
+    if(fileName.indexOf("docx") != -1){
+      return 1
+    }else if(fileName.indexOf("xlsx") != -1){
+      return 1
+    }else return 4
+  }
+}
 </script>
 
 <template>
@@ -43,14 +68,21 @@ const reminder = debounce(() => {
           />
         </div>
         <div class="pr-8">
-          <div class="pt-3 opacity-60">{{filePreview.Time}}</div>
+          <div class="pt-3 opacity-60">{{ filePreview.Time }}</div>
         </div>
       </div>
     </div>
     <div class="w-full flex flex-grow">
-      <!--文件浏览部分 分不同组件实现不同功能-->
-      <Picture></Picture>
-      <!--<Txt></Txt>
+      <!--文件浏览部分 分不同组件实现不同功能 使用平滑切换-->
+      <Transition name="fade" mode="out-in">
+        <keep-alive>
+          <component
+            :is="fileTypeMap[check(filePreview.Type,filePreview.Name)]"
+          ></component>
+        </keep-alive>
+      </Transition>
+      <!--<Picture></Picture>
+      <Txt></Txt>
       <Office></Office>
       <Audio></Audio>
       <Default></Default>

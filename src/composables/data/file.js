@@ -16,7 +16,8 @@ let filePreview = reactive({
     Name: "",
     Time: "",
     Url: "",
-    imgSrc: ""
+    imgSrc: "",
+    Type: "",
 })
 
 /***
