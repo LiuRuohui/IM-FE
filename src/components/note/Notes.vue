@@ -78,14 +78,14 @@
 		let result = [];
 		let arr = search.value.trim();
 		if (arr.length === 0) {
-			result = Note.data();
+			result = Note.data().value;
 		} else {
 			//按空格分割
 			arr = arr.split(" ");
 			//对keyword遍历搜索
 			for (const keyword of arr) {
 				// 对元素本身进行遍历搜索
-				for (const element of Note.data()) {
+				for (const element of Note.data().value) {
 					if (element.Title.toUpperCase().includes(keyword.toUpperCase())) {
 						result.push(element);
 						continue;

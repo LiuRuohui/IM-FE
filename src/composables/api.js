@@ -68,8 +68,7 @@ Note.updateTitle = note.updateTitle;
 Note.create = note.create;
 Note.del = note.del;
 Note.data = function () {
-	return note.data;
-	// return toRef(note, "data");
+	return toRef(note, "data");
 };
 
 File.upload = file.upload;
