@@ -13,7 +13,7 @@ import {File} from '../../../composables/api'
 
 const reminder = debounce(() => {
     File.updateName(filePreview.id, filePreview.Name)
-},3000)
+},2000)
 </script>
 
 <template>
