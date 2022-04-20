@@ -1,10 +1,9 @@
 <script setup>
 	import { onMounted } from "vue";
-
-	import global from "./composables/global";
+	import { Global } from "./composables/api";
 
 	onMounted(() => {
-		global();
+		Global();
 	});
 </script>
 

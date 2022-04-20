@@ -105,11 +105,11 @@ async function logIn(account, passwd) {
 			(data) => {
 				session.setSessionId(data);
 				console.log("登录成功", data);
+				onlogined();
 				//登录成功后跳转到首页
 				router.push({
 					name: "setting",
 				});
-				onlogined();
 			},
 			(error) => {
 				console.log("登录失败", error);
@@ -119,7 +119,7 @@ async function logIn(account, passwd) {
 
 //登出函数
 function logout() {
-	http.post("/account/logout", {}, "").then(
+	http.post("/account/logout", {}).then(
 		(data) => {
 			console.log("登出成功", data);
 			//登录成功后跳转到首页
@@ -158,7 +158,7 @@ function register(account, passwd) {
 
 //post函数 由于info和Info易混 且url不同 params无法设置 故抽象一层
 function postName(url, values) {
-	http.post(url, { name: values }, "").then(
+	http.post(url, { name: values }).then(
 		(data) => {
 			console.log("提交昵称成功", data);
 			Infos.getInfo();
@@ -170,7 +170,7 @@ function postName(url, values) {
 }
 
 function postSex(url, values) {
-	http.post(url, { sex: values }, "").then(
+	http.post(url, { sex: values }).then(
 		(data) => {
 			console.log("提交性别成功", data);
 			Infos.getInfo();
@@ -182,7 +182,7 @@ function postSex(url, values) {
 }
 
 function postSignature(url, values) {
-	http.post(url, { signature: values }, "").then(
+	http.post(url, { signature: values }).then(
 		(data) => {
 			console.log("提交签名成功", data);
 			Infos.getInfo();
@@ -194,7 +194,7 @@ function postSignature(url, values) {
 }
 
 function postPhone(url, values) {
-	http.post(url, { phone: values }, "").then(
+	http.post(url, { phone: values }).then(
 		(data) => {
 			console.log("提交电话成功", data);
 			Infos.getInfo();
@@ -206,7 +206,7 @@ function postPhone(url, values) {
 }
 
 function postMail(url, values) {
-	http.post(url, { mail: values }, "").then(
+	http.post(url, { mail: values }).then(
 		(data) => {
 			console.log("提交邮箱成功", data);
 			Infos.getInfo();
@@ -218,7 +218,7 @@ function postMail(url, values) {
 }
 
 function postSite(url, values) {
-	http.post(url, { site: values }, "").then(
+	http.post(url, { site: values }).then(
 		(data) => {
 			console.log("提交网站成功", data);
 			Infos.getInfo();
@@ -230,7 +230,7 @@ function postSite(url, values) {
 }
 
 function postGithub(url, values) {
-	http.post(url, { github: values }, "").then(
+	http.post(url, { github: values }).then(
 		(data) => {
 			console.log("提交Github成功", data);
 			Infos.getInfo();
@@ -242,7 +242,7 @@ function postGithub(url, values) {
 }
 
 function postWeibo(url, values) {
-	http.post(url, { weibo: values }, "").then(
+	http.post(url, { weibo: values }).then(
 		(data) => {
 			console.log("提交Weibo成功", data);
 			Infos.getInfo();
@@ -254,7 +254,7 @@ function postWeibo(url, values) {
 }
 
 function postQq(url, values) {
-	http.post(url, { qq: values }, "").then(
+	http.post(url, { qq: values }).then(
 		(data) => {
 			console.log("提交qq成功", data);
 			Infos.getInfo();
@@ -266,7 +266,7 @@ function postQq(url, values) {
 }
 
 function updateAccount(account) {
-	http.post("/user/updateAccount", { account: account }, "").then(
+	http.post("/user/updateAccount", { account: account }).then(
 		(data) => {
 			console.log("更改账号成功", data);
 		},
@@ -277,7 +277,7 @@ function updateAccount(account) {
 }
 
 function updatePasswd(passwd) {
-	http.post("/user/updatePasswd", { passwd: passwd }, "").then(
+	http.post("/user/updatePasswd", { passwd: passwd }).then(
 		(data) => {
 			console.log("修改密码成功", data);
 		},
@@ -294,4 +294,6 @@ function auth() {
 	);
 }
 
-export { Log, Infos, Note, File, Auth };
+let Global = info.global;
+
+export { Log, Infos, Note, File, Auth, Global };
