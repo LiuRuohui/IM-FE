@@ -33,16 +33,16 @@ const reminder = debounce(() => {
       class="w-full h-24 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"
     >
       <div
-        class="flex mx-8 sm:w-20 sm:h-20 rounded-full my-4 m-auto relative box-border"
+        class="flex mx-8 sm:w-20 sm:h-20 rounded-full my-4 m-auto box-border"
       >
         <div><img :src="filePreview.imgSrc" alt="" class="h-16" /></div>
       </div>
-      <div class="flex justify-center">
+      <div class="flex">
         <input
           type="text"
           v-model="filePreview.Name"
           v-on:input="reminder"
-          class="appearance-none outline-none hover:cursor-pointer"
+          class="appearance-none hover:cursor-pointer w-full truncate"
         />
       </div>
       <div class="flex-grow flex flex-row-reverse py-6 pr-6">
