@@ -26,7 +26,7 @@
 			:visible="img.visible"
 			@hide="handleHide"
 		></vue-easy-lightbox>
-		<div class="img-box rounded overflow-hidden cursor-pointer" @click="show">
+		<div class="img-box rounded-md overflow-hidden cursor-pointer shadow-2xl" @click="show">
 			<img class="drag" :src="filePreview.Url" alt="点击查看" />
 		</div>
 	</div>
