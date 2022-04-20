@@ -67,13 +67,6 @@ const reminder = debounce(() => {
           ></component>
         </keep-alive>
       </Transition>
-      <!--<Picture></Picture>
-      <Txt></Txt>
-      <Office></Office>
-      <Audio></Audio>
-      <Default></Default>
-      <Picture></Picture>
-      <Video></Video> -->
     </div>
   </div>
 </template>

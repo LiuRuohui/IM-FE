@@ -45,6 +45,8 @@ function deleteFile(fileId) {
 }
 
 function preview(file) {
+  isShow.value = false
+  msg.value = "上传文件"
   filePreview.id = file.ID;
   filePreview.Name = file.Name;
   filePreview.Type = file.Type;
