@@ -7,6 +7,7 @@ import textSvg from "../assets/filesvg/text.svg";
 import zipSvg from "../assets/filesvg/zip.svg";
 import defaultSvg from "../assets/filesvg/default.svg";
 import xlsxSvg from "../assets/filesvg/xlsx.svg";
+import pptSvg from "../assets/filesvg/ppt.svg";
 //用户名要求，四到十位英文数字混合
 const accountRegexp = /^[a-zA-Z0-9_]{4,10}$/;
 
@@ -87,6 +88,8 @@ function determineImg(fileName) {
         return xlsxSvg
     } else if (suffix == 'mp3') {
         return musicSvg
+    } else if (suffix == 'ppt') {
+        return pptSvg
     } else {
         return defaultSvg
     }
@@ -95,7 +98,7 @@ function determineImg(fileName) {
 function determineVue(fileName) {
     // 截取文件后缀
     const suffix = fileName.substr(fileName.lastIndexOf('.') + 1, fileName.length)
-    if (suffix == 'docx' || suffix == 'doc' || suffix == 'xlsx') {
+    if (suffix == 'docx' || suffix == 'doc' || suffix == 'xlsx' || suffix == 'ppt') {
         return 1
     } else if (suffix == 'jpg') {
         return 5
