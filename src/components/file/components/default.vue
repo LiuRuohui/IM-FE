@@ -1,9 +1,14 @@
 <script setup>
-
+import { filePreview } from "../../../composables/data/file";
+function download() {
+  console.log("Downloading");
+}
 </script>
 
 <template>
-  <div class="w-full m-8 border-2 border-red-100">
-    <iframe src="" frameborder="0" class="w-full h-full"></iframe>
+  <div class="w-full justify-center flex">
+    <a :href="filePreview.Url">
+      <button @click="download" class="btn top-1/2 relative">点击下载</button>
+    </a>
   </div>
 </template>
