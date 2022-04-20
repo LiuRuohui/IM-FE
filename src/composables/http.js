@@ -136,4 +136,4 @@ http.post1 = function (url, params) {
 	});
 };
 
-export { instance, http };
+export { http };
