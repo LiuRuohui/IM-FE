@@ -109,12 +109,12 @@ async function logIn(account, passwd) {
 				router.push({
 					name: "setting",
 				});
+				onlogined();
 			},
 			(error) => {
 				console.log("登录失败", error);
 			}
 		);
-	onlogined();
 }
 
 //登出函数
