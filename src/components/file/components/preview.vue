@@ -8,7 +8,7 @@ import Video from "./video.vue";
 
 import { filePreview } from "../../../composables/data/file";
 
-import { debounce } from "../../../composables/tool";
+import { debounce, determineVue } from "../../../composables/tool";
 import { File } from "../../../composables/api";
 
 const fileTypeMap = {
@@ -24,21 +24,6 @@ const reminder = debounce(() => {
   File.updateName(filePreview.id, filePreview.Name);
 }, 2000);
 
-function check(fileType, fileName) {
-  if(fileType == "application/octet-stream"){
-    return 2
-  }else if(fileType == "application/pdf"){
-    return
-  }else if(fileType == "image/jpeg"){
-    return 5
-  }else if(fileType == "application/zip"){
-    if(fileName.indexOf("docx") != -1){
-      return 1
-    }else if(fileName.indexOf("xlsx") != -1){
-      return 1
-    }else return 4
-  }
-}
 </script>
 
 <template>
@@ -77,7 +62,7 @@ function check(fileType, fileName) {
       <Transition name="fade" mode="out-in">
         <keep-alive>
           <component
-            :is="fileTypeMap[check(filePreview.Type,filePreview.Name)]"
+            :is="fileTypeMap[determineVue(filePreview.Name)]"
           ></component>
         </keep-alive>
       </Transition>

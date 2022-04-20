@@ -68,25 +68,45 @@ function fileSize(size) {
 }
 
 //文件图像函数 判断传入参数 若符合相应的svg则返回对应的svg图像渲染
-function determineImg(fileType, fileName) {
-    if (fileType == "application/octet-stream") {
-        return textSvg;
-    } else if (fileType == "application/zip") {
-        if (fileName.indexOf("txt") != -1) {
-            return textSvg;
-        } else if (fileName.indexOf("docx") != -1) {
-            return officeSvg;
-        } else if (fileName.indexOf("xlsx") != -1) {
-            return xlsxSvg;
-        } else {
-            return zipSvg;
-        }
-    } else if (fileType == "application/pdf") {
-        return pdfSvg;
-    } else if (fileType == "image/jpeg") {
-        return jpgSvg;
+function determineImg(fileName) {
+    // 截取文件后缀
+    const suffix = fileName.substr(fileName.lastIndexOf('.') + 1, fileName.length)
+    if (suffix == 'zip') {
+        return zipSvg
+    } else if (suffix == 'docx' || suffix == 'doc') {
+        return officeSvg
+    } else if (suffix == 'jpg') {
+        return jpgSvg
+    } else if (suffix == 'pdf') {
+        return pdfSvg
+    } else if (suffix == 'mp4') {
+        return videoSvg
+    } else if (suffix == 'txt') {
+        return textSvg
+    } else if (suffix == 'xlsx') {
+        return xlsxSvg
+    } else if (suffix == 'mp3') {
+        return musicSvg
     } else {
-        return defaultSvg;
+        return defaultSvg
+    }
+}
+
+function determineVue(fileName) {
+    // 截取文件后缀
+    const suffix = fileName.substr(fileName.lastIndexOf('.') + 1, fileName.length)
+    if (suffix == 'docx' || suffix == 'doc' || suffix == 'xlsx') {
+        return 1
+    } else if (suffix == 'jpg') {
+        return 5
+    } else if (suffix == 'mp4') {
+        return 6
+    } else if (suffix == 'txt') {
+        return 2
+    } else if (suffix == 'mp3') {
+        return 3
+    } else {
+        return 4
     }
 }
 
@@ -170,5 +190,6 @@ export {
     delHtmlTag,
     fileSize,
     determineImg,
+    determineVue,
     Storage,
 };

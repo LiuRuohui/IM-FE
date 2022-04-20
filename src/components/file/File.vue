@@ -109,7 +109,7 @@ function preview(file) {
                 <div class="h-full flex items-center">
                   <div class="h-16 w-16">
                     <img
-                      :src="determineImg(file.Type, file.Name)"
+                      :src="determineImg(file.Name)"
                       alt
                       class="py-2 h-full w-auto drag mx-2 inline-block"
                     />
