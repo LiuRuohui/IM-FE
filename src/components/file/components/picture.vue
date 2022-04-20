@@ -1,34 +1,39 @@
 <script setup>
-import { filePreview } from "../../../composables/data/file";
-import VueEasyLightbox from "vue-easy-lightbox";
-import {ref, reactive} from "vue"
+	import { filePreview } from "../../../composables/data/file";
+	import VueEasyLightbox from "vue-easy-lightbox";
+	import { ref, reactive } from "vue";
 
-const img = reactive({
-  imgs:"",
-  visiable: false,
-})
+	const img = reactive({
+		imgs: "",
+		visible: false,
+	});
 
-function show(){
-  console.log(img)
-  img.imgs = filePreview.Url
-  img.visiable = true
-  console.log("123",img)
-}
+	function show() {
+		img.imgs = filePreview.Url;
+		img.visible = true;
+	}
 
-function handleHide(){
-  img.visiable = false
-}
+	function handleHide() {
+		img.visible = false;
+		console.log(img.visible);
+	}
 </script>
 
 <template>
-  <div class="w-full m-8 border-2 border-red-100" @click="show">
-    <vue-easy-lightbox
-      :imgs="img.imgs"
-      :visable="img.visiable"
-      @hide="handleHide"
-      escDisabled
-      moveDisabled
-    ></vue-easy-lightbox>
-    <!--<iframe :src="filePreview.Url" frameborder="0" class="w-full h-full"></iframe> -->
-  </div>
+	<div class="w-full h-full flex justify-center items-center">
+		<vue-easy-lightbox
+			:imgs="img.imgs"
+			:visible="img.visible"
+			@hide="handleHide"
+		></vue-easy-lightbox>
+		<div class="img-box rounded overflow-hidden cursor-pointer" @click="show">
+			<img class="drag" :src="filePreview.Url" alt="点击查看" />
+		</div>
+	</div>
 </template>
+
+<style scoped>
+	.img-box {
+		max-width: 800px;
+	}
+</style>
