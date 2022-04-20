@@ -117,11 +117,12 @@ http.post = function (url, params) {
 };
 
 //适配file的Content-Type
-http.post1 = function (url, params) {
+http.postFile = function (url, params) {
 	return new Promise((resolve, reject) => {
 		instance
 			.post(url, params, {
 				//这里使用qs来对project进行转码，使之成为表单内容
+				timeout: 0,
 				headers: {
 					"Content-Type": "multipart/form-data",
 				},
