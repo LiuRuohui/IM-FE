@@ -6,6 +6,9 @@ import onlogined from "./onlogined";
 //引入自定义路由
 import router from "../router/router";
 
+// 引入模态框
+import { Toast } from "./modelDialog";
+
 //引入用户信息
 import { info } from "./data/info";
 import { note } from "./data/note";
@@ -105,6 +108,11 @@ async function logIn(account, passwd) {
 			(data) => {
 				session.setSessionId(data);
 				console.log("登录成功", data);
+				Toast.fire({
+					timer: 1500,
+					icon: "success",
+					title: "登陆成功",
+				});
 				onlogined();
 				//登录成功后跳转到首页
 				router.push({
