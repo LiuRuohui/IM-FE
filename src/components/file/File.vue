@@ -1,12 +1,14 @@
 <script setup>
-import { reactive, ref, onMounted } from "vue";
+import { ref, onMounted, defineAsyncComponent } from "vue";
 import mobile from "../../composables/mobile";
 import Upload from "./components/upload.vue";
-import Preview from "./components/preview.vue";
 
 import { File } from "../../composables/api";
 import { filePreview } from "../../composables/data/file";
 import { dateFormat, fileSize, determineImg } from "../../composables/tool";
+
+	//加载异步组件
+	const Preview = defineAsyncComponent(() => import("./components/preview.vue"));
 
 const isShow = ref("true");
 const msg = ref("浏览文件");

@@ -1,15 +1,17 @@
 <script setup>
-import Office from "./office.vue";
-import Audio from "./audio.vue";
-import Default from "./default.vue";
-import Txt from "./txt.vue";
-import Picture from "./picture.vue";
-import Video from "./video.vue";
-
 import { filePreview } from "../../../composables/data/file";
+import { defineAsyncComponent } from "vue"
 
 import { debounce, determineVue } from "../../../composables/tool";
 import { File } from "../../../composables/api";
+
+//加载异步组件
+const Office = defineAsyncComponent(() => import("./office.vue"));
+const Txt = defineAsyncComponent(() => import("./txt.vue"));
+const Audio = defineAsyncComponent(() => import("./audio.vue"));
+const Default = defineAsyncComponent(() => import("./default.vue"));
+const Picture = defineAsyncComponent(() => import("./picture.vue"));
+const Video = defineAsyncComponent(() => import("./video.vue"));
 
 const fileTypeMap = {
   1: Office,
@@ -23,7 +25,6 @@ const fileTypeMap = {
 const reminder = debounce(() => {
   File.updateName(filePreview.id, filePreview.Name);
 }, 2000);
-
 </script>
 
 <template>
