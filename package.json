@@ -8,10 +8,12 @@
 	},
 	"dependencies": {
 		"@kangc/v-md-editor": "^2.3.14",
+		"@sweetalert2/theme-bulma": "^5.0.10",
 		"@vue/compiler-sfc": "^3.2.31",
 		"axios": "^0.25.0",
 		"baguettebox.js": "^1.11.1",
 		"codemirror": "^5.65.2",
+		"fsevents": "2.3",
 		"highlight.js": "^11.5.0",
 		"protobufjs": "^6.11.2",
 		"qs": "^6.10.3",

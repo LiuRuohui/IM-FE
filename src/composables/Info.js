@@ -4,7 +4,6 @@
 保存getInfo的方法可以通过Info.getInfo()获取从数据库中存储的信息渲染在页面上
 设置debounce防抖方法使得在输入不会数据一发生改变就向服务器post结果
 */
-import { info } from "autoprefixer";
 import { reactive } from "vue";
 import { http } from "/src/composables/http";
 const Info = reactive({

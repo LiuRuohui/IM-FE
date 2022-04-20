@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@kangc/v-md-editor': ^2.3.14
+  '@sweetalert2/theme-bulma': ^5.0.10
   '@types/codemirror': ^5.60.5
   '@vitejs/plugin-vue': ^2.0.0
   '@vue/compiler-sfc': ^3.2.31
@@ -9,6 +10,7 @@ specifiers:
   axios: ^0.25.0
   baguettebox.js: ^1.11.1
   codemirror: ^5.65.2
+  fsevents: '2.3'
   highlight.js: ^11.5.0
   postcss: ^8.4.6
   protobufjs: ^6.11.2
@@ -24,10 +26,12 @@ specifiers:
 
 dependencies:
   '@kangc/v-md-editor': 2.3.14_ae67e70b414a4445f2b593d12629edae
+  '@sweetalert2/theme-bulma': 5.0.10
   '@vue/compiler-sfc': 3.2.31
   axios: 0.25.0
   baguettebox.js: registry.npmmirror.com/baguettebox.js/1.11.1
   codemirror: 5.65.2
+  fsevents: 2.3.2
   highlight.js: 11.5.0
   protobufjs: 6.11.2
   qs: 6.10.3
@@ -191,6 +195,10 @@ packages:
 
   /@protobufjs/utf8/1.1.0:
     resolution: {integrity: sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=}
+    dev: false
+
+  /@sweetalert2/theme-bulma/5.0.10:
+    resolution: {integrity: sha512-/AcmEIeotUDYDyAAs9bb4aYXjibIK9kSaZ4+1SJUZWlUctGJsm4on8y9Mpi+cedWogxSgzEhGBInij/UL9pBAQ==}
     dev: false
 
   /@types/codemirror/5.60.5:
@@ -1699,8 +1707,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
-    optional: true
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
