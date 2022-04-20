@@ -124,7 +124,7 @@
 											<div
 												class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
 											>
-												<div class="font-bold text-base">
+												<div class="font-bold text-base text-clip">
 													{{ file.Name }}
 												</div>
 											</div>

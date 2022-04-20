@@ -7,7 +7,7 @@ const videoOption = reactive({
     src: filePreview.Url,
   },
   videoStyle: {
-    width: "100%",
+    width: "800px",
   },
   controlsConfig: {
     fullScreenTit: "全屏",
@@ -31,7 +31,12 @@ const videoOption = reactive({
       @play="playVideo"
       @canplay="canplayVideo"
       @pause="pauseVideo"
+      class="video"
     >
     </vam-video>
   </div>
 </template>
+
+<style>
+
+</style>
