@@ -1,5 +1,6 @@
 import { reactive } from "vue";
 import { http } from "../http";
+import { Dialog } from "../modelDialog";
 
 const note = reactive({
 	data: [],
@@ -82,9 +83,11 @@ async function create() {
 	await http.post("/note/create").then(
 		(data) => {
 			console.log("创建笔记内容成功", data);
+			Dialog.successToast("笔记创建成功！");
 		},
 		(error) => {
 			console.log("创建笔记内容失败", error);
+			Dialog.errorToast("笔记创建失败！");
 		}
 	);
 	getIndex();
@@ -98,9 +101,11 @@ async function del(noteId) {
 		.then(
 			(data) => {
 				console.log("删除笔记内容成功", data);
+				Dialog.successToast("笔记删除成功！");
 			},
 			(error) => {
 				console.log("删除笔记内容失败", error);
+				Dialog.errorToast("笔记删除失败！");
 			}
 		);
 	getIndex();

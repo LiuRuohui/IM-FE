@@ -10,14 +10,14 @@
 			return;
 		}
 		/*
-  var reader = new FileReader(); //新建一个FileReader
-  reader.readAsText(s.files[0], "UTF-8"); //读取文件
-  reader.onload = function (evt) {
-    //读取完文件之后会回来这里
-    var fileString = evt.target.result; // 读取文件内容
-    console.log(fileString);
-  };
-  */
+	 var reader = new FileReader(); //新建一个FileReader
+	 reader.readAsText(s.files[0], "UTF-8"); //读取文件
+	 reader.onload = function (evt) {
+	   //读取完文件之后会回来这里
+	   var fileString = evt.target.result; // 读取文件内容
+	   console.log(fileString);
+	 };
+	 */
 		//提交文件
 		File.upload(formData);
 	}

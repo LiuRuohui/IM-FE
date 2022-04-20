@@ -8,6 +8,8 @@
 
 	import more from "../../assets/img/删除.svg";
 
+	import { Dialog } from "../../composables/modelDialog";
+
 	//加载异步组件
 	const Markdown = defineAsyncComponent(() => import("./components/Markdown.vue"));
 
@@ -58,8 +60,9 @@
 	}
 
 	// 创建事件触发
-	function create() {
-		Note.create();
+	async function create() {
+		await Note.create();
+
 	}
 	// 删除事件触发
 	async function del(noteId) {

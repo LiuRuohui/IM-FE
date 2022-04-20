@@ -7,7 +7,7 @@ import onlogined from "./onlogined";
 import router from "../router/router";
 
 // 引入模态框
-import { Toast } from "./modelDialog";
+import { Dialog } from "./modelDialog";
 
 //引入用户信息
 import { info } from "./data/info";
@@ -108,10 +108,10 @@ async function logIn(account, passwd) {
 			(data) => {
 				session.setSessionId(data);
 				console.log("登录成功", data);
-				Toast.fire({
+				Dialog.custom().fire({
 					timer: 1250,
 					icon: "success",
-					titleText: "登陆成功",
+					titleText: "登陆成功，即将跳转",
 					didClose() {
 						router.push({
 							name: "setting",
@@ -138,12 +138,20 @@ function logout() {
 		(data) => {
 			console.log("登出成功", data);
 			//登录成功后跳转到首页
-			router.push({
-				name: "login",
+			Dialog.custom().fire({
+				timer: 1250,
+				icon: "success",
+				titleText: "登出成功，即将跳转",
+				didClose() {
+					router.push({
+						name: "login",
+					});
+				},
 			});
 		},
 		(error) => {
 			console.log("登出失败", error);
+			Dialog.warnToast("登出失败，请检查网络！");
 		}
 	);
 }
@@ -161,12 +169,20 @@ function register(account, passwd) {
 		(data) => {
 			console.log("注册成功", data);
 			//登录成功后跳转到首页
-			router.push({
-				name: "login",
+			Dialog.custom().fire({
+				timer: 1250,
+				icon: "success",
+				titleText: "注册成功，即将跳转",
+				didClose() {
+					router.push({
+						name: "login",
+					});
+				},
 			});
 		},
 		(error) => {
 			console.log("注册失败", error);
+			Dialog.errorToast("注册失败，请重新尝试！");
 		}
 	);
 }
