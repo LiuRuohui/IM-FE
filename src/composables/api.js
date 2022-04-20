@@ -109,18 +109,25 @@ async function logIn(account, passwd) {
 				session.setSessionId(data);
 				console.log("登录成功", data);
 				Toast.fire({
-					timer: 1500,
+					timer: 1250,
 					icon: "success",
-					title: "登陆成功",
+					titleText: "登陆成功",
+					didClose() {
+						router.push({
+							name: "setting",
+						});
+					},
 				});
 				onlogined();
 				//登录成功后跳转到首页
-				router.push({
-					name: "setting",
-				});
 			},
 			(error) => {
 				console.log("登录失败", error);
+				Toast.fire({
+					timer: 3000,
+					icon: "error",
+					titleText: "登陆失败，请检查账号密码是否正确",
+				});
 			}
 		);
 }
