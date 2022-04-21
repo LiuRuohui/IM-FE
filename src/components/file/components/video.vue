@@ -1,42 +1,28 @@
 <script setup>
-import VamVideo from "vue-vam-video";
-import { filePreview } from "../../../composables/data/file";
-import { reactive } from "vue";
-const videoOption = reactive({
-  properties: {
-    src: filePreview.Url,
-  },
-  videoStyle: {
-    width: "800px",
-  },
-  controlsConfig: {
-    fullScreenTit: "全屏",
-    EscfullScreenTit: "退出全屏",
-    speedTit: "倍速",
-    playTit: "播放",
-    pauseTit: "暂停",
-    fullScreen: true,
-    speed: true,
-    listen: true,
-  },
-});
+	import { filePreview } from "../../../composables/data/file";
+	import Player from "xgplayer/dist/simple_player";
+	import { onMounted, ref } from "vue";
+	const mse = ref(null);
+	onMounted(() => {
+		let player = new Player({
+			el: mse.value,
+			url: "https://klxxcdn.oss-cn-hangzhou.aliyuncs.com/histudy/hrm/media/bg3.mp4",
+			width: 800,
+			height: 500,
+		});
+	});
 </script>
 
 <template>
-  <div class="w-full m-8 border-2 border-red-100">
-    <vam-video
-      :properties="videoOption.properties"
-      :videoStyle="videoOption.videoStyle"
-      :controlsConfig="videoOption.controlsConfig"
-      @play="playVideo"
-      @canplay="canplayVideo"
-      @pause="pauseVideo"
-      class="video"
-    >
-    </vam-video>
-  </div>
+	<div class="w-full flex justify-center items-center">
+		<div class="video-container">
+			<div ref="mse"></div>
+		</div>
+	</div>
 </template>
 
-<style>
-
+<style scoped>
+	.video-container {
+		width: 800px;
+	}
 </style>

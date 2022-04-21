@@ -123,7 +123,7 @@ async function logIn(account, passwd) {
 			},
 			(error) => {
 				console.log("登录失败", error);
-				Toast.fire({
+				Dialog.custom().fire({
 					timer: 3000,
 					icon: "error",
 					titleText: "登陆失败，请检查账号密码是否正确",

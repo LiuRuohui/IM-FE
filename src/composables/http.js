@@ -10,7 +10,7 @@ import { url } from "./gateway";
 
 const instance = axios.create({
 	// `timeout` 指定请求超时的毫秒数。
-	timeout: 3000, // 默认值是 `0` (永不超时)
+	timeout: 5000, // 默认值是 `0` (永不超时)
 	// 自定义请求头
 	headers: {
 		"Content-Type": "application/x-www-form-urlencoded",
