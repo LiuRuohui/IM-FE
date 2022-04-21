@@ -130,12 +130,12 @@
 											</div>
 											<div
 												class="flex flex-grow flex-row-reverse opacity-30 group-hover:opacity-60"
-												@click.stop="deleteFile(file.ID)"
 											>
 												<img
 													src="/src/assets/img/delete.svg"
 													alt="删除"
 													class="h-8 mt-2"
+													@click.stop="deleteFile(file.ID)"
 												/>
 											</div>
 										</div>
