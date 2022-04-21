@@ -6,7 +6,7 @@
 	onMounted(() => {
 		let player = new Player({
 			el: mse.value,
-			url: "https://klxxcdn.oss-cn-hangzhou.aliyuncs.com/histudy/hrm/media/bg3.mp4",
+			url: filePreview.Url,
 			width: 800,
 			height: 500,
 		});
