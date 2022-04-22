@@ -1,0 +1,44 @@
+syntax = "proto3";
+package proto;
+option go_package ="../";
+
+// this is a comment
+
+message Body{
+  int32   type = 1;
+  Msg     msg = 2;
+  Apply   apply = 3;
+}
+
+message Msg {
+  //1
+  string   end = 1;
+  // 端
+  int64    groupId=2;
+  // 群组id
+  string   extra = 3;
+  // 额外消息
+  int32   type = 4;
+  // 消息类型
+  string   msg = 5;
+  // 消息内容
+  int64   time = 6;
+  // 发送时间
+}
+
+message Apply{
+  //2
+  string   end = 1;
+  //端
+  int64   time = 2;
+  // 发送时间
+  int32   type = 3;
+  // 群组消息类型
+  // 1为发起，2为接受，3位拒绝
+  string   deal = 4;
+  //处理人
+  int64  groupId = 5;
+  //群号
+  string  reason = 6;
+  // 拒绝理由或者申请理由
+}
