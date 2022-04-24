@@ -7,7 +7,8 @@ import axios from "axios";
 //获取当前时间戳
 const timestamp = new Date().getTime();
 
-let url = "http://api.jinzh.me";
+// let url = "http://api.jinzh.me";
+let url = "http://localhost:8976";
 // axios.get("http://im-router.jinzh.me").then(
 // 	(response) => {
 // 		url = response.data

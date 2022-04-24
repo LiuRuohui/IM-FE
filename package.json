@@ -15,6 +15,7 @@
 		"codemirror": "^5.65.2",
 		"fsevents": "2.3",
 		"highlight.js": "^11.5.0",
+		"protobufjs": "^6.11.2",
 		"qs": "^6.10.3",
 		"sweetalert2": "^11.4.8",
 		"vue": "^3.2.25",
