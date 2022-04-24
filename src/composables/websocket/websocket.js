@@ -29,13 +29,13 @@ const body = msg.lookupType("proto.Body");
 // };
 
 let message = body.create({
-	type: 2,
+    type: 2,
 
-	apply: {
-		end: "1518194336146132992",
-		type: 2,
-		reason: "hello",
-	},
+    apply: {
+        end: "1518194336146132992",
+        type: 2,
+        reason: "hello",
+    },
 });
 console.log("编码前", message);
 let buffer = body.encode(message).finish();
@@ -43,16 +43,16 @@ console.log("本地解码", body.decode(buffer));
 
 let ws = new WebSocket("ws://localhost:8976/ws?Session-Id=" + session.getSessionId());
 ws.binaryType = "arraybuffer";
-ws.onopen = function (params) {
-	console.log("连接成功！");
-	ws.send(buffer);
+ws.onopen = function(params) {
+    console.log("连接成功！");
+    ws.send(buffer);
 };
 
-ws.onerror = function (params) {
-	console.log(params);
+ws.onerror = function(params) {
+    console.log(params);
 };
 
-ws.onmessage = function (eva) {
-	let tmp = new Uint8Array(eva.data);
-	console.log("收到消息", body.decode(tmp));
+ws.onmessage = function(eva) {
+    let tmp = new Uint8Array(eva.data);
+    console.log("收到消息", body.decode(tmp));
 };
