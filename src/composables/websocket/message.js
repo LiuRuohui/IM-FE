@@ -2,7 +2,7 @@
 import http from "../http"
 
 const singleChat = {
-    data: [],
+    data: {},
     getFriends,
     getOneFriend,
 }
@@ -19,7 +19,7 @@ function getOneFriend() {
 
 
 const groupChat = {
-        data: [],
+        data: {},
         getAllGroups,
         createGroup
     }
