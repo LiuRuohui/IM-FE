@@ -49,7 +49,7 @@ const reminder = debounce(() => {
         <div class="hover:cursor-pointer sm:w-12">
           <img
             class="h-12 opacity-60 hover:opacity-100"
-            src="/src/assets/img/更多.svg"
+            src="/src/assets/img/more.svg"
             alt="更多"
           />
         </div>
