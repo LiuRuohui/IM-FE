@@ -164,14 +164,14 @@
 						<div class="hover:cursor-pointer sm:w-12">
 							<img
 								class="h-10 opacity-60 hover:opacity-100"
-								src="/src/assets/img/更多.svg"
+								src="/src/assets/img/more.svg"
 								alt="更多"
 							/>
 						</div>
 						<div class="hover:cursor-pointer md:w-12">
 							<img
 								class="h-10 opacity-60 hover:opacity-100"
-								src="/src/assets/img/视频.svg"
+								src="/src/assets/img/video.svg"
 								alt="视频"
 							/>
 						</div>
@@ -221,16 +221,16 @@
 						/>
 						<img
 							class="absolute w-6 h-6 sm:left-7 drag bottom-1.5 opacity-60"
-							src="/src/assets/img/链接.svg"
+							src="/src/assets/img/link.svg"
 						/>
 						<img
 							class="sm:right-12 buttom-1 my-2.5 w-6 h-6 absolute opacity-60 hover:opacity-100 hover:cursor-pointer"
-							src="/src/assets/img/微笑.svg"
+							src="/src/assets/img/smile.svg"
 							alt="表情"
 						/>
 						<img
 							class="sm:right-4 buttom-1 my-2.5 w-6 h-6 absolute opacity-80 hover:opacity-100 hover:cursor-pointer"
-							src="/src/assets/img/发送.svg"
+							src="/src/assets/img/send.svg"
 							alt="发送"
 							@click="sendMsg"
 						/>

@@ -1,5 +1,5 @@
 <script setup>
-	import { ref, onMounted, defineAsyncComponent } from "vue";
+	import { ref, onMounted, defineAsyncComponent, computed } from "vue";
 	import mobile from "../../composables/mobile";
 	import Upload from "./components/upload.vue";
 
@@ -24,6 +24,10 @@
 	const height = ref("0px");
 	//获取md容器
 	const fileContainer = ref(null);
+	//排序事件触发
+	const sort = ref("up");
+	//绑定搜索框值
+	const search = ref("");
 
 	onMounted(() => {
 		//初始化挂载保证窗口问题，勿动
@@ -56,6 +60,7 @@
 			filePreview.Url = res.URL;
 		});
 	}
+
 </script>
 
 <template>
@@ -76,6 +81,7 @@
 						class="box-border rounded-full h-9 pl-10 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
 						type="text"
 						placeholder="输入搜索的内容"
+						v-model="search"
 					/>
 					<img
 						class="box-content w-5 h-5 absolute top-2 left-3 pr-1 border-r border-gray-300 drag"
@@ -89,9 +95,12 @@
 				<div class="w-5/6 flex mx-auto h-10 pb-2">
 					<div class="opacity-60 my-1.5 flex-1">
 						列表排序:
-						<select class="outline-none border-none font-bold text-center">
-							<option value>最新文件优先</option>
-							<option value>最后文件优先</option>
+						<select 
+						    class="outline-none border-none font-bold text-center"
+							v-model="sort"
+						>
+							<option :value="'up'">最新文件优先</option>
+							<option :value="'down'">最后文件优先</option>
 						</select>
 					</div>
 					<button class="opacity-60 pr-2 pt-2" @click="upload">
