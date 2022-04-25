@@ -11,7 +11,7 @@ var socket = {
     //开启标识
     socket_open: false,
     // 是否自动重连
-    is_reonnect: true,
+    is_reconnect: true,
     // 重连次数
     reconnect_count: 3,
     // 已发起重连次数
@@ -36,6 +36,8 @@ var socket = {
         }
         //利用new关键字创建一个新的WebSocket对象
         socket.websocket = new WebSocket(socket.url)
+            //设置类型
+        socket.websocket.binaryType = "arraybuffer";
         socket.websocket.onmessage = function(e) {
             socket.receive(e)
         }
@@ -47,7 +49,7 @@ var socket = {
             socket.socket_open = false
 
             // 需要重新连接
-            if (socket.is_reonnect) {
+            if (socket.is_reconnect) {
                 socket.reconnect_timer = setTimeout(() => {
                     // 超过重连次数
                     if (socket.reconnect_current > socket.reconnect_count) {
@@ -65,7 +67,7 @@ var socket = {
         socket.websocket.onopen = function() {
             console.log('连接成功')
             socket.socket_open = true
-            socket.is_reonnect = true
+            socket.is_reconnect = true
         }
 
         // 连接发生错误
@@ -82,7 +84,8 @@ var socket = {
     send: (data, callback = null) => {
         // 开启状态直接发送
         if (socket.websocket.readyState === socket.websocket.OPEN) {
-            socket.websocket.send(JSON.stringify(data))
+            let buffer = encode(data)
+            socket.websocket.send(buffer)
 
             if (callback) {
                 callback()
@@ -105,19 +108,12 @@ var socket = {
 
     /**
      * 接收消息
-     * @param {*} message 接收到的消息
      */
     receive: (message) => {
-        var params = JSON.parse(message.data)
+        let tmp = new Uint8Array(message.data);
+        var params = decode(tmp)
 
-        if (params.kind != 0) {
-            console.log('收到服务器内容：', message.data)
-        }
-
-        if (params == undefined) {
-            console.log("收到服务器空内容")
-            return false
-        }
+        console.log("收到服务器消息", params)
     },
 
     /**
@@ -125,7 +121,7 @@ var socket = {
      */
     close: () => {
         console.log('主动断开连接')
-        socket.is_reonnect = false
+        socket.is_reconnect = false
         socket.websocket.close()
     },
 
