@@ -90,7 +90,7 @@
 					</select>
 				</div>
 				<div class="opacity-60">
-					创建会话
+					创建群聊
 					<div class="inline-block item-center">
 						<img class="h-9 inline-block" src="/src/assets/img/加号.svg" />
 					</div>
