@@ -10,11 +10,6 @@ var socket = {
     url: "ws://localhost:8976/ws?Session-Id=" + session.getSessionId(),
     //开启标识
     socket_open: false,
-    // 心跳timer
-    hearbeat_timer: null,
-    // 心跳发送频率
-    hearbeat_interval: 5000,
-
     // 是否自动重连
     is_reonnect: true,
     // 重连次数
@@ -30,6 +25,7 @@ var socket = {
      * 初始化连接
      */
     init: () => {
+        //检查浏览器是否支持websocket
         if (!("WebSocket" in window)) {
             console.log('浏览器不支持WebSocket')
             return null
@@ -38,7 +34,7 @@ var socket = {
         if (socket.websocket) {
             return socket.websocket
         }
-
+        //利用new关键字创建一个新的WebSocket对象
         socket.websocket = new WebSocket(socket.url)
         socket.websocket.onmessage = function(e) {
             socket.receive(e)
@@ -48,7 +44,6 @@ var socket = {
         socket.websocket.onclose = function(e) {
             console.log('连接已断开')
             console.log('connection closed (' + e.code + ')')
-            clearInterval(socket.hearbeat_interval)
             socket.socket_open = false
 
             // 需要重新连接
@@ -71,8 +66,6 @@ var socket = {
             console.log('连接成功')
             socket.socket_open = true
             socket.is_reonnect = true
-                // 开启心跳
-            socket.heartbeat()
         }
 
         // 连接发生错误
@@ -128,32 +121,10 @@ var socket = {
     },
 
     /**
-     * 心跳
-     */
-    heartbeat: () => {
-        console.log('socket', 'ping')
-        if (socket.hearbeat_timer) {
-            clearInterval(socket.hearbeat_timer)
-        }
-
-        socket.hearbeat_timer = setInterval(() => {
-            const token = storage.get('Access-Token')
-            var data = {
-                kind: 0, //请求类型 kind 0 心跳包
-                shop_id: Vue.prototype.$shop_id(false), //如果是商家 传当前店铺ID 否则可不传
-                'API-Token': token, //用户的token
-                'API-Source': 'MERCHANT', // MERCHANT  商家  CUSTOMER  顾客
-            }
-            socket.send(data)
-        }, socket.hearbeat_interval)
-    },
-
-    /**
      * 主动关闭连接
      */
     close: () => {
         console.log('主动断开连接')
-        clearInterval(socket.hearbeat_interval)
         socket.is_reonnect = false
         socket.websocket.close()
     },
@@ -173,17 +144,32 @@ var socket = {
 }
 
 //消息函数
-function message() {
+function message(props) {
     return body.create({
         type: 1,
-
+        msg: {
+            end: props.end,
+            groupId: props.groupId,
+            extra: props.extra,
+            type: props.type,
+            msg: props.msg,
+            time: props.time
+        }
     })
 }
 
 //回应函数
-function apply() {
+function apply(props) {
     return body.create({
         type: 2,
+        apply: {
+            end: props.end,
+            time: props.time,
+            type: props.type,
+            deal: props.deal,
+            groupId: props.groupId,
+            reason: props.reason,
+        }
     })
 }
 
