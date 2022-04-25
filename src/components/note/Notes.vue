@@ -6,7 +6,7 @@
 
 	import { dateFormat } from "../../composables/tool";
 
-	import more from "../../assets/img/删除.svg";
+	import more from "../../assets/img/delete.svg";
 
 	import { Dialog } from "../../composables/modelDialog";
 
@@ -157,7 +157,7 @@
 						<div class="inline-block item-center">
 							<img
 								class="h-8 inline-block drag rounded-full opacity-60 hover:opacity-100 cursor-pointer"
-								src="/src/assets/img/加号.svg"
+								src="/src/assets/img/plus.svg"
 								@click="create"
 							/>
 						</div>

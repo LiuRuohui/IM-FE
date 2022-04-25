@@ -92,7 +92,7 @@
 				<div class="opacity-60">
 					添加好友
 					<div class="inline-block item-center">
-						<img class="h-9 inline-block" src="/src/assets/img/加号.svg" />
+						<img class="h-9 inline-block" src="/src/assets/img/plus.svg" />
 					</div>
 				</div>
 			</div>
