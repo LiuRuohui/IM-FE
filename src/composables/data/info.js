@@ -26,10 +26,6 @@ function getInfo() {
 		},
 		(error) => {
 			console.log("获取信息失败了", error);
-			// 出错时直接跳转会首页
-			// router.push({
-			//     name: "login",
-			// })
 		}
 	);
 }
