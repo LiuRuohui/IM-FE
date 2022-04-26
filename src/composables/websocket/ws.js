@@ -6,7 +6,7 @@ const body = msg.lookupType("proto.Body");
 const socket = {
 	websocket: null,
 	//url 到时候需要通过gateway引入
-	url: "ws://api.jinzh.me/ws?Session-Id=" + session.getSessionId(),
+	url: "ws://localhost:8976/ws?Session-Id=" + session.getSessionId(),
 	//开启标识
 	socket_open: false,
 	// 是否自动重连
@@ -39,6 +39,7 @@ const socket = {
 		socket.websocket.binaryType = "arraybuffer";
 		// 设置收到消息回调函数
 		socket.websocket.onmessage = function (e) {
+			console.log("收到消息了");
 			socket.receive(e);
 		};
 
@@ -291,4 +292,4 @@ class Apply {
 	}
 }
 
-export { socket, message, apply, encode, decode };
+export { socket, message, apply, encode, decode, Msg, Apply };
