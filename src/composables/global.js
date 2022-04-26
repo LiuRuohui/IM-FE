@@ -4,9 +4,12 @@
 
 import { Infos, Note, File } from "./api";
 
+import { socket } from "./websocket/ws";
+
 function global() {
 	Note.getIndex();
 	File.getIndex();
+	socket.init();
 }
 
 export default global;
