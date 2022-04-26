@@ -340,4 +340,4 @@ function auth() {
 
 let Global = info.global;
 
-export { Log, Infos, Note, File, Auth, Global };
+export { Log, Infos, Note, File, Auth, Group, Chum, Global };
