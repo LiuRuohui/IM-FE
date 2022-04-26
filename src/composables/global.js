@@ -14,14 +14,14 @@ function global() {
 	Note.getIndex();
 	File.getIndex();
 	socket.init();
-	let jj = new Apply("1518775197690236928", 0, 2, "666");
+	let jj = new Apply("1518909737851162624", 0, 2, "666");
 	let dd = apply(jj);
-	let hh = new Msg("1518775197690236928", 0, "", 1, "666");
+	let hh = new Msg("1518909737851162624", 0, "", 1, "666");
 	let nn = message(hh);
 	// socket.send(dd, function name(params) {
 	// 	console.log("发送完毕");
 	// });
-	// socket.send(dd, function name(params) {
+	// socket.send(nn, function name(params) {
 	// 	console.log("发送完毕");
 	// });
 	group.getGroups();
