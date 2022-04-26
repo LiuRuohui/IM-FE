@@ -1,44 +1,45 @@
 <script setup>
-import mobile from "../../composables/mobile";
-import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
-import msgChat from "./msgChat.vue";
-//加载异步组件
-const addFriends = defineAsyncComponent(() => import("./addFriends.vue"));
+	import mobile from "../../composables/mobile";
+	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
+	import msgChat from "./msgChat.vue";
+	import { Chum } from "../../composables/api";
+	//加载异步组件
+	const addFriends = defineAsyncComponent(() => import("./addFriends.vue"));
 
-const notebooks = reactive({
-  id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-  message: [],
-});
-const turn = mobile();
+	let chums = Chum.data();
+	const notebooks = reactive({
+		id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+		message: [],
+	});
+	const turn = mobile();
 
-const height = ref("0px");
-const noteContainer = ref(null);
+	const height = ref("0px");
+	const noteContainer = ref(null);
 
-let time = ref("");
-let t = new Date();
-time = getTime(t);
-let isShow = ref("true");
+	let time = ref("");
+	let t = new Date();
+	time = getTime(t);
+	let isShow = ref("true");
 
-const typeComponentMap = {
-  1: msgChat,
-  2: addFriends,
-};
+	const typeComponentMap = {
+		1: msgChat,
+		2: addFriends,
+	};
 
-onMounted(() => {
-  height.value = noteContainer.value.offsetHeight + "px";
-});
+	onMounted(() => {
+		height.value = noteContainer.value.offsetHeight + "px";
+	});
 
-function getTime(time) {
-  let transferTime =
-    time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
-  console.log(transferTime);
-  return transferTime;
-}
+	function getTime(time) {
+		let transferTime = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+		console.log(transferTime);
+		return transferTime;
+	}
 
-function addFriend() {
-  isShow.value = !isShow.value;
-  console.log("跳转到添加好友界面");
-}
+	function addFriend() {
+		isShow.value = !isShow.value;
+		console.log("跳转到添加好友界面");
+	}
 </script>
 
 <template>
@@ -147,7 +148,7 @@ function addFriend() {
   </div>
 </template>
 <style>
-.frame {
-  height: calc(100% - 5.5rem);
-}
+	.frame {
+		height: calc(100% - 5.5rem);
+	}
 </style>
