@@ -51,7 +51,7 @@ function upload() {
 
 function deleteFile(fileId) {
   File.del(fileId);
-  console.log(msg.value,isShow.value);
+  console.log(msg.value, isShow.value);
   if (File.data().length == 0) {
     isShow.value = false;
     msg.value = "浏览文件";

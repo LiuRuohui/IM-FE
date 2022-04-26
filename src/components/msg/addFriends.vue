@@ -50,9 +50,7 @@ onMounted(() => {
                 alt="章鱼哥"
               />
             </div>
-            <div
-              class="flex flex-col h-full justify-center pl-2 pr-3"
-            >
+            <div class="flex flex-col h-full justify-center pl-2 pr-3">
               <div class="flex h-1/2 pt-6">
                 <div
                   class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
@@ -66,8 +64,12 @@ onMounted(() => {
                 前端工程师
               </div>
             </div>
-            <div class="flex flex-grow flex-row-reverse ">
-                <img src="/src/assets/img/plus.svg" alt="" class="w-10 h-10 mr-4 hover:cursor-pointer opacity-60">
+            <div class="flex flex-grow flex-row-reverse">
+              <img
+                src="/src/assets/img/plus.svg"
+                alt=""
+                class="w-10 h-10 mr-4 hover:cursor-pointer opacity-60"
+              />
             </div>
           </div>
         </div>

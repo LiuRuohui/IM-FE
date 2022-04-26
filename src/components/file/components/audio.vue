@@ -1,5 +1,5 @@
 <script setup>
-import {filePreview} from "../../../composables/data/file"
+import { filePreview } from "../../../composables/data/file";
 </script>
 
 <template>

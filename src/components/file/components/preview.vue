@@ -1,8 +1,12 @@
 <script setup>
 import { filePreview } from "../../../composables/data/file";
-import { defineAsyncComponent } from "vue"
+import { defineAsyncComponent } from "vue";
 
-import { debounce, determineVue, determineImg } from "../../../composables/tool";
+import {
+  debounce,
+  determineVue,
+  determineImg,
+} from "../../../composables/tool";
 import { File } from "../../../composables/api";
 
 //加载异步组件
@@ -35,7 +39,9 @@ const reminder = debounce(() => {
       <div
         class="flex mx-8 sm:w-20 sm:h-20 rounded-full my-4 m-auto box-border"
       >
-        <div><img :src="determineImg(filePreview.Name)" alt="" class="h-16" /></div>
+        <div>
+          <img :src="determineImg(filePreview.Name)" alt="" class="h-16" />
+        </div>
       </div>
       <div class="flex">
         <input
