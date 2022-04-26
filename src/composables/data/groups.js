@@ -7,11 +7,14 @@ const Groups = {
 };
 
 //取内容
-function get(id) {
+async function get(id) {
 	if (data.has(id)) {
 		return data.get(key);
 	} else {
-		let tmp = getGroupData(id);
+		let tmp;
+		await getGroupData(id).then((data) => {
+			tmp = data;
+		});
 		data.set(id, tmp);
 		return tmp;
 	}
@@ -19,9 +22,10 @@ function get(id) {
 
 async function getGroupData(id) {
 	let groupData;
-	await http.post("/group/getInfo", {}).then(
+	await http.post("/group/getInfo", { groupId: id }).then(
 		(data) => {
 			groupData = data;
+			console.log("1654978", groupData);
 			console.log("获取群组" + id, "信息成功", data);
 		},
 		(error) => {

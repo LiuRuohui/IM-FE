@@ -6,10 +6,11 @@ const group = reactive({
 	data: [],
 	message: [],
 	//上面的message应该是map类型
+	getGroups,
 });
 
 class GroupEle {
-	constructor(name, groupId, joinTime, ownerId, intro, headPic) {
+	constructor(name, groupId, joinTime, ownerId, intro, headPic, time) {
 		this.setName(name);
 		this.setGroupId(groupId);
 		this.setJoinTime(joinTime);
@@ -80,8 +81,13 @@ async function getGroups() {
 			console.log("获取信息失败了", error);
 		}
 	);
+
 	for (const groupE of tmp) {
-		let result = Groups.get(groupE.GroupId);
+		let result;
+		await Groups.get(groupE.GroupId).then((data) => {
+			result = data;
+		});
+		console.log("返回的内容", result);
 		let ele = new GroupEle(
 			result.Name,
 			result.ID,
@@ -94,3 +100,5 @@ async function getGroups() {
 		group.data.push(ele);
 	}
 }
+
+export { group };

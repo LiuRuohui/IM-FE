@@ -3,10 +3,11 @@ const data = new Map();
 
 const User = {
 	data,
+	get,
 };
 
 //取内容
-User.get = function (id) {
+function get(id) {
 	if (data.has(id)) {
 		return data.get(key);
 	} else {
@@ -14,9 +15,7 @@ User.get = function (id) {
 		data.set(id, tmp);
 		return tmp;
 	}
-};
-
-
+}
 
 async function getUserData(id) {
 	let userData;
@@ -31,3 +30,5 @@ async function getUserData(id) {
 	);
 	return userData;
 }
+
+export { User };
