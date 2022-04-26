@@ -30,7 +30,7 @@ onMounted(() => {
     </div>
     <div class="w-full flex flex-grow bg-slate-50" ref="friendContainer">
       <div
-        class="w-full h-full overflow-y-auto no-scrollbar"
+        class="w-full overflow-y-auto no-scrollbar"
         :style="{ height: height }"
       >
         <div class="flex flex-col my-4 mx-8">

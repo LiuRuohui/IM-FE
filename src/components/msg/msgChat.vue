@@ -47,9 +47,9 @@ function sendMsg1() {
 </script>
 
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full overflow-y-auto no-scrollbar">
     <div
-      class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row border-1 shadow"
+      class="w-full h-16 box-content overflow-hidden mx-auto flex flex-row shadow"
     >
       <div
         class="flex mx-4 sm:w-12 sm:h-12 rounded-full my-3 m-auto relative box-border"
@@ -86,9 +86,9 @@ function sendMsg1() {
         </div>
       </div>
     </div>
-    <div class="w-full bg-slate-100 h-full" ref="chatContainer">
+    <div class="w-full bg-slate-100 flex flex-grow" ref="chatContainer">
       <div
-        class="w-full frame flex flex-col overflow-y-auto"
+        class="w-full overflow-y-auto no-scrollbar"
         :style="{ height: height }"
       >
         <div class="w-2/5 flex flex-col">
@@ -120,7 +120,7 @@ function sendMsg1() {
       </div>
     </div>
     <div
-      class="w-full h-8 justify-center items-center flex flex-grow pt-2 bg-slate-100"
+      class="w-full h-8 justify-center items-center flex bg-slate-100"
     >
       <div class="w-full relative flex flex-row">
         <input
