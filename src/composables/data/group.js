@@ -1,17 +1,22 @@
 import { reactive } from "vue";
 import { http } from "../http";
 import router from "../../router/router";
-
+import { Groups } from "./groups";
 const group = reactive({
 	data: [],
+	message: [],
+	//上面的message应该是map类型
 });
 
 class GroupEle {
-	constructor(name, groupId, joinTime, ownerId) {
+	constructor(name, groupId, joinTime, ownerId, intro, headPic) {
 		this.setName(name);
 		this.setGroupId(groupId);
 		this.setJoinTime(joinTime);
 		this.setOwnerId(ownerId);
+		this.setIntro(intro);
+		this.setHeadPic(headPic);
+		this.setTime(time);
 	}
 	setName(name) {
 		if (typeof name === "string") {
@@ -40,5 +45,52 @@ class GroupEle {
 		} else {
 			throw "ownerId is not string";
 		}
+	}
+	setIntro(intro) {
+		if (typeof intro === "string") {
+			this.intro = intro;
+		} else {
+			throw "intro is not string";
+		}
+	}
+	setHeadPic(headPic) {
+		if (typeof headPic === "number") {
+			this.headPic = headPic;
+		} else {
+			throw "headPic is not number";
+		}
+	}
+	setTime(time) {
+		if (typeof time === "number") {
+			this.time = time;
+		} else {
+			throw "time is not number";
+		}
+	}
+}
+
+async function getGroups() {
+	let tmp;
+	await http.get("/group/getAll", {}).then(
+		(data) => {
+			tmp = data;
+			console.log("获取信息成功了", data);
+		},
+		(error) => {
+			console.log("获取信息失败了", error);
+		}
+	);
+	for (const groupE of tmp) {
+		let result = Groups.get(groupE.GroupId);
+		let ele = new GroupEle(
+			result.Name,
+			result.ID,
+			groupE.JoinTime,
+			result.Owner,
+			result.Introduction,
+			result.HeadPic,
+			result.Time
+		);
+		group.data.push(ele);
 	}
 }
