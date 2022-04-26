@@ -25,10 +25,10 @@ class ChumEle {
 		}
 	}
 	setID(id) {
-		if (typeof id === "number") {
+		if (typeof id === "string") {
 			this.id = id;
 		} else {
-			throw "id is not number";
+			throw "id is not string";
 		}
 	}
 	setSex(sex) {
@@ -38,6 +38,73 @@ class ChumEle {
 			throw "sex is not boolean";
 		}
 	}
+	setTime(time) {
+		if (typeof time === "number") {
+			this.time = time;
+		} else {
+			throw "time is not number";
+		}
+	}
+}
+
+class ChumMsg {
+	constructor(accountA, accountB, direction, type, body, extra, time) {
+		this.setAccountA(accountA);
+		this.setAccountB(accountB);
+		this.setDirection(direction);
+		this.setType(type);
+		this.setBody(body);
+		this.setExtra(extra);
+		this.setTime(time);
+	}
+	setAccountA(accountA) {
+		if (typeof accountA === "string") {
+			this.accountA = accountA;
+		} else {
+			throw "accountA is not string";
+		}
+	}
+
+	setAccountB(accountB) {
+		if (typeof accountB === "string") {
+			this.accountB = accountB;
+		} else {
+			throw "accountB is not string";
+		}
+	}
+
+	setDirection(direction) {
+		if (typeof direction === "boolean") {
+			this.direction = direction;
+		} else {
+			throw "direction is not boolean";
+		}
+	}
+
+	setType(type) {
+		if (typeof type === "number") {
+			this.type = type;
+		} else {
+			throw "type is not number";
+		}
+	}
+
+	setBody(body) {
+		if (typeof body === "string") {
+			this.body = body;
+		} else {
+			throw "body is not string";
+		}
+	}
+
+	setExtra(extra) {
+		if (typeof extra === "string") {
+			this.extra = extra;
+		} else {
+			throw "extra is not string";
+		}
+	}
+
 	setTime(time) {
 		if (typeof time === "number") {
 			this.time = time;
