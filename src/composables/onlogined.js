@@ -7,11 +7,11 @@ import { group } from "./data/group";
 
 import { chum } from "./data/chum";
 function onlogined() {
-	Note.getIndex();
-	Infos.getInfo();
-	File.getIndex();
-	group.getGroups();
-	chum.getChums();
-	socket.init();
+  Note.getIndex();
+  Infos.getInfo();
+  File.getIndex();
+  group.getGroups();
+  chum.getChums();
+  socket.init();
 }
 export default onlogined;

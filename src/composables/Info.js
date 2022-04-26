@@ -7,34 +7,34 @@
 import { reactive } from "vue";
 import { http } from "/src/composables/http";
 const Info = reactive({
-	id: "",
-	name: "",
-	sex: false,
-	signature: "",
-	phone: "",
-	mail: "",
-	site: "",
-	github: "",
-	weibo: "",
-	qq: "",
+  id: "",
+  name: "",
+  sex: false,
+  signature: "",
+  phone: "",
+  mail: "",
+  site: "",
+  github: "",
+  weibo: "",
+  qq: "",
 
-	getInfo() {
-		http.get("/user/info", {}, "").then(
-			(data) => {
-				console.log(data);
-				Info.name = data.Name;
-				Info.sex = data.Sex;
-				Info.signature = data.Signature;
-				Info.phone = data.Phone;
-				Info.mail = data.Mail;
-				Info.site = data.Site;
-				Info.github = data.Github;
-				Info.weibo = data.Weibo;
-				Info.qq = data.Qq;
-			},
-			(error) => {}
-		);
-	},
+  getInfo() {
+    http.get("/user/info", {}, "").then(
+      (data) => {
+        console.log(data);
+        Info.name = data.Name;
+        Info.sex = data.Sex;
+        Info.signature = data.Signature;
+        Info.phone = data.Phone;
+        Info.mail = data.Mail;
+        Info.site = data.Site;
+        Info.github = data.Github;
+        Info.weibo = data.Weibo;
+        Info.qq = data.Qq;
+      },
+      (error) => {}
+    );
+  },
 });
 
 export { Info };

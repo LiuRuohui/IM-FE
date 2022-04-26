@@ -14,13 +14,13 @@ var session = {};
 
 //方法设置sessionId
 session.setSessionId = function (value) {
-	//设置sessionId
-	ls.set("Session-Id", value, expired);
+  //设置sessionId
+  ls.set("Session-Id", value, expired);
 };
 
 // 方法获取sessionId
 session.getSessionId = function () {
-	return ls.get("Session-Id");
+  return ls.get("Session-Id");
 };
 
 export { session };

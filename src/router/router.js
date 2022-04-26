@@ -5,16 +5,16 @@ import { routes } from "./route";
 
 // 创建路由对象
 const router = createRouter({
-	history: createWebHashHistory(),
-	routes,
+  history: createWebHashHistory(),
+  routes,
 });
 
 router.beforeEach((to, from) => {
-	if (filter.stop(to)) {
-		return false;
-	}
-	//设置标题
-	filter.title(to);
+  if (filter.stop(to)) {
+    return false;
+  }
+  //设置标题
+  filter.title(to);
 });
 
 export default router;
