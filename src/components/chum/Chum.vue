@@ -2,8 +2,10 @@
 import mobile from "../../composables/mobile";
 import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 import groupChat from "./groupChat.vue";
+import searchGroup from "./searchGroup.vue";
 //加载异步组件
 const createGroup = defineAsyncComponent(() => import("./createGroup.vue"));
+
 
 const notebooks = reactive({
   id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
@@ -18,9 +20,10 @@ let time = ref("");
 let t = new Date();
 time = getTime(t);
 let isShow = ref("true");
+let msg = ref("创建群组");
 
 const typeComponentMap = {
-  1: groupChat,
+  1: searchGroup,
   2: createGroup,
 };
 
@@ -37,6 +40,11 @@ function getTime(time) {
 
 function createGroups() {
   isShow.value = !isShow.value;
+  if(msg.value == "创建群组") {
+      msg.value = "搜索群组"
+  }else if(msg.value == "搜索群组"){
+    msg.value = "创建群组"
+  }
   console.log("跳转到创建群组界面");
 }
 </script>
@@ -78,7 +86,7 @@ function createGroups() {
           </select>
         </div>
         <div class="opacity-60 hover:cursor-pointer" @click="createGroups">
-          创建群组
+          {{msg}}
           <div class="inline-block item-center">
             <img class="h-9 inline-block" src="/src/assets/img/plus.svg" />
           </div>
