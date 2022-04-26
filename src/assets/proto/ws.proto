@@ -14,7 +14,7 @@ message Msg {
   //1
   string   end = 1;
   // 端
-  int64    groupId=2;
+  string    groupId=2;
   // 群组id
   string   extra = 3;
   // 额外消息
@@ -34,10 +34,10 @@ message Apply{
   // 发送时间
   int32   type = 3;
   // 群组消息类型
-  // 1为发起，2为接受，3位拒绝,4为删除或退群,5为踢出
+  // 1为发起，2为接受，3位拒绝，4位退出或删除
   string   deal = 4;
   //处理人
-  int64  groupId = 5;
+  string  groupId = 5;
   //群号
   string  reason = 6;
   // 拒绝理由或者申请理由

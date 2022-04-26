@@ -61,9 +61,13 @@ async function getChums() {
 	for (const chumE of tmp) {
 		let result;
 		if (Infos.data().ID == chumE.UserA) {
-			result = User.get(chumE.UserB);
+			await User.get(chumE.UserB).then((data) => {
+				result = data;
+			});
 		} else {
-			result = User.get(chumE.UserA);
+			await User.get(chumE.UserA).then((data) => {
+				result = data;
+			});
 		}
 		console.log("结果", result);
 		let ele = new ChumEle(result.Name, result.ID, result.Sex, chumE.CreateTime);

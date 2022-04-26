@@ -7,11 +7,14 @@ const User = {
 };
 
 //取内容
-function get(id) {
+async function get(id) {
 	if (data.has(id)) {
 		return data.get(key);
 	} else {
-		let tmp = getUserData(id);
+		let tmp;
+		await getUserData(id).then((data) => {
+			tmp = data;
+		});
 		data.set(id, tmp);
 		return tmp;
 	}

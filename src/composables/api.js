@@ -13,19 +13,24 @@ import { Dialog } from "./modelDialog";
 import { info } from "./data/info";
 import { note } from "./data/note";
 import { file } from "./data/file";
+import { group } from "./data/group";
+import { chum } from "./data/chum";
 //处理登录相关
 const Log = {};
 // 处理用户信息
 const Infos = {};
 // 处理笔记相关
 const Note = {};
-//处理文件相关
+// 处理文件相关
 const File = {};
-//认证接口
+// 认证接口
 const Auth = {
 	status: true,
 };
-
+// 群组
+const Group = {};
+// 好友
+const Chum = {};
 /***
 
         登陆函数声明
@@ -86,6 +91,14 @@ File.updateName = file.updateName;
 File.del = file.del;
 File.data = function () {
 	return file.data;
+};
+
+Group.data = function () {
+	return toRef(group, "data");
+};
+
+Chum.data = function () {
+	return toRef(chum, "data");
 };
 /*** 
 

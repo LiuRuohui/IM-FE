@@ -31,7 +31,7 @@ const $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $
             id: 1
           },
           groupId: {
-            type: "int64",
+            type: "string",
             id: 2
           },
           extra: {
@@ -71,7 +71,7 @@ const $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $
             id: 4
           },
           groupId: {
-            type: "int64",
+            type: "string",
             id: 5
           },
           reason: {

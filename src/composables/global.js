@@ -25,7 +25,7 @@ function global() {
 	// 	console.log("发送完毕");
 	// });
 	group.getGroups();
-	// chum.getChums();
+	chum.getChums();
 }
 
 export default global;

@@ -4,7 +4,7 @@ import router from "../../router/router";
 import { Groups } from "./groups";
 const group = reactive({
 	data: [],
-	message: [],
+	message: new Map(),
 	//上面的message应该是map类型
 	getGroups,
 });
@@ -27,10 +27,10 @@ class GroupEle {
 		}
 	}
 	setGroupId(groupId) {
-		if (typeof groupId === "number") {
+		if (typeof groupId === "string") {
 			this.groupId = groupId;
 		} else {
-			throw "groupId is not number";
+			throw "groupId is not string";
 		}
 	}
 	setJoinTime(joinTime) {
