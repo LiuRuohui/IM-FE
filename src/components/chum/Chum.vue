@@ -91,7 +91,7 @@ function createGroups() {
         >
           <div class="flex flex-col my-4 mx-8">
             <div
-              class="group flex items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
+              class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
               v-for="notes in notebooks.id"
             >
               <div
@@ -122,6 +122,13 @@ function createGroups() {
                   前端工程师
                 </div>
               </div>
+              <div class="flex flex-grow flex-row-reverse pr-4">
+                <img
+                  src="/src/assets/img/delete.svg"
+                  alt=""
+                  class="w-8 h-8 opacity-60"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -131,15 +138,15 @@ function createGroups() {
       class="flex-grow h-full max-h-screen lg:block"
       :class="turn.value ? '' : 'hidden'"
     >
-        <!--切换组件部分更流畅-->
-        <Transition name="fade" mode="out-in">
-          <keep-alive>
-            <component
-              @go="createGroups"
-              :is="typeComponentMap[isShow ? 1 : 2]"
-            ></component>
-          </keep-alive>
-        </Transition>
+      <!--切换组件部分更流畅-->
+      <Transition name="fade" mode="out-in">
+        <keep-alive>
+          <component
+            @go="createGroups"
+            :is="typeComponentMap[isShow ? 1 : 2]"
+          ></component>
+        </keep-alive>
+      </Transition>
     </div>
   </div>
 </template>
