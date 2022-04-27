@@ -3,6 +3,7 @@
 	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 	import searchGroup from "./searchGroup.vue";
 	import { Group } from "../../composables/api";
+	import {groupPreview} from "../../composables/data/group"
 	//加载异步组件
 	const createGroup = defineAsyncComponent(() => import("./createGroup.vue"));
 	const groupChat = defineAsyncComponent(() => import("./groupChat.vue"));
@@ -51,9 +52,16 @@
 		}
 	}
 
-	function turnToChat() {
+	function turnToChat(group) {
 		showChat.value = 1;
 		isShow.value = 0;
+		groupPreview.name = group.name;
+		groupPreview.groupId = group.groupId;
+		groupPreview.joinTime = group.joinTime;
+		groupPreview.ownerId = group.ownerId;
+		groupPreview.intro = group.intro;
+		console.log(groupPreview)
+
 	}
 
 	function deleteGroup() {
@@ -107,7 +115,7 @@
 					<div class="flex flex-col my-4 mx-8">
 						<div
 							class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
-							@click="turnToChat"
+							@click="turnToChat(group)"
 							v-for="group in groups"
 						>
 							<div
@@ -133,7 +141,7 @@
 								<div
 									class="inline-block truncate opacity-40 text-sm group-hover:opacity-70 h-1/2 pt-1"
 								>
-									前端工程师
+									{{group.intro}}
 								</div>
 							</div>
 							<div class="flex flex-grow flex-row-reverse pr-4">

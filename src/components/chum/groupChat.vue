@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref, onMounted } from "vue";
+import{groupPreview} from "../../composables/data/group"
 
 const height = ref("0px");
 const chatContainer = ref(null);
@@ -65,9 +66,9 @@ function sendMsg1() {
       </div>
       <div class="flex flex-col justify-center mr-4">
         <div class="flex h-1/2 pt-4">
-          <div class="font-bold text-sm opacity-70 flex items-center">林凌</div>
+          <div class="font-bold text-sm opacity-70 flex items-center">{{groupPreview.name}}</div>
         </div>
-        <div class="truncate opacity-40 text-xs h-1/2 pt-1">在线</div>
+        <div class="truncate opacity-40 text-xs h-1/2 pt-1">{{groupPreview.intro}}</div>
       </div>
       <div class="flex-grow flex flex-row-reverse py-4 pr-4">
         <div class="hover:cursor-pointer sm:w-12">

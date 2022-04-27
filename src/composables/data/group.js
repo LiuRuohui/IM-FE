@@ -10,6 +10,15 @@ const group = reactive({
 	createGroup
 });
 
+//暂存群组信息
+let groupPreview = reactive({
+	name :"",
+	groupId :"",
+	joinTime: "",
+	ownerId: "",
+	intro: "",
+})
+
 class GroupEle {
 	constructor(name, groupId, joinTime, ownerId, intro, headPic, time) {
 		this.setName(name);
@@ -191,4 +200,4 @@ function createGroup(groupName){
 	);
 }
 
-export { group };
+export { group, groupPreview };

@@ -6,7 +6,7 @@ const groupName = ref("");
 
 function createGroup() {
   console.log("即将创建群聊",groupName.value);
-  Group.createGroup(groupName);
+  Group.createGroup(groupName.value);
 }
 </script>
 
