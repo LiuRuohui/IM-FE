@@ -99,6 +99,10 @@ Group.data = function () {
 	return toRef(group, "data");
 };
 
+Group.message = function () {
+	return toRef(group, "message");
+};
+
 Chum.data = function () {
 	return toRef(chum, "data");
 };
