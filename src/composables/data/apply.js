@@ -24,4 +24,4 @@ async function getApply() {
 	console.log("apply", apply.data);
 }
 
-export { getApply };
+export { apply, getApply };

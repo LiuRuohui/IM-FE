@@ -15,6 +15,7 @@ import { note } from "./data/note";
 import { file } from "./data/file";
 import { group } from "./data/group";
 import { chum } from "./data/chum";
+import { apply } from "./data/apply";
 //处理登录相关
 const Log = {};
 // 处理用户信息
@@ -31,6 +32,8 @@ const Auth = {
 const Group = {};
 // 好友
 const Chum = {};
+
+const Apply = {};
 /***
 
         登陆函数声明
@@ -68,6 +71,7 @@ Infos.updatePasswd = updatePasswd;
 Infos.data = function () {
 	return toRef(info, "data");
 };
+Infos.getUser = info.getUser;
 //获取其他用户信息
 Infos.getUser = info.getUser;
 /***
@@ -110,6 +114,10 @@ Chum.data = function () {
 
 Chum.message = function () {
 	return toRef(chum, "message");
+};
+
+Apply.data = function () {
+	return toRef(apply, "data");
 };
 /*** 
 
@@ -351,4 +359,4 @@ function auth() {
 
 let Global = info.global;
 
-export { Log, Infos, Note, File, Auth, Group, Chum, Global };
+export { Log, Infos, Note, File, Auth, Group, Chum, Apply, Global };
