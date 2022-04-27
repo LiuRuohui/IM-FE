@@ -2,6 +2,7 @@
 	import { reactive, ref, onMounted } from "vue";
 	import { Chum } from "../../composables/api";
 	import { socket } from "../../composables/websocket/ws"
+	import {info} from "../../composables/data/info"
 
 	let messages = Chum.message();
 
@@ -80,7 +81,7 @@
 			<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
 				<div class="w-2/5 flex flex-col">
 					<div
-						v-for="items in Chum.message().value.get('1519246509860720640')"
+						v-for="items in Chum.message().value.get(info.data.ID)"
 						class="ml-2 h-8 word-wrap mt-4 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"
 					>
 						{{ items.Body }}
