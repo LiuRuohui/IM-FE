@@ -1,7 +1,13 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
+import { Group } from "../../composables/api";
 
 const groupName = ref("");
+
+function createGroup() {
+  console.log("即将创建群聊",groupName.value);
+  Group.createGroup(groupName);
+}
 </script>
 
 <template>
@@ -20,7 +26,7 @@ const groupName = ref("");
                     class="inputFrame"
                     placeholder="请输入新建群名"
                 />
-                <button class="btn mt-8">创建</button>
+                <button class="btn mt-8" @click="createGroup">创建</button>
             </div>
         </div>
     </div>

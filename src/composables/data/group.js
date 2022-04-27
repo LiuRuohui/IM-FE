@@ -7,6 +7,7 @@ const group = reactive({
 	message: new Map(),
 	//上面的message应该是map类型
 	getGroups,
+	createGroup
 });
 
 class GroupEle {
@@ -152,10 +153,10 @@ async function getGroups() {
 		(data) => {
 			tmp = data;
 			console.log(tmp);
-			console.log("获取信息成功了", data);
+			console.log("获取群组信息成功了", data);
 		},
 		(error) => {
-			console.log("获取信息失败了", error);
+			console.log("获取群组信息失败了", error);
 		}
 	);
 
@@ -164,7 +165,7 @@ async function getGroups() {
 		await Groups.get(groupE.GroupId).then((data) => {
 			result = data;
 		});
-		console.log("返回的内容", result);
+		//console.log("返回的内容", result);
 		let ele = new GroupEle(
 			result.Name,
 			result.ID,
@@ -176,6 +177,18 @@ async function getGroups() {
 		);
 		group.data.push(ele);
 	}
+}
+
+function createGroup(groupName){
+	http.post("/group/create", { name: groupName }).then(
+		(data) => {
+			console.log("创建群聊成功", data);
+			getGroups();
+		},
+		(error) => {
+			console.log("创建群聊失败", error);
+		}
+	);
 }
 
 export { group };

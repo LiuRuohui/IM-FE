@@ -95,6 +95,7 @@ File.data = function () {
 	return file.data;
 };
 
+Group.createGroup = group.createGroup;
 Group.data = function () {
 	return toRef(group, "data");
 };

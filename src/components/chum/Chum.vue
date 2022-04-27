@@ -9,10 +9,6 @@
 
 	let groups = Group.data();
 
-	const notebooks = reactive({
-		id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-		message: [],
-	});
 	const turn = mobile();
 
 	const height = ref("0px");
@@ -58,9 +54,10 @@
 	function turnToChat() {
 		showChat.value = 1;
 		isShow.value = 0;
-		console.log("isShow", isShow.value);
-		console.log("showChat", showChat.value);
-		console.log("展示聊天界面");
+	}
+
+	function deleteGroup() {
+		console.log("deleteGroup")
 	}
 </script>
 
@@ -142,6 +139,7 @@
 							<div class="flex flex-grow flex-row-reverse pr-4">
 								<img
 									src="/src/assets/img/delete.svg"
+									@click="deleteGroup"
 									alt=""
 									class="w-8 h-8 opacity-60"
 								/>
