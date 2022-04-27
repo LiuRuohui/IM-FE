@@ -1,10 +1,10 @@
 <script setup>
 import mobile from "../../composables/mobile";
 import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
-import groupChat from "./groupChat.vue";
 import searchGroup from "./searchGroup.vue";
 //加载异步组件
 const createGroup = defineAsyncComponent(() => import("./createGroup.vue"));
+const groupChat = defineAsyncComponent(() => import("./groupChat.vue"));
 
 
 const notebooks = reactive({
@@ -19,13 +19,19 @@ const noteContainer = ref(null);
 let time = ref("");
 let t = new Date();
 time = getTime(t);
-let isShow = ref("true");
+let isShow = ref(1);
+let showChat = ref(0);
 let msg = ref("创建群组");
 
 const typeComponentMap = {
   1: searchGroup,
   2: createGroup,
 };
+
+const chatMap ={
+  1: groupChat,
+};
+
 
 onMounted(() => {
   height.value = noteContainer.value.offsetHeight + "px";
@@ -39,13 +45,22 @@ function getTime(time) {
 }
 
 function createGroups() {
-  isShow.value = !isShow.value;
+  showChat.value = 0
   if(msg.value == "创建群组") {
+    isShow.value = 2
       msg.value = "搜索群组"
   }else if(msg.value == "搜索群组"){
+    isShow.value = 1
     msg.value = "创建群组"
   }
-  console.log("跳转到创建群组界面");
+}
+
+function turnToChat() {
+  showChat.value = 1
+  isShow.value = 0
+    console.log("isShow",isShow.value)
+  console.log("showChat",showChat.value)
+  console.log("展示聊天界面")
 }
 </script>
 
@@ -100,6 +115,7 @@ function createGroups() {
           <div class="flex flex-col my-4 mx-8">
             <div
               class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
+              @click="turnToChat"
               v-for="notes in notebooks.id"
             >
               <div
@@ -151,7 +167,15 @@ function createGroups() {
         <keep-alive>
           <component
             @go="createGroups"
-            :is="typeComponentMap[isShow ? 1 : 2]"
+            :is="typeComponentMap[isShow]"
+          ></component>
+        </keep-alive>
+      </Transition>
+      <Transition name="fade" mode="out-in">
+        <keep-alive>
+          <component
+            @go="turnToChat"
+            :is="chatMap[showChat]"
           ></component>
         </keep-alive>
       </Transition>
