@@ -1,5 +1,9 @@
 <script setup>
 	import { reactive, ref, onMounted } from "vue";
+	import { Chum } from "../../composables/api";
+	import { socket } from "../../composables/websocket/ws"
+
+	let messages = Chum.message();
 
 	const height = ref("0px");
 	const chatContainer = ref(null);
@@ -29,20 +33,11 @@
 			alert("消息不能为空！");
 			return;
 		}
-		message_array.push(message.value);
+		socket.send(message.value)
+		message_array1.push(message.value);
 		message.value = "";
 	}
 
-	function sendMsg1() {
-		t = new Date();
-		time = getTime(t);
-		if (message1 == null || message1.value == "") {
-			alert("消息不能为空！");
-			return;
-		}
-		message_array1.push(message1.value);
-		message1.value = "";
-	}
 </script>
 
 <template>
@@ -85,16 +80,16 @@
 			<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
 				<div class="w-2/5 flex flex-col">
 					<div
-						v-for="items in message_array"
+						v-for="items in Chum.message().value.get('1519246509860720640')"
 						class="ml-2 h-8 word-wrap mt-4 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"
 					>
-						{{ items }}
+						{{ items.Body }}
 						<div class="w-full h-4 mt-2 pr-1 flex-grow text-xs text-black opacity-40">
 							{{ time }}
 						</div>
 					</div>
 				</div>
-				<div class="w-auto h-auto flex flex-col absolute right-0">
+				<div class="w-2/5 flex flex-col relative float-right">
 					<div
 						v-for="items in message_array1"
 						class="mr-2 h-8 mt-3 mb-6 rounded-full px-3 pt-1 text-right shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"

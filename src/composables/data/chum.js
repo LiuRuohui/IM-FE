@@ -48,10 +48,11 @@ class ChumEle {
 }
 
 class ChumMsg {
-	constructor(accountA, accountB, direction, type, body, extra, time) {
+	constructor(accountA, accountB, direction, group, type, body, extra, time) {
 		this.setAccountA(accountA);
 		this.setAccountB(accountB);
 		this.setDirection(direction);
+		this.setGroup(group)
 		this.setType(type);
 		this.setBody(body);
 		this.setExtra(extra);
@@ -78,6 +79,14 @@ class ChumMsg {
 			this.direction = direction;
 		} else {
 			throw "direction is not boolean";
+		}
+	}
+
+	setGroup(group) {
+		if (typeof group === "number") {
+			this.group = group;
+		} else {
+			throw "group is not number";
 		}
 	}
 
