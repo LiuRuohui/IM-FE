@@ -168,7 +168,7 @@ async function getGroups() {
 			console.log("获取群组信息失败了", error);
 		}
 	);
-
+	group.data = []
 	for (const groupE of tmp) {
 		let result;
 		await Groups.get(groupE.GroupId).then((data) => {
