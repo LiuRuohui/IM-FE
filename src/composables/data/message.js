@@ -17,9 +17,9 @@ async function getMessage() {
 		});
 	console.log("获取到的message", tmp);
 	for (const ele of tmp) {
-		if (ele.Group == "0") {
+		if (ele.Group == "") {
 			// 单聊
-			console.log(chum.message.get(ele.AccountB));
+			// console.log(chum.message.get(ele.AccountB));
 			if (ele.AccountA == Infos.data().ID) {
 				let tmp = chum.message.get(ele.AccountB);
 				if (typeof tmp === "undefined") {
