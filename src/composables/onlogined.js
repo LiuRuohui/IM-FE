@@ -6,12 +6,19 @@ import { socket } from "./websocket/ws";
 import { group } from "./data/group";
 
 import { chum } from "./data/chum";
+
+import { getMessage } from "./data/message";
+
+import { getApply } from "./data/apply";
+
 function onlogined() {
-  Note.getIndex();
-  Infos.getInfo();
-  File.getIndex();
-  group.getGroups();
-  chum.getChums();
-  socket.init();
+	Note.getIndex();
+	Infos.getInfo();
+	File.getIndex();
+	group.getGroups();
+	chum.getChums();
+	getMessage();
+	socket.init();
+	getApply();
 }
 export default onlogined;
