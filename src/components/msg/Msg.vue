@@ -2,9 +2,8 @@
 	import mobile from "../../composables/mobile";
 	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 	import msgChat from "./msgChat.vue";
+	import addFriends from "./addFriends.vue"
 	import { Chum } from "../../composables/api";
-	//加载异步组件
-	const addFriends = defineAsyncComponent(() => import("./addFriends.vue"));
 
 	let chums = Chum.data();
 
@@ -16,11 +15,11 @@
 	let time = ref("");
 	let t = new Date();
 	time = getTime(t);
-	let isShow = ref("true");
+	let isShow = ref("false");
 
 	const typeComponentMap = {
-		1: msgChat,
-		2: addFriends,
+		1: addFriends,
+		2: msgChat,
 	};
 
 	onMounted(() => {
