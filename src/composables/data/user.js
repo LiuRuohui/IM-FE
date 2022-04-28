@@ -16,13 +16,14 @@ async function get(id) {
       tmp = data;
     });
     data.set(id, tmp);
+    console.log("这是tmp",tmp,"这是data",data,"获取data",data.get(id));
     return tmp;
   }
 }
 
 async function getUserData(id) {
   let userData;
-  await http.post("/user/getData", {}).then(
+  await http.post("/user/getData", {userId:id}).then(
     (data) => {
       userData = data;
       console.log("获取用户" + id, "信息成功", data);

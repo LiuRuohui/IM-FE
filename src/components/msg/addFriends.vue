@@ -1,9 +1,11 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
-import{socket} from "../../composables/websocket/ws"
+import{socket, Apply} from "../../composables/websocket/ws"
+import {User} from "../../composables/data/user";
 const friendContainer = ref(null);
 const height = ref("0px");
 let friend = ref(null);
+
 const friends = reactive({
   id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 });
@@ -12,12 +14,16 @@ onMounted(() => {
   height.value = friendContainer.value.offsetHeight + "px";
 });
 
-function addFriend(){
-  console.log("添加该好友")
+function addFriend(friend){
+  let apply = new Apply(friend[0],"",1,"申请添加为好友")
+  socket.send(apply)
 }
 
 function search(){
   console.log("按键按下了",friend.value)
+  User.get(friend.value)
+  console.log("这里是获取的用户信息",User.data)
+  friend.value = ""
 }
 </script>
 
@@ -31,7 +37,7 @@ function search(){
           class="box-border rounded-full h-9 pl-14 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
           type="text"
           v-model="friend"
-          @keydown.enter="search"
+          @keyup.enter="search"
           placeholder="请输入想要添加的好友"
         />
         <img
@@ -48,7 +54,7 @@ function search(){
         <div class="flex flex-col my-4 mx-8">
           <div
             class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow md:px-2 my-2 bg-white"
-            v-for="notes in friends.id"
+            v-for="friend in User.data"
           >
             <div
               class="mx-4 w-10 h-10 md:w-12 md:h-12 rounded-full my-4 m-auto relative box-border group-hover:border-2 border-blue-500"
@@ -67,7 +73,7 @@ function search(){
                 <div
                   class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
                 >
-                  楚中天
+                  {{friend[1].Name}}
                 </div>
               </div>
               <div
@@ -81,7 +87,7 @@ function search(){
                 src="/src/assets/img/plus.svg"
                 alt=""
                 class="w-10 h-10 mr-4 hover:cursor-pointer opacity-60"
-                @click="addFriend"
+                @click="addFriend(friend)"
               />
             </div>
           </div>
