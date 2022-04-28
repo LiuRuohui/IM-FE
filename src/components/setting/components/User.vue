@@ -3,9 +3,14 @@
 // import { info } from "../../../composables/data/info";
 
 import { Infos } from "../../../composables/api";
+import {Log} from "../../../composables/api"
 
 // let data = toRef(info, "data");
 let data = Infos.data();
+
+function logOut(){
+  Log.out();
+}
 </script>
 <template>
   <div class="flex-grow w-full flex flex-col">
@@ -103,6 +108,9 @@ let data = Infos.data();
               alt
             />
           </div>
+        </div>
+        <div class="mt-8">
+            <button @click="logOut" class="btn">注销账号</button>
         </div>
       </div>
     </div>

@@ -23,10 +23,6 @@ function Login() {
   };
   Log.in(data.account, data.passwd);
 }
-
-function logout() {
-  Log.out();
-}
 </script>
 
 <template>
@@ -91,7 +87,6 @@ function logout() {
       </div>
       <div>
         <button class="btn select-none" @click="Login">登录</button>
-        <button class="btn select-none mt-4" @click="logout">登出</button>
         <!--<button class="btn select-none mt-4" @click="getUserInfo">获取用户信息</button> -->
       </div>
       <p
