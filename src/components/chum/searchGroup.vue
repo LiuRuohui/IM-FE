@@ -1,14 +1,30 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
+import { Group } from "../../composables/api";
+import {Groups} from "../../composables/data/groups"
+import{socket, Apply} from "../../composables/websocket/ws"
 const friendContainer = ref(null);
 const height = ref("0px");
+const groupName = ref(null);
 const groups = reactive({
-  id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  id: [],
 });
 
 onMounted(() => {
   height.value = friendContainer.value.offsetHeight + "px";
 });
+
+function search(){
+  console.log("按键按下了",groupName.value)
+  Groups.get(groupName.value)
+  console.log("这里是获取的群组信息",Groups.data)
+  groupName.value = ""
+}
+
+function addGroup(group){
+  let apply = new Apply(group[0],"",1,"申请加入该群")
+  socket.send(apply)
+}
 </script>
 
 <template>
@@ -20,6 +36,8 @@ onMounted(() => {
         <input
           class="box-border rounded-full h-9 pl-14 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
           type="text"
+          v-model="groupName"
+          @keyup.enter="search"
           placeholder="请输入想要搜索的群名"
         />
         <img
@@ -36,7 +54,7 @@ onMounted(() => {
         <div class="flex flex-col my-4 mx-8">
           <div
             class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow md:px-2 my-2 bg-white"
-            v-for="notes in groups.id"
+            v-for="group in Groups.data"
           >
             <div
               class="mx-4 w-10 h-10 md:w-12 md:h-12 rounded-full my-4 m-auto relative box-border group-hover:border-2 border-blue-500"
@@ -55,13 +73,13 @@ onMounted(() => {
                 <div
                   class="font-bold text-base opacity-70 group-hover:opacity-90 flex items-center"
                 >
-                  楚中天
+                  {{group[1].Name}}
                 </div>
               </div>
               <div
                 class="inline-block truncate opacity-40 text-sm group-hover:opacity-70 h-1/2 pt-1"
               >
-                前端工程师
+                {{group[1].Introduction}}
               </div>
             </div>
             <div class="flex flex-grow flex-row-reverse">
@@ -69,6 +87,7 @@ onMounted(() => {
                 src="/src/assets/img/plus.svg"
                 alt=""
                 class="w-10 h-10 mr-4 hover:cursor-pointer opacity-60"
+                @click="addGroup(group)"
               />
             </div>
           </div>
