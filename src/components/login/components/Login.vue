@@ -32,8 +32,7 @@ function Login() {
         欢迎回来
       </h2>
     </div>
-    <div class="flex items-center justify-center space-x-2"></div>
-    <div class="mt-8 space-y-6">
+    <div class="mt-4 space-y-6">
       <input type="hidden" name="remember" value="true" />
       <div class="rounded-md">
         <div class="py-2">
@@ -63,7 +62,8 @@ function Login() {
           />
         </div>
       </div>
-      <div class="flex items-center justify-between">
+      <!--功能暂未实现 暂时隐藏-->
+      <!--<div class="flex items-center justify-between">
         <div class="flex items-center">
           <input
             id="remember_me"
@@ -84,10 +84,9 @@ function Login() {
             >忘记密码？</a
           >
         </div>
-      </div>
+      </div> -->
       <div>
         <button class="btn select-none" @click="Login">登录</button>
-        <!--<button class="btn select-none mt-4" @click="getUserInfo">获取用户信息</button> -->
       </div>
       <p
         class="items-center justify-center mt-10 text-center text-md text-gray-500 select-none"

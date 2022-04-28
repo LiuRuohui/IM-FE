@@ -35,7 +35,6 @@ function Register() {
     <div class="text-center">
       <h2 class="mt-6 text-3xl font-bold text-gray-900 select-none">注册</h2>
     </div>
-    <div class="flex items-center justify-center space-x-2"></div>
     <div class="mt-8 space-y-6">
       <input type="hidden" name="remember" value="true" />
       <div class="rounded-md">
@@ -79,7 +78,8 @@ function Register() {
           />
         </div>
       </div>
-      <div class="flex items-center justify-between">
+      <!--功能暂未实现 暂时隐藏-->
+      <!--<div class="flex items-center justify-between">
         <div class="flex items-center">
           <input
             id="remember_me"
@@ -97,7 +97,7 @@ function Register() {
             >用户协议</a
           >
         </div>
-      </div>
+      </div> -->
       <div>
         <button class="btn select-none" @click="Register">注册</button>
       </div>

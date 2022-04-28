@@ -52,7 +52,7 @@ function page(param) {
             欢迎光临
           </div>
           <div class="sm:text-sm xl:text-md text-gray-200 font-normal">
-            欢迎来到好玩俱乐部，在这里和志同道合的朋友一起分享有趣的故事，一起组织有趣的活动...
+            欢迎来到 IM-RPC ,在这里体验小型的聊天环境,在这里和志同道合的朋友一起分享有趣的故事,一起组织有趣的活动......
           </div>
         </div>
         <ul class="circles">
