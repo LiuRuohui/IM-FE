@@ -1,7 +1,9 @@
 <script setup>
 import { ref, reactive, onMounted } from "vue";
+import{socket} from "../../composables/websocket/ws"
 const friendContainer = ref(null);
 const height = ref("0px");
+let friend = ref(null);
 const friends = reactive({
   id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 });
@@ -9,6 +11,14 @@ const friends = reactive({
 onMounted(() => {
   height.value = friendContainer.value.offsetHeight + "px";
 });
+
+function addFriend(){
+  console.log("添加该好友")
+}
+
+function search(){
+  console.log("按键按下了",friend.value)
+}
 </script>
 
 <template>
@@ -20,6 +30,8 @@ onMounted(() => {
         <input
           class="box-border rounded-full h-9 pl-14 pr-4 py-3 w-full outline-none bg-gray-100 text-sm select-none"
           type="text"
+          v-model="friend"
+          @keydown.enter="search"
           placeholder="请输入想要添加的好友"
         />
         <img
@@ -69,6 +81,7 @@ onMounted(() => {
                 src="/src/assets/img/plus.svg"
                 alt=""
                 class="w-10 h-10 mr-4 hover:cursor-pointer opacity-60"
+                @click="addFriend"
               />
             </div>
           </div>

@@ -15,12 +15,15 @@
 	let time = ref("");
 	let t = new Date();
 	time = getTime(t);
-	let isShow = ref("false");
+	let isShow = ref(1);
 
 	const typeComponentMap = {
 		1: addFriends,
-		2: msgChat,
 	};
+
+	const chatMap = {
+		0: msgChat,
+	}
 
 	onMounted(() => {
 		height.value = noteContainer.value.offsetHeight + "px";
@@ -33,7 +36,7 @@
 	}
 
 	function addFriend() {
-		isShow.value = !isShow.value;
+		isShow.value = 1
 		console.log("跳转到添加好友界面");
 	}
 	let message = Chum.message();
@@ -43,6 +46,10 @@
 			return arr[arr.length - 1].Body;
 		}
 		return "无消息";
+	}
+
+	function goToChat() {
+		isShow.value = 0;
 	}
 </script>
 
@@ -93,6 +100,7 @@
 						<div
 							class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
 							v-for="chum in chums"
+							@click="goToChat(friend)"
 						>
 							<div
 								class="mx-4 w-10 h-10 md:w-12 md:h-12 rounded-full my-4 m-auto relative box-border group-hover:border-2 border-blue-500"
@@ -136,7 +144,12 @@
 			<!--切换组件部分更流畅-->
 			<Transition name="fade" mode="out-in">
 				<keep-alive>
-					<component @go="addFriend" :is="typeComponentMap[isShow ? 1 : 2]"></component>
+					<component @go="addFriend" :is="typeComponentMap[isShow]"></component>
+				</keep-alive>
+			</Transition>
+			<Transition name="fade" mode="out-in">
+				<keep-alive>
+					<component @go="goToChat" :is="chatMap[isShow]"></component>
 				</keep-alive>
 			</Transition>
 		</div>
