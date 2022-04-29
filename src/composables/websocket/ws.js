@@ -119,11 +119,13 @@ const socket = {
 		let tmp = new Uint8Array(message.data);
 		let validMessage = decode(tmp);
 		let ob = body.toObject(validMessage);
+		console.log(ob);
 		if (ob.type == 1) {
 			let mm = ob.msg;
 			//消息
 			let dd = {};
-			if (mm.groupId === "") {
+			console.log(mm.groupId);
+			if (typeof mm.groupId === "undefined") {
 				//单聊
 				dd.AccountA = Infos.data().ID;
 				dd.AccountB = mm.end;
@@ -139,6 +141,7 @@ const socket = {
 				}
 				tmp.push(dd);
 				chum.message.set(mm.end, tmp);
+				console.log(chum.message.get(mm.end));
 			} else {
 				//群聊
 				dd.AccountA = Infos.data().ID;

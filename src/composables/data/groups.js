@@ -25,7 +25,7 @@ async function getGroupData(id) {
 	await http.post("/group/getInfo", { groupId: id }).then(
 		(data) => {
 			groupData = data;
-			console.log("获取群组" + id, "信息成功", data);
+			// console.log("获取群组" + id, "信息成功", data);
 		},
 		(error) => {
 			console.log("获取群组" + id, "信息失败", error);

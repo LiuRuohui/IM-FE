@@ -162,7 +162,7 @@ async function getGroups() {
 		(data) => {
 			tmp = data;
 			console.log(tmp);
-			console.log("获取群组信息成功了", data);
+			// console.log("获取群组信息成功了", data);
 		},
 		(error) => {
 			console.log("获取群组信息失败了", error);

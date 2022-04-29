@@ -25,9 +25,9 @@ function global() {
 	// socket.send(dd, function name(params) {
 	// 	console.log("发送完毕");
 	// });
-	socket.send(nn, function name(params) {
-		console.log("发送完毕");
-	});
+	// socket.send(nn, function name(params) {
+	// 	console.log("发送完毕");
+	// });
 	group.getGroups();
 	chum.getChums();
 	getMessage();

@@ -21,7 +21,7 @@ async function getApply() {
 	for (const ele of tmp) {
 		apply.data.push(ele);
 	}
-	console.log("apply", apply.data);
+	// console.log("apply", apply.data);
 }
 
 export { apply, getApply };

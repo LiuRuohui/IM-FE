@@ -3,7 +3,9 @@
 	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 	import searchGroup from "./searchGroup.vue";
 	import { Group } from "../../composables/api";
-	import {groupPreview} from "../../composables/data/group"
+	import { groupPreview } from "../../composables/data/group";
+	import { now } from "../../composables/data/now";
+
 	//加载异步组件
 	const createGroup = defineAsyncComponent(() => import("./createGroup.vue"));
 	const groupChat = defineAsyncComponent(() => import("./groupChat.vue"));
@@ -60,12 +62,19 @@
 		groupPreview.joinTime = group.joinTime;
 		groupPreview.ownerId = group.ownerId;
 		groupPreview.intro = group.intro;
-		console.log(groupPreview)
-
+		// console.log("99999", group);
+		now.group.id = group.groupId;
+		now.group.name = group.name;
+		now.group.joinTime = group.joinTime;
+		now.group.ownerId = group.ownerId;
+		now.group.intro = group.intro;
 	}
 
 	function deleteGroup() {
-		console.log("deleteGroup")
+		console.log("deleteGroup");
+	}
+	function name(params) {
+		console.log(params);
 	}
 </script>
 
@@ -141,7 +150,7 @@
 								<div
 									class="inline-block truncate opacity-40 text-sm group-hover:opacity-70 h-1/2 pt-1"
 								>
-									{{group.intro}}
+									{{ group.intro }}
 								</div>
 							</div>
 							<div class="flex flex-grow flex-row-reverse pr-4">

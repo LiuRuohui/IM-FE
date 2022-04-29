@@ -15,7 +15,7 @@ async function getMessage() {
 		.catch((err) => {
 			console.log("错误：", err);
 		});
-	console.log("获取到的message", tmp);
+	// console.log("获取到的message", tmp);
 	for (const ele of tmp) {
 		if (ele.Group == "") {
 			// 单聊
@@ -47,8 +47,10 @@ async function getMessage() {
 
 			group.message.set(ele.Group, tmp);
 		}
+		// console.log(group.message);
 	}
-	console.log("map内容", chum.message);
+	console.log(group.message);
+	// console.log("map内容", chum.message);
 }
 
 export { getMessage };

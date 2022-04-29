@@ -2,8 +2,10 @@
 	import mobile from "../../composables/mobile";
 	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 	import msgChat from "./msgChat.vue";
-	import addFriends from "./addFriends.vue"
+	import addFriends from "./addFriends.vue";
 	import { Chum } from "../../composables/api";
+	import { now } from "../../composables/data/now";
+	import { User } from "../../composables/data/user";
 
 	let chums = Chum.data();
 
@@ -23,7 +25,7 @@
 
 	const chatMap = {
 		0: msgChat,
-	}
+	};
 
 	onMounted(() => {
 		height.value = noteContainer.value.offsetHeight + "px";
@@ -36,20 +38,25 @@
 	}
 
 	function addFriend() {
-		isShow.value = 1
-		console.log("跳转到添加好友界面");
+		isShow.value = 1;
+		// console.log("跳转到添加好友界面");
 	}
 	let message = Chum.message();
 	function latestMessage(id) {
 		let arr = message.value.get(id);
-		if (arr.length > 0) {
+		if (arr && arr.length > 0) {
 			return arr[arr.length - 1].Body;
 		}
 		return "无消息";
 	}
 
-	function goToChat() {
+	function goToChat(id) {
 		isShow.value = 0;
+		now.chum.id = id;
+		User.get(id).then((data) => {
+			now.chum.name = data.Name;
+			// console.log("修改名字完成");
+		});
 	}
 </script>
 
@@ -100,7 +107,7 @@
 						<div
 							class="group flex flex-row items-center w-full h-24 shadow-sm hover:shadow hover:cursor-pointer md:px-2 my-2 bg-white"
 							v-for="chum in chums"
-							@click="goToChat(friend)"
+							@click="goToChat(chum.id)"
 						>
 							<div
 								class="mx-4 w-10 h-10 md:w-12 md:h-12 rounded-full my-4 m-auto relative box-border group-hover:border-2 border-blue-500"

@@ -21,7 +21,7 @@ const note = reactive({
 function getIndex() {
   http.get("/note/index", "").then(
     (data) => {
-      console.log("获取笔记列表成功", data);
+      // console.log("获取笔记列表成功", data);
       note.data = data;
     },
     (error) => {

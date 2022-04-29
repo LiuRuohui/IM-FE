@@ -1,11 +1,10 @@
 <script setup>
-	import { reactive, ref, onMounted } from "vue";
+	import { reactive, ref, onMounted, computed, watch } from "vue";
 	import { Chum } from "../../composables/api";
-	import { socket } from "../../composables/websocket/ws"
-	import {info} from "../../composables/data/info"
-
-	let messages = Chum.message();
-
+	import { Msg, socket, message as encode } from "../../composables/websocket/ws";
+	import { info } from "../../composables/data/info";
+	import { now } from "../../composables/data/now";
+	import { User } from "../../composables/data/user";
 	const height = ref("0px");
 	const chatContainer = ref(null);
 	const message = ref("");
@@ -28,17 +27,24 @@
 	}
 
 	function sendMsg() {
-		t = new Date();
-		time = getTime(t);
 		if (message == null || message.value == "") {
 			alert("消息不能为空！");
 			return;
 		}
-		socket.send(message.value)
-		message_array1.push(message.value);
+		let mm = new Msg(now.chum.id, "", "", 1, message.value);
+		let buffer = encode(mm);
+		console.log(now.chum.id);
+		socket.send(buffer, function () {
+			console.log("发送完成");
+		});
 		message.value = "";
 	}
+	const messages = computed(() => {
+		let mm = Chum.message();
+		return mm.value.get(now.chum.id);
+	});
 
+	// 姓名
 </script>
 
 <template>
@@ -56,9 +62,11 @@
 			</div>
 			<div class="flex flex-col justify-center mr-4">
 				<div class="flex h-1/2 pt-4">
-					<div class="font-bold text-sm opacity-70 flex items-center">林凌</div>
+					<div class="font-bold text-sm opacity-70 flex items-center">
+						{{ now.chum.name }}
+					</div>
 				</div>
-				<div class="truncate opacity-40 text-xs h-1/2 pt-1">在线</div>
+				<div class="truncate opacity-40 text-xs h-1/2 pt-1">未知</div>
 			</div>
 			<div class="flex-grow flex flex-row-reverse py-4 pr-4">
 				<div class="hover:cursor-pointer sm:w-12">
@@ -81,7 +89,7 @@
 			<div class="w-full overflow-y-auto no-scrollbar" :style="{ height: height }">
 				<div class="w-2/5 flex flex-col">
 					<div
-						v-for="items in Chum.message().value.get(info.data.ID)"
+						v-for="items in messages"
 						class="ml-2 h-8 word-wrap mt-4 mb-6 rounded-full px-3 pt-1 text-left shadow-md hover:cursor-pointer opacity-90 bg-blue-500 text-white"
 					>
 						{{ items.Body }}

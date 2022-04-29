@@ -52,7 +52,7 @@ class ChumMsg {
 		this.setAccountA(accountA);
 		this.setAccountB(accountB);
 		this.setDirection(direction);
-		this.setGroup(group)
+		this.setGroup(group);
 		this.setType(type);
 		this.setBody(body);
 		this.setExtra(extra);
@@ -128,7 +128,7 @@ async function getChums() {
 	await http.get("/chum/get", {}).then(
 		(data) => {
 			tmp = data;
-			console.log("获取信息成功了", data);
+			// console.log("获取信息成功了", data);
 		},
 		(error) => {
 			console.log("获取信息失败了", error);
@@ -145,7 +145,7 @@ async function getChums() {
 				result = data;
 			});
 		}
-		console.log("结果", result);
+		// console.log("结果", result);
 		let ele = new ChumEle(result.Name, result.ID, result.Sex, chumE.CreateTime);
 		chum.data.push(ele);
 	}

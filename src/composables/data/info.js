@@ -23,7 +23,7 @@ function getInfo() {
 	http.get("/user/info", {}).then(
 		(data) => {
 			info.data = data;
-			console.log("获取信息成功了", data);
+			// console.log("获取信息成功了", data);
 		},
 		(error) => {
 			console.log("获取信息失败了", error);
@@ -35,7 +35,7 @@ function global() {
 	http.get("/user/info", {}).then(
 		(data) => {
 			info.data = data;
-			console.log("获取信息成功了", data);
+			// console.log("获取信息成功了", data);
 			Global();
 		},
 		(error) => {
