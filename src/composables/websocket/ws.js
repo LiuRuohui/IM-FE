@@ -10,8 +10,8 @@ const body = msg.lookupType("proto.Body");
 const socket = {
 	websocket: null,
 	//url 到时候需要通过gateway引入
-	url: "ws://localhost:8976/ws?Session-Id=" + session.getSessionId(),
-	// url: "ws://api.jinzh.me/ws?Session-Id=" + session.getSessionId(),
+	// url: "ws://localhost:8976/ws?Session-Id=" + session.getSessionId(),
+	url: "ws://api.jinzh.me/ws?Session-Id=" + session.getSessionId(),
 	//开启标识
 	socket_open: false,
 	// 是否自动重连
