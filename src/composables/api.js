@@ -205,7 +205,7 @@ function register(account, passwd) {
 			Dialog.custom().fire({
 				timer: 1250,
 				icon: "success",
-				titleText: "注册成功，即将跳转",
+				titleText: "注册成功，请跳转到登录界面",
 				didClose() {
 					router.push({
 						name: "login",

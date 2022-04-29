@@ -1,5 +1,8 @@
 <script setup>
 	import Switch from "../../components/Switch.vue";
+	import { Infos } from "../../../composables/api";
+
+	let data = Infos.data();
 </script>
 
 <template>
@@ -32,7 +35,7 @@
 			<div class="w-full h-4 border-b border-gray-200"></div>
 		</div>
 		<div>
-			<div class="flex justify-between mt-3">账号id：</div>
+			<div class="flex justify-between mt-3">账号id: {{data.ID}}</div>
 		</div>
 	</div>
 </template>
