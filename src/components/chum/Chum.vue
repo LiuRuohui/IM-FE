@@ -64,6 +64,7 @@
 		groupPreview.intro = group.intro;
 		// console.log("99999", group);
 		now.group.id = group.groupId;
+		console.log("id更改为:", now.group.id);
 		now.group.name = group.name;
 		now.group.joinTime = group.joinTime;
 		now.group.ownerId = group.ownerId;

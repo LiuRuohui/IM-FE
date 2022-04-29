@@ -2,22 +2,23 @@ import { reactive } from "vue";
 import { http } from "../http";
 import router from "../../router/router";
 import { Groups } from "./groups";
+
 const group = reactive({
 	data: [],
 	message: new Map(),
 	//上面的message应该是map类型
 	getGroups,
-	createGroup
+	createGroup,
 });
 
 //暂存群组信息
 let groupPreview = reactive({
-	name :"",
-	groupId :"",
+	name: "",
+	groupId: "",
 	joinTime: "",
 	ownerId: "",
 	intro: "",
-})
+});
 
 class GroupEle {
 	constructor(name, groupId, joinTime, ownerId, intro, headPic, time) {
@@ -168,9 +169,13 @@ async function getGroups() {
 			console.log("获取群组信息失败了", error);
 		}
 	);
-	group.data = []
+	group.data = [];
 	for (const groupE of tmp) {
 		let result;
+		// group.message.set(groupE.GroupId, []);
+		if (typeof group.message.get(groupE.GroupId) == "undefined") {
+			group.message.set(groupE.GroupId, []);
+		}
 		await Groups.get(groupE.GroupId).then((data) => {
 			result = data;
 		});
@@ -186,13 +191,17 @@ async function getGroups() {
 		);
 		group.data.push(ele);
 	}
+	console.log("获取群组信息完成");
 }
 
-function createGroup(groupName){
+function createGroup(groupName) {
 	http.post("/group/create", { name: groupName }).then(
 		(data) => {
 			console.log("创建群聊成功", data);
-			getGroups();
+
+			setTimeout(function () {
+				getGroups();
+			}, 500);
 		},
 		(error) => {
 			console.log("创建群聊失败", error);

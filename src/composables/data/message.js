@@ -49,7 +49,7 @@ async function getMessage() {
 		}
 		// console.log(group.message);
 	}
-	console.log(group.message);
+	// console.log(group.message);
 	// console.log("map内容", chum.message);
 }
 

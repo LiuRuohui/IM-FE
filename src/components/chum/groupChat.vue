@@ -43,7 +43,16 @@
 	}
 	const messages = computed(() => {
 		let mm = Group.message();
-		return mm.value.get(now.group.id);
+		console.log("当前id", now.group.id);
+		let tmp = mm.value.get(now.group.id);
+		console.log(tmp);
+		if (typeof tmp == "undefined") {
+			return [];
+		}
+		tmp.sort(function (a, b) {
+			return a.SendTime - b.SendTime;
+		});
+		return tmp;
 	});
 </script>
 

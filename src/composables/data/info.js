@@ -67,7 +67,7 @@ async function getUser(userId) {
 	let tmp;
 	await http.post("/user/getData", { userId: userId }).then(
 		(data) => {
-			console.log("获取其他用户成功", data);
+			// console.log("获取其他用户成功", data);
 			tmp = data;
 		},
 		(error) => {

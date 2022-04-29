@@ -17,11 +17,17 @@ async function getApply() {
 		.catch((err) => {
 			console.log("错误：", err);
 		});
-
-	for (const ele of tmp) {
-		apply.data.push(ele);
-	}
-	// console.log("apply", apply.data);
+	apply.data = tmp;
 }
 
-export { apply, getApply };
+async function over(id, fun) {
+	await http.post("/apply/recent", { applyId: id }).then(
+		(data) => {},
+		(err) => {
+			console.log("apply的over请求出错", err);
+		}
+	);
+	fun();
+}
+
+export { apply, getApply, over };

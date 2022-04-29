@@ -1,7 +1,9 @@
 <script setup>
 	import yes from "../../assets/img/yes.svg";
+	import no from "../../assets/img/err.svg";
 	import { reactive, ref, onMounted, computed } from "vue";
-
+	import { socket, Apply as app, apply as encode } from "../../composables/websocket/ws";
+	import { over } from "../../composables/data/apply";
 	import { Apply, Infos } from "../../composables/api";
 	const height = ref("0px");
 	const applyContainer = ref(null);
@@ -17,14 +19,14 @@
 		let result = [];
 		for (const ele of Apply.data().value) {
 			if (sort.value == "chum") {
-				console.log(ele);
+				// console.log(ele);
 				// 判断是否为好友申请
-				if (ele.Group == "") {
+				if (ele.Group == "" && ele.Over == false) {
 					result.push(ele);
 				}
 			} else {
 				// 判断是否为群组申请
-				if (ele.Group != "") {
+				if (ele.Group != "" && ele.Over == false) {
 					result.push(ele);
 				}
 			}
@@ -36,9 +38,10 @@
 		height.value = applyContainer.value.offsetHeight + "px";
 	});
 	function name(id, tt) {
+		// console.log(tt);
 		Infos.getUser(id).then((data) => {
 			tt.name = data.Name;
-			console.log("名字获得", tt);
+			// console.log("名字获得", tt);
 		});
 	}
 	function applyD(key) {
@@ -63,6 +66,45 @@
 			return "";
 		}
 		return "hidden";
+	}
+
+	function Yes(param) {
+		let id = "";
+		console.log(param);
+		if (param.AccountA == Infos.data().value.ID) {
+			id = param.AccountB;
+		} else {
+			id = param.AccountA;
+		}
+		let a;
+		if (sort.value == "chum") {
+			//好友加入
+
+			a = new app(id, "", 2, "");
+		} else {
+			a = new app(id, param.Group, 2, "");
+		}
+		over(param.ID, socket.send(encode(a)));
+	}
+	function No(param) {
+		let id = "";
+		// console.log(param);
+		if (param.AccountA == Infos.data().value.ID) {
+			id = param.AccountB;
+		} else {
+			id = param.AccountA;
+		}
+		let a;
+		if (sort.value == "chum") {
+			// 好友拒绝
+			a = new app(id, "", 3, "");
+		} else {
+			a = new app(id, param.Group, 3, "");
+		}
+		over(param.ID, socket.send(encode(a)));
+	}
+	function nam(params) {
+		console.log(params);
 	}
 </script>
 
@@ -99,7 +141,22 @@
 							v-for="apply in applys"
 						>
 							<span class="absolute right-4 bottom-4" :class="applyB(apply.Type)">
-								<img class="w-7 opacity-60 hover:opacity-100" :src="yes" alt="" />
+								<img
+									class="w-7 opacity-60 hover:opacity-100"
+									:src="yes"
+									alt=""
+									@click.stop="Yes(apply)"
+								/>
+								<!-- {{ nam(apply) }} -->
+							</span>
+
+							<span class="absolute right-14 bottom-4" :class="applyB(apply.Type)">
+								<img
+									class="w-7 opacity-60 hover:opacity-100"
+									:src="no"
+									alt=""
+									@click.stop="No(apply)"
+								/>
 							</span>
 
 							<div class="flex h-16">
