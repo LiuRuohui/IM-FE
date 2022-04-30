@@ -2,14 +2,10 @@
 	import { reactive, ref, onMounted, computed } from "vue";
 	import { Chum } from "../../composables/api";
 	import { Msg, socket, message as encode } from "../../composables/websocket/ws";
-	import { info } from "../../composables/data/info";
 	import { now } from "../../composables/data/now";
-	import { User } from "../../composables/data/user";
 	const height = ref("0px");
 	const chatContainer = ref(null);
 	const message = ref("");
-	const message_array = reactive([]);
-	const message1 = ref("");
 	const message_array1 = reactive([]);
 
 	let time = ref("");
