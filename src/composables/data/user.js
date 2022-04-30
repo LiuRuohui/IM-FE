@@ -15,12 +15,12 @@ async function get(id) {
 		await getUserData(id).then((data) => {
 			tmp = data;
 		});
-		if(tmp.ID == ""){
-			console.log("该账户不存在！")
-			return
-		}else {
+		if (tmp.ID == "") {
+			console.log("该账户不存在！");
+			return;
+		} else {
 			data.set(id, tmp);
-			console.log("这是tmp", tmp, "这是data", data, "获取data", data.get(id));
+			// console.log("这是tmp", tmp, "这是data", data, "获取data", data.get(id));
 			return tmp;
 		}
 	}

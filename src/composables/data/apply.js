@@ -18,14 +18,15 @@ async function getApply() {
 	apply.data = tmp;
 }
 
-async function over(id, fun) {
-	await http.post("/apply/recent", { applyId: id }).then(
-		(data) => {},
+function over(id, fun) {
+	http.post("/apply/recent", { applyId: id }).then(
+		(data) => {
+			fun();
+		},
 		(err) => {
 			console.log("apply的over请求出错", err);
 		}
 	);
-	fun();
 }
 
 export { apply, getApply, over };

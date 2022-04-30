@@ -5,6 +5,7 @@
 	import { socket, Apply as app, apply as encode } from "../../composables/websocket/ws";
 	import { over } from "../../composables/data/apply";
 	import { Apply, Infos } from "../../composables/api";
+	import { User } from "../../composables/data/user";
 	const height = ref("0px");
 	const applyContainer = ref(null);
 
@@ -39,9 +40,13 @@
 	});
 	function name(id, tt) {
 		// console.log(tt);
-		Infos.getUser(id).then((data) => {
+		console.log("运行一次");
+		// Infos.getUser(id).then((data) => {
+		// 	tt.name = data.Name;
+		// 	// console.log("名字获得", tt);
+		// });
+		User.get(id).then((data) => {
 			tt.name = data.Name;
-			// console.log("名字获得", tt);
 		});
 	}
 	function applyD(key) {
@@ -84,7 +89,9 @@
 		} else {
 			a = new app(id, param.Group, 2, "");
 		}
-		over(param.ID, socket.send(encode(a)));
+		over(param.ID, () => {
+			socket.send(encode(a));
+		});
 	}
 	function No(param) {
 		let id = "";
@@ -101,7 +108,9 @@
 		} else {
 			a = new app(id, param.Group, 3, "");
 		}
-		over(param.ID, socket.send(encode(a)));
+		over(param.ID, () => {
+			socket.send(encode(a));
+		});
 	}
 	function nam(params) {
 		console.log(params);

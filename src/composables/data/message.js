@@ -19,8 +19,10 @@ async function getMessage() {
 	for (const ele of tmp) {
 		if (ele.Group == "") {
 			// 单聊
+			console.log("ID相", Infos.data().value.ID);
 			// console.log(chum.message.get(ele.AccountB));
-			if (ele.AccountA == Infos.data().ID) {
+			if (ele.AccountA == Infos.data().value.ID) {
+				console.log("ID相等");
 				let tmp = chum.message.get(ele.AccountB);
 				if (typeof tmp === "undefined") {
 					tmp = [];
@@ -50,7 +52,7 @@ async function getMessage() {
 		// console.log(group.message);
 	}
 	// console.log(group.message);
-	// console.log("map内容", chum.message);
+	console.log("map内容", chum.message);
 }
 
 export { getMessage };
