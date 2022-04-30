@@ -1,6 +1,5 @@
 import { reactive } from "vue";
 import { http } from "../http";
-import router from "../../router/router";
 import { Groups } from "./groups";
 
 const group = reactive({

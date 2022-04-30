@@ -1,9 +1,8 @@
 import { reactive } from "vue";
 import { http } from "../http";
-import router from "../../router/router";
-
 import { User } from "./user";
 import { Infos } from "../api";
+
 const chum = reactive({
 	data: [],
 	message: new Map(),

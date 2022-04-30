@@ -1,5 +1,5 @@
 <script setup>
-	import { reactive, ref, onMounted, computed, watch } from "vue";
+	import { reactive, ref, onMounted, computed } from "vue";
 	import { Chum } from "../../composables/api";
 	import { Msg, socket, message as encode } from "../../composables/websocket/ws";
 	import { info } from "../../composables/data/info";

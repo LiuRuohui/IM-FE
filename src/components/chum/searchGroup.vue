@@ -1,14 +1,10 @@
 <script setup>
 	import { ref, reactive, onMounted } from "vue";
-	import { Group } from "../../composables/api";
 	import { Groups } from "../../composables/data/groups";
 	import { socket, Apply } from "../../composables/websocket/ws";
 	const friendContainer = ref(null);
 	const height = ref("0px");
 	const groupName = ref(null);
-	const groups = reactive({
-		id: [],
-	});
 
 	onMounted(() => {
 		height.value = friendContainer.value.offsetHeight + "px";

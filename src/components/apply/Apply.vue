@@ -1,7 +1,7 @@
 <script setup>
+	import { reactive, ref, onMounted, computed } from "vue";
 	import yes from "../../assets/img/yes.svg";
 	import no from "../../assets/img/err.svg";
-	import { reactive, ref, onMounted, computed } from "vue";
 	import { socket, Apply as app, apply as encode } from "../../composables/websocket/ws";
 	import { over } from "../../composables/data/apply";
 	import { Apply, Infos } from "../../composables/api";

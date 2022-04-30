@@ -1,6 +1,6 @@
 <script setup>
+	import { ref, onMounted, defineAsyncComponent } from "vue";
 	import mobile from "../../composables/mobile";
-	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
 	import searchGroup from "./searchGroup.vue";
 	import { Group } from "../../composables/api";
 	import { groupPreview } from "../../composables/data/group";

@@ -2,7 +2,7 @@
 获取网关地址
 */
 
-import axios from "axios";
+// import axios from "axios";
 
 //获取当前时间戳
 const timestamp = new Date().getTime();

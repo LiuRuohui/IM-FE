@@ -1,6 +1,7 @@
 <script setup>
+	import { ref, onMounted } from "vue";
 	import mobile from "../../composables/mobile";
-	import { reactive, ref, onMounted, defineAsyncComponent } from "vue";
+
 	import msgChat from "./msgChat.vue";
 	import addFriends from "./addFriends.vue";
 	import { Chum } from "../../composables/api";

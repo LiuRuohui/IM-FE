@@ -3,7 +3,6 @@
 	import { groupPreview } from "../../composables/data/group";
 	import { Group } from "../../composables/api";
 	import { message as encode, Msg, socket } from "../../composables/websocket/ws";
-	// import { info } from "../../composables/data/info";
 	import { now } from "../../composables/data/now";
 
 	const height = ref("0px");

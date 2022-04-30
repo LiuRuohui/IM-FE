@@ -1,8 +1,6 @@
 import { reactive } from "vue";
 import { http } from "../http";
 
-import { Infos } from "../api";
-
 const apply = reactive({
 	data: [],
 });

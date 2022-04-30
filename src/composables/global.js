@@ -2,7 +2,7 @@
     定义挂载到app.vue的公共执行函数，放置在下方的global中执行
 */
 
-import { Infos, Note, File } from "./api";
+import { Note, File } from "./api";
 
 import { socket, Msg, Apply, apply, message } from "./websocket/ws";
 
