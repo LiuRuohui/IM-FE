@@ -6,10 +6,6 @@
 	const height = ref("0px");
 	let friend = ref(null);
 
-	const friends = reactive({
-		id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-	});
-
 	onMounted(() => {
 		height.value = friendContainer.value.offsetHeight + "px";
 	});
@@ -17,7 +13,8 @@
 	function addFriend(friend) {
 		let apply = new Apply(friend[0], "", 1, "申请添加为好友");
 		let buffer = encode(apply);
-		socket.send(buffer);
+		console.log("按下添加键之后",User.data)
+		//socket.send(buffer);
 	}
 
 	function search() {
