@@ -3,6 +3,7 @@ import { Infos } from "../api";
 import { chum } from "../data/chum";
 import { group } from "../data/group";
 import { getApply } from "../data/apply";
+import { Dialog } from "../modelDialog";
 import msg from "./msg";
 
 const body = msg.lookupType("proto.Body");
@@ -45,6 +46,7 @@ const socket = {
 		// 设置收到消息回调函数
 		socket.websocket.onmessage = function (e) {
 			console.log("收到消息了");
+			Dialog.successToast("收到消息");
 			socket.receive(e);
 		};
 
