@@ -5,11 +5,16 @@
 	import { Dialog } from "../../composables/modelDialog";
 	const friendContainer = ref(null);
 	const height = ref("0px");
+<<<<<<< HEAD
 	let friend = ref("");
 	let friendData = reactive({
 		id: "",
 		name: "未查找",
 	});
+=======
+	let friend = ref(null);
+
+>>>>>>> d25d1101d4900fa0278619fd5968a304b6e4fde7
 	onMounted(() => {
 		height.value = friendContainer.value.offsetHeight + "px";
 	});
@@ -17,8 +22,13 @@
 	function addFriend() {
 		let apply = new Apply(friendData.id, "", 1, "申请添加为好友");
 		let buffer = encode(apply);
+<<<<<<< HEAD
 		socket.send(buffer);
 		Dialog.successToast("请求已发送");
+=======
+		console.log("按下添加键之后",User.data)
+		//socket.send(buffer);
+>>>>>>> d25d1101d4900fa0278619fd5968a304b6e4fde7
 	}
 
 	function search() {
